@@ -41,13 +41,13 @@ const (
 )
 
 var (
-	RaftPrefix         = "/raft"
-	ProbingPrefix      = path.Join(RaftPrefix, "probing")
-	RaftStreamPrefix   = path.Join(RaftPrefix, "stream")
-	RaftSnapshotPrefix = path.Join(RaftPrefix, "snapshot")
+	RaftPrefix		= "/raft"
+	ProbingPrefix		= path.Join(RaftPrefix, "probing")
+	RaftStreamPrefix	= path.Join(RaftPrefix, "stream")
+	RaftSnapshotPrefix	= path.Join(RaftPrefix, "snapshot")
 
-	errIncompatibleVersion = errors.New("incompatible version")
-	errClusterIDMismatch   = errors.New("cluster ID mismatch")
+	errIncompatibleVersion	= errors.New("incompatible version")
+	errClusterIDMismatch	= errors.New("cluster ID mismatch")
 )
 
 type peerGetter interface {
@@ -59,9 +59,9 @@ type writerToResponse interface {
 }
 
 type pipelineHandler struct {
-	tr  Transporter
-	r   Raft
-	cid types.ID
+	tr	Transporter
+	r	Raft
+	cid	types.ID
 }
 
 // newPipelineHandler returns a handler for handling raft messages
@@ -71,9 +71,9 @@ type pipelineHandler struct {
 // and forwards it to the given raft state machine for processing.
 func newPipelineHandler(tr Transporter, r Raft, cid types.ID) http.Handler {
 	return &pipelineHandler{
-		tr:  tr,
-		r:   r,
-		cid: cid,
+		tr:	tr,
+		r:	r,
+		cid:	cid,
 	}
 }
 
@@ -133,18 +133,18 @@ func (h *pipelineHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 type snapshotHandler struct {
-	tr          Transporter
-	r           Raft
-	snapshotter *snap.Snapshotter
-	cid         types.ID
+	tr		Transporter
+	r		Raft
+	snapshotter	*snap.Snapshotter
+	cid		types.ID
 }
 
 func newSnapshotHandler(tr Transporter, r Raft, snapshotter *snap.Snapshotter, cid types.ID) http.Handler {
 	return &snapshotHandler{
-		tr:          tr,
-		r:           r,
-		snapshotter: snapshotter,
-		cid:         cid,
+		tr:		tr,
+		r:		r,
+		snapshotter:	snapshotter,
+		cid:		cid,
 	}
 }
 
@@ -225,20 +225,20 @@ func (h *snapshotHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 type streamHandler struct {
-	tr         *Transport
-	peerGetter peerGetter
-	r          Raft
-	id         types.ID
-	cid        types.ID
+	tr		*Transport
+	peerGetter	peerGetter
+	r		Raft
+	id		types.ID
+	cid		types.ID
 }
 
 func newStreamHandler(tr *Transport, pg peerGetter, r Raft, id, cid types.ID) http.Handler {
 	return &streamHandler{
-		tr:         tr,
-		peerGetter: pg,
-		r:          r,
-		id:         id,
-		cid:        cid,
+		tr:		tr,
+		peerGetter:	pg,
+		r:		r,
+		id:		id,
+		cid:		cid,
 	}
 }
 
@@ -308,10 +308,10 @@ func (h *streamHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	c := newCloseNotifier()
 	conn := &outgoingConn{
-		t:       t,
-		Writer:  w,
-		Flusher: w.(http.Flusher),
-		Closer:  c,
+		t:		t,
+		Writer:		w,
+		Flusher:	w.(http.Flusher),
+		Closer:		c,
 	}
 	p.attachOutgoingConn(conn)
 	<-c.closeNotify()
@@ -349,4 +349,4 @@ func (n *closeNotifier) Close() error {
 	return nil
 }
 
-func (n *closeNotifier) closeNotify() <-chan struct{} { return n.done }
+func (n *closeNotifier) closeNotify() <-chan struct{}	{ return n.done }

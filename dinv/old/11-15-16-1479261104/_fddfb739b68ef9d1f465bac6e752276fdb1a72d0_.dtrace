@@ -1,0 +1,91 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+ppt-type point
+variable Banana-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+this_invocation_nonce
+0
+Banana-applied
+3
+1
+Banana-commited
+3
+1
+Banana-lead
+0
+1
+Banana-logterm-pureRaft
+1
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+this_invocation_nonce
+1
+Apricot-applied
+37
+1
+Apricot-commited
+38
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+

@@ -22,8 +22,8 @@ import (
 func TestInflightsAdd(t *testing.T) {
 	// no rotating case
 	in := &inflights{
-		size:   10,
-		buffer: make([]uint64, 10),
+		size:	10,
+		buffer:	make([]uint64, 10),
 	}
 
 	for i := 0; i < 5; i++ {
@@ -31,11 +31,11 @@ func TestInflightsAdd(t *testing.T) {
 	}
 
 	wantIn := &inflights{
-		start: 0,
-		count: 5,
-		size:  10,
+		start:	0,
+		count:	5,
+		size:	10,
 		//               ↓------------
-		buffer: []uint64{0, 1, 2, 3, 4, 0, 0, 0, 0, 0},
+		buffer:	[]uint64{0, 1, 2, 3, 4, 0, 0, 0, 0, 0},
 	}
 
 	if !reflect.DeepEqual(in, wantIn) {
@@ -47,11 +47,11 @@ func TestInflightsAdd(t *testing.T) {
 	}
 
 	wantIn2 := &inflights{
-		start: 0,
-		count: 10,
-		size:  10,
+		start:	0,
+		count:	10,
+		size:	10,
 		//               ↓---------------------------
-		buffer: []uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+		buffer:	[]uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
 	}
 
 	if !reflect.DeepEqual(in, wantIn2) {
@@ -60,9 +60,9 @@ func TestInflightsAdd(t *testing.T) {
 
 	// rotating case
 	in2 := &inflights{
-		start:  5,
-		size:   10,
-		buffer: make([]uint64, 10),
+		start:	5,
+		size:	10,
+		buffer:	make([]uint64, 10),
 	}
 
 	for i := 0; i < 5; i++ {
@@ -70,11 +70,11 @@ func TestInflightsAdd(t *testing.T) {
 	}
 
 	wantIn21 := &inflights{
-		start: 5,
-		count: 5,
-		size:  10,
+		start:	5,
+		count:	5,
+		size:	10,
 		//                              ↓------------
-		buffer: []uint64{0, 0, 0, 0, 0, 0, 1, 2, 3, 4},
+		buffer:	[]uint64{0, 0, 0, 0, 0, 0, 1, 2, 3, 4},
 	}
 
 	if !reflect.DeepEqual(in2, wantIn21) {
@@ -86,11 +86,11 @@ func TestInflightsAdd(t *testing.T) {
 	}
 
 	wantIn22 := &inflights{
-		start: 5,
-		count: 10,
-		size:  10,
+		start:	5,
+		count:	10,
+		size:	10,
 		//               -------------- ↓------------
-		buffer: []uint64{5, 6, 7, 8, 9, 0, 1, 2, 3, 4},
+		buffer:	[]uint64{5, 6, 7, 8, 9, 0, 1, 2, 3, 4},
 	}
 
 	if !reflect.DeepEqual(in2, wantIn22) {
@@ -108,11 +108,11 @@ func TestInflightFreeTo(t *testing.T) {
 	in.freeTo(4)
 
 	wantIn := &inflights{
-		start: 5,
-		count: 5,
-		size:  10,
+		start:	5,
+		count:	5,
+		size:	10,
 		//                              ↓------------
-		buffer: []uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+		buffer:	[]uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
 	}
 
 	if !reflect.DeepEqual(in, wantIn) {
@@ -122,11 +122,11 @@ func TestInflightFreeTo(t *testing.T) {
 	in.freeTo(8)
 
 	wantIn2 := &inflights{
-		start: 9,
-		count: 1,
-		size:  10,
+		start:	9,
+		count:	1,
+		size:	10,
 		//                                          ↓
-		buffer: []uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+		buffer:	[]uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
 	}
 
 	if !reflect.DeepEqual(in, wantIn2) {
@@ -141,11 +141,11 @@ func TestInflightFreeTo(t *testing.T) {
 	in.freeTo(12)
 
 	wantIn3 := &inflights{
-		start: 3,
-		count: 2,
-		size:  10,
+		start:	3,
+		count:	2,
+		size:	10,
 		//                           ↓-----
-		buffer: []uint64{10, 11, 12, 13, 14, 5, 6, 7, 8, 9},
+		buffer:	[]uint64{10, 11, 12, 13, 14, 5, 6, 7, 8, 9},
 	}
 
 	if !reflect.DeepEqual(in, wantIn3) {
@@ -155,11 +155,11 @@ func TestInflightFreeTo(t *testing.T) {
 	in.freeTo(14)
 
 	wantIn4 := &inflights{
-		start: 5,
-		count: 0,
-		size:  10,
+		start:	5,
+		count:	0,
+		size:	10,
 		//                                   ↓
-		buffer: []uint64{10, 11, 12, 13, 14, 5, 6, 7, 8, 9},
+		buffer:	[]uint64{10, 11, 12, 13, 14, 5, 6, 7, 8, 9},
 	}
 
 	if !reflect.DeepEqual(in, wantIn4) {
@@ -176,11 +176,11 @@ func TestInflightFreeFirstOne(t *testing.T) {
 	in.freeFirstOne()
 
 	wantIn := &inflights{
-		start: 1,
-		count: 9,
-		size:  10,
+		start:	1,
+		count:	9,
+		size:	10,
 		//                  ↓------------------------
-		buffer: []uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+		buffer:	[]uint64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
 	}
 
 	if !reflect.DeepEqual(in, wantIn) {

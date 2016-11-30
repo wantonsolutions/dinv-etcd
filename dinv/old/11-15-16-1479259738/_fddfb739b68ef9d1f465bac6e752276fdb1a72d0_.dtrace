@@ -1,0 +1,141 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+ppt-type point
+variable 401191350-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 401191350-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 401191350-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 401191350-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 401191350-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 401191350-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 401191350-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+this_invocation_nonce
+0
+401191350-applied
+3
+1
+401191350-commited
+3
+1
+401191350-lead
+0
+1
+401191350-logterm-pureRaft
+1
+1
+401191350-maxInflight
+512
+1
+401191350-maxMsgSize
+1048576
+1
+401191350-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+this_invocation_nonce
+1
+401434268-applied
+75
+1
+401434268-commited
+75
+1
+401434268-lead
+-9223372036854775808
+1
+401434268-logterm-pureRaft
+2
+1
+401434268-maxInflight
+512
+1
+401434268-maxMsgSize
+1048576
+1
+401434268-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+this_invocation_nonce
+2
+401434268-applied
+99
+1
+401434268-commited
+99
+1
+401434268-lead
+-9223372036854775808
+1
+401434268-logterm-pureRaft
+2
+1
+401434268-maxInflight
+512
+1
+401434268-maxMsgSize
+1048576
+1
+401434268-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_
+this_invocation_nonce
+3
+401434268-applied
+225
+1
+401434268-commited
+225
+1
+401434268-lead
+-9223372036854775808
+1
+401434268-logterm-pureRaft
+2
+1
+401434268-maxInflight
+512
+1
+401434268-maxMsgSize
+1048576
+1
+401434268-state
+"StateFollower"
+1
+

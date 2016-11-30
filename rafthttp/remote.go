@@ -20,28 +20,28 @@ import (
 )
 
 type remote struct {
-	id       types.ID
-	status   *peerStatus
-	pipeline *pipeline
+	id		types.ID
+	status		*peerStatus
+	pipeline	*pipeline
 }
 
 func startRemote(tr *Transport, urls types.URLs, id types.ID) *remote {
 	picker := newURLPicker(urls)
 	status := newPeerStatus(id)
 	pipeline := &pipeline{
-		peerID: id,
-		tr:     tr,
-		picker: picker,
-		status: status,
-		raft:   tr.Raft,
-		errorc: tr.ErrorC,
+		peerID:	id,
+		tr:	tr,
+		picker:	picker,
+		status:	status,
+		raft:	tr.Raft,
+		errorc:	tr.ErrorC,
 	}
 	pipeline.start()
 
 	return &remote{
-		id:       id,
-		status:   status,
-		pipeline: pipeline,
+		id:		id,
+		status:		status,
+		pipeline:	pipeline,
 	}
 }
 

@@ -164,9 +164,9 @@ func TestPipelinePost(t *testing.T) {
 
 func TestPipelinePostBad(t *testing.T) {
 	tests := []struct {
-		u    string
-		code int
-		err  error
+		u	string
+		code	int
+		err	error
 	}{
 		// RoundTrip returns error
 		{"http://localhost:2380", 0, errors.New("blah")},
@@ -189,9 +189,9 @@ func TestPipelinePostBad(t *testing.T) {
 
 func TestPipelinePostErrorc(t *testing.T) {
 	tests := []struct {
-		u    string
-		code int
-		err  error
+		u	string
+		code	int
+		err	error
 	}{
 		{"http://localhost:2380", http.StatusForbidden, nil},
 	}
@@ -231,15 +231,15 @@ func TestStopBlockedPipeline(t *testing.T) {
 }
 
 type roundTripperBlocker struct {
-	unblockc chan struct{}
-	mu       sync.Mutex
-	cancel   map[*http.Request]chan struct{}
+	unblockc	chan struct{}
+	mu		sync.Mutex
+	cancel		map[*http.Request]chan struct{}
 }
 
 func newRoundTripperBlocker() *roundTripperBlocker {
 	return &roundTripperBlocker{
-		unblockc: make(chan struct{}),
-		cancel:   make(map[*http.Request]chan struct{}),
+		unblockc:	make(chan struct{}),
+		cancel:		make(map[*http.Request]chan struct{}),
 	}
 }
 
@@ -257,12 +257,12 @@ func (t *roundTripperBlocker) CancelRequest(req *http.Request) {
 }
 
 type respRoundTripper struct {
-	mu  sync.Mutex
-	rec testutil.Recorder
+	mu	sync.Mutex
+	rec	testutil.Recorder
 
-	code   int
-	header http.Header
-	err    error
+	code	int
+	header	http.Header
+	err	error
 }
 
 func newRespRoundTripper(code int, err error) *respRoundTripper {
@@ -278,7 +278,7 @@ func (t *respRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) 
 }
 
 type roundTripperRecorder struct {
-	req *http.Request
+	req	*http.Request
 	sync.Mutex
 }
 
@@ -296,18 +296,18 @@ func (t *roundTripperRecorder) Request() *http.Request {
 
 type nopReadCloser struct{}
 
-func (n *nopReadCloser) Read(p []byte) (int, error) { return 0, io.EOF }
-func (n *nopReadCloser) Close() error               { return nil }
+func (n *nopReadCloser) Read(p []byte) (int, error)	{ return 0, io.EOF }
+func (n *nopReadCloser) Close() error			{ return nil }
 
 func startTestPipeline(tr *Transport, picker *urlPicker) *pipeline {
 	p := &pipeline{
-		peerID:        types.ID(1),
-		tr:            tr,
-		picker:        picker,
-		status:        newPeerStatus(types.ID(1)),
-		raft:          &fakeRaft{},
-		followerStats: &stats.FollowerStats{},
-		errorc:        make(chan error, 1),
+		peerID:		types.ID(1),
+		tr:		tr,
+		picker:		picker,
+		status:		newPeerStatus(types.ID(1)),
+		raft:		&fakeRaft{},
+		followerStats:	&stats.FollowerStats{},
+		errorc:		make(chan error, 1),
 	}
 	p.start()
 	return p

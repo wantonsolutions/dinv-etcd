@@ -124,8 +124,8 @@ func TestRawNodeStart(t *testing.T) {
 	}
 	wants := []Ready{
 		{
-			SoftState: &SoftState{Lead: 1, RaftState: StateLeader},
-			HardState: raftpb.HardState{Term: 2, Commit: 2, Vote: 1},
+			SoftState:	&SoftState{Lead: 1, RaftState: StateLeader},
+			HardState:	raftpb.HardState{Term: 2, Commit: 2, Vote: 1},
 			Entries: []raftpb.Entry{
 				{Type: raftpb.EntryConfChange, Term: 1, Index: 1, Data: ccdata},
 				{Term: 2, Index: 2},
@@ -136,9 +136,9 @@ func TestRawNodeStart(t *testing.T) {
 			},
 		},
 		{
-			HardState:        raftpb.HardState{Term: 2, Commit: 3, Vote: 1},
-			Entries:          []raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
-			CommittedEntries: []raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
+			HardState:		raftpb.HardState{Term: 2, Commit: 3, Vote: 1},
+			Entries:		[]raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
+			CommittedEntries:	[]raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
 		},
 	}
 
@@ -178,9 +178,9 @@ func TestRawNodeRestart(t *testing.T) {
 	st := raftpb.HardState{Term: 1, Commit: 1}
 
 	want := Ready{
-		HardState: emptyState,
+		HardState:	emptyState,
 		// commit up to commit index in st
-		CommittedEntries: entries[:st.Commit],
+		CommittedEntries:	entries[:st.Commit],
 	}
 
 	storage := NewMemoryStorage()
@@ -203,9 +203,9 @@ func TestRawNodeRestart(t *testing.T) {
 func TestRawNodeRestartFromSnapshot(t *testing.T) {
 	snap := raftpb.Snapshot{
 		Metadata: raftpb.SnapshotMetadata{
-			ConfState: raftpb.ConfState{Nodes: []uint64{1, 2}},
-			Index:     2,
-			Term:      1,
+			ConfState:	raftpb.ConfState{Nodes: []uint64{1, 2}},
+			Index:		2,
+			Term:		1,
 		},
 	}
 	entries := []raftpb.Entry{
@@ -214,9 +214,9 @@ func TestRawNodeRestartFromSnapshot(t *testing.T) {
 	st := raftpb.HardState{Term: 1, Commit: 3}
 
 	want := Ready{
-		HardState: emptyState,
+		HardState:	emptyState,
 		// commit up to commit index in st
-		CommittedEntries: entries,
+		CommittedEntries:	entries,
 	}
 
 	s := NewMemoryStorage()

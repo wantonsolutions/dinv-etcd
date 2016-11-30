@@ -23,15 +23,15 @@ import (
 )
 
 type failureType struct {
-	source string
-	action string
+	source	string
+	action	string
 }
 
 type peerStatus struct {
-	id     types.ID
-	mu     sync.Mutex // protect variables below
-	active bool
-	since  time.Time
+	id	types.ID
+	mu	sync.Mutex	// protect variables below
+	active	bool
+	since	time.Time
 }
 
 func newPeerStatus(id types.ID) *peerStatus {

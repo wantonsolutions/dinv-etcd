@@ -34,21 +34,21 @@ import (
 )
 
 const (
-	streamTypeMessage  streamType = "message"
-	streamTypeMsgAppV2 streamType = "msgappv2"
+	streamTypeMessage	streamType	= "message"
+	streamTypeMsgAppV2	streamType	= "msgappv2"
 
-	streamBufSize = 4096
+	streamBufSize	= 4096
 )
 
 var (
-	errUnsupportedStreamType = fmt.Errorf("unsupported stream type")
+	errUnsupportedStreamType	= fmt.Errorf("unsupported stream type")
 
 	// the key is in string format "major.minor.patch"
-	supportedStream = map[string][]streamType{
-		"2.0.0": {},
-		"2.1.0": {streamTypeMsgAppV2, streamTypeMessage},
-		"2.2.0": {streamTypeMsgAppV2, streamTypeMessage},
-		"2.3.0": {streamTypeMsgAppV2, streamTypeMessage},
+	supportedStream	= map[string][]streamType{
+		"2.0.0":	{},
+		"2.1.0":	{streamTypeMsgAppV2, streamTypeMessage},
+		"2.2.0":	{streamTypeMsgAppV2, streamTypeMessage},
+		"2.3.0":	{streamTypeMsgAppV2, streamTypeMessage},
 	}
 )
 
@@ -89,7 +89,7 @@ func isLinkHeartbeatMessage(m *raftpb.Message) bool {
 }
 
 type outgoingConn struct {
-	t streamType
+	t	streamType
 	io.Writer
 	http.Flusher
 	io.Closer
@@ -97,33 +97,33 @@ type outgoingConn struct {
 
 // streamWriter writes messages to the attached outgoingConn.
 type streamWriter struct {
-	peerID types.ID
-	status *peerStatus
-	fs     *stats.FollowerStats
-	r      Raft
+	peerID	types.ID
+	status	*peerStatus
+	fs	*stats.FollowerStats
+	r	Raft
 
-	mu      sync.Mutex // guard field working and closer
-	closer  io.Closer
-	working bool
+	mu	sync.Mutex	// guard field working and closer
+	closer	io.Closer
+	working	bool
 
-	msgc  chan raftpb.Message
-	connc chan *outgoingConn
-	stopc chan struct{}
-	done  chan struct{}
+	msgc	chan raftpb.Message
+	connc	chan *outgoingConn
+	stopc	chan struct{}
+	done	chan struct{}
 }
 
 // startStreamWriter creates a streamWrite and starts a long running go-routine that accepts
 // messages and writes to the attached outgoing connection.
 func startStreamWriter(id types.ID, status *peerStatus, fs *stats.FollowerStats, r Raft) *streamWriter {
 	w := &streamWriter{
-		peerID: id,
-		status: status,
-		fs:     fs,
-		r:      r,
-		msgc:   make(chan raftpb.Message, streamBufSize),
-		connc:  make(chan *outgoingConn),
-		stopc:  make(chan struct{}),
-		done:   make(chan struct{}),
+		peerID:	id,
+		status:	status,
+		fs:	fs,
+		r:	r,
+		msgc:	make(chan raftpb.Message, streamBufSize),
+		connc:	make(chan *outgoingConn),
+		stopc:	make(chan struct{}),
+		done:	make(chan struct{}),
 	}
 	go w.run()
 	return w
@@ -131,12 +131,12 @@ func startStreamWriter(id types.ID, status *peerStatus, fs *stats.FollowerStats,
 
 func (cw *streamWriter) run() {
 	var (
-		msgc       chan raftpb.Message
-		heartbeatc <-chan time.Time
-		t          streamType
-		enc        encoder
-		flusher    http.Flusher
-		batched    int
+		msgc		chan raftpb.Message
+		heartbeatc	<-chan time.Time
+		t		streamType
+		enc		encoder
+		flusher		http.Flusher
+		batched		int
 	)
 	tickc := time.Tick(ConnReadTimeout / 3)
 	unflushed := 0
@@ -256,24 +256,24 @@ func (cw *streamWriter) stop() {
 // streamReader is a long-running go-routine that dials to the remote stream
 // endpoint and reads messages from the response body returned.
 type streamReader struct {
-	peerID types.ID
-	typ    streamType
+	peerID	types.ID
+	typ	streamType
 
-	tr     *Transport
-	picker *urlPicker
-	status *peerStatus
-	recvc  chan<- raftpb.Message
-	propc  chan<- raftpb.Message
+	tr	*Transport
+	picker	*urlPicker
+	status	*peerStatus
+	recvc	chan<- raftpb.Message
+	propc	chan<- raftpb.Message
 
-	errorc chan<- error
+	errorc	chan<- error
 
-	mu     sync.Mutex
-	paused bool
-	cancel func()
-	closer io.Closer
+	mu	sync.Mutex
+	paused	bool
+	cancel	func()
+	closer	io.Closer
 
-	stopc chan struct{}
-	done  chan struct{}
+	stopc	chan struct{}
+	done	chan struct{}
 }
 
 func (r *streamReader) start() {
@@ -413,7 +413,7 @@ func (cr *streamReader) dial(t streamType) (io.ReadCloser, error) {
 		return nil, fmt.Errorf("stream reader is stopped")
 	default:
 	}
-	cr.cancel = httputil.RequestCanceler(cr.tr.streamRt, req)
+	cr.cancel = httputil.RequestCanceler(req)
 	cr.mu.Unlock()
 
 	resp, err := cr.tr.streamRt.RoundTrip(req)

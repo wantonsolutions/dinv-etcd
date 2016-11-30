@@ -18,30 +18,30 @@ import "github.com/prometheus/client_golang/prometheus"
 
 // TODO: record write/recv failures.
 var (
-	sentBytes = prometheus.NewCounterVec(prometheus.CounterOpts{
-		Namespace: "etcd",
-		Subsystem: "network",
-		Name:      "peer_sent_bytes_total",
-		Help:      "The total number of bytes sent to peers.",
+	sentBytes	= prometheus.NewCounterVec(prometheus.CounterOpts{
+		Namespace:	"etcd",
+		Subsystem:	"network",
+		Name:		"peer_sent_bytes_total",
+		Help:		"The total number of bytes sent to peers.",
 	},
 		[]string{"To"},
 	)
 
-	receivedBytes = prometheus.NewCounterVec(prometheus.CounterOpts{
-		Namespace: "etcd",
-		Subsystem: "network",
-		Name:      "peer_received_bytes_total",
-		Help:      "The total number of bytes received from peers.",
+	receivedBytes	= prometheus.NewCounterVec(prometheus.CounterOpts{
+		Namespace:	"etcd",
+		Subsystem:	"network",
+		Name:		"peer_received_bytes_total",
+		Help:		"The total number of bytes received from peers.",
 	},
 		[]string{"From"},
 	)
 
-	rtts = prometheus.NewHistogramVec(prometheus.HistogramOpts{
-		Namespace: "etcd",
-		Subsystem: "network",
-		Name:      "peer_round_trip_time_seconds",
-		Help:      "Round-Trip-Time histogram between peers.",
-		Buckets:   prometheus.ExponentialBuckets(0.0001, 2, 14),
+	rtts	= prometheus.NewHistogramVec(prometheus.HistogramOpts{
+		Namespace:	"etcd",
+		Subsystem:	"network",
+		Name:		"peer_round_trip_time_seconds",
+		Help:		"Round-Trip-Time histogram between peers.",
+		Buckets:	prometheus.ExponentialBuckets(0.0001, 2, 14),
 	},
 		[]string{"To"},
 	)

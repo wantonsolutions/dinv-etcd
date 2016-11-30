@@ -116,9 +116,9 @@ func TestStreamReaderDialRequest(t *testing.T) {
 	for i, tt := range []streamType{streamTypeMessage, streamTypeMsgAppV2} {
 		tr := &roundTripperRecorder{}
 		sr := &streamReader{
-			peerID: types.ID(2),
-			tr:     &Transport{streamRt: tr, ClusterID: types.ID(1), ID: types.ID(1)},
-			picker: mustNewURLPicker(t, []string{"http://localhost:2380"}),
+			peerID:	types.ID(2),
+			tr:	&Transport{streamRt: tr, ClusterID: types.ID(1), ID: types.ID(1)},
+			picker:	mustNewURLPicker(t, []string{"http://localhost:2380"}),
 		}
 		sr.dial(tt)
 
@@ -143,10 +143,10 @@ func TestStreamReaderDialRequest(t *testing.T) {
 // HTTP response received.
 func TestStreamReaderDialResult(t *testing.T) {
 	tests := []struct {
-		code  int
-		err   error
-		wok   bool
-		whalt bool
+		code	int
+		err	error
+		wok	bool
+		whalt	bool
 	}{
 		{0, errors.New("blah"), false, false},
 		{http.StatusOK, nil, true, false},
@@ -159,15 +159,15 @@ func TestStreamReaderDialResult(t *testing.T) {
 		h := http.Header{}
 		h.Add("X-Server-Version", version.Version)
 		tr := &respRoundTripper{
-			code:   tt.code,
-			header: h,
-			err:    tt.err,
+			code:	tt.code,
+			header:	h,
+			err:	tt.err,
 		}
 		sr := &streamReader{
-			peerID: types.ID(2),
-			tr:     &Transport{streamRt: tr, ClusterID: types.ID(1)},
-			picker: mustNewURLPicker(t, []string{"http://localhost:2380"}),
-			errorc: make(chan error, 1),
+			peerID:	types.ID(2),
+			tr:	&Transport{streamRt: tr, ClusterID: types.ID(1)},
+			picker:	mustNewURLPicker(t, []string{"http://localhost:2380"}),
+			errorc:	make(chan error, 1),
 		}
 
 		_, err := sr.dial(streamTypeMessage)
@@ -186,13 +186,13 @@ func TestStreamReaderDialDetectUnsupport(t *testing.T) {
 	for i, typ := range []streamType{streamTypeMsgAppV2, streamTypeMessage} {
 		// the response from etcd 2.0
 		tr := &respRoundTripper{
-			code:   http.StatusNotFound,
-			header: http.Header{},
+			code:	http.StatusNotFound,
+			header:	http.Header{},
 		}
 		sr := &streamReader{
-			peerID: types.ID(2),
-			tr:     &Transport{streamRt: tr, ClusterID: types.ID(1)},
-			picker: mustNewURLPicker(t, []string{"http://localhost:2380"}),
+			peerID:	types.ID(2),
+			tr:	&Transport{streamRt: tr, ClusterID: types.ID(1)},
+			picker:	mustNewURLPicker(t, []string{"http://localhost:2380"}),
 		}
 
 		_, err := sr.dial(typ)
@@ -208,19 +208,19 @@ func TestStream(t *testing.T) {
 	recvc := make(chan raftpb.Message, streamBufSize)
 	propc := make(chan raftpb.Message, streamBufSize)
 	msgapp := raftpb.Message{
-		Type:    raftpb.MsgApp,
-		From:    2,
-		To:      1,
-		Term:    1,
-		LogTerm: 1,
-		Index:   3,
-		Entries: []raftpb.Entry{{Term: 1, Index: 4}},
+		Type:		raftpb.MsgApp,
+		From:		2,
+		To:		1,
+		Term:		1,
+		LogTerm:	1,
+		Index:		3,
+		Entries:	[]raftpb.Entry{{Term: 1, Index: 4}},
 	}
 
 	tests := []struct {
-		t  streamType
-		m  raftpb.Message
-		wc chan raftpb.Message
+		t	streamType
+		m	raftpb.Message
+		wc	chan raftpb.Message
 	}{
 		{
 			streamTypeMessage,
@@ -251,13 +251,13 @@ func TestStream(t *testing.T) {
 		tr := &Transport{streamRt: &http.Transport{}, ClusterID: types.ID(1)}
 
 		sr := &streamReader{
-			peerID: types.ID(2),
-			typ:    tt.t,
-			tr:     tr,
-			picker: picker,
-			status: newPeerStatus(types.ID(2)),
-			recvc:  recvc,
-			propc:  propc,
+			peerID:	types.ID(2),
+			typ:	tt.t,
+			tr:	tr,
+			picker:	picker,
+			status:	newPeerStatus(types.ID(2)),
+			recvc:	recvc,
+			propc:	propc,
 		}
 		sr.start()
 
@@ -288,9 +288,9 @@ func TestStream(t *testing.T) {
 
 func TestCheckStreamSupport(t *testing.T) {
 	tests := []struct {
-		v *semver.Version
-		t streamType
-		w bool
+		v	*semver.Version
+		t	streamType
+		w	bool
 	}{
 		// support
 		{
@@ -319,10 +319,10 @@ func TestCheckStreamSupport(t *testing.T) {
 }
 
 type fakeWriteFlushCloser struct {
-	mu      sync.Mutex
-	err     error
-	written int
-	closed  bool
+	mu	sync.Mutex
+	err	error
+	written	int
+	closed	bool
 }
 
 func (wfc *fakeWriteFlushCloser) Write(p []byte) (n int, err error) {
@@ -333,7 +333,7 @@ func (wfc *fakeWriteFlushCloser) Write(p []byte) (n int, err error) {
 	return len(p), wfc.err
 }
 
-func (wfc *fakeWriteFlushCloser) Flush() {}
+func (wfc *fakeWriteFlushCloser) Flush()	{}
 
 func (wfc *fakeWriteFlushCloser) Close() error {
 	wfc.mu.Lock()
@@ -356,8 +356,8 @@ func (wfc *fakeWriteFlushCloser) Closed() bool {
 }
 
 type fakeStreamHandler struct {
-	t  streamType
-	sw *streamWriter
+	t	streamType
+	sw	*streamWriter
 }
 
 func (h *fakeStreamHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -365,10 +365,10 @@ func (h *fakeStreamHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.(http.Flusher).Flush()
 	c := newCloseNotifier()
 	h.sw.attach(&outgoingConn{
-		t:       h.t,
-		Writer:  w,
-		Flusher: w.(http.Flusher),
-		Closer:  c,
+		t:		h.t,
+		Writer:		w,
+		Flusher:	w.(http.Flusher),
+		Closer:		c,
 	})
 	<-c.closeNotify()
 }

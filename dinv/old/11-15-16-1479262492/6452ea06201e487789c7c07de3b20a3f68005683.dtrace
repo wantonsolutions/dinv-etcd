@@ -1,0 +1,628 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+ppt-type point
+variable Banana-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable Apple-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+0
+Banana-applied
+42
+1
+Banana-commited
+42
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+42
+1
+Apple-commited
+42
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+1
+Banana-applied
+55
+1
+Banana-commited
+55
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+55
+1
+Apple-commited
+55
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+2
+Banana-applied
+57
+1
+Banana-commited
+57
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+57
+1
+Apple-commited
+57
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+3
+Apricot-applied
+71
+1
+Apricot-commited
+71
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Apple-applied
+71
+1
+Apple-commited
+71
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+4
+Banana-applied
+92
+1
+Banana-commited
+93
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+92
+1
+Apple-commited
+93
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+5
+Banana-applied
+103
+1
+Banana-commited
+103
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+103
+1
+Apple-commited
+103
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+6
+Apricot-applied
+113
+1
+Apricot-commited
+113
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Apple-applied
+113
+1
+Apple-commited
+113
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+7
+Apricot-applied
+144
+1
+Apricot-commited
+144
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Apple-applied
+144
+1
+Apple-commited
+144
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+8
+Banana-applied
+147
+1
+Banana-commited
+147
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+147
+1
+Apple-commited
+147
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+9
+Banana-applied
+171
+1
+Banana-commited
+171
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+171
+1
+Apple-commited
+171
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+10
+Banana-applied
+178
+1
+Banana-commited
+178
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+178
+1
+Apple-commited
+178
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+11
+Banana-applied
+180
+1
+Banana-commited
+180
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+180
+1
+Apple-commited
+180
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+

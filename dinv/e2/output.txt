@@ -1,0 +1,35 @@
+Daikon version 5.2.4, released May 1, 2015; http://plse.cs.washington.edu/daikon.
+Reading declaration files [6:29:39 PM]:                                                                                                                                                                                                                                Processing trace data; reading 1 dtrace file:
+[6:29:39 PM]: Finished reading ./_574_574_574.dtrace                           
+                                                                               ===========================================================================
+p-_574_574_574:::_574_574_574
+183979191-logterm-pureRaft == 185096751-logterm-pureRaft
+183979191-logterm-pureRaft == 185462157-logterm-pureRaft
+183979191-lead == 185096751-lead
+183979191-lead == 185462157-lead
+183979191-applied == 183979191-commited
+183979191-maxInflight == 185096751-maxInflight
+183979191-maxInflight == 185462157-maxInflight
+183979191-maxMsgSize == 185096751-maxMsgSize
+183979191-maxMsgSize == 185462157-maxMsgSize
+185096751-applied == 185096751-commited
+183979191-logterm-pureRaft == 2
+183979191-lead == -9223372036854775808L
+183979191-state == "StateLeader"
+183979191-applied one of { 30, 121 }
+183979191-maxInflight == 512
+183979191-maxMsgSize == 1048576
+185096751-state == "StateFollower"
+185096751-applied one of { 29, 120 }
+185462157-applied one of { 29, 121 }
+185462157-commited one of { 29, 122 }
+185096751-state == 185462157-state
+Exiting Daikon.
+Daikon version 5.2.4, released May 1, 2015; http://plse.cs.washington.edu/daikon.
+Reading declaration files                                                                                [6:29:40 PM]:                                                                                                                                                 Processing trace data; reading 1 dtrace file:
+Daikon version 5.2.4, released May 1, 2015; http://plse.cs.washington.edu/daikon.
+Reading declaration files [6:29:41 PM]:                                                                                                                                                                                                                                Processing trace data; reading 1 dtrace file:
+Daikon version 5.2.4, released May 1, 2015; http://plse.cs.washington.edu/daikon.
+Reading declaration files [6:29:42 PM]:                                                                                                                                                                                                                                Processing trace data; reading 1 dtrace file:
+[6:29:42 PM]: Finished reading ./a6b569e41ab71d2858c8a2b163e7b202da122c02.dtrac
+                                                                               Exiting Daikon.

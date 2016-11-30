@@ -24,8 +24,8 @@ import (
 func TestFindConflict(t *testing.T) {
 	previousEnts := []pb.Entry{{Index: 1, Term: 1}, {Index: 2, Term: 2}, {Index: 3, Term: 3}}
 	tests := []struct {
-		ents      []pb.Entry
-		wconflict uint64
+		ents		[]pb.Entry
+		wconflict	uint64
 	}{
 		// no conflict, empty ent
 		{[]pb.Entry{}, 0},
@@ -60,9 +60,9 @@ func TestIsUpToDate(t *testing.T) {
 	raftLog := newLog(NewMemoryStorage(), raftLogger)
 	raftLog.append(previousEnts...)
 	tests := []struct {
-		lastIndex uint64
-		term      uint64
-		wUpToDate bool
+		lastIndex	uint64
+		term		uint64
+		wUpToDate	bool
 	}{
 		// greater term, ignore lastIndex
 		{raftLog.lastIndex() - 1, 4, true},
@@ -89,10 +89,10 @@ func TestIsUpToDate(t *testing.T) {
 func TestAppend(t *testing.T) {
 	previousEnts := []pb.Entry{{Index: 1, Term: 1}, {Index: 2, Term: 2}}
 	tests := []struct {
-		ents      []pb.Entry
-		windex    uint64
-		wents     []pb.Entry
-		wunstable uint64
+		ents		[]pb.Entry
+		windex		uint64
+		wents		[]pb.Entry
+		wunstable	uint64
 	}{
 		{
 			[]pb.Entry{},
@@ -159,15 +159,15 @@ func TestLogMaybeAppend(t *testing.T) {
 	commit := uint64(1)
 
 	tests := []struct {
-		logTerm   uint64
-		index     uint64
-		committed uint64
-		ents      []pb.Entry
+		logTerm		uint64
+		index		uint64
+		committed	uint64
+		ents		[]pb.Entry
 
-		wlasti  uint64
-		wappend bool
-		wcommit uint64
-		wpanic  bool
+		wlasti	uint64
+		wappend	bool
+		wcommit	uint64
+		wpanic	bool
 	}{
 		// not match: term is different
 		{
@@ -186,19 +186,19 @@ func TestLogMaybeAppend(t *testing.T) {
 		},
 		{
 			lastterm, lastindex, lastindex + 1, nil,
-			lastindex, true, lastindex, false, // do not increase commit higher than lastnewi
+			lastindex, true, lastindex, false,	// do not increase commit higher than lastnewi
 		},
 		{
 			lastterm, lastindex, lastindex - 1, nil,
-			lastindex, true, lastindex - 1, false, // commit up to the commit in the message
+			lastindex, true, lastindex - 1, false,	// commit up to the commit in the message
 		},
 		{
 			lastterm, lastindex, 0, nil,
-			lastindex, true, commit, false, // commit do not decrease
+			lastindex, true, commit, false,	// commit do not decrease
 		},
 		{
 			0, 0, lastindex, nil,
-			0, true, commit, false, // commit do not decrease
+			0, true, commit, false,	// commit do not decrease
 		},
 		{
 			lastterm, lastindex, lastindex, []pb.Entry{{Index: lastindex + 1, Term: 4}},
@@ -210,7 +210,7 @@ func TestLogMaybeAppend(t *testing.T) {
 		},
 		{
 			lastterm, lastindex, lastindex + 2, []pb.Entry{{Index: lastindex + 1, Term: 4}},
-			lastindex + 1, true, lastindex + 1, false, // do not increase commit higher than lastnewi
+			lastindex + 1, true, lastindex + 1, false,	// do not increase commit higher than lastnewi
 		},
 		{
 			lastterm, lastindex, lastindex + 2, []pb.Entry{{Index: lastindex + 1, Term: 4}, {Index: lastindex + 2, Term: 4}},
@@ -227,7 +227,7 @@ func TestLogMaybeAppend(t *testing.T) {
 		},
 		{
 			lastterm - 3, lastindex - 3, lastindex, []pb.Entry{{Index: lastindex - 2, Term: 4}},
-			lastindex - 2, true, lastindex - 2, true, // conflict with existing committed entry
+			lastindex - 2, true, lastindex - 2, true,	// conflict with existing committed entry
 		},
 		{
 			lastterm - 2, lastindex - 2, lastindex, []pb.Entry{{Index: lastindex - 1, Term: 4}, {Index: lastindex, Term: 4}},
@@ -347,8 +347,8 @@ func TestHasNextEnts(t *testing.T) {
 		{Term: 1, Index: 6},
 	}
 	tests := []struct {
-		applied uint64
-		hasNext bool
+		applied	uint64
+		hasNext	bool
 	}{
 		{0, true},
 		{3, true},
@@ -380,8 +380,8 @@ func TestNextEnts(t *testing.T) {
 		{Term: 1, Index: 6},
 	}
 	tests := []struct {
-		applied uint64
-		wents   []pb.Entry
+		applied	uint64
+		wents	[]pb.Entry
 	}{
 		{0, ents[:2]},
 		{3, ents[:2]},
@@ -408,8 +408,8 @@ func TestNextEnts(t *testing.T) {
 func TestUnstableEnts(t *testing.T) {
 	previousEnts := []pb.Entry{{Term: 1, Index: 1}, {Term: 2, Index: 2}}
 	tests := []struct {
-		unstable uint64
-		wents    []pb.Entry
+		unstable	uint64
+		wents		[]pb.Entry
 	}{
 		{3, nil},
 		{1, previousEnts},
@@ -442,13 +442,13 @@ func TestCommitTo(t *testing.T) {
 	previousEnts := []pb.Entry{{Term: 1, Index: 1}, {Term: 2, Index: 2}, {Term: 3, Index: 3}}
 	commit := uint64(2)
 	tests := []struct {
-		commit  uint64
-		wcommit uint64
-		wpanic  bool
+		commit	uint64
+		wcommit	uint64
+		wpanic	bool
 	}{
 		{3, 3, false},
-		{1, 2, false}, // never decrease
-		{4, 0, true},  // commit out of range -> panic
+		{1, 2, false},	// never decrease
+		{4, 0, true},	// commit out of range -> panic
 	}
 	for i, tt := range tests {
 		func() {
@@ -472,14 +472,14 @@ func TestCommitTo(t *testing.T) {
 
 func TestStableTo(t *testing.T) {
 	tests := []struct {
-		stablei   uint64
-		stablet   uint64
-		wunstable uint64
+		stablei		uint64
+		stablet		uint64
+		wunstable	uint64
 	}{
 		{1, 1, 2},
 		{2, 2, 3},
-		{2, 1, 1}, // bad term
-		{3, 1, 1}, // bad index
+		{2, 1, 1},	// bad term
+		{3, 1, 1},	// bad index
 	}
 	for i, tt := range tests {
 		raftLog := newLog(NewMemoryStorage(), raftLogger)
@@ -494,11 +494,11 @@ func TestStableTo(t *testing.T) {
 func TestStableToWithSnap(t *testing.T) {
 	snapi, snapt := uint64(5), uint64(2)
 	tests := []struct {
-		stablei uint64
-		stablet uint64
-		newEnts []pb.Entry
+		stablei	uint64
+		stablet	uint64
+		newEnts	[]pb.Entry
 
-		wunstable uint64
+		wunstable	uint64
 	}{
 		{snapi + 1, snapt, nil, snapi + 1},
 		{snapi, snapt, nil, snapi + 1},
@@ -531,10 +531,10 @@ func TestStableToWithSnap(t *testing.T) {
 //TestCompaction ensures that the number of log entries is correct after compactions.
 func TestCompaction(t *testing.T) {
 	tests := []struct {
-		lastIndex uint64
-		compact   []uint64
-		wleft     []int
-		wallow    bool
+		lastIndex	uint64
+		compact		[]uint64
+		wleft		[]int
+		wallow		bool
 	}{
 		// out of upper bound
 		{1000, []uint64{1001}, []int{-1}, false},
@@ -614,9 +614,9 @@ func TestIsOutOfBounds(t *testing.T) {
 
 	first := offset + 1
 	tests := []struct {
-		lo, hi        uint64
-		wpanic        bool
-		wErrCompacted bool
+		lo, hi		uint64
+		wpanic		bool
+		wErrCompacted	bool
 	}{
 		{
 			first - 2, first + 1,
@@ -696,8 +696,8 @@ func TestTerm(t *testing.T) {
 	}
 
 	tests := []struct {
-		index uint64
-		w     uint64
+		index	uint64
+		w	uint64
 	}{
 		{offset - 1, 0},
 		{offset, 1},
@@ -724,8 +724,8 @@ func TestTermWithUnstableSnapshot(t *testing.T) {
 	l.restore(pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: unstablesnapi, Term: 1}})
 
 	tests := []struct {
-		index uint64
-		w     uint64
+		index	uint64
+		w	uint64
 	}{
 		// cannot get term from storage
 		{storagesnapi, 0},
@@ -763,12 +763,12 @@ func TestSlice(t *testing.T) {
 	}
 
 	tests := []struct {
-		from  uint64
-		to    uint64
-		limit uint64
+		from	uint64
+		to	uint64
+		limit	uint64
 
-		w      []pb.Entry
-		wpanic bool
+		w	[]pb.Entry
+		wpanic	bool
 	}{
 		// test no limit
 		{offset - 1, offset + 1, noLimit, nil, false},

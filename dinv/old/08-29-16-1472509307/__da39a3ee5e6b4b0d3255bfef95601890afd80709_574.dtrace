@@ -1,0 +1,241 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+ppt-type point
+variable 932677503-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 932677503-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 932677503-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 932677503-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 932677503-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 932677503-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 932677503-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+0
+932677503-logterm-pureRaft
+2
+1
+932677503-lead
+-9223372036854775808
+1
+932677503-state
+"StateFollower"
+1
+932677503-applied
+209
+1
+932677503-commited
+209
+1
+932677503-maxInflight
+512
+1
+932677503-maxMsgSize
+1048576
+1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+1
+932955055-logterm-pureRaft
+2
+1
+932955055-lead
+-9223372036854775808
+1
+932955055-state
+"StateFollower"
+1
+932955055-applied
+331
+1
+932955055-commited
+331
+1
+932955055-maxInflight
+512
+1
+932955055-maxMsgSize
+1048576
+1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+2
+932955055-logterm-pureRaft
+2
+1
+932955055-lead
+-9223372036854775808
+1
+932955055-state
+"StateFollower"
+1
+932955055-applied
+761
+1
+932955055-commited
+761
+1
+932955055-maxInflight
+512
+1
+932955055-maxMsgSize
+1048576
+1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+3
+932677503-logterm-pureRaft
+2
+1
+932677503-lead
+-9223372036854775808
+1
+932677503-state
+"StateFollower"
+1
+932677503-applied
+776
+1
+932677503-commited
+776
+1
+932677503-maxInflight
+512
+1
+932677503-maxMsgSize
+1048576
+1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+4
+932677503-logterm-pureRaft
+2
+1
+932677503-lead
+-9223372036854775808
+1
+932677503-state
+"StateFollower"
+1
+932677503-applied
+1111
+1
+932677503-commited
+1111
+1
+932677503-maxInflight
+512
+1
+932677503-maxMsgSize
+1048576
+1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+5
+932677503-logterm-pureRaft
+2
+1
+932677503-lead
+-9223372036854775808
+1
+932677503-state
+"StateFollower"
+1
+932677503-applied
+1374
+1
+932677503-commited
+1374
+1
+932677503-maxInflight
+512
+1
+932677503-maxMsgSize
+1048576
+1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+6
+932955055-logterm-pureRaft
+2
+1
+932955055-lead
+-9223372036854775808
+1
+932955055-state
+"StateFollower"
+1
+932955055-applied
+1487
+1
+932955055-commited
+1487
+1
+932955055-maxInflight
+512
+1
+932955055-maxMsgSize
+1048576
+1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+7
+932677503-logterm-pureRaft
+2
+1
+932677503-lead
+-9223372036854775808
+1
+932677503-state
+"StateFollower"
+1
+932677503-applied
+1490
+1
+932677503-commited
+1490
+1
+932677503-maxInflight
+512
+1
+932677503-maxMsgSize
+1048576
+1
+

@@ -1,0 +1,122 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-__dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::__dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+ppt-type point
+variable 889864345-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 889864345-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 889864345-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 889864345-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 889864345-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 889864345-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 889864345-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 891074480-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 891074480-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 891074480-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 891074480-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 891074480-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 891074480-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 891074480-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-__dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::__dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+0
+889864345-applied
+137
+1
+889864345-commited
+137
+1
+889864345-lead
+-9223372036854775808
+1
+889864345-logterm-pureRaft
+2
+1
+889864345-maxInflight
+512
+1
+889864345-maxMsgSize
+1048576
+1
+889864345-state
+"StateLeader"
+1
+891074480-applied
+136
+1
+891074480-commited
+136
+1
+891074480-lead
+-9223372036854775808
+1
+891074480-logterm-pureRaft
+2
+1
+891074480-maxInflight
+512
+1
+891074480-maxMsgSize
+1048576
+1
+891074480-state
+"StateFollower"
+1
+

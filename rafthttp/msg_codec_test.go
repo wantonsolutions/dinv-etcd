@@ -25,18 +25,18 @@ import (
 func TestMessage(t *testing.T) {
 	tests := []raftpb.Message{
 		{
-			Type:    raftpb.MsgApp,
-			From:    1,
-			To:      2,
-			Term:    1,
-			LogTerm: 1,
-			Index:   3,
-			Entries: []raftpb.Entry{{Term: 1, Index: 4}},
+			Type:		raftpb.MsgApp,
+			From:		1,
+			To:		2,
+			Term:		1,
+			LogTerm:	1,
+			Index:		3,
+			Entries:	[]raftpb.Entry{{Term: 1, Index: 4}},
 		},
 		{
-			Type: raftpb.MsgProp,
-			From: 1,
-			To:   2,
+			Type:	raftpb.MsgProp,
+			From:	1,
+			To:	2,
 			Entries: []raftpb.Entry{
 				{Data: []byte("some data")},
 				{Data: []byte("some data")},

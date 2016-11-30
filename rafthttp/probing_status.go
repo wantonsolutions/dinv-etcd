@@ -23,8 +23,8 @@ import (
 var (
 	// proberInterval must be shorter than read timeout.
 	// Or the connection will time-out.
-	proberInterval           = ConnReadTimeout - time.Second
-	statusMonitoringInterval = 30 * time.Second
+	proberInterval			= ConnReadTimeout - time.Second
+	statusMonitoringInterval	= 30 * time.Second
 )
 
 func addPeerToProber(p probing.Prober, id string, us []string) {

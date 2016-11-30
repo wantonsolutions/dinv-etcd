@@ -1,0 +1,91 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_da39a3ee5e6b4b0d3255bfef95601890afd80709_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_da39a3ee5e6b4b0d3255bfef95601890afd80709_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+ppt-type point
+variable Apple-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_da39a3ee5e6b4b0d3255bfef95601890afd80709_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_da39a3ee5e6b4b0d3255bfef95601890afd80709_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+0
+Apple-applied
+166
+1
+Apple-commited
+166
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+
+p-_da39a3ee5e6b4b0d3255bfef95601890afd80709_dd17e8cf187531d5fe4311a85124b92e15fe4b33:::_da39a3ee5e6b4b0d3255bfef95601890afd80709_dd17e8cf187531d5fe4311a85124b92e15fe4b33
+this_invocation_nonce
+1
+Apple-applied
+190
+1
+Apple-commited
+190
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+

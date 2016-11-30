@@ -29,8 +29,8 @@ import (
 func TestNodeStep(t *testing.T) {
 	for i, msgn := range raftpb.MessageType_name {
 		n := &node{
-			propc: make(chan raftpb.Message, 1),
-			recvc: make(chan raftpb.Message, 1),
+			propc:	make(chan raftpb.Message, 1),
+			recvc:	make(chan raftpb.Message, 1),
 		}
 		msgt := raftpb.MessageType(i)
 		n.Step(context.TODO(), raftpb.Message{Type: msgt})
@@ -63,16 +63,16 @@ func TestNodeStep(t *testing.T) {
 func TestNodeStepUnblock(t *testing.T) {
 	// a node without buffer to block step
 	n := &node{
-		propc: make(chan raftpb.Message),
-		done:  make(chan struct{}),
+		propc:	make(chan raftpb.Message),
+		done:	make(chan struct{}),
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
 	stopFunc := func() { close(n.done) }
 
 	tests := []struct {
-		unblock func()
-		werr    error
+		unblock	func()
+		werr	error
 	}{
 		{stopFunc, ErrStopped},
 		{cancel, context.Canceled},
@@ -323,8 +323,8 @@ func TestNodeStop(t *testing.T) {
 
 func TestReadyContainUpdates(t *testing.T) {
 	tests := []struct {
-		rd       Ready
-		wcontain bool
+		rd		Ready
+		wcontain	bool
 	}{
 		{Ready{}, false},
 		{Ready{SoftState: &SoftState{Lead: 1}}, true},
@@ -356,8 +356,8 @@ func TestNodeStart(t *testing.T) {
 	}
 	wants := []Ready{
 		{
-			SoftState: &SoftState{Lead: 1, RaftState: StateLeader},
-			HardState: raftpb.HardState{Term: 2, Commit: 2, Vote: 1},
+			SoftState:	&SoftState{Lead: 1, RaftState: StateLeader},
+			HardState:	raftpb.HardState{Term: 2, Commit: 2, Vote: 1},
 			Entries: []raftpb.Entry{
 				{Type: raftpb.EntryConfChange, Term: 1, Index: 1, Data: ccdata},
 				{Term: 2, Index: 2},
@@ -368,19 +368,19 @@ func TestNodeStart(t *testing.T) {
 			},
 		},
 		{
-			HardState:        raftpb.HardState{Term: 2, Commit: 3, Vote: 1},
-			Entries:          []raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
-			CommittedEntries: []raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
+			HardState:		raftpb.HardState{Term: 2, Commit: 3, Vote: 1},
+			Entries:		[]raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
+			CommittedEntries:	[]raftpb.Entry{{Term: 2, Index: 3, Data: []byte("foo")}},
 		},
 	}
 	storage := NewMemoryStorage()
 	c := &Config{
-		ID:              1,
-		ElectionTick:    10,
-		HeartbeatTick:   1,
-		Storage:         storage,
-		MaxSizePerMsg:   noLimit,
-		MaxInflightMsgs: 256,
+		ID:			1,
+		ElectionTick:		10,
+		HeartbeatTick:		1,
+		Storage:		storage,
+		MaxSizePerMsg:		noLimit,
+		MaxInflightMsgs:	256,
 	}
 	n := StartNode(c, []Peer{{ID: 1}})
 	defer n.Stop()
@@ -416,21 +416,21 @@ func TestNodeRestart(t *testing.T) {
 	st := raftpb.HardState{Term: 1, Commit: 1}
 
 	want := Ready{
-		HardState: st,
+		HardState:	st,
 		// commit up to index commit index in st
-		CommittedEntries: entries[:st.Commit],
+		CommittedEntries:	entries[:st.Commit],
 	}
 
 	storage := NewMemoryStorage()
 	storage.SetHardState(st)
 	storage.Append(entries)
 	c := &Config{
-		ID:              1,
-		ElectionTick:    10,
-		HeartbeatTick:   1,
-		Storage:         storage,
-		MaxSizePerMsg:   noLimit,
-		MaxInflightMsgs: 256,
+		ID:			1,
+		ElectionTick:		10,
+		HeartbeatTick:		1,
+		Storage:		storage,
+		MaxSizePerMsg:		noLimit,
+		MaxInflightMsgs:	256,
 	}
 	n := RestartNode(c)
 	defer n.Stop()
@@ -449,9 +449,9 @@ func TestNodeRestart(t *testing.T) {
 func TestNodeRestartFromSnapshot(t *testing.T) {
 	snap := raftpb.Snapshot{
 		Metadata: raftpb.SnapshotMetadata{
-			ConfState: raftpb.ConfState{Nodes: []uint64{1, 2}},
-			Index:     2,
-			Term:      1,
+			ConfState:	raftpb.ConfState{Nodes: []uint64{1, 2}},
+			Index:		2,
+			Term:		1,
 		},
 	}
 	entries := []raftpb.Entry{
@@ -460,9 +460,9 @@ func TestNodeRestartFromSnapshot(t *testing.T) {
 	st := raftpb.HardState{Term: 1, Commit: 3}
 
 	want := Ready{
-		HardState: st,
+		HardState:	st,
 		// commit up to index commit index in st
-		CommittedEntries: entries,
+		CommittedEntries:	entries,
 	}
 
 	s := NewMemoryStorage()
@@ -470,12 +470,12 @@ func TestNodeRestartFromSnapshot(t *testing.T) {
 	s.ApplySnapshot(snap)
 	s.Append(entries)
 	c := &Config{
-		ID:              1,
-		ElectionTick:    10,
-		HeartbeatTick:   1,
-		Storage:         s,
-		MaxSizePerMsg:   noLimit,
-		MaxInflightMsgs: 256,
+		ID:			1,
+		ElectionTick:		10,
+		HeartbeatTick:		1,
+		Storage:		s,
+		MaxSizePerMsg:		noLimit,
+		MaxInflightMsgs:	256,
 	}
 	n := RestartNode(c)
 	defer n.Stop()
@@ -498,12 +498,12 @@ func TestNodeAdvance(t *testing.T) {
 
 	storage := NewMemoryStorage()
 	c := &Config{
-		ID:              1,
-		ElectionTick:    10,
-		HeartbeatTick:   1,
-		Storage:         storage,
-		MaxSizePerMsg:   noLimit,
-		MaxInflightMsgs: 256,
+		ID:			1,
+		ElectionTick:		10,
+		HeartbeatTick:		1,
+		Storage:		storage,
+		MaxSizePerMsg:		noLimit,
+		MaxInflightMsgs:	256,
 	}
 	n := StartNode(c, []Peer{{ID: 1}})
 	defer n.Stop()
@@ -527,8 +527,8 @@ func TestNodeAdvance(t *testing.T) {
 
 func TestSoftStateEqual(t *testing.T) {
 	tests := []struct {
-		st *SoftState
-		we bool
+		st	*SoftState
+		we	bool
 	}{
 		{&SoftState{}, true},
 		{&SoftState{Lead: 1}, false},
@@ -543,8 +543,8 @@ func TestSoftStateEqual(t *testing.T) {
 
 func TestIsHardStateEqual(t *testing.T) {
 	tests := []struct {
-		st raftpb.HardState
-		we bool
+		st	raftpb.HardState
+		we	bool
 	}{
 		{emptyState, true},
 		{raftpb.HardState{Vote: 1}, false},

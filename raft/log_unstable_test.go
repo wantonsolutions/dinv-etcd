@@ -23,12 +23,12 @@ import (
 
 func TestUnstableMaybeFirstIndex(t *testing.T) {
 	tests := []struct {
-		entries []pb.Entry
-		offset  uint64
-		snap    *pb.Snapshot
+		entries	[]pb.Entry
+		offset	uint64
+		snap	*pb.Snapshot
 
-		wok    bool
-		windex uint64
+		wok	bool
+		windex	uint64
 	}{
 		// no snapshot
 		{
@@ -52,10 +52,10 @@ func TestUnstableMaybeFirstIndex(t *testing.T) {
 
 	for i, tt := range tests {
 		u := unstable{
-			entries:  tt.entries,
-			offset:   tt.offset,
-			snapshot: tt.snap,
-			logger:   raftLogger,
+			entries:	tt.entries,
+			offset:		tt.offset,
+			snapshot:	tt.snap,
+			logger:		raftLogger,
 		}
 		index, ok := u.maybeFirstIndex()
 		if ok != tt.wok {
@@ -69,12 +69,12 @@ func TestUnstableMaybeFirstIndex(t *testing.T) {
 
 func TestMaybeLastIndex(t *testing.T) {
 	tests := []struct {
-		entries []pb.Entry
-		offset  uint64
-		snap    *pb.Snapshot
+		entries	[]pb.Entry
+		offset	uint64
+		snap	*pb.Snapshot
 
-		wok    bool
-		windex uint64
+		wok	bool
+		windex	uint64
 	}{
 		// last in entries
 		{
@@ -99,10 +99,10 @@ func TestMaybeLastIndex(t *testing.T) {
 
 	for i, tt := range tests {
 		u := unstable{
-			entries:  tt.entries,
-			offset:   tt.offset,
-			snapshot: tt.snap,
-			logger:   raftLogger,
+			entries:	tt.entries,
+			offset:		tt.offset,
+			snapshot:	tt.snap,
+			logger:		raftLogger,
 		}
 		index, ok := u.maybeLastIndex()
 		if ok != tt.wok {
@@ -116,13 +116,13 @@ func TestMaybeLastIndex(t *testing.T) {
 
 func TestUnstableMaybeTerm(t *testing.T) {
 	tests := []struct {
-		entries []pb.Entry
-		offset  uint64
-		snap    *pb.Snapshot
-		index   uint64
+		entries	[]pb.Entry
+		offset	uint64
+		snap	*pb.Snapshot
+		index	uint64
 
-		wok   bool
-		wterm uint64
+		wok	bool
+		wterm	uint64
 	}{
 		// term from entries
 		{
@@ -175,10 +175,10 @@ func TestUnstableMaybeTerm(t *testing.T) {
 
 	for i, tt := range tests {
 		u := unstable{
-			entries:  tt.entries,
-			offset:   tt.offset,
-			snapshot: tt.snap,
-			logger:   raftLogger,
+			entries:	tt.entries,
+			offset:		tt.offset,
+			snapshot:	tt.snap,
+			logger:		raftLogger,
 		}
 		term, ok := u.maybeTerm(tt.index)
 		if ok != tt.wok {
@@ -192,10 +192,10 @@ func TestUnstableMaybeTerm(t *testing.T) {
 
 func TestUnstableRestore(t *testing.T) {
 	u := unstable{
-		entries:  []pb.Entry{{Index: 5, Term: 1}},
-		offset:   5,
-		snapshot: &pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 4, Term: 1}},
-		logger:   raftLogger,
+		entries:	[]pb.Entry{{Index: 5, Term: 1}},
+		offset:		5,
+		snapshot:	&pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 4, Term: 1}},
+		logger:		raftLogger,
 	}
 	s := pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 6, Term: 2}}
 	u.restore(s)
@@ -213,13 +213,13 @@ func TestUnstableRestore(t *testing.T) {
 
 func TestUnstableStableTo(t *testing.T) {
 	tests := []struct {
-		entries     []pb.Entry
-		offset      uint64
-		snap        *pb.Snapshot
-		index, term uint64
+		entries		[]pb.Entry
+		offset		uint64
+		snap		*pb.Snapshot
+		index, term	uint64
 
-		woffset uint64
-		wlen    int
+		woffset	uint64
+		wlen	int
 	}{
 		{
 			[]pb.Entry{}, 0, nil,
@@ -228,63 +228,63 @@ func TestUnstableStableTo(t *testing.T) {
 		},
 		{
 			[]pb.Entry{{Index: 5, Term: 1}}, 5, nil,
-			5, 1, // stable to the first entry
+			5, 1,	// stable to the first entry
 			6, 0,
 		},
 		{
 			[]pb.Entry{{Index: 5, Term: 1}, {Index: 6, Term: 1}}, 5, nil,
-			5, 1, // stable to the first entry
+			5, 1,	// stable to the first entry
 			6, 1,
 		},
 		{
 			[]pb.Entry{{Index: 6, Term: 2}}, 6, nil,
-			6, 1, // stable to the first entry and term mismatch
+			6, 1,	// stable to the first entry and term mismatch
 			6, 1,
 		},
 		{
 			[]pb.Entry{{Index: 5, Term: 1}}, 5, nil,
-			4, 1, // stable to old entry
+			4, 1,	// stable to old entry
 			5, 1,
 		},
 		{
 			[]pb.Entry{{Index: 5, Term: 1}}, 5, nil,
-			4, 2, // stable to old entry
+			4, 2,	// stable to old entry
 			5, 1,
 		},
 		// with snapshot
 		{
 			[]pb.Entry{{Index: 5, Term: 1}}, 5, &pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 4, Term: 1}},
-			5, 1, // stable to the first entry
+			5, 1,	// stable to the first entry
 			6, 0,
 		},
 		{
 			[]pb.Entry{{Index: 5, Term: 1}, {Index: 6, Term: 1}}, 5, &pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 4, Term: 1}},
-			5, 1, // stable to the first entry
+			5, 1,	// stable to the first entry
 			6, 1,
 		},
 		{
 			[]pb.Entry{{Index: 6, Term: 2}}, 6, &pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 5, Term: 1}},
-			6, 1, // stable to the first entry and term mismatch
+			6, 1,	// stable to the first entry and term mismatch
 			6, 1,
 		},
 		{
 			[]pb.Entry{{Index: 5, Term: 1}}, 5, &pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 4, Term: 1}},
-			4, 1, // stable to snapshot
+			4, 1,	// stable to snapshot
 			5, 1,
 		},
 		{
 			[]pb.Entry{{Index: 5, Term: 2}}, 5, &pb.Snapshot{Metadata: pb.SnapshotMetadata{Index: 4, Term: 2}},
-			4, 1, // stable to old entry
+			4, 1,	// stable to old entry
 			5, 1,
 		},
 	}
 
 	for i, tt := range tests {
 		u := unstable{
-			entries:  tt.entries,
-			offset:   tt.offset,
-			snapshot: tt.snap,
-			logger:   raftLogger,
+			entries:	tt.entries,
+			offset:		tt.offset,
+			snapshot:	tt.snap,
+			logger:		raftLogger,
 		}
 		u.stableTo(tt.index, tt.term)
 		if u.offset != tt.woffset {
@@ -298,13 +298,13 @@ func TestUnstableStableTo(t *testing.T) {
 
 func TestUnstableTruncateAndAppend(t *testing.T) {
 	tests := []struct {
-		entries  []pb.Entry
-		offset   uint64
-		snap     *pb.Snapshot
-		toappend []pb.Entry
+		entries		[]pb.Entry
+		offset		uint64
+		snap		*pb.Snapshot
+		toappend	[]pb.Entry
 
-		woffset  uint64
-		wentries []pb.Entry
+		woffset		uint64
+		wentries	[]pb.Entry
 	}{
 		// append to the end
 		{
@@ -338,10 +338,10 @@ func TestUnstableTruncateAndAppend(t *testing.T) {
 
 	for i, tt := range tests {
 		u := unstable{
-			entries:  tt.entries,
-			offset:   tt.offset,
-			snapshot: tt.snap,
-			logger:   raftLogger,
+			entries:	tt.entries,
+			offset:		tt.offset,
+			snapshot:	tt.snap,
+			logger:		raftLogger,
 		}
 		u.truncateAndAppend(tt.toappend)
 		if u.offset != tt.woffset {

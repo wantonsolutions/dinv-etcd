@@ -1,0 +1,122 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+ppt-type point
+variable 882947965-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 882947965-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 882947965-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 882947965-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 882947965-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 882947965-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 882947965-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 883101401-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 883101401-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 883101401-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 883101401-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 883101401-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 883101401-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 883101401-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+
+p-_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_574:::_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_574
+this_invocation_nonce
+0
+882947965-logterm-pureRaft
+2
+1
+882947965-lead
+-9223372036854775808
+1
+882947965-state
+"StateFollower"
+1
+882947965-applied
+13
+1
+882947965-commited
+13
+1
+882947965-maxInflight
+512
+1
+882947965-maxMsgSize
+1048576
+1
+883101401-logterm-pureRaft
+2
+1
+883101401-lead
+-9223372036854775808
+1
+883101401-state
+"StateFollower"
+1
+883101401-applied
+13
+1
+883101401-commited
+13
+1
+883101401-maxInflight
+512
+1
+883101401-maxMsgSize
+1048576
+1
+

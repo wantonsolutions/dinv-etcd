@@ -41,12 +41,12 @@ type Logger interface {
 	Panicf(format string, v ...interface{})
 }
 
-func SetLogger(l Logger) { raftLogger = l }
+func SetLogger(l Logger)	{ raftLogger = l }
 
 var (
-	defaultLogger = &DefaultLogger{Logger: log.New(os.Stderr, "raft", log.LstdFlags)}
-	discardLogger = &DefaultLogger{Logger: log.New(ioutil.Discard, "", 0)}
-	raftLogger    = Logger(defaultLogger)
+	defaultLogger	= &DefaultLogger{Logger: log.New(os.Stderr, "raft", log.LstdFlags)}
+	discardLogger	= &DefaultLogger{Logger: log.New(ioutil.Discard, "", 0)}
+	raftLogger	= Logger(defaultLogger)
 )
 
 const (
@@ -56,7 +56,7 @@ const (
 // DefaultLogger is a default implementation of the Logger interface.
 type DefaultLogger struct {
 	*log.Logger
-	debug bool
+	debug	bool
 }
 
 func (l *DefaultLogger) EnableTimestamps() {

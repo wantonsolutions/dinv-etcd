@@ -28,12 +28,12 @@ func TestMsgAppV2(t *testing.T) {
 	tests := []raftpb.Message{
 		linkHeartbeatMessage,
 		{
-			Type:    raftpb.MsgApp,
-			From:    1,
-			To:      2,
-			Term:    1,
-			LogTerm: 1,
-			Index:   0,
+			Type:		raftpb.MsgApp,
+			From:		1,
+			To:		2,
+			Term:		1,
+			LogTerm:	1,
+			Index:		0,
 			Entries: []raftpb.Entry{
 				{Term: 1, Index: 1, Data: []byte("some data")},
 				{Term: 1, Index: 2, Data: []byte("some data")},
@@ -42,12 +42,12 @@ func TestMsgAppV2(t *testing.T) {
 		},
 		// consecutive MsgApp
 		{
-			Type:    raftpb.MsgApp,
-			From:    1,
-			To:      2,
-			Term:    1,
-			LogTerm: 1,
-			Index:   3,
+			Type:		raftpb.MsgApp,
+			From:		1,
+			To:		2,
+			Term:		1,
+			LogTerm:	1,
+			Index:		3,
 			Entries: []raftpb.Entry{
 				{Term: 1, Index: 4, Data: []byte("some data")},
 			},
@@ -55,24 +55,24 @@ func TestMsgAppV2(t *testing.T) {
 		linkHeartbeatMessage,
 		// consecutive MsgApp after linkHeartbeatMessage
 		{
-			Type:    raftpb.MsgApp,
-			From:    1,
-			To:      2,
-			Term:    1,
-			LogTerm: 1,
-			Index:   4,
+			Type:		raftpb.MsgApp,
+			From:		1,
+			To:		2,
+			Term:		1,
+			LogTerm:	1,
+			Index:		4,
 			Entries: []raftpb.Entry{
 				{Term: 1, Index: 5, Data: []byte("some data")},
 			},
 		},
 		// MsgApp with higher term
 		{
-			Type:    raftpb.MsgApp,
-			From:    1,
-			To:      2,
-			Term:    3,
-			LogTerm: 1,
-			Index:   5,
+			Type:		raftpb.MsgApp,
+			From:		1,
+			To:		2,
+			Term:		3,
+			LogTerm:	1,
+			Index:		5,
 			Entries: []raftpb.Entry{
 				{Term: 3, Index: 6, Data: []byte("some data")},
 			},
@@ -80,25 +80,25 @@ func TestMsgAppV2(t *testing.T) {
 		linkHeartbeatMessage,
 		// consecutive MsgApp
 		{
-			Type:    raftpb.MsgApp,
-			From:    1,
-			To:      2,
-			Term:    3,
-			LogTerm: 2,
-			Index:   6,
+			Type:		raftpb.MsgApp,
+			From:		1,
+			To:		2,
+			Term:		3,
+			LogTerm:	2,
+			Index:		6,
 			Entries: []raftpb.Entry{
 				{Term: 3, Index: 7, Data: []byte("some data")},
 			},
 		},
 		// consecutive empty MsgApp
 		{
-			Type:    raftpb.MsgApp,
-			From:    1,
-			To:      2,
-			Term:    3,
-			LogTerm: 2,
-			Index:   7,
-			Entries: nil,
+			Type:		raftpb.MsgApp,
+			From:		1,
+			To:		2,
+			Term:		3,
+			LogTerm:	2,
+			Index:		7,
+			Entries:	nil,
 		},
 		linkHeartbeatMessage,
 	}

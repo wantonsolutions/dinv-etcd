@@ -35,12 +35,12 @@ import (
 
 func TestServeRaftPrefix(t *testing.T) {
 	testCases := []struct {
-		method    string
-		body      io.Reader
-		p         Raft
-		clusterID string
+		method		string
+		body		io.Reader
+		p		Raft
+		clusterID	string
 
-		wcode int
+		wcode	int
 	}{
 		{
 			// bad method
@@ -161,8 +161,8 @@ func TestServeRaftPrefix(t *testing.T) {
 
 func TestServeRaftStreamPrefix(t *testing.T) {
 	tests := []struct {
-		path  string
-		wtype streamType
+		path	string
+		wtype	streamType
 	}{
 		{
 			RaftStreamPrefix + "/message/1",
@@ -209,12 +209,12 @@ func TestServeRaftStreamPrefix(t *testing.T) {
 func TestServeRaftStreamPrefixBad(t *testing.T) {
 	removedID := uint64(5)
 	tests := []struct {
-		method    string
-		path      string
-		clusterID string
-		remote    string
+		method		string
+		path		string
+		clusterID	string
+		remote		string
 
-		wcode int
+		wcode	int
 	}{
 		// bad method
 		{
@@ -328,39 +328,39 @@ func TestCloseNotifier(t *testing.T) {
 // errReader implements io.Reader to facilitate a broken request.
 type errReader struct{}
 
-func (er *errReader) Read(_ []byte) (int, error) { return 0, errors.New("some error") }
+func (er *errReader) Read(_ []byte) (int, error)	{ return 0, errors.New("some error") }
 
 type resWriterToError struct {
 	code int
 }
 
-func (e *resWriterToError) Error() string                 { return "" }
-func (e *resWriterToError) WriteTo(w http.ResponseWriter) { w.WriteHeader(e.code) }
+func (e *resWriterToError) Error() string			{ return "" }
+func (e *resWriterToError) WriteTo(w http.ResponseWriter)	{ w.WriteHeader(e.code) }
 
 type fakePeerGetter struct {
 	peers map[types.ID]Peer
 }
 
-func (pg *fakePeerGetter) Get(id types.ID) Peer { return pg.peers[id] }
+func (pg *fakePeerGetter) Get(id types.ID) Peer	{ return pg.peers[id] }
 
 type fakePeer struct {
-	msgs     []raftpb.Message
-	snapMsgs []snap.Message
-	peerURLs types.URLs
-	connc    chan *outgoingConn
+	msgs		[]raftpb.Message
+	snapMsgs	[]snap.Message
+	peerURLs	types.URLs
+	connc		chan *outgoingConn
 }
 
 func newFakePeer() *fakePeer {
 	fakeURL, _ := url.Parse("http://localhost")
 	return &fakePeer{
-		connc:    make(chan *outgoingConn, 1),
-		peerURLs: types.URLs{*fakeURL},
+		connc:		make(chan *outgoingConn, 1),
+		peerURLs:	types.URLs{*fakeURL},
 	}
 }
 
-func (pr *fakePeer) send(m raftpb.Message)                 { pr.msgs = append(pr.msgs, m) }
-func (pr *fakePeer) sendSnap(m snap.Message)               { pr.snapMsgs = append(pr.snapMsgs, m) }
-func (pr *fakePeer) update(urls types.URLs)                { pr.peerURLs = urls }
-func (pr *fakePeer) attachOutgoingConn(conn *outgoingConn) { pr.connc <- conn }
-func (pr *fakePeer) activeSince() time.Time                { return time.Time{} }
-func (pr *fakePeer) stop()                                 {}
+func (pr *fakePeer) send(m raftpb.Message)			{ pr.msgs = append(pr.msgs, m) }
+func (pr *fakePeer) sendSnap(m snap.Message)			{ pr.snapMsgs = append(pr.snapMsgs, m) }
+func (pr *fakePeer) update(urls types.URLs)			{ pr.peerURLs = urls }
+func (pr *fakePeer) attachOutgoingConn(conn *outgoingConn)	{ pr.connc <- conn }
+func (pr *fakePeer) activeSince() time.Time			{ return time.Time{} }
+func (pr *fakePeer) stop()					{}

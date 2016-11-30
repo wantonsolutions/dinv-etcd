@@ -1,0 +1,116 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709:::_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709
+ppt-type point
+variable 537964992-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 537964992-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 537964992-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 537964992-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 537964992-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 537964992-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 537964992-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+
+p-_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709:::_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709
+this_invocation_nonce
+0
+537964992-logterm-pureRaft
+2
+1
+537964992-lead
+-9223372036854775808
+1
+537964992-state
+"StateFollower"
+1
+537964992-applied
+63
+1
+537964992-commited
+63
+1
+537964992-maxInflight
+512
+1
+537964992-maxMsgSize
+1048576
+1
+
+p-_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709:::_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709
+this_invocation_nonce
+1
+537133062-logterm-pureRaft
+2
+1
+537133062-lead
+-9223372036854775808
+1
+537133062-state
+"StateLeader"
+1
+537133062-applied
+106
+1
+537133062-commited
+107
+1
+537133062-maxInflight
+512
+1
+537133062-maxMsgSize
+1048576
+1
+
+p-_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709:::_574_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709
+this_invocation_nonce
+2
+537964992-logterm-pureRaft
+2
+1
+537964992-lead
+-9223372036854775808
+1
+537964992-state
+"StateFollower"
+1
+537964992-applied
+114
+1
+537964992-commited
+114
+1
+537964992-maxInflight
+512
+1
+537964992-maxMsgSize
+1048576
+1
+

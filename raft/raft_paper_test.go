@@ -191,9 +191,9 @@ func testNonleaderStartElection(t *testing.T, state StateType) {
 // Reference: section 5.2
 func TestLeaderElectionInOneRoundRPC(t *testing.T) {
 	tests := []struct {
-		size  int
-		votes map[uint64]bool
-		state StateType
+		size	int
+		votes	map[uint64]bool
+		state	StateType
 	}{
 		// win the election when receiving votes from a majority of the servers
 		{1, map[uint64]bool{}, StateLeader},
@@ -236,9 +236,9 @@ func TestLeaderElectionInOneRoundRPC(t *testing.T) {
 // Reference: section 5.2
 func TestFollowerVote(t *testing.T) {
 	tests := []struct {
-		vote    uint64
-		nvote   uint64
-		wreject bool
+		vote	uint64
+		nvote	uint64
+		wreject	bool
 	}{
 		{None, 1, false},
 		{None, 2, false},
@@ -473,9 +473,9 @@ func TestLeaderCommitEntry(t *testing.T) {
 // Reference: section 5.3
 func TestLeaderAcknowledgeCommit(t *testing.T) {
 	tests := []struct {
-		size      int
-		acceptors map[uint64]bool
-		wack      bool
+		size		int
+		acceptors	map[uint64]bool
+		wack		bool
 	}{
 		{1, nil, true},
 		{3, nil, false},
@@ -546,8 +546,8 @@ func TestLeaderCommitPrecedingEntries(t *testing.T) {
 // Reference: section 5.3
 func TestFollowerCommitEntry(t *testing.T) {
 	tests := []struct {
-		ents   []pb.Entry
-		commit uint64
+		ents	[]pb.Entry
+		commit	uint64
 	}{
 		{
 			[]pb.Entry{
@@ -601,11 +601,11 @@ func TestFollowerCommitEntry(t *testing.T) {
 func TestFollowerCheckMsgApp(t *testing.T) {
 	ents := []pb.Entry{{Term: 1, Index: 1}, {Term: 2, Index: 2}}
 	tests := []struct {
-		term        uint64
-		index       uint64
-		windex      uint64
-		wreject     bool
-		wrejectHint uint64
+		term		uint64
+		index		uint64
+		windex		uint64
+		wreject		bool
+		wrejectHint	uint64
 	}{
 		// match with committed entries
 		{0, 0, 1, false, 0},
@@ -644,10 +644,10 @@ func TestFollowerCheckMsgApp(t *testing.T) {
 // Reference: section 5.3
 func TestFollowerAppendEntries(t *testing.T) {
 	tests := []struct {
-		index, term uint64
-		ents        []pb.Entry
-		wents       []pb.Entry
-		wunstable   []pb.Entry
+		index, term	uint64
+		ents		[]pb.Entry
+		wents		[]pb.Entry
+		wunstable	[]pb.Entry
 	}{
 		{
 			2, 2,
@@ -772,8 +772,8 @@ func TestLeaderSyncFollowerLog(t *testing.T) {
 // Reference: section 5.4.1
 func TestVoteRequest(t *testing.T) {
 	tests := []struct {
-		ents  []pb.Entry
-		wterm uint64
+		ents	[]pb.Entry
+		wterm	uint64
 	}{
 		{[]pb.Entry{{Term: 1, Index: 1}}, 2},
 		{[]pb.Entry{{Term: 1, Index: 1}, {Term: 2, Index: 2}}, 3},
@@ -781,7 +781,7 @@ func TestVoteRequest(t *testing.T) {
 	for j, tt := range tests {
 		r := newTestRaft(1, []uint64{1, 2, 3}, 10, 1, NewMemoryStorage())
 		r.Step(pb.Message{
-			From: 2, To: 1, Type: pb.MsgApp, Term: tt.wterm - 1, LogTerm: 0, Index: 0, Entries: tt.ents,
+			From:	2, To: 1, Type: pb.MsgApp, Term: tt.wterm - 1, LogTerm: 0, Index: 0, Entries: tt.ents,
 		})
 		r.readMessages()
 
@@ -820,11 +820,11 @@ func TestVoteRequest(t *testing.T) {
 // Reference: section 5.4.1
 func TestVoter(t *testing.T) {
 	tests := []struct {
-		ents    []pb.Entry
-		logterm uint64
-		index   uint64
+		ents	[]pb.Entry
+		logterm	uint64
+		index	uint64
 
-		wreject bool
+		wreject	bool
 	}{
 		// same logterm
 		{[]pb.Entry{{Term: 1, Index: 1}}, 1, 1, false},
@@ -866,8 +866,8 @@ func TestVoter(t *testing.T) {
 func TestLeaderOnlyCommitsLogFromCurrentTerm(t *testing.T) {
 	ents := []pb.Entry{{Term: 1, Index: 1}, {Term: 2, Index: 2}}
 	tests := []struct {
-		index   uint64
-		wcommit uint64
+		index	uint64
+		wcommit	uint64
 	}{
 		// do not commit log entries in previous terms
 		{1, 0},
@@ -896,9 +896,9 @@ func TestLeaderOnlyCommitsLogFromCurrentTerm(t *testing.T) {
 
 type messageSlice []pb.Message
 
-func (s messageSlice) Len() int           { return len(s) }
-func (s messageSlice) Less(i, j int) bool { return fmt.Sprint(s[i]) < fmt.Sprint(s[j]) }
-func (s messageSlice) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s messageSlice) Len() int			{ return len(s) }
+func (s messageSlice) Less(i, j int) bool	{ return fmt.Sprint(s[i]) < fmt.Sprint(s[j]) }
+func (s messageSlice) Swap(i, j int)		{ s[i], s[j] = s[j], s[i] }
 
 func commitNoopEntry(r *raft, s *MemoryStorage) {
 	if r.state != StateLeader {
@@ -925,10 +925,10 @@ func acceptAndReply(m pb.Message) pb.Message {
 		panic("type should be MsgApp")
 	}
 	return pb.Message{
-		From:  m.To,
-		To:    m.From,
-		Term:  m.Term,
-		Type:  pb.MsgAppResp,
-		Index: m.Index + uint64(len(m.Entries)),
+		From:	m.To,
+		To:	m.From,
+		Term:	m.Term,
+		Type:	pb.MsgAppResp,
+		Index:	m.Index + uint64(len(m.Entries)),
 	}
 }

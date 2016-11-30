@@ -1,0 +1,66 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+ppt-type point
+variable Apricot-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-__da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::__da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+0
+Apricot-applied
+166
+1
+Apricot-commited
+166
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+

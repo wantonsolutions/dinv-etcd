@@ -94,32 +94,32 @@ type Transporter interface {
 // User needs to call Start before calling other functions, and call
 // Stop when the Transport is no longer used.
 type Transport struct {
-	DialTimeout time.Duration     // maximum duration before timing out dial of the request
-	TLSInfo     transport.TLSInfo // TLS information used when creating connection
+	DialTimeout	time.Duration		// maximum duration before timing out dial of the request
+	TLSInfo		transport.TLSInfo	// TLS information used when creating connection
 
-	ID          types.ID   // local member ID
-	URLs        types.URLs // local peer URLs
-	ClusterID   types.ID   // raft cluster ID for request validation
-	Raft        Raft       // raft state machine, to which the Transport forwards received messages and reports status
-	Snapshotter *snap.Snapshotter
-	ServerStats *stats.ServerStats // used to record general transportation statistics
+	ID		types.ID	// local member ID
+	URLs		types.URLs	// local peer URLs
+	ClusterID	types.ID	// raft cluster ID for request validation
+	Raft		Raft		// raft state machine, to which the Transport forwards received messages and reports status
+	Snapshotter	*snap.Snapshotter
+	ServerStats	*stats.ServerStats	// used to record general transportation statistics
 	// used to record transportation statistics with followers when
 	// performing as leader in raft protocol
-	LeaderStats *stats.LeaderStats
+	LeaderStats	*stats.LeaderStats
 	// ErrorC is used to report detected critical errors, e.g.,
 	// the member has been permanently removed from the cluster
 	// When an error is received from ErrorC, user should stop raft state
 	// machine and thus stop the Transport.
-	ErrorC chan error
+	ErrorC	chan error
 
-	streamRt   http.RoundTripper // roundTripper used by streams
-	pipelineRt http.RoundTripper // roundTripper used by pipelines
+	streamRt	http.RoundTripper	// roundTripper used by streams
+	pipelineRt	http.RoundTripper	// roundTripper used by pipelines
 
-	mu      sync.RWMutex         // protect the remote and peer map
-	remotes map[types.ID]*remote // remotes map that helps newly joined member to catch up
-	peers   map[types.ID]Peer    // peers map
+	mu	sync.RWMutex		// protect the remote and peer map
+	remotes	map[types.ID]*remote	// remotes map that helps newly joined member to catch up
+	peers	map[types.ID]Peer	// peers map
 
-	prober probing.Prober
+	prober	probing.Prober
 }
 
 func (t *Transport) Start() error {
@@ -338,24 +338,24 @@ func NewNopTransporter() Transporter {
 	return &nopTransporter{}
 }
 
-func (s *nopTransporter) Start() error                        { return nil }
-func (s *nopTransporter) Handler() http.Handler               { return nil }
-func (s *nopTransporter) Send(m []raftpb.Message)             {}
-func (s *nopTransporter) SendSnapshot(m snap.Message)         {}
-func (s *nopTransporter) AddRemote(id types.ID, us []string)  {}
-func (s *nopTransporter) AddPeer(id types.ID, us []string)    {}
-func (s *nopTransporter) RemovePeer(id types.ID)              {}
-func (s *nopTransporter) RemoveAllPeers()                     {}
-func (s *nopTransporter) UpdatePeer(id types.ID, us []string) {}
-func (s *nopTransporter) ActiveSince(id types.ID) time.Time   { return time.Time{} }
-func (s *nopTransporter) Stop()                               {}
-func (s *nopTransporter) Pause()                              {}
-func (s *nopTransporter) Resume()                             {}
+func (s *nopTransporter) Start() error				{ return nil }
+func (s *nopTransporter) Handler() http.Handler			{ return nil }
+func (s *nopTransporter) Send(m []raftpb.Message)		{}
+func (s *nopTransporter) SendSnapshot(m snap.Message)		{}
+func (s *nopTransporter) AddRemote(id types.ID, us []string)	{}
+func (s *nopTransporter) AddPeer(id types.ID, us []string)	{}
+func (s *nopTransporter) RemovePeer(id types.ID)		{}
+func (s *nopTransporter) RemoveAllPeers()			{}
+func (s *nopTransporter) UpdatePeer(id types.ID, us []string)	{}
+func (s *nopTransporter) ActiveSince(id types.ID) time.Time	{ return time.Time{} }
+func (s *nopTransporter) Stop()					{}
+func (s *nopTransporter) Pause()				{}
+func (s *nopTransporter) Resume()				{}
 
 type snapTransporter struct {
 	nopTransporter
-	snapDoneC chan snap.Message
-	snapDir   string
+	snapDoneC	chan snap.Message
+	snapDir		string
 }
 
 func NewSnapTransporter(snapDir string) (Transporter, <-chan snap.Message) {

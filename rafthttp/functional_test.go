@@ -30,11 +30,11 @@ import (
 func TestSendMessage(t *testing.T) {
 	// member 1
 	tr := &Transport{
-		ID:          types.ID(1),
-		ClusterID:   types.ID(1),
-		Raft:        &fakeRaft{},
-		ServerStats: newServerStats(),
-		LeaderStats: stats.NewLeaderStats("1"),
+		ID:		types.ID(1),
+		ClusterID:	types.ID(1),
+		Raft:		&fakeRaft{},
+		ServerStats:	newServerStats(),
+		LeaderStats:	stats.NewLeaderStats("1"),
 	}
 	tr.Start()
 	srv := httptest.NewServer(tr.Handler())
@@ -44,11 +44,11 @@ func TestSendMessage(t *testing.T) {
 	recvc := make(chan raftpb.Message, 1)
 	p := &fakeRaft{recvc: recvc}
 	tr2 := &Transport{
-		ID:          types.ID(2),
-		ClusterID:   types.ID(1),
-		Raft:        p,
-		ServerStats: newServerStats(),
-		LeaderStats: stats.NewLeaderStats("2"),
+		ID:		types.ID(2),
+		ClusterID:	types.ID(1),
+		Raft:		p,
+		ServerStats:	newServerStats(),
+		LeaderStats:	stats.NewLeaderStats("2"),
 	}
 	tr2.Start()
 	srv2 := httptest.NewServer(tr2.Handler())
@@ -88,11 +88,11 @@ func TestSendMessage(t *testing.T) {
 func TestSendMessageWhenStreamIsBroken(t *testing.T) {
 	// member 1
 	tr := &Transport{
-		ID:          types.ID(1),
-		ClusterID:   types.ID(1),
-		Raft:        &fakeRaft{},
-		ServerStats: newServerStats(),
-		LeaderStats: stats.NewLeaderStats("1"),
+		ID:		types.ID(1),
+		ClusterID:	types.ID(1),
+		Raft:		&fakeRaft{},
+		ServerStats:	newServerStats(),
+		LeaderStats:	stats.NewLeaderStats("1"),
 	}
 	tr.Start()
 	srv := httptest.NewServer(tr.Handler())
@@ -102,11 +102,11 @@ func TestSendMessageWhenStreamIsBroken(t *testing.T) {
 	recvc := make(chan raftpb.Message, 1)
 	p := &fakeRaft{recvc: recvc}
 	tr2 := &Transport{
-		ID:          types.ID(2),
-		ClusterID:   types.ID(1),
-		Raft:        p,
-		ServerStats: newServerStats(),
-		LeaderStats: stats.NewLeaderStats("2"),
+		ID:		types.ID(2),
+		ClusterID:	types.ID(1),
+		Raft:		p,
+		ServerStats:	newServerStats(),
+		LeaderStats:	stats.NewLeaderStats("2"),
 	}
 	tr2.Start()
 	srv2 := httptest.NewServer(tr2.Handler())
@@ -160,9 +160,9 @@ func waitStreamWorking(p *peer) bool {
 }
 
 type fakeRaft struct {
-	recvc     chan<- raftpb.Message
-	err       error
-	removedID uint64
+	recvc		chan<- raftpb.Message
+	err		error
+	removedID	uint64
 }
 
 func (p *fakeRaft) Process(ctx context.Context, m raftpb.Message) error {
@@ -173,8 +173,8 @@ func (p *fakeRaft) Process(ctx context.Context, m raftpb.Message) error {
 	return p.err
 }
 
-func (p *fakeRaft) IsIDRemoved(id uint64) bool { return id == p.removedID }
+func (p *fakeRaft) IsIDRemoved(id uint64) bool	{ return id == p.removedID }
 
-func (p *fakeRaft) ReportUnreachable(id uint64) {}
+func (p *fakeRaft) ReportUnreachable(id uint64)	{}
 
-func (p *fakeRaft) ReportSnapshot(id uint64, status raft.SnapshotStatus) {}
+func (p *fakeRaft) ReportSnapshot(id uint64, status raft.SnapshotStatus)	{}

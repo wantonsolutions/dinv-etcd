@@ -50,8 +50,8 @@ func TestEntry(t *testing.T) {
 
 func TestCompareMajorMinorVersion(t *testing.T) {
 	tests := []struct {
-		va, vb *semver.Version
-		w      int
+		va, vb	*semver.Version
+		w	int
 	}{
 		// equal to
 		{
@@ -93,8 +93,8 @@ func TestCompareMajorMinorVersion(t *testing.T) {
 
 func TestServerVersion(t *testing.T) {
 	tests := []struct {
-		h  http.Header
-		wv *semver.Version
+		h	http.Header
+		wv	*semver.Version
 	}{
 		// backward compatibility with etcd 2.0
 		{
@@ -120,8 +120,8 @@ func TestServerVersion(t *testing.T) {
 
 func TestMinClusterVersion(t *testing.T) {
 	tests := []struct {
-		h  http.Header
-		wv *semver.Version
+		h	http.Header
+		wv	*semver.Version
 	}{
 		// backward compatibility with etcd 2.0
 		{
@@ -149,9 +149,9 @@ func TestCheckVersionCompatibility(t *testing.T) {
 	ls := semver.Must(semver.NewVersion(version.Version))
 	lmc := semver.Must(semver.NewVersion(version.MinClusterVersion))
 	tests := []struct {
-		server     *semver.Version
-		minCluster *semver.Version
-		wok        bool
+		server		*semver.Version
+		minCluster	*semver.Version
+		wok		bool
 	}{
 		// the same version as local
 		{

@@ -31,9 +31,9 @@ var ErrStepPeerNotFound = errors.New("raft: cannot step as peer not found")
 // The methods of this struct correspond to the methods of Node and are described
 // more fully there.
 type RawNode struct {
-	raft       *raft
-	prevSoftSt *SoftState
-	prevHardSt pb.HardState
+	raft		*raft
+	prevSoftSt	*SoftState
+	prevHardSt	pb.HardState
 }
 
 func (rn *RawNode) newReady() Ready {
@@ -79,7 +79,7 @@ func NewRawNode(config *Config, peers []Peer) (*RawNode, error) {
 	}
 	lastIndex, err := config.Storage.LastIndex()
 	if err != nil {
-		panic(err) // TODO(bdarnell)
+		panic(err)	// TODO(bdarnell)
 	}
 	// If the log is empty, this is a new RawNode (like StartNode); otherwise it's
 	// restoring an existing RawNode (like RestartNode).
@@ -125,8 +125,8 @@ func (rn *RawNode) Campaign() error {
 // Propose proposes data be appended to the raft log.
 func (rn *RawNode) Propose(data []byte) error {
 	return rn.raft.Step(pb.Message{
-		Type: pb.MsgProp,
-		From: rn.raft.id,
+		Type:	pb.MsgProp,
+		From:	rn.raft.id,
 		Entries: []pb.Entry{
 			{Data: data},
 		}})
@@ -139,7 +139,7 @@ func (rn *RawNode) ProposeConfChange(cc pb.ConfChange) error {
 		return err
 	}
 	return rn.raft.Step(pb.Message{
-		Type: pb.MsgProp,
+		Type:	pb.MsgProp,
 		Entries: []pb.Entry{
 			{Type: pb.EntryConfChange, Data: data},
 		},

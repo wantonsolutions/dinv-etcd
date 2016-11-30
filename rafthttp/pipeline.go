@@ -30,31 +30,31 @@ import (
 )
 
 const (
-	connPerPipeline = 4
+	connPerPipeline	= 4
 	// pipelineBufSize is the size of pipeline buffer, which helps hold the
 	// temporary network latency.
 	// The size ensures that pipeline does not drop messages when the network
 	// is out of work for less than 1 second in good path.
-	pipelineBufSize = 64
+	pipelineBufSize	= 64
 )
 
 var errStopped = errors.New("stopped")
 
 type pipeline struct {
-	peerID types.ID
+	peerID	types.ID
 
-	tr     *Transport
-	picker *urlPicker
-	status *peerStatus
-	raft   Raft
-	errorc chan error
+	tr	*Transport
+	picker	*urlPicker
+	status	*peerStatus
+	raft	Raft
+	errorc	chan error
 	// deprecate when we depercate v2 API
-	followerStats *stats.FollowerStats
+	followerStats	*stats.FollowerStats
 
-	msgc chan raftpb.Message
+	msgc	chan raftpb.Message
 	// wait for the handling routines
-	wg    sync.WaitGroup
-	stopc chan struct{}
+	wg	sync.WaitGroup
+	stopc	chan struct{}
 }
 
 func (p *pipeline) start() {
@@ -117,7 +117,7 @@ func (p *pipeline) post(data []byte) (err error) {
 	req := createPostRequest(u, RaftPrefix, bytes.NewBuffer(data), "application/protobuf", p.tr.URLs, p.tr.ID, p.tr.ClusterID)
 
 	done := make(chan struct{}, 1)
-	cancel := httputil.RequestCanceler(p.tr.pipelineRt, req)
+	cancel := httputil.RequestCanceler(req)
 	go func() {
 		select {
 		case <-done:
@@ -155,4 +155,4 @@ func (p *pipeline) post(data []byte) (err error) {
 }
 
 // waitSchedule waits other goroutines to be scheduled for a while
-func waitSchedule() { time.Sleep(time.Millisecond) }
+func waitSchedule()	{ time.Sleep(time.Millisecond) }

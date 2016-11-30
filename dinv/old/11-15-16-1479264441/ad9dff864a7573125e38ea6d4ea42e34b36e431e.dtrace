@@ -1,0 +1,69 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+ppt-type point
+variable 884899377-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 884899377-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 884899377-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 884899377-log
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 884899377-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+0
+884899377-applied
+32
+1
+884899377-commited
+32
+1
+884899377-lead
+-9223372036854775808
+1
+884899377-log
+"2b8b26c74044edf4a0a5caa8b8075cea"
+1
+884899377-state
+"StateFollower"
+1
+
+p-_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_da39a3ee5e6b4b0d3255bfef95601890afd80709_da39a3ee5e6b4b0d3255bfef95601890afd80709_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+1
+884899377-applied
+75
+1
+884899377-commited
+75
+1
+884899377-lead
+-9223372036854775808
+1
+884899377-log
+"934a58cac4f7d4f1aedcd97b87f15187"
+1
+884899377-state
+"StateFollower"
+1
+

@@ -34,33 +34,33 @@ var (
 )
 
 type snapshotSender struct {
-	from, to types.ID
-	cid      types.ID
+	from, to	types.ID
+	cid		types.ID
 
-	tr     *Transport
-	picker *urlPicker
-	status *peerStatus
-	r      Raft
-	errorc chan error
+	tr	*Transport
+	picker	*urlPicker
+	status	*peerStatus
+	r	Raft
+	errorc	chan error
 
-	stopc chan struct{}
+	stopc	chan struct{}
 }
 
 func newSnapshotSender(tr *Transport, picker *urlPicker, to types.ID, status *peerStatus) *snapshotSender {
 	return &snapshotSender{
-		from:   tr.ID,
-		to:     to,
-		cid:    tr.ClusterID,
-		tr:     tr,
-		picker: picker,
-		status: status,
-		r:      tr.Raft,
-		errorc: tr.ErrorC,
-		stopc:  make(chan struct{}),
+		from:	tr.ID,
+		to:	to,
+		cid:	tr.ClusterID,
+		tr:	tr,
+		picker:	picker,
+		status:	status,
+		r:	tr.Raft,
+		errorc:	tr.ErrorC,
+		stopc:	make(chan struct{}),
 	}
 }
 
-func (s *snapshotSender) stop() { close(s.stopc) }
+func (s *snapshotSender) stop()	{ close(s.stopc) }
 
 func (s *snapshotSender) send(merged snap.Message) {
 	m := merged.Message
@@ -103,12 +103,12 @@ func (s *snapshotSender) send(merged snap.Message) {
 // post posts the given request.
 // It returns nil when request is sent out and processed successfully.
 func (s *snapshotSender) post(req *http.Request) (err error) {
-	cancel := httputil.RequestCanceler(s.tr.pipelineRt, req)
+	cancel := httputil.RequestCanceler(req)
 
 	type responseAndError struct {
-		resp *http.Response
-		body []byte
-		err  error
+		resp	*http.Response
+		body	[]byte
+		err	error
 	}
 	result := make(chan responseAndError, 1)
 
@@ -148,7 +148,7 @@ func createSnapBody(merged snap.Message) io.ReadCloser {
 	}
 
 	return &pioutil.ReaderAndCloser{
-		Reader: io.MultiReader(buf, merged.ReadCloser),
-		Closer: merged.ReadCloser,
+		Reader:	io.MultiReader(buf, merged.ReadCloser),
+		Closer:	merged.ReadCloser,
 	}
 }

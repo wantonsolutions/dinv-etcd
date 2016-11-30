@@ -77,10 +77,10 @@ type MemoryStorage struct {
 	// goroutine.
 	sync.Mutex
 
-	hardState pb.HardState
-	snapshot  pb.Snapshot
+	hardState	pb.HardState
+	snapshot	pb.Snapshot
 	// ents[i] has raft log position i+snapshot.Metadata.Index
-	ents []pb.Entry
+	ents	[]pb.Entry
 }
 
 // NewMemoryStorage creates an empty MemoryStorage.

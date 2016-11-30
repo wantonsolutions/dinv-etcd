@@ -51,8 +51,8 @@ func (r *raft) readMessages() []pb.Message {
 func TestProgressBecomeProbe(t *testing.T) {
 	match := uint64(1)
 	tests := []struct {
-		p     *Progress
-		wnext uint64
+		p	*Progress
+		wnext	uint64
 	}{
 		{
 			&Progress{State: ProgressStateReplicate, Match: match, Next: 5, ins: newInflights(256)},
@@ -116,21 +116,21 @@ func TestProgressBecomeSnapshot(t *testing.T) {
 func TestProgressUpdate(t *testing.T) {
 	prevM, prevN := uint64(3), uint64(5)
 	tests := []struct {
-		update uint64
+		update	uint64
 
-		wm  uint64
-		wn  uint64
-		wok bool
+		wm	uint64
+		wn	uint64
+		wok	bool
 	}{
-		{prevM - 1, prevM, prevN, false},        // do not decrease match, next
-		{prevM, prevM, prevN, false},            // do not decrease next
-		{prevM + 1, prevM + 1, prevN, true},     // increase match, do not decrease next
-		{prevM + 2, prevM + 2, prevN + 1, true}, // increase match, next
+		{prevM - 1, prevM, prevN, false},		// do not decrease match, next
+		{prevM, prevM, prevN, false},			// do not decrease next
+		{prevM + 1, prevM + 1, prevN, true},		// increase match, do not decrease next
+		{prevM + 2, prevM + 2, prevN + 1, true},	// increase match, next
 	}
 	for i, tt := range tests {
 		p := &Progress{
-			Match: prevM,
-			Next:  prevN,
+			Match:	prevM,
+			Next:	prevN,
 		}
 		ok := p.maybeUpdate(tt.update)
 		if ok != tt.wok {
@@ -147,14 +147,14 @@ func TestProgressUpdate(t *testing.T) {
 
 func TestProgressMaybeDecr(t *testing.T) {
 	tests := []struct {
-		state    ProgressStateType
-		m        uint64
-		n        uint64
-		rejected uint64
-		last     uint64
+		state		ProgressStateType
+		m		uint64
+		n		uint64
+		rejected	uint64
+		last		uint64
 
-		w  bool
-		wn uint64
+		w	bool
+		wn	uint64
 	}{
 		{
 			// state replicate and rejected is not greater than match
@@ -200,9 +200,9 @@ func TestProgressMaybeDecr(t *testing.T) {
 	}
 	for i, tt := range tests {
 		p := &Progress{
-			State: tt.state,
-			Match: tt.m,
-			Next:  tt.n,
+			State:	tt.state,
+			Match:	tt.m,
+			Next:	tt.n,
 		}
 		if g := p.maybeDecrTo(tt.rejected, tt.last); g != tt.w {
 			t.Errorf("#%d: maybeDecrTo= %t, want %t", i, g, tt.w)
@@ -218,10 +218,10 @@ func TestProgressMaybeDecr(t *testing.T) {
 
 func TestProgressIsPaused(t *testing.T) {
 	tests := []struct {
-		state  ProgressStateType
-		paused bool
+		state	ProgressStateType
+		paused	bool
 
-		w bool
+		w	bool
 	}{
 		{ProgressStateProbe, false, false},
 		{ProgressStateProbe, true, true},
@@ -232,9 +232,9 @@ func TestProgressIsPaused(t *testing.T) {
 	}
 	for i, tt := range tests {
 		p := &Progress{
-			State:  tt.state,
-			Paused: tt.paused,
-			ins:    newInflights(256),
+			State:	tt.state,
+			Paused:	tt.paused,
+			ins:	newInflights(256),
 		}
 		if g := p.isPaused(); g != tt.w {
 			t.Errorf("#%d: paused= %t, want %t", i, g, tt.w)
@@ -246,8 +246,8 @@ func TestProgressIsPaused(t *testing.T) {
 // will reset progress.paused.
 func TestProgressResume(t *testing.T) {
 	p := &Progress{
-		Next:   2,
-		Paused: true,
+		Next:	2,
+		Paused:	true,
 	}
 	p.maybeDecrTo(1, 1)
 	if p.Paused {
@@ -290,7 +290,7 @@ func TestProgressPaused(t *testing.T) {
 func TestLeaderElection(t *testing.T) {
 	tests := []struct {
 		*network
-		state StateType
+		state	StateType
 	}{
 		{newNetwork(nil, nil, nil), StateLeader},
 		{newNetwork(nil, nil, nopStepper), StateLeader},
@@ -320,8 +320,8 @@ func TestLeaderElection(t *testing.T) {
 func TestLogReplication(t *testing.T) {
 	tests := []struct {
 		*network
-		msgs       []pb.Message
-		wcommitted uint64
+		msgs		[]pb.Message
+		wcommitted	uint64
 	}{
 		{
 			newNetwork(nil, nil, nil),
@@ -496,15 +496,15 @@ func TestDuelingCandidates(t *testing.T) {
 	nt.send(pb.Message{From: 3, To: 3, Type: pb.MsgHup})
 
 	wlog := &raftLog{
-		storage:   &MemoryStorage{ents: []pb.Entry{{}, {Data: nil, Term: 1, Index: 1}}},
-		committed: 1,
-		unstable:  unstable{offset: 2},
+		storage:	&MemoryStorage{ents: []pb.Entry{{}, {Data: nil, Term: 1, Index: 1}}},
+		committed:	1,
+		unstable:	unstable{offset: 2},
 	}
 	tests := []struct {
-		sm      *raft
-		state   StateType
-		term    uint64
-		raftLog *raftLog
+		sm	*raft
+		state	StateType
+		term	uint64
+		raftLog	*raftLog
 	}{
 		{a, StateFollower, 2, wlog},
 		{b, StateFollower, 2, wlog},
@@ -559,8 +559,8 @@ func TestCandidateConcede(t *testing.T) {
 		storage: &MemoryStorage{
 			ents: []pb.Entry{{}, {Data: nil, Term: 1, Index: 1}, {Term: 1, Index: 2, Data: data}},
 		},
-		unstable:  unstable{offset: 3},
-		committed: 2,
+		unstable:	unstable{offset: 3},
+		committed:	2,
 	})
 	for i, p := range tt.peers {
 		if sm, ok := p.(*raft); ok {
@@ -603,8 +603,8 @@ func TestOldMessages(t *testing.T) {
 				{Data: []byte("somedata"), Term: 3, Index: 4},
 			},
 		},
-		unstable:  unstable{offset: 5},
-		committed: 4,
+		unstable:	unstable{offset: 5},
+		committed:	4,
 	}
 	base := ltoa(ilog)
 	for i, p := range tt.peers {
@@ -624,7 +624,7 @@ func TestOldMessages(t *testing.T) {
 func TestProposal(t *testing.T) {
 	tests := []struct {
 		*network
-		success bool
+		success	bool
 	}{
 		{newNetwork(nil, nil, nil), true},
 		{newNetwork(nil, nil, nopStepper), true},
@@ -660,8 +660,8 @@ func TestProposal(t *testing.T) {
 				storage: &MemoryStorage{
 					ents: []pb.Entry{{}, {Data: nil, Term: 1, Index: 1}, {Term: 1, Index: 2, Data: data}},
 				},
-				unstable:  unstable{offset: 3},
-				committed: 2}
+				unstable:	unstable{offset: 3},
+				committed:	2}
 		}
 		base := ltoa(wantLog)
 		for i, p := range tt.peers {
@@ -699,8 +699,8 @@ func TestProposalByProxy(t *testing.T) {
 			storage: &MemoryStorage{
 				ents: []pb.Entry{{}, {Data: nil, Term: 1, Index: 1}, {Term: 1, Data: data, Index: 2}},
 			},
-			unstable:  unstable{offset: 3},
-			committed: 2}
+			unstable:	unstable{offset: 3},
+			committed:	2}
 		base := ltoa(wantLog)
 		for i, p := range tt.peers {
 			if sm, ok := p.(*raft); ok {
@@ -721,10 +721,10 @@ func TestProposalByProxy(t *testing.T) {
 
 func TestCommit(t *testing.T) {
 	tests := []struct {
-		matches []uint64
-		logs    []pb.Entry
-		smTerm  uint64
-		w       uint64
+		matches	[]uint64
+		logs	[]pb.Entry
+		smTerm	uint64
+		w	uint64
 	}{
 		// single
 		{[]uint64{1}, []pb.Entry{{Index: 1, Term: 1}}, 1, 1},
@@ -765,9 +765,9 @@ func TestCommit(t *testing.T) {
 
 func TestPastElectionTimeout(t *testing.T) {
 	tests := []struct {
-		elapse       int
-		wprobability float64
-		round        bool
+		elapse		int
+		wprobability	float64
+		round		bool
 	}{
 		{5, 0, false},
 		{10, 0.1, true},
@@ -820,14 +820,14 @@ func TestStepIgnoreOldTermMsg(t *testing.T) {
 // 3. If leaderCommit > commitIndex, set commitIndex = min(leaderCommit, index of last new entry).
 func TestHandleMsgApp(t *testing.T) {
 	tests := []struct {
-		m       pb.Message
-		wIndex  uint64
-		wCommit uint64
-		wReject bool
+		m	pb.Message
+		wIndex	uint64
+		wCommit	uint64
+		wReject	bool
 	}{
 		// Ensure 1
-		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 3, Index: 2, Commit: 3}, 2, 0, true}, // previous log mismatch
-		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 3, Index: 3, Commit: 3}, 2, 0, true}, // previous log non-exist
+		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 3, Index: 2, Commit: 3}, 2, 0, true},	// previous log mismatch
+		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 3, Index: 3, Commit: 3}, 2, 0, true},	// previous log non-exist
 
 		// Ensure 2
 		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 1, Index: 1, Commit: 1}, 2, 1, false},
@@ -837,10 +837,10 @@ func TestHandleMsgApp(t *testing.T) {
 		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 1, Index: 1, Commit: 4, Entries: []pb.Entry{{Index: 2, Term: 2}}}, 2, 2, false},
 
 		// Ensure 3
-		{pb.Message{Type: pb.MsgApp, Term: 1, LogTerm: 1, Index: 1, Commit: 3}, 2, 1, false},                                           // match entry 1, commit up to last new entry 1
-		{pb.Message{Type: pb.MsgApp, Term: 1, LogTerm: 1, Index: 1, Commit: 3, Entries: []pb.Entry{{Index: 2, Term: 2}}}, 2, 2, false}, // match entry 1, commit up to last new entry 2
-		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 2, Index: 2, Commit: 3}, 2, 2, false},                                           // match entry 2, commit up to last new entry 2
-		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 2, Index: 2, Commit: 4}, 2, 2, false},                                           // commit up to log.last()
+		{pb.Message{Type: pb.MsgApp, Term: 1, LogTerm: 1, Index: 1, Commit: 3}, 2, 1, false},						// match entry 1, commit up to last new entry 1
+		{pb.Message{Type: pb.MsgApp, Term: 1, LogTerm: 1, Index: 1, Commit: 3, Entries: []pb.Entry{{Index: 2, Term: 2}}}, 2, 2, false},	// match entry 1, commit up to last new entry 2
+		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 2, Index: 2, Commit: 3}, 2, 2, false},						// match entry 2, commit up to last new entry 2
+		{pb.Message{Type: pb.MsgApp, Term: 2, LogTerm: 2, Index: 2, Commit: 4}, 2, 2, false},						// commit up to log.last()
 	}
 
 	for i, tt := range tests {
@@ -870,11 +870,11 @@ func TestHandleMsgApp(t *testing.T) {
 func TestHandleHeartbeat(t *testing.T) {
 	commit := uint64(2)
 	tests := []struct {
-		m       pb.Message
-		wCommit uint64
+		m	pb.Message
+		wCommit	uint64
 	}{
 		{pb.Message{From: 2, To: 1, Type: pb.MsgHeartbeat, Term: 2, Commit: commit + 1}, commit + 1},
-		{pb.Message{From: 2, To: 1, Type: pb.MsgHeartbeat, Term: 2, Commit: commit - 1}, commit}, // do not decrease commit
+		{pb.Message{From: 2, To: 1, Type: pb.MsgHeartbeat, Term: 2, Commit: commit - 1}, commit},	// do not decrease commit
 	}
 
 	for i, tt := range tests {
@@ -939,14 +939,14 @@ func TestHandleHeartbeatResp(t *testing.T) {
 
 	// Once we have an MsgAppResp, heartbeats no longer send MsgApp.
 	sm.Step(pb.Message{
-		From:  2,
-		Type:  pb.MsgAppResp,
-		Index: msgs[1].Index + uint64(len(msgs[1].Entries)),
+		From:	2,
+		Type:	pb.MsgAppResp,
+		Index:	msgs[1].Index + uint64(len(msgs[1].Entries)),
 	})
 	// Consume the message sent in response to MsgAppResp
 	sm.readMessages()
 
-	sm.bcastHeartbeat() // reset wait state
+	sm.bcastHeartbeat()	// reset wait state
 	sm.Step(pb.Message{From: 2, Type: pb.MsgHeartbeatResp})
 	msgs = sm.readMessages()
 	if len(msgs) != 1 {
@@ -971,9 +971,9 @@ func TestMsgAppRespWaitReset(t *testing.T) {
 
 	// Node 2 acks the first entry, making it committed.
 	sm.Step(pb.Message{
-		From:  2,
-		Type:  pb.MsgAppResp,
-		Index: 1,
+		From:	2,
+		Type:	pb.MsgAppResp,
+		Index:	1,
 	})
 	if sm.raftLog.committed != 1 {
 		t.Fatalf("expected committed to be 1, got %d", sm.raftLog.committed)
@@ -983,9 +983,9 @@ func TestMsgAppRespWaitReset(t *testing.T) {
 
 	// A new command is now proposed on node 1.
 	sm.Step(pb.Message{
-		From:    1,
-		Type:    pb.MsgProp,
-		Entries: []pb.Entry{{}},
+		From:		1,
+		Type:		pb.MsgProp,
+		Entries:	[]pb.Entry{{}},
 	})
 
 	// The command is broadcast to all nodes not in the wait state.
@@ -1003,9 +1003,9 @@ func TestMsgAppRespWaitReset(t *testing.T) {
 
 	// Now Node 3 acks the first entry. This releases the wait and entry 2 is sent.
 	sm.Step(pb.Message{
-		From:  3,
-		Type:  pb.MsgAppResp,
-		Index: 1,
+		From:	3,
+		Type:	pb.MsgAppResp,
+		Index:	1,
 	})
 	msgs = sm.readMessages()
 	if len(msgs) != 1 {
@@ -1021,10 +1021,10 @@ func TestMsgAppRespWaitReset(t *testing.T) {
 
 func TestRecvMsgVote(t *testing.T) {
 	tests := []struct {
-		state   StateType
-		i, term uint64
-		voteFor uint64
-		wreject bool
+		state	StateType
+		i, term	uint64
+		voteFor	uint64
+		wreject	bool
 	}{
 		{StateFollower, 0, 0, None, true},
 		{StateFollower, 0, 1, None, true},
@@ -1066,8 +1066,8 @@ func TestRecvMsgVote(t *testing.T) {
 		}
 		sm.Vote = tt.voteFor
 		sm.raftLog = &raftLog{
-			storage:  &MemoryStorage{ents: []pb.Entry{{}, {Index: 1, Term: 2}, {Index: 2, Term: 2}}},
-			unstable: unstable{offset: 3},
+			storage:	&MemoryStorage{ents: []pb.Entry{{}, {Index: 1, Term: 2}, {Index: 2, Term: 2}}},
+			unstable:	unstable{offset: 3},
 		}
 
 		sm.Step(pb.Message{Type: pb.MsgVote, From: 2, Index: tt.i, LogTerm: tt.term})
@@ -1085,11 +1085,11 @@ func TestRecvMsgVote(t *testing.T) {
 
 func TestStateTransition(t *testing.T) {
 	tests := []struct {
-		from   StateType
-		to     StateType
-		wallow bool
-		wterm  uint64
-		wlead  uint64
+		from	StateType
+		to	StateType
+		wallow	bool
+		wterm	uint64
+		wlead	uint64
 	}{
 		{StateFollower, StateFollower, true, 1, None},
 		{StateFollower, StateCandidate, true, 1, None},
@@ -1138,11 +1138,11 @@ func TestStateTransition(t *testing.T) {
 
 func TestAllServerStepdown(t *testing.T) {
 	tests := []struct {
-		state StateType
+		state	StateType
 
-		wstate StateType
-		wterm  uint64
-		windex uint64
+		wstate	StateType
+		wterm	uint64
+		windex	uint64
 	}{
 		{StateFollower, StateFollower, 3, 0},
 		{StateCandidate, StateFollower, 3, 0},
@@ -1425,10 +1425,10 @@ func TestReadIndexWithCheckQuorum(t *testing.T) {
 	}
 
 	tests := []struct {
-		sm        *raft
-		proposals int
-		wri       uint64
-		wctx      []byte
+		sm		*raft
+		proposals	int
+		wri		uint64
+		wctx		[]byte
 	}{
 		{b, 10, 11, []byte("ctx1")},
 		{c, 10, 21, []byte("ctx2")},
@@ -1477,20 +1477,20 @@ func TestReadIndexWithoutCheckQuorum(t *testing.T) {
 func TestLeaderAppResp(t *testing.T) {
 	// initial progress: match = 0; next = 3
 	tests := []struct {
-		index  uint64
-		reject bool
+		index	uint64
+		reject	bool
 		// progress
-		wmatch uint64
-		wnext  uint64
+		wmatch	uint64
+		wnext	uint64
 		// message
-		wmsgNum    int
-		windex     uint64
-		wcommitted uint64
+		wmsgNum		int
+		windex		uint64
+		wcommitted	uint64
 	}{
-		{3, true, 0, 3, 0, 0, 0},  // stale resp; no replies
-		{2, true, 0, 2, 1, 1, 0},  // denied resp; leader does not commit; decrease next and send probing msg
-		{2, false, 2, 4, 2, 2, 2}, // accept resp; leader commits; broadcast with commit index
-		{0, false, 0, 3, 0, 0, 0}, // ignore heartbeat replies
+		{3, true, 0, 3, 0, 0, 0},	// stale resp; no replies
+		{2, true, 0, 2, 1, 1, 0},	// denied resp; leader does not commit; decrease next and send probing msg
+		{2, false, 2, 4, 2, 2, 2},	// accept resp; leader commits; broadcast with commit index
+		{0, false, 0, 3, 0, 0, 0},	// ignore heartbeat replies
 	}
 
 	for i, tt := range tests {
@@ -1498,8 +1498,8 @@ func TestLeaderAppResp(t *testing.T) {
 		// thus the last log term must be 1 to be committed.
 		sm := newTestRaft(1, []uint64{1, 2, 3}, 10, 1, NewMemoryStorage())
 		sm.raftLog = &raftLog{
-			storage:  &MemoryStorage{ents: []pb.Entry{{}, {Index: 1, Term: 0}, {Index: 2, Term: 1}}},
-			unstable: unstable{offset: 3},
+			storage:	&MemoryStorage{ents: []pb.Entry{{}, {Index: 1, Term: 0}, {Index: 2, Term: 1}}},
+			unstable:	unstable{offset: 3},
 		}
 		sm.becomeCandidate()
 		sm.becomeLeader()
@@ -1537,9 +1537,9 @@ func TestBcastBeat(t *testing.T) {
 	// make a state machine with log.offset = 1000
 	s := pb.Snapshot{
 		Metadata: pb.SnapshotMetadata{
-			Index:     offset,
-			Term:      1,
-			ConfState: pb.ConfState{Nodes: []uint64{1, 2, 3}},
+			Index:		offset,
+			Term:		1,
+			ConfState:	pb.ConfState{Nodes: []uint64{1, 2, 3}},
 		},
 	}
 	storage := NewMemoryStorage()
@@ -1563,8 +1563,8 @@ func TestBcastBeat(t *testing.T) {
 		t.Fatalf("len(msgs) = %v, want 2", len(msgs))
 	}
 	wantCommitMap := map[uint64]uint64{
-		2: min(sm.raftLog.committed, sm.prs[2].Match),
-		3: min(sm.raftLog.committed, sm.prs[3].Match),
+		2:	min(sm.raftLog.committed, sm.prs[2].Match),
+		3:	min(sm.raftLog.committed, sm.prs[3].Match),
 	}
 	for i, m := range msgs {
 		if m.Type != pb.MsgHeartbeat {
@@ -1593,8 +1593,8 @@ func TestBcastBeat(t *testing.T) {
 // tests the output of the state machine when receiving MsgBeat
 func TestRecvMsgBeat(t *testing.T) {
 	tests := []struct {
-		state StateType
-		wMsg  int
+		state	StateType
+		wMsg	int
 	}{
 		{StateLeader, 2},
 		// candidate and follower should ignore MsgBeat
@@ -1633,10 +1633,10 @@ func TestLeaderIncreaseNext(t *testing.T) {
 	previousEnts := []pb.Entry{{Term: 1, Index: 1}, {Term: 1, Index: 2}, {Term: 1, Index: 3}}
 	tests := []struct {
 		// progress
-		state ProgressStateType
-		next  uint64
+		state	ProgressStateType
+		next	uint64
 
-		wnext uint64
+		wnext	uint64
 	}{
 		// state replicate, optimistically increase next
 		// previous entries + noop entry + propose + 1
@@ -1767,9 +1767,9 @@ func TestRecvMsgUnreachable(t *testing.T) {
 func TestRestore(t *testing.T) {
 	s := pb.Snapshot{
 		Metadata: pb.SnapshotMetadata{
-			Index:     11, // magic number
-			Term:      11, // magic number
-			ConfState: pb.ConfState{Nodes: []uint64{1, 2, 3}},
+			Index:		11,	// magic number
+			Term:		11,	// magic number
+			ConfState:	pb.ConfState{Nodes: []uint64{1, 2, 3}},
 		},
 	}
 
@@ -1805,9 +1805,9 @@ func TestRestoreIgnoreSnapshot(t *testing.T) {
 
 	s := pb.Snapshot{
 		Metadata: pb.SnapshotMetadata{
-			Index:     commit,
-			Term:      1,
-			ConfState: pb.ConfState{Nodes: []uint64{1, 2}},
+			Index:		commit,
+			Term:		1,
+			ConfState:	pb.ConfState{Nodes: []uint64{1, 2}},
 		},
 	}
 
@@ -1833,9 +1833,9 @@ func TestProvideSnap(t *testing.T) {
 	// restore the state machine from a snapshot so it has a compacted log and a snapshot
 	s := pb.Snapshot{
 		Metadata: pb.SnapshotMetadata{
-			Index:     11, // magic number
-			Term:      11, // magic number
-			ConfState: pb.ConfState{Nodes: []uint64{1, 2}},
+			Index:		11,	// magic number
+			Term:		11,	// magic number
+			ConfState:	pb.ConfState{Nodes: []uint64{1, 2}},
 		},
 	}
 	storage := NewMemoryStorage()
@@ -1863,9 +1863,9 @@ func TestIgnoreProvidingSnap(t *testing.T) {
 	// restore the state machine from a snapshot so it has a compacted log and a snapshot
 	s := pb.Snapshot{
 		Metadata: pb.SnapshotMetadata{
-			Index:     11, // magic number
-			Term:      11, // magic number
-			ConfState: pb.ConfState{Nodes: []uint64{1, 2}},
+			Index:		11,	// magic number
+			Term:		11,	// magic number
+			ConfState:	pb.ConfState{Nodes: []uint64{1, 2}},
 		},
 	}
 	storage := NewMemoryStorage()
@@ -1891,9 +1891,9 @@ func TestIgnoreProvidingSnap(t *testing.T) {
 func TestRestoreFromSnapMsg(t *testing.T) {
 	s := pb.Snapshot{
 		Metadata: pb.SnapshotMetadata{
-			Index:     11, // magic number
-			Term:      11, // magic number
-			ConfState: pb.ConfState{Nodes: []uint64{1, 2}},
+			Index:		11,	// magic number
+			Term:		11,	// magic number
+			ConfState:	pb.ConfState{Nodes: []uint64{1, 2}},
 		},
 	}
 	m := pb.Message{Type: pb.MsgSnap, From: 1, Term: 2, Snapshot: s}
@@ -1985,8 +1985,8 @@ func TestStepIgnoreConfig(t *testing.T) {
 // based on uncommitted entries.
 func TestRecoverPendingConfig(t *testing.T) {
 	tests := []struct {
-		entType  pb.EntryType
-		wpending bool
+		entType		pb.EntryType
+		wpending	bool
 	}{
 		{pb.EntryNormal, false},
 		{pb.EntryConfChange, true},
@@ -2059,8 +2059,8 @@ func TestRemoveNode(t *testing.T) {
 func TestPromotable(t *testing.T) {
 	id := uint64(1)
 	tests := []struct {
-		peers []uint64
-		wp    bool
+		peers	[]uint64
+		wp	bool
 	}{
 		{[]uint64{1}, true},
 		{[]uint64{1, 2, 3}, true},
@@ -2077,8 +2077,8 @@ func TestPromotable(t *testing.T) {
 
 func TestRaftNodes(t *testing.T) {
 	tests := []struct {
-		ids  []uint64
-		wids []uint64
+		ids	[]uint64
+		wids	[]uint64
 	}{
 		{
 			[]uint64{1, 2, 3},
@@ -2129,15 +2129,15 @@ func TestCommitAfterRemoveNode(t *testing.T) {
 
 	// Begin to remove the second node.
 	cc := pb.ConfChange{
-		Type:   pb.ConfChangeRemoveNode,
-		NodeID: 2,
+		Type:	pb.ConfChangeRemoveNode,
+		NodeID:	2,
 	}
 	ccData, err := cc.Marshal()
 	if err != nil {
 		t.Fatal(err)
 	}
 	r.Step(pb.Message{
-		Type: pb.MsgProp,
+		Type:	pb.MsgProp,
 		Entries: []pb.Entry{
 			{Type: pb.EntryConfChange, Data: ccData},
 		},
@@ -2150,7 +2150,7 @@ func TestCommitAfterRemoveNode(t *testing.T) {
 
 	// While the config change is pending, make another proposal.
 	r.Step(pb.Message{
-		Type: pb.MsgProp,
+		Type:	pb.MsgProp,
 		Entries: []pb.Entry{
 			{Type: pb.EntryNormal, Data: []byte("hello")},
 		},
@@ -2158,9 +2158,9 @@ func TestCommitAfterRemoveNode(t *testing.T) {
 
 	// Node 2 acknowledges the config change, committing it.
 	r.Step(pb.Message{
-		Type:  pb.MsgAppResp,
-		From:  2,
-		Index: ccIndex,
+		Type:	pb.MsgAppResp,
+		From:	2,
+		Index:	ccIndex,
 	})
 	ents := nextEnts(r, s)
 	if len(ents) != 2 {
@@ -2449,10 +2449,10 @@ func ents(terms ...uint64) *raft {
 }
 
 type network struct {
-	peers   map[uint64]stateMachine
-	storage map[uint64]*MemoryStorage
-	dropm   map[connem]float64
-	ignorem map[pb.MessageType]bool
+	peers	map[uint64]stateMachine
+	storage	map[uint64]*MemoryStorage
+	dropm	map[connem]float64
+	ignorem	map[pb.MessageType]bool
 }
 
 // newNetwork initializes a network from peers.
@@ -2488,10 +2488,10 @@ func newNetwork(peers ...stateMachine) *network {
 		}
 	}
 	return &network{
-		peers:   npeers,
-		storage: nstorage,
-		dropm:   make(map[connem]float64),
-		ignorem: make(map[pb.MessageType]bool),
+		peers:		npeers,
+		storage:	nstorage,
+		dropm:		make(map[connem]float64),
+		ignorem:	make(map[pb.MessageType]bool),
 	}
 }
 
@@ -2559,8 +2559,8 @@ type connem struct {
 
 type blackHole struct{}
 
-func (blackHole) Step(pb.Message) error      { return nil }
-func (blackHole) readMessages() []pb.Message { return nil }
+func (blackHole) Step(pb.Message) error		{ return nil }
+func (blackHole) readMessages() []pb.Message	{ return nil }
 
 var nopStepper = &blackHole{}
 
@@ -2574,13 +2574,13 @@ func idsBySize(size int) []uint64 {
 
 func newTestConfig(id uint64, peers []uint64, election, heartbeat int, storage Storage) *Config {
 	return &Config{
-		ID:              id,
-		peers:           peers,
-		ElectionTick:    election,
-		HeartbeatTick:   heartbeat,
-		Storage:         storage,
-		MaxSizePerMsg:   noLimit,
-		MaxInflightMsgs: 256,
+		ID:			id,
+		peers:			peers,
+		ElectionTick:		election,
+		HeartbeatTick:		heartbeat,
+		Storage:		storage,
+		MaxSizePerMsg:		noLimit,
+		MaxInflightMsgs:	256,
 	}
 }
 

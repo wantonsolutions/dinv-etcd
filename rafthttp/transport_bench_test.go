@@ -30,11 +30,11 @@ import (
 func BenchmarkSendingMsgApp(b *testing.B) {
 	// member 1
 	tr := &Transport{
-		ID:          types.ID(1),
-		ClusterID:   types.ID(1),
-		Raft:        &fakeRaft{},
-		ServerStats: newServerStats(),
-		LeaderStats: stats.NewLeaderStats("1"),
+		ID:		types.ID(1),
+		ClusterID:	types.ID(1),
+		Raft:		&fakeRaft{},
+		ServerStats:	newServerStats(),
+		LeaderStats:	stats.NewLeaderStats("1"),
 	}
 	tr.Start()
 	srv := httptest.NewServer(tr.Handler())
@@ -43,11 +43,11 @@ func BenchmarkSendingMsgApp(b *testing.B) {
 	// member 2
 	r := &countRaft{}
 	tr2 := &Transport{
-		ID:          types.ID(2),
-		ClusterID:   types.ID(1),
-		Raft:        r,
-		ServerStats: newServerStats(),
-		LeaderStats: stats.NewLeaderStats("2"),
+		ID:		types.ID(2),
+		ClusterID:	types.ID(1),
+		Raft:		r,
+		ServerStats:	newServerStats(),
+		LeaderStats:	stats.NewLeaderStats("2"),
 	}
 	tr2.Start()
 	srv2 := httptest.NewServer(tr2.Handler())
@@ -69,14 +69,14 @@ func BenchmarkSendingMsgApp(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tr.Send([]raftpb.Message{
 			{
-				Type:  raftpb.MsgApp,
-				From:  1,
-				To:    2,
-				Index: uint64(i),
+				Type:	raftpb.MsgApp,
+				From:	1,
+				To:	2,
+				Index:	uint64(i),
 				Entries: []raftpb.Entry{
 					{
-						Index: uint64(i + 1),
-						Data:  data,
+						Index:	uint64(i + 1),
+						Data:	data,
 					},
 				},
 			},
@@ -90,8 +90,8 @@ func BenchmarkSendingMsgApp(b *testing.B) {
 }
 
 type countRaft struct {
-	mu  sync.Mutex
-	cnt int
+	mu	sync.Mutex
+	cnt	int
 }
 
 func (r *countRaft) Process(ctx context.Context, m raftpb.Message) error {
@@ -101,11 +101,11 @@ func (r *countRaft) Process(ctx context.Context, m raftpb.Message) error {
 	return nil
 }
 
-func (r *countRaft) IsIDRemoved(id uint64) bool { return false }
+func (r *countRaft) IsIDRemoved(id uint64) bool	{ return false }
 
-func (r *countRaft) ReportUnreachable(id uint64) {}
+func (r *countRaft) ReportUnreachable(id uint64)	{}
 
-func (r *countRaft) ReportSnapshot(id uint64, status raft.SnapshotStatus) {}
+func (r *countRaft) ReportSnapshot(id uint64, status raft.SnapshotStatus)	{}
 
 func (r *countRaft) count() int {
 	r.mu.Lock()

@@ -21,13 +21,13 @@ import (
 )
 
 type Status struct {
-	ID uint64
+	ID	uint64
 
 	pb.HardState
 	SoftState
 
-	Applied  uint64
-	Progress map[uint64]Progress
+	Applied		uint64
+	Progress	map[uint64]Progress
 }
 
 // getStatus gets a copy of the current raft status.

@@ -25,11 +25,11 @@ import (
 func TestStorageTerm(t *testing.T) {
 	ents := []pb.Entry{{Index: 3, Term: 3}, {Index: 4, Term: 4}, {Index: 5, Term: 5}}
 	tests := []struct {
-		i uint64
+		i	uint64
 
-		werr   error
-		wterm  uint64
-		wpanic bool
+		werr	error
+		wterm	uint64
+		wpanic	bool
 	}{
 		{2, ErrCompacted, 0, false},
 		{3, nil, 3, false},
@@ -64,10 +64,10 @@ func TestStorageTerm(t *testing.T) {
 func TestStorageEntries(t *testing.T) {
 	ents := []pb.Entry{{Index: 3, Term: 3}, {Index: 4, Term: 4}, {Index: 5, Term: 5}, {Index: 6, Term: 6}}
 	tests := []struct {
-		lo, hi, maxsize uint64
+		lo, hi, maxsize	uint64
 
-		werr     error
-		wentries []pb.Entry
+		werr		error
+		wentries	[]pb.Entry
 	}{
 		{2, 6, math.MaxUint64, ErrCompacted, nil},
 		{3, 4, math.MaxUint64, ErrCompacted, nil},
@@ -144,12 +144,12 @@ func TestStorageFirstIndex(t *testing.T) {
 func TestStorageCompact(t *testing.T) {
 	ents := []pb.Entry{{Index: 3, Term: 3}, {Index: 4, Term: 4}, {Index: 5, Term: 5}}
 	tests := []struct {
-		i uint64
+		i	uint64
 
-		werr   error
-		windex uint64
-		wterm  uint64
-		wlen   int
+		werr	error
+		windex	uint64
+		wterm	uint64
+		wlen	int
 	}{
 		{2, ErrCompacted, 3, 3, 3},
 		{3, ErrCompacted, 3, 3, 3},
@@ -181,10 +181,10 @@ func TestStorageCreateSnapshot(t *testing.T) {
 	data := []byte("data")
 
 	tests := []struct {
-		i uint64
+		i	uint64
 
-		werr  error
-		wsnap pb.Snapshot
+		werr	error
+		wsnap	pb.Snapshot
 	}{
 		{4, nil, pb.Snapshot{Data: data, Metadata: pb.SnapshotMetadata{Index: 4, Term: 4, ConfState: *cs}}},
 		{5, nil, pb.Snapshot{Data: data, Metadata: pb.SnapshotMetadata{Index: 5, Term: 5, ConfState: *cs}}},
@@ -205,10 +205,10 @@ func TestStorageCreateSnapshot(t *testing.T) {
 func TestStorageAppend(t *testing.T) {
 	ents := []pb.Entry{{Index: 3, Term: 3}, {Index: 4, Term: 4}, {Index: 5, Term: 5}}
 	tests := []struct {
-		entries []pb.Entry
+		entries	[]pb.Entry
 
-		werr     error
-		wentries []pb.Entry
+		werr		error
+		wentries	[]pb.Entry
 	}{
 		{
 			[]pb.Entry{{Index: 3, Term: 3}, {Index: 4, Term: 4}, {Index: 5, Term: 5}},

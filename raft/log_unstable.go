@@ -22,12 +22,12 @@ import pb "github.com/coreos/etcd/raft/raftpb"
 // might need to truncate the log before persisting unstable.entries.
 type unstable struct {
 	// the incoming unstable snapshot, if any.
-	snapshot *pb.Snapshot
+	snapshot	*pb.Snapshot
 	// all entries that have not yet been written to storage.
-	entries []pb.Entry
-	offset  uint64
+	entries	[]pb.Entry
+	offset	uint64
 
-	logger Logger
+	logger	Logger
 }
 
 // maybeFirstIndex returns the index of the first possible entry in entries

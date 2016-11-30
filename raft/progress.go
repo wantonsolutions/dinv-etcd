@@ -17,7 +17,7 @@ package raft
 import "fmt"
 
 const (
-	ProgressStateProbe ProgressStateType = iota
+	ProgressStateProbe	ProgressStateType	= iota
 	ProgressStateReplicate
 	ProgressStateSnapshot
 )
@@ -30,12 +30,12 @@ var prstmap = [...]string{
 	"ProgressStateSnapshot",
 }
 
-func (st ProgressStateType) String() string { return prstmap[uint64(st)] }
+func (st ProgressStateType) String() string	{ return prstmap[uint64(st)] }
 
 // Progress represents a follower’s progress in the view of the leader. Leader maintains
 // progresses of all followers, and sends entries to the follower based on its progress.
 type Progress struct {
-	Match, Next uint64
+	Match, Next	uint64
 	// State defines how the leader should interact with the follower.
 	//
 	// When in ProgressStateProbe, leader sends at most one replication message
@@ -47,21 +47,21 @@ type Progress struct {
 	//
 	// When in ProgressStateSnapshot, leader should have sent out snapshot
 	// before and stops sending any replication message.
-	State ProgressStateType
+	State	ProgressStateType
 	// Paused is used in ProgressStateProbe.
 	// When Paused is true, raft should pause sending replication message to this peer.
-	Paused bool
+	Paused	bool
 	// PendingSnapshot is used in ProgressStateSnapshot.
 	// If there is a pending snapshot, the pendingSnapshot will be set to the
 	// index of the snapshot. If pendingSnapshot is set, the replication process of
 	// this Progress will be paused. raft will not resend snapshot until the pending one
 	// is reported to be failed.
-	PendingSnapshot uint64
+	PendingSnapshot	uint64
 
 	// RecentActive is true if the progress is recently active. Receiving any messages
 	// from the corresponding follower indicates the progress is active.
 	// RecentActive can be reset to false after an election timeout.
-	RecentActive bool
+	RecentActive	bool
 
 	// inflights is a sliding window for the inflight messages.
 	// When inflights is full, no more message should be sent.
@@ -70,7 +70,7 @@ type Progress struct {
 	// into inflights in order.
 	// When a leader receives a reply, the previous inflights should
 	// be freed by calling inflights.freeTo.
-	ins *inflights
+	ins	*inflights
 }
 
 func (pr *Progress) resetState(state ProgressStateType) {
@@ -120,7 +120,7 @@ func (pr *Progress) maybeUpdate(n uint64) bool {
 	return updated
 }
 
-func (pr *Progress) optimisticUpdate(n uint64) { pr.Next = n + 1 }
+func (pr *Progress) optimisticUpdate(n uint64)	{ pr.Next = n + 1 }
 
 // maybeDecrTo returns false if the given to index comes from an out of order message.
 // Otherwise it decreases the progress next index to min(rejected, last) and returns true.
@@ -148,8 +148,8 @@ func (pr *Progress) maybeDecrTo(rejected, last uint64) bool {
 	return true
 }
 
-func (pr *Progress) pause()  { pr.Paused = true }
-func (pr *Progress) resume() { pr.Paused = false }
+func (pr *Progress) pause()	{ pr.Paused = true }
+func (pr *Progress) resume()	{ pr.Paused = false }
 
 // isPaused returns whether progress stops sending message.
 func (pr *Progress) isPaused() bool {
@@ -165,7 +165,7 @@ func (pr *Progress) isPaused() bool {
 	}
 }
 
-func (pr *Progress) snapshotFailure() { pr.PendingSnapshot = 0 }
+func (pr *Progress) snapshotFailure()	{ pr.PendingSnapshot = 0 }
 
 // needSnapshotAbort returns true if snapshot progress's Match
 // is equal or higher than the pendingSnapshot.
@@ -179,19 +179,19 @@ func (pr *Progress) String() string {
 
 type inflights struct {
 	// the starting index in the buffer
-	start int
+	start	int
 	// number of inflights in the buffer
-	count int
+	count	int
 
 	// the size of the buffer
-	size   int
-	buffer []uint64
+	size	int
+	buffer	[]uint64
 }
 
 func newInflights(size int) *inflights {
 	return &inflights{
-		size:   size,
-		buffer: make([]uint64, size),
+		size:	size,
+		buffer:	make([]uint64, size),
 	}
 }
 
@@ -217,7 +217,7 @@ func (in *inflights) freeTo(to uint64) {
 
 	i, idx := 0, in.start
 	for i = 0; i < in.count; i++ {
-		if to < in.buffer[idx] { // found the first large inflight
+		if to < in.buffer[idx] {	// found the first large inflight
 			break
 		}
 
@@ -231,7 +231,7 @@ func (in *inflights) freeTo(to uint64) {
 	in.start = idx
 }
 
-func (in *inflights) freeFirstOne() { in.freeTo(in.buffer[in.start]) }
+func (in *inflights) freeFirstOne()	{ in.freeTo(in.buffer[in.start]) }
 
 // full returns true if the inflights is full.
 func (in *inflights) full() bool {

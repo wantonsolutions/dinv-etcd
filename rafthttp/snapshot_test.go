@@ -32,52 +32,52 @@ import (
 
 type strReaderCloser struct{ *strings.Reader }
 
-func (s strReaderCloser) Close() error { return nil }
+func (s strReaderCloser) Close() error	{ return nil }
 
 func TestSnapshotSend(t *testing.T) {
 	tests := []struct {
-		m    raftpb.Message
-		rc   io.ReadCloser
-		size int64
+		m	raftpb.Message
+		rc	io.ReadCloser
+		size	int64
 
-		wsent  bool
-		wfiles int
+		wsent	bool
+		wfiles	int
 	}{
 		// sent and receive with no errors
 		{
-			m:    raftpb.Message{Type: raftpb.MsgSnap, To: 1},
-			rc:   strReaderCloser{strings.NewReader("hello")},
-			size: 5,
+			m:	raftpb.Message{Type: raftpb.MsgSnap, To: 1},
+			rc:	strReaderCloser{strings.NewReader("hello")},
+			size:	5,
 
-			wsent:  true,
-			wfiles: 1,
+			wsent:	true,
+			wfiles:	1,
 		},
 		// error when reading snapshot for send
 		{
-			m:    raftpb.Message{Type: raftpb.MsgSnap, To: 1},
-			rc:   &errReadCloser{fmt.Errorf("snapshot error")},
-			size: 1,
+			m:	raftpb.Message{Type: raftpb.MsgSnap, To: 1},
+			rc:	&errReadCloser{fmt.Errorf("snapshot error")},
+			size:	1,
 
-			wsent:  false,
-			wfiles: 0,
+			wsent:	false,
+			wfiles:	0,
 		},
 		// sends less than the given snapshot length
 		{
-			m:    raftpb.Message{Type: raftpb.MsgSnap, To: 1},
-			rc:   strReaderCloser{strings.NewReader("hello")},
-			size: 10000,
+			m:	raftpb.Message{Type: raftpb.MsgSnap, To: 1},
+			rc:	strReaderCloser{strings.NewReader("hello")},
+			size:	10000,
 
-			wsent:  false,
-			wfiles: 0,
+			wsent:	false,
+			wfiles:	0,
 		},
 		// sends less than actual snapshot length
 		{
-			m:    raftpb.Message{Type: raftpb.MsgSnap, To: 1},
-			rc:   strReaderCloser{strings.NewReader("hello")},
-			size: 1,
+			m:	raftpb.Message{Type: raftpb.MsgSnap, To: 1},
+			rc:	strReaderCloser{strings.NewReader("hello")},
+			size:	1,
 
-			wsent:  false,
-			wfiles: 0,
+			wsent:	false,
+			wfiles:	0,
 		},
 	}
 
@@ -131,12 +131,12 @@ func testSnapshotSend(t *testing.T, sm *snap.Message) (bool, []os.FileInfo) {
 
 type errReadCloser struct{ err error }
 
-func (s *errReadCloser) Read(p []byte) (int, error) { return 0, s.err }
-func (s *errReadCloser) Close() error               { return s.err }
+func (s *errReadCloser) Read(p []byte) (int, error)	{ return 0, s.err }
+func (s *errReadCloser) Close() error			{ return s.err }
 
 type syncHandler struct {
-	h  http.Handler
-	ch chan<- struct{}
+	h	http.Handler
+	ch	chan<- struct{}
 }
 
 func (sh *syncHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {

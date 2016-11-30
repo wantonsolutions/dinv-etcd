@@ -27,11 +27,11 @@ import (
 )
 
 const (
-	msgTypeLinkHeartbeat uint8 = 0
-	msgTypeAppEntries    uint8 = 1
-	msgTypeApp           uint8 = 2
+	msgTypeLinkHeartbeat	uint8	= 0
+	msgTypeAppEntries	uint8	= 1
+	msgTypeApp		uint8	= 2
 
-	msgAppV2BufSize = 1024 * 1024
+	msgAppV2BufSize	= 1024 * 1024
 )
 
 // msgappv2 stream sends three types of message: linkHeartbeatMessage,
@@ -62,23 +62,23 @@ const (
 // | 1      | 8     | length of encoded message |
 // | 9      | n     | encoded message |
 type msgAppV2Encoder struct {
-	w  io.Writer
-	fs *stats.FollowerStats
+	w	io.Writer
+	fs	*stats.FollowerStats
 
-	term      uint64
-	index     uint64
-	buf       []byte
-	uint64buf []byte
-	uint8buf  []byte
+	term		uint64
+	index		uint64
+	buf		[]byte
+	uint64buf	[]byte
+	uint8buf	[]byte
 }
 
 func newMsgAppV2Encoder(w io.Writer, fs *stats.FollowerStats) *msgAppV2Encoder {
 	return &msgAppV2Encoder{
-		w:         w,
-		fs:        fs,
-		buf:       make([]byte, msgAppV2BufSize),
-		uint64buf: make([]byte, 8),
-		uint8buf:  make([]byte, 1),
+		w:		w,
+		fs:		fs,
+		buf:		make([]byte, msgAppV2BufSize),
+		uint64buf:	make([]byte, 8),
+		uint8buf:	make([]byte, 1),
 	}
 }
 
@@ -150,31 +150,31 @@ func (enc *msgAppV2Encoder) encode(m *raftpb.Message) error {
 }
 
 type msgAppV2Decoder struct {
-	r             io.Reader
-	local, remote types.ID
+	r		io.Reader
+	local, remote	types.ID
 
-	term      uint64
-	index     uint64
-	buf       []byte
-	uint64buf []byte
-	uint8buf  []byte
+	term		uint64
+	index		uint64
+	buf		[]byte
+	uint64buf	[]byte
+	uint8buf	[]byte
 }
 
 func newMsgAppV2Decoder(r io.Reader, local, remote types.ID) *msgAppV2Decoder {
 	return &msgAppV2Decoder{
-		r:         r,
-		local:     local,
-		remote:    remote,
-		buf:       make([]byte, msgAppV2BufSize),
-		uint64buf: make([]byte, 8),
-		uint8buf:  make([]byte, 1),
+		r:		r,
+		local:		local,
+		remote:		remote,
+		buf:		make([]byte, msgAppV2BufSize),
+		uint64buf:	make([]byte, 8),
+		uint8buf:	make([]byte, 1),
 	}
 }
 
 func (dec *msgAppV2Decoder) decode() (raftpb.Message, error) {
 	var (
-		m   raftpb.Message
-		typ uint8
+		m	raftpb.Message
+		typ	uint8
 	)
 	if _, err := io.ReadFull(dec.r, dec.uint8buf); err != nil {
 		return m, err
@@ -185,12 +185,12 @@ func (dec *msgAppV2Decoder) decode() (raftpb.Message, error) {
 		return linkHeartbeatMessage, nil
 	case msgTypeAppEntries:
 		m = raftpb.Message{
-			Type:    raftpb.MsgApp,
-			From:    uint64(dec.remote),
-			To:      uint64(dec.local),
-			Term:    dec.term,
-			LogTerm: dec.term,
-			Index:   dec.index,
+			Type:		raftpb.MsgApp,
+			From:		uint64(dec.remote),
+			To:		uint64(dec.local),
+			Term:		dec.term,
+			LogTerm:	dec.term,
+			Index:		dec.index,
 		}
 
 		// decode entries
