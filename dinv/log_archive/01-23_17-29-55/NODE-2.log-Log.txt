@@ -1,0 +1,1200 @@
+NODE-2 {"NODE-2":1}
+Initialization Complete
+NODE-2 {"NODE-2":2}
+Sending from NODE-2
+NODE-2 {"NODE-2":3}
+Sending from NODE-2
+NODE-2 {"NODE-1":3, "NODE-2":4}
+Received on NODE-2
+NODE-2 {"NODE-1":3, "NODE-2":5}
+Sending from NODE-2
+NODE-2 {"NODE-1":5, "NODE-2":6}
+Received on NODE-2
+NODE-2 {"NODE-1":5, "NODE-2":7, "NODE-3":5}
+Received on NODE-2
+NODE-2 {"NODE-1":5, "NODE-2":8, "NODE-3":5}
+Sending from NODE-2
+NODE-2 {"NODE-1":5, "NODE-2":9, "NODE-3":5}
+Sending from NODE-2
+NODE-2 {"NODE-1":13, "NODE-2":10, "NODE-3":7}
+Received on NODE-2
+NODE-2 {"NODE-1":13, "NODE-2":11, "NODE-3":7}
+Sending from NODE-2
+NODE-2 {"NODE-1":13, "NODE-2":12, "NODE-3":7}
+Sending from NODE-2
+NODE-2 {"NODE-1":13, "NODE-2":13, "NODE-3":7}
+Sending from NODE-2
+NODE-2 {"NODE-1":13, "NODE-2":14, "NODE-3":7}
+Sending from NODE-2
+NODE-2 {"NODE-1":24, "NODE-2":15, "NODE-3":13}
+Received on NODE-2
+NODE-2 {"NODE-1":24, "NODE-2":16, "NODE-3":13}
+Sending from NODE-2
+NODE-2 {"NODE-1":24, "NODE-2":17, "NODE-3":13}
+Sending from NODE-2
+NODE-2 {"NODE-1":24, "NODE-2":18, "NODE-3":13}
+Sending from NODE-2
+NODE-2 {"NODE-1":32, "NODE-2":19, "NODE-3":17}
+Received on NODE-2
+NODE-2 {"NODE-1":32, "NODE-2":20, "NODE-3":17}
+Sending from NODE-2
+NODE-2 {"NODE-1":36, "NODE-2":21, "NODE-3":19}
+Received on NODE-2
+NODE-2 {"NODE-1":36, "NODE-2":22, "NODE-3":19}
+Sending from NODE-2
+NODE-2 {"NODE-1":40, "NODE-2":23, "NODE-3":21}
+Received on NODE-2
+NODE-2 {"NODE-1":40, "NODE-2":24, "NODE-3":21}
+Sending from NODE-2
+NODE-2 {"NODE-1":43, "NODE-2":25, "NODE-3":23}
+Received on NODE-2
+NODE-2 {"NODE-1":43, "NODE-2":26, "NODE-3":23}
+Sending from NODE-2
+NODE-2 {"NODE-1":43, "NODE-2":27, "NODE-3":23}
+Sending from NODE-2
+NODE-2 {"NODE-1":43, "NODE-2":28, "NODE-3":23}
+Sending from NODE-2
+NODE-2 {"NODE-1":43, "NODE-2":29, "NODE-3":23}
+Sending from NODE-2
+NODE-2 {"NODE-1":43, "NODE-2":30, "NODE-3":23}
+Sending from NODE-2
+NODE-2 {"NODE-1":43, "NODE-2":31, "NODE-3":23}
+Sending from NODE-2
+NODE-2 {"NODE-1":59, "NODE-2":32, "NODE-3":32}
+Received on NODE-2
+NODE-2 {"NODE-1":59, "NODE-2":33, "NODE-3":32}
+Sending from NODE-2
+NODE-2 {"NODE-1":59, "NODE-2":34, "NODE-3":32}
+Sending from NODE-2
+NODE-2 {"NODE-1":59, "NODE-2":35, "NODE-3":32}
+Sending from NODE-2
+NODE-2 {"NODE-1":59, "NODE-2":36, "NODE-3":32}
+Sending from NODE-2
+NODE-2 {"NODE-1":59, "NODE-2":37, "NODE-3":32}
+Sending from NODE-2
+NODE-2 {"NODE-1":59, "NODE-2":38, "NODE-3":32}
+Sending from NODE-2
+NODE-2 {"NODE-1":70, "NODE-2":39, "NODE-3":35}
+Received on NODE-2
+NODE-2 {"NODE-1":70, "NODE-2":40, "NODE-3":35}
+Sending from NODE-2
+NODE-2 {"NODE-1":70, "NODE-2":41, "NODE-3":35}
+Sending from NODE-2
+NODE-2 {"NODE-1":70, "NODE-2":42, "NODE-3":35}
+Sending from NODE-2
+NODE-2 {"NODE-1":70, "NODE-2":43, "NODE-3":35}
+Sending from NODE-2
+NODE-2 {"NODE-1":80, "NODE-2":44, "NODE-3":41}
+Received on NODE-2
+NODE-2 {"NODE-1":80, "NODE-2":45, "NODE-3":41}
+Sending from NODE-2
+NODE-2 {"NODE-1":80, "NODE-2":46, "NODE-3":41}
+Sending from NODE-2
+NODE-2 {"NODE-1":80, "NODE-2":47, "NODE-3":41}
+Sending from NODE-2
+NODE-2 {"NODE-1":80, "NODE-2":48, "NODE-3":41}
+Sending from NODE-2
+NODE-2 {"NODE-1":92, "NODE-2":49, "NODE-3":47}
+Received on NODE-2
+NODE-2 {"NODE-1":92, "NODE-2":50, "NODE-3":47}
+Sending from NODE-2
+NODE-2 {"NODE-1":92, "NODE-2":51, "NODE-3":47}
+Sending from NODE-2
+NODE-2 {"NODE-1":92, "NODE-2":52, "NODE-3":47}
+Sending from NODE-2
+NODE-2 {"NODE-1":92, "NODE-2":53, "NODE-3":47}
+Sending from NODE-2
+NODE-2 {"NODE-1":92, "NODE-2":54, "NODE-3":47}
+Sending from NODE-2
+NODE-2 {"NODE-1":103, "NODE-2":55, "NODE-3":53}
+Received on NODE-2
+NODE-2 {"NODE-1":103, "NODE-2":56, "NODE-3":53}
+Sending from NODE-2
+NODE-2 {"NODE-1":103, "NODE-2":57, "NODE-3":53}
+Sending from NODE-2
+NODE-2 {"NODE-1":103, "NODE-2":58, "NODE-3":53}
+Sending from NODE-2
+NODE-2 {"NODE-1":111, "NODE-2":59, "NODE-3":57}
+Received on NODE-2
+NODE-2 {"NODE-1":111, "NODE-2":60, "NODE-3":57}
+Sending from NODE-2
+NODE-2 {"NODE-1":111, "NODE-2":61, "NODE-3":57}
+Sending from NODE-2
+NODE-2 {"NODE-1":111, "NODE-2":62, "NODE-3":57}
+Sending from NODE-2
+NODE-2 {"NODE-1":111, "NODE-2":63, "NODE-3":57}
+Sending from NODE-2
+NODE-2 {"NODE-1":116, "NODE-2":64, "NODE-3":63}
+Received on NODE-2
+NODE-2 {"NODE-1":119, "NODE-2":65, "NODE-3":63}
+Received on NODE-2
+NODE-2 {"NODE-1":119, "NODE-2":66, "NODE-3":63}
+Sending from NODE-2
+NODE-2 {"NODE-1":119, "NODE-2":67, "NODE-3":63}
+Sending from NODE-2
+NODE-2 {"NODE-1":119, "NODE-2":68, "NODE-3":63}
+Sending from NODE-2
+NODE-2 {"NODE-1":119, "NODE-2":69, "NODE-3":63}
+Sending from NODE-2
+NODE-2 {"NODE-1":130, "NODE-2":70, "NODE-3":69}
+Received on NODE-2
+NODE-2 {"NODE-1":130, "NODE-2":71, "NODE-3":69}
+Sending from NODE-2
+NODE-2 {"NODE-1":130, "NODE-2":72, "NODE-3":69}
+Sending from NODE-2
+NODE-2 {"NODE-1":130, "NODE-2":73, "NODE-3":69}
+Sending from NODE-2
+NODE-2 {"NODE-1":137, "NODE-2":74, "NODE-3":72}
+Received on NODE-2
+NODE-2 {"NODE-1":137, "NODE-2":75, "NODE-3":72}
+Sending from NODE-2
+NODE-2 {"NODE-1":137, "NODE-2":76, "NODE-3":72}
+Sending from NODE-2
+NODE-2 {"NODE-1":137, "NODE-2":77, "NODE-3":72}
+Sending from NODE-2
+NODE-2 {"NODE-1":137, "NODE-2":78, "NODE-3":72}
+Sending from NODE-2
+NODE-2 {"NODE-1":148, "NODE-2":79, "NODE-3":78}
+Received on NODE-2
+NODE-2 {"NODE-1":148, "NODE-2":80, "NODE-3":78}
+Sending from NODE-2
+NODE-2 {"NODE-1":148, "NODE-2":81, "NODE-3":78}
+Sending from NODE-2
+NODE-2 {"NODE-1":148, "NODE-2":82, "NODE-3":78}
+Sending from NODE-2
+NODE-2 {"NODE-1":148, "NODE-2":83, "NODE-3":78}
+Sending from NODE-2
+NODE-2 {"NODE-1":148, "NODE-2":84, "NODE-3":78}
+Sending from NODE-2
+NODE-2 {"NODE-1":161, "NODE-2":85, "NODE-3":84}
+Received on NODE-2
+NODE-2 {"NODE-1":161, "NODE-2":86, "NODE-3":84}
+Sending from NODE-2
+NODE-2 {"NODE-1":161, "NODE-2":87, "NODE-3":84}
+Sending from NODE-2
+NODE-2 {"NODE-1":161, "NODE-2":88, "NODE-3":84}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":89, "NODE-3":88}
+Received on NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":90, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":91, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":92, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":93, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":94, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":95, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":96, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":169, "NODE-2":97, "NODE-3":88}
+Sending from NODE-2
+NODE-2 {"NODE-1":186, "NODE-2":98, "NODE-3":98}
+Received on NODE-2
+NODE-2 {"NODE-1":186, "NODE-2":99, "NODE-3":98}
+Sending from NODE-2
+NODE-2 {"NODE-1":186, "NODE-2":100, "NODE-3":98}
+Sending from NODE-2
+NODE-2 {"NODE-1":186, "NODE-2":101, "NODE-3":98}
+Sending from NODE-2
+NODE-2 {"NODE-1":195, "NODE-2":102, "NODE-3":101}
+Received on NODE-2
+NODE-2 {"NODE-1":195, "NODE-2":103, "NODE-3":101}
+Sending from NODE-2
+NODE-2 {"NODE-1":195, "NODE-2":104, "NODE-3":101}
+Sending from NODE-2
+NODE-2 {"NODE-1":195, "NODE-2":105, "NODE-3":101}
+Sending from NODE-2
+NODE-2 {"NODE-1":203, "NODE-2":106, "NODE-3":105}
+Received on NODE-2
+NODE-2 {"NODE-1":203, "NODE-2":107, "NODE-3":105}
+Sending from NODE-2
+NODE-2 {"NODE-1":203, "NODE-2":108, "NODE-3":105}
+Sending from NODE-2
+NODE-2 {"NODE-1":203, "NODE-2":109, "NODE-3":105}
+Sending from NODE-2
+NODE-2 {"NODE-1":203, "NODE-2":110, "NODE-3":105}
+Sending from NODE-2
+NODE-2 {"NODE-1":203, "NODE-2":111, "NODE-3":105}
+Sending from NODE-2
+NODE-2 {"NODE-1":213, "NODE-2":112, "NODE-3":110}
+Received on NODE-2
+NODE-2 {"NODE-1":213, "NODE-2":113, "NODE-3":110}
+Sending from NODE-2
+NODE-2 {"NODE-1":213, "NODE-2":114, "NODE-3":110}
+Sending from NODE-2
+NODE-2 {"NODE-1":213, "NODE-2":115, "NODE-3":110}
+Sending from NODE-2
+NODE-2 {"NODE-1":222, "NODE-2":116, "NODE-3":115}
+Received on NODE-2
+NODE-2 {"NODE-1":222, "NODE-2":117, "NODE-3":115}
+Sending from NODE-2
+NODE-2 {"NODE-1":222, "NODE-2":118, "NODE-3":115}
+Sending from NODE-2
+NODE-2 {"NODE-1":222, "NODE-2":119, "NODE-3":115}
+Sending from NODE-2
+NODE-2 {"NODE-1":222, "NODE-2":120, "NODE-3":115}
+Sending from NODE-2
+NODE-2 {"NODE-1":228, "NODE-2":121, "NODE-3":118}
+Received on NODE-2
+NODE-2 {"NODE-1":228, "NODE-2":122, "NODE-3":118}
+Sending from NODE-2
+NODE-2 {"NODE-1":228, "NODE-2":123, "NODE-3":118}
+Sending from NODE-2
+NODE-2 {"NODE-1":239, "NODE-2":124, "NODE-3":123}
+Received on NODE-2
+NODE-2 {"NODE-1":239, "NODE-2":125, "NODE-3":123}
+Sending from NODE-2
+NODE-2 {"NODE-1":239, "NODE-2":126, "NODE-3":123}
+Sending from NODE-2
+NODE-2 {"NODE-1":239, "NODE-2":127, "NODE-3":123}
+Sending from NODE-2
+NODE-2 {"NODE-1":239, "NODE-2":128, "NODE-3":123}
+Sending from NODE-2
+NODE-2 {"NODE-1":239, "NODE-2":129, "NODE-3":123}
+Sending from NODE-2
+NODE-2 {"NODE-1":250, "NODE-2":130, "NODE-3":129}
+Received on NODE-2
+NODE-2 {"NODE-1":250, "NODE-2":131, "NODE-3":129}
+Sending from NODE-2
+NODE-2 {"NODE-1":250, "NODE-2":132, "NODE-3":129}
+Sending from NODE-2
+NODE-2 {"NODE-1":250, "NODE-2":133, "NODE-3":129}
+Sending from NODE-2
+NODE-2 {"NODE-1":256, "NODE-2":134, "NODE-3":132}
+Received on NODE-2
+NODE-2 {"NODE-1":256, "NODE-2":135, "NODE-3":132}
+Sending from NODE-2
+NODE-2 {"NODE-1":256, "NODE-2":136, "NODE-3":132}
+Sending from NODE-2
+NODE-2 {"NODE-1":256, "NODE-2":137, "NODE-3":132}
+Sending from NODE-2
+NODE-2 {"NODE-1":267, "NODE-2":138, "NODE-3":137}
+Received on NODE-2
+NODE-2 {"NODE-1":267, "NODE-2":139, "NODE-3":137}
+Sending from NODE-2
+NODE-2 {"NODE-1":267, "NODE-2":140, "NODE-3":137}
+Sending from NODE-2
+NODE-2 {"NODE-1":267, "NODE-2":141, "NODE-3":137}
+Sending from NODE-2
+NODE-2 {"NODE-1":267, "NODE-2":142, "NODE-3":137}
+Sending from NODE-2
+NODE-2 {"NODE-1":267, "NODE-2":143, "NODE-3":137}
+Sending from NODE-2
+NODE-2 {"NODE-1":278, "NODE-2":144, "NODE-3":143}
+Received on NODE-2
+NODE-2 {"NODE-1":278, "NODE-2":145, "NODE-3":143}
+Sending from NODE-2
+NODE-2 {"NODE-1":278, "NODE-2":146, "NODE-3":143}
+Sending from NODE-2
+NODE-2 {"NODE-1":278, "NODE-2":147, "NODE-3":143}
+Sending from NODE-2
+NODE-2 {"NODE-1":278, "NODE-2":148, "NODE-3":143}
+Sending from NODE-2
+NODE-2 {"NODE-1":278, "NODE-2":149, "NODE-3":143}
+Sending from NODE-2
+NODE-2 {"NODE-1":290, "NODE-2":150, "NODE-3":149}
+Received on NODE-2
+NODE-2 {"NODE-1":290, "NODE-2":151, "NODE-3":149}
+Sending from NODE-2
+NODE-2 {"NODE-1":290, "NODE-2":152, "NODE-3":149}
+Sending from NODE-2
+NODE-2 {"NODE-1":290, "NODE-2":153, "NODE-3":149}
+Sending from NODE-2
+NODE-2 {"NODE-1":294, "NODE-2":154, "NODE-3":155}
+Received on NODE-2
+NODE-2 {"NODE-1":297, "NODE-2":155, "NODE-3":155}
+Received on NODE-2
+NODE-2 {"NODE-1":297, "NODE-2":156, "NODE-3":155}
+Sending from NODE-2
+NODE-2 {"NODE-1":297, "NODE-2":157, "NODE-3":155}
+Sending from NODE-2
+NODE-2 {"NODE-1":297, "NODE-2":158, "NODE-3":155}
+Sending from NODE-2
+NODE-2 {"NODE-1":297, "NODE-2":159, "NODE-3":155}
+Sending from NODE-2
+NODE-2 {"NODE-1":307, "NODE-2":160, "NODE-3":159}
+Received on NODE-2
+NODE-2 {"NODE-1":307, "NODE-2":161, "NODE-3":159}
+Sending from NODE-2
+NODE-2 {"NODE-1":307, "NODE-2":162, "NODE-3":159}
+Sending from NODE-2
+NODE-2 {"NODE-1":307, "NODE-2":163, "NODE-3":159}
+Sending from NODE-2
+NODE-2 {"NODE-1":307, "NODE-2":164, "NODE-3":159}
+Sending from NODE-2
+NODE-2 {"NODE-1":316, "NODE-2":165, "NODE-3":163}
+Received on NODE-2
+NODE-2 {"NODE-1":316, "NODE-2":166, "NODE-3":163}
+Sending from NODE-2
+NODE-2 {"NODE-1":316, "NODE-2":167, "NODE-3":163}
+Sending from NODE-2
+NODE-2 {"NODE-1":316, "NODE-2":168, "NODE-3":163}
+Sending from NODE-2
+NODE-2 {"NODE-1":316, "NODE-2":169, "NODE-3":163}
+Sending from NODE-2
+NODE-2 {"NODE-1":316, "NODE-2":170, "NODE-3":163}
+Sending from NODE-2
+NODE-2 {"NODE-1":328, "NODE-2":171, "NODE-3":169}
+Received on NODE-2
+NODE-2 {"NODE-1":328, "NODE-2":172, "NODE-3":169}
+Sending from NODE-2
+NODE-2 {"NODE-1":328, "NODE-2":173, "NODE-3":169}
+Sending from NODE-2
+NODE-2 {"NODE-1":328, "NODE-2":174, "NODE-3":169}
+Sending from NODE-2
+NODE-2 {"NODE-1":335, "NODE-2":175, "NODE-3":173}
+Received on NODE-2
+NODE-2 {"NODE-1":335, "NODE-2":176, "NODE-3":173}
+Sending from NODE-2
+NODE-2 {"NODE-1":335, "NODE-2":177, "NODE-3":173}
+Sending from NODE-2
+NODE-2 {"NODE-1":335, "NODE-2":178, "NODE-3":173}
+Sending from NODE-2
+NODE-2 {"NODE-1":335, "NODE-2":179, "NODE-3":173}
+Sending from NODE-2
+NODE-2 {"NODE-1":345, "NODE-2":180, "NODE-3":177}
+Received on NODE-2
+NODE-2 {"NODE-1":345, "NODE-2":181, "NODE-3":177}
+Sending from NODE-2
+NODE-2 {"NODE-1":345, "NODE-2":182, "NODE-3":177}
+Sending from NODE-2
+NODE-2 {"NODE-1":345, "NODE-2":183, "NODE-3":177}
+Sending from NODE-2
+NODE-2 {"NODE-1":345, "NODE-2":184, "NODE-3":177}
+Sending from NODE-2
+NODE-2 {"NODE-1":356, "NODE-2":185, "NODE-3":183}
+Received on NODE-2
+NODE-2 {"NODE-1":356, "NODE-2":186, "NODE-3":183}
+Sending from NODE-2
+NODE-2 {"NODE-1":356, "NODE-2":187, "NODE-3":183}
+Sending from NODE-2
+NODE-2 {"NODE-1":356, "NODE-2":188, "NODE-3":183}
+Sending from NODE-2
+NODE-2 {"NODE-1":364, "NODE-2":189, "NODE-3":187}
+Received on NODE-2
+NODE-2 {"NODE-1":364, "NODE-2":190, "NODE-3":187}
+Sending from NODE-2
+NODE-2 {"NODE-1":364, "NODE-2":191, "NODE-3":187}
+Sending from NODE-2
+NODE-2 {"NODE-1":364, "NODE-2":192, "NODE-3":187}
+Sending from NODE-2
+NODE-2 {"NODE-1":364, "NODE-2":193, "NODE-3":187}
+Sending from NODE-2
+NODE-2 {"NODE-1":373, "NODE-2":194, "NODE-3":192}
+Received on NODE-2
+NODE-2 {"NODE-1":373, "NODE-2":195, "NODE-3":192}
+Sending from NODE-2
+NODE-2 {"NODE-1":373, "NODE-2":196, "NODE-3":192}
+Sending from NODE-2
+NODE-2 {"NODE-1":373, "NODE-2":197, "NODE-3":192}
+Sending from NODE-2
+NODE-2 {"NODE-1":373, "NODE-2":198, "NODE-3":192}
+Sending from NODE-2
+NODE-2 {"NODE-1":373, "NODE-2":199, "NODE-3":192}
+Sending from NODE-2
+NODE-2 {"NODE-1":383, "NODE-2":200, "NODE-3":197}
+Received on NODE-2
+NODE-2 {"NODE-1":383, "NODE-2":201, "NODE-3":197}
+Sending from NODE-2
+NODE-2 {"NODE-1":383, "NODE-2":202, "NODE-3":197}
+Sending from NODE-2
+NODE-2 {"NODE-1":383, "NODE-2":203, "NODE-3":197}
+Sending from NODE-2
+NODE-2 {"NODE-1":383, "NODE-2":204, "NODE-3":197}
+Sending from NODE-2
+NODE-2 {"NODE-1":395, "NODE-2":205, "NODE-3":203}
+Received on NODE-2
+NODE-2 {"NODE-1":395, "NODE-2":206, "NODE-3":203}
+Sending from NODE-2
+NODE-2 {"NODE-1":395, "NODE-2":207, "NODE-3":203}
+Sending from NODE-2
+NODE-2 {"NODE-1":395, "NODE-2":208, "NODE-3":203}
+Sending from NODE-2
+NODE-2 {"NODE-1":395, "NODE-2":209, "NODE-3":203}
+Sending from NODE-2
+NODE-2 {"NODE-1":395, "NODE-2":210, "NODE-3":203}
+Sending from NODE-2
+NODE-2 {"NODE-1":405, "NODE-2":211, "NODE-3":208}
+Received on NODE-2
+NODE-2 {"NODE-1":405, "NODE-2":212, "NODE-3":208}
+Sending from NODE-2
+NODE-2 {"NODE-1":411, "NODE-2":213, "NODE-3":211}
+Received on NODE-2
+NODE-2 {"NODE-1":411, "NODE-2":214, "NODE-3":211}
+Sending from NODE-2
+NODE-2 {"NODE-1":411, "NODE-2":215, "NODE-3":211}
+Sending from NODE-2
+NODE-2 {"NODE-1":411, "NODE-2":216, "NODE-3":211}
+Sending from NODE-2
+NODE-2 {"NODE-1":411, "NODE-2":217, "NODE-3":211}
+Sending from NODE-2
+NODE-2 {"NODE-1":419, "NODE-2":218, "NODE-3":215}
+Received on NODE-2
+NODE-2 {"NODE-1":419, "NODE-2":219, "NODE-3":215}
+Sending from NODE-2
+NODE-2 {"NODE-1":419, "NODE-2":220, "NODE-3":215}
+Sending from NODE-2
+NODE-2 {"NODE-1":419, "NODE-2":221, "NODE-3":215}
+Sending from NODE-2
+NODE-2 {"NODE-1":419, "NODE-2":222, "NODE-3":215}
+Sending from NODE-2
+NODE-2 {"NODE-1":419, "NODE-2":223, "NODE-3":215}
+Sending from NODE-2
+NODE-2 {"NODE-1":419, "NODE-2":224, "NODE-3":215}
+Sending from NODE-2
+NODE-2 {"NODE-1":435, "NODE-2":225, "NODE-3":223}
+Received on NODE-2
+NODE-2 {"NODE-1":435, "NODE-2":226, "NODE-3":223}
+Sending from NODE-2
+NODE-2 {"NODE-1":435, "NODE-2":227, "NODE-3":223}
+Sending from NODE-2
+NODE-2 {"NODE-1":435, "NODE-2":228, "NODE-3":223}
+Sending from NODE-2
+NODE-2 {"NODE-1":444, "NODE-2":229, "NODE-3":227}
+Received on NODE-2
+NODE-2 {"NODE-1":444, "NODE-2":230, "NODE-3":227}
+Sending from NODE-2
+NODE-2 {"NODE-1":444, "NODE-2":231, "NODE-3":227}
+Sending from NODE-2
+NODE-2 {"NODE-1":444, "NODE-2":232, "NODE-3":227}
+Sending from NODE-2
+NODE-2 {"NODE-1":444, "NODE-2":233, "NODE-3":227}
+Sending from NODE-2
+NODE-2 {"NODE-1":444, "NODE-2":234, "NODE-3":227}
+Sending from NODE-2
+NODE-2 {"NODE-1":454, "NODE-2":235, "NODE-3":232}
+Received on NODE-2
+NODE-2 {"NODE-1":454, "NODE-2":236, "NODE-3":232}
+Sending from NODE-2
+NODE-2 {"NODE-1":454, "NODE-2":237, "NODE-3":232}
+Sending from NODE-2
+NODE-2 {"NODE-1":454, "NODE-2":238, "NODE-3":232}
+Sending from NODE-2
+NODE-2 {"NODE-1":454, "NODE-2":239, "NODE-3":232}
+Sending from NODE-2
+NODE-2 {"NODE-1":454, "NODE-2":240, "NODE-3":232}
+Sending from NODE-2
+NODE-2 {"NODE-1":459, "NODE-2":241, "NODE-3":241}
+Received on NODE-2
+NODE-2 {"NODE-1":466, "NODE-2":242, "NODE-3":241}
+Received on NODE-2
+NODE-2 {"NODE-1":467, "NODE-2":243, "NODE-3":241}
+Received on NODE-2
+NODE-2 {"NODE-1":467, "NODE-2":244, "NODE-3":241}
+Sending from NODE-2
+NODE-2 {"NODE-1":467, "NODE-2":245, "NODE-3":241}
+Sending from NODE-2
+NODE-2 {"NODE-1":467, "NODE-2":246, "NODE-3":241}
+Sending from NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":247, "NODE-3":245}
+Received on NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":248, "NODE-3":245}
+Sending from NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":249, "NODE-3":245}
+Sending from NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":250, "NODE-3":245}
+Sending from NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":251, "NODE-3":245}
+Sending from NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":252, "NODE-3":245}
+Sending from NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":253, "NODE-3":245}
+Sending from NODE-2
+NODE-2 {"NODE-1":476, "NODE-2":254, "NODE-3":245}
+Sending from NODE-2
+NODE-2 {"NODE-1":491, "NODE-2":255, "NODE-3":253}
+Received on NODE-2
+NODE-2 {"NODE-1":491, "NODE-2":256, "NODE-3":253}
+Sending from NODE-2
+NODE-2 {"NODE-1":491, "NODE-2":257, "NODE-3":253}
+Sending from NODE-2
+NODE-2 {"NODE-1":491, "NODE-2":258, "NODE-3":253}
+Sending from NODE-2
+NODE-2 {"NODE-1":501, "NODE-2":259, "NODE-3":258}
+Received on NODE-2
+NODE-2 {"NODE-1":501, "NODE-2":260, "NODE-3":258}
+Sending from NODE-2
+NODE-2 {"NODE-1":501, "NODE-2":261, "NODE-3":258}
+Sending from NODE-2
+NODE-2 {"NODE-1":501, "NODE-2":262, "NODE-3":258}
+Sending from NODE-2
+NODE-2 {"NODE-1":509, "NODE-2":263, "NODE-3":262}
+Received on NODE-2
+NODE-2 {"NODE-1":509, "NODE-2":264, "NODE-3":262}
+Sending from NODE-2
+NODE-2 {"NODE-1":509, "NODE-2":265, "NODE-3":262}
+Sending from NODE-2
+NODE-2 {"NODE-1":509, "NODE-2":266, "NODE-3":262}
+Sending from NODE-2
+NODE-2 {"NODE-1":509, "NODE-2":267, "NODE-3":262}
+Sending from NODE-2
+NODE-2 {"NODE-1":509, "NODE-2":268, "NODE-3":262}
+Sending from NODE-2
+NODE-2 {"NODE-1":522, "NODE-2":269, "NODE-3":270}
+Received on NODE-2
+NODE-2 {"NODE-1":522, "NODE-2":270, "NODE-3":270}
+Sending from NODE-2
+NODE-2 {"NODE-1":524, "NODE-2":271, "NODE-3":270}
+Received on NODE-2
+NODE-2 {"NODE-1":524, "NODE-2":272, "NODE-3":270}
+Sending from NODE-2
+NODE-2 {"NODE-1":524, "NODE-2":273, "NODE-3":270}
+Sending from NODE-2
+NODE-2 {"NODE-1":524, "NODE-2":274, "NODE-3":270}
+Sending from NODE-2
+NODE-2 {"NODE-1":524, "NODE-2":275, "NODE-3":270}
+Sending from NODE-2
+NODE-2 {"NODE-1":524, "NODE-2":276, "NODE-3":270}
+Sending from NODE-2
+NODE-2 {"NODE-1":536, "NODE-2":277, "NODE-3":277}
+Received on NODE-2
+NODE-2 {"NODE-1":536, "NODE-2":278, "NODE-3":277}
+Sending from NODE-2
+NODE-2 {"NODE-1":543, "NODE-2":279, "NODE-3":280}
+Received on NODE-2
+NODE-2 {"NODE-1":543, "NODE-2":280, "NODE-3":280}
+Sending from NODE-2
+NODE-2 {"NODE-1":543, "NODE-2":281, "NODE-3":280}
+Sending from NODE-2
+NODE-2 {"NODE-1":543, "NODE-2":282, "NODE-3":280}
+Sending from NODE-2
+NODE-2 {"NODE-1":543, "NODE-2":283, "NODE-3":280}
+Sending from NODE-2
+NODE-2 {"NODE-1":551, "NODE-2":284, "NODE-3":284}
+Received on NODE-2
+NODE-2 {"NODE-1":551, "NODE-2":285, "NODE-3":284}
+Sending from NODE-2
+NODE-2 {"NODE-1":551, "NODE-2":286, "NODE-3":284}
+Sending from NODE-2
+NODE-2 {"NODE-1":551, "NODE-2":287, "NODE-3":284}
+Sending from NODE-2
+NODE-2 {"NODE-1":551, "NODE-2":288, "NODE-3":284}
+Sending from NODE-2
+NODE-2 {"NODE-1":563, "NODE-2":289, "NODE-3":290}
+Received on NODE-2
+NODE-2 {"NODE-1":563, "NODE-2":290, "NODE-3":290}
+Sending from NODE-2
+NODE-2 {"NODE-1":563, "NODE-2":291, "NODE-3":290}
+Sending from NODE-2
+NODE-2 {"NODE-1":563, "NODE-2":292, "NODE-3":290}
+Sending from NODE-2
+NODE-2 {"NODE-1":563, "NODE-2":293, "NODE-3":290}
+Sending from NODE-2
+NODE-2 {"NODE-1":563, "NODE-2":294, "NODE-3":290}
+Sending from NODE-2
+NODE-2 {"NODE-1":571, "NODE-2":295, "NODE-3":293}
+Received on NODE-2
+NODE-2 {"NODE-1":571, "NODE-2":296, "NODE-3":293}
+Sending from NODE-2
+NODE-2 {"NODE-1":571, "NODE-2":297, "NODE-3":293}
+Sending from NODE-2
+NODE-2 {"NODE-1":571, "NODE-2":298, "NODE-3":293}
+Sending from NODE-2
+NODE-2 {"NODE-1":571, "NODE-2":299, "NODE-3":293}
+Sending from NODE-2
+NODE-2 {"NODE-1":571, "NODE-2":300, "NODE-3":293}
+Sending from NODE-2
+NODE-2 {"NODE-1":571, "NODE-2":301, "NODE-3":293}
+Sending from NODE-2
+NODE-2 {"NODE-1":587, "NODE-2":302, "NODE-3":301}
+Received on NODE-2
+NODE-2 {"NODE-1":587, "NODE-2":303, "NODE-3":301}
+Sending from NODE-2
+NODE-2 {"NODE-1":587, "NODE-2":304, "NODE-3":301}
+Sending from NODE-2
+NODE-2 {"NODE-1":587, "NODE-2":305, "NODE-3":301}
+Sending from NODE-2
+NODE-2 {"NODE-1":594, "NODE-2":306, "NODE-3":305}
+Received on NODE-2
+NODE-2 {"NODE-1":594, "NODE-2":307, "NODE-3":305}
+Sending from NODE-2
+NODE-2 {"NODE-1":594, "NODE-2":308, "NODE-3":305}
+Sending from NODE-2
+NODE-2 {"NODE-1":594, "NODE-2":309, "NODE-3":305}
+Sending from NODE-2
+NODE-2 {"NODE-1":594, "NODE-2":310, "NODE-3":305}
+Sending from NODE-2
+NODE-2 {"NODE-1":594, "NODE-2":311, "NODE-3":305}
+Sending from NODE-2
+NODE-2 {"NODE-1":607, "NODE-2":312, "NODE-3":313}
+Received on NODE-2
+NODE-2 {"NODE-1":607, "NODE-2":313, "NODE-3":313}
+Sending from NODE-2
+NODE-2 {"NODE-1":607, "NODE-2":314, "NODE-3":313}
+Sending from NODE-2
+NODE-2 {"NODE-1":607, "NODE-2":315, "NODE-3":313}
+Sending from NODE-2
+NODE-2 {"NODE-1":615, "NODE-2":316, "NODE-3":315}
+Received on NODE-2
+NODE-2 {"NODE-1":615, "NODE-2":317, "NODE-3":315}
+Sending from NODE-2
+NODE-2 {"NODE-1":615, "NODE-2":318, "NODE-3":315}
+Sending from NODE-2
+NODE-2 {"NODE-1":615, "NODE-2":319, "NODE-3":315}
+Sending from NODE-2
+NODE-2 {"NODE-1":623, "NODE-2":320, "NODE-3":319}
+Received on NODE-2
+NODE-2 {"NODE-1":623, "NODE-2":321, "NODE-3":319}
+Sending from NODE-2
+NODE-2 {"NODE-1":623, "NODE-2":322, "NODE-3":319}
+Sending from NODE-2
+NODE-2 {"NODE-1":623, "NODE-2":323, "NODE-3":319}
+Sending from NODE-2
+NODE-2 {"NODE-1":626, "NODE-2":324, "NODE-3":325}
+Received on NODE-2
+NODE-2 {"NODE-1":629, "NODE-2":325, "NODE-3":325}
+Received on NODE-2
+NODE-2 {"NODE-1":629, "NODE-2":326, "NODE-3":325}
+Sending from NODE-2
+NODE-2 {"NODE-1":629, "NODE-2":327, "NODE-3":325}
+Sending from NODE-2
+NODE-2 {"NODE-1":629, "NODE-2":328, "NODE-3":325}
+Sending from NODE-2
+NODE-2 {"NODE-1":629, "NODE-2":329, "NODE-3":325}
+Sending from NODE-2
+NODE-2 {"NODE-1":629, "NODE-2":330, "NODE-3":325}
+Sending from NODE-2
+NODE-2 {"NODE-1":640, "NODE-2":331, "NODE-3":329}
+Received on NODE-2
+NODE-2 {"NODE-1":640, "NODE-2":332, "NODE-3":329}
+Sending from NODE-2
+NODE-2 {"NODE-1":640, "NODE-2":333, "NODE-3":329}
+Sending from NODE-2
+NODE-2 {"NODE-1":640, "NODE-2":334, "NODE-3":329}
+Sending from NODE-2
+NODE-2 {"NODE-1":640, "NODE-2":335, "NODE-3":329}
+Sending from NODE-2
+NODE-2 {"NODE-1":651, "NODE-2":336, "NODE-3":335}
+Received on NODE-2
+NODE-2 {"NODE-1":651, "NODE-2":337, "NODE-3":335}
+Sending from NODE-2
+NODE-2 {"NODE-1":651, "NODE-2":338, "NODE-3":335}
+Sending from NODE-2
+NODE-2 {"NODE-1":651, "NODE-2":339, "NODE-3":335}
+Sending from NODE-2
+NODE-2 {"NODE-1":659, "NODE-2":340, "NODE-3":339}
+Received on NODE-2
+NODE-2 {"NODE-1":659, "NODE-2":341, "NODE-3":339}
+Sending from NODE-2
+NODE-2 {"NODE-1":659, "NODE-2":342, "NODE-3":339}
+Sending from NODE-2
+NODE-2 {"NODE-1":659, "NODE-2":343, "NODE-3":339}
+Sending from NODE-2
+NODE-2 {"NODE-1":659, "NODE-2":344, "NODE-3":339}
+Sending from NODE-2
+NODE-2 {"NODE-1":666, "NODE-2":345, "NODE-3":343}
+Received on NODE-2
+NODE-2 {"NODE-1":666, "NODE-2":346, "NODE-3":343}
+Sending from NODE-2
+NODE-2 {"NODE-1":666, "NODE-2":347, "NODE-3":343}
+Sending from NODE-2
+NODE-2 {"NODE-1":666, "NODE-2":348, "NODE-3":343}
+Sending from NODE-2
+NODE-2 {"NODE-1":666, "NODE-2":349, "NODE-3":343}
+Sending from NODE-2
+NODE-2 {"NODE-1":679, "NODE-2":350, "NODE-3":349}
+Received on NODE-2
+NODE-2 {"NODE-1":679, "NODE-2":351, "NODE-3":349}
+Sending from NODE-2
+NODE-2 {"NODE-1":679, "NODE-2":352, "NODE-3":349}
+Sending from NODE-2
+NODE-2 {"NODE-1":679, "NODE-2":353, "NODE-3":349}
+Sending from NODE-2
+NODE-2 {"NODE-1":679, "NODE-2":354, "NODE-3":349}
+Sending from NODE-2
+NODE-2 {"NODE-1":679, "NODE-2":355, "NODE-3":349}
+Sending from NODE-2
+NODE-2 {"NODE-1":690, "NODE-2":356, "NODE-3":355}
+Received on NODE-2
+NODE-2 {"NODE-1":690, "NODE-2":357, "NODE-3":355}
+Sending from NODE-2
+NODE-2 {"NODE-1":690, "NODE-2":358, "NODE-3":355}
+Sending from NODE-2
+NODE-2 {"NODE-1":690, "NODE-2":359, "NODE-3":355}
+Sending from NODE-2
+NODE-2 {"NODE-1":690, "NODE-2":360, "NODE-3":355}
+Sending from NODE-2
+NODE-2 {"NODE-1":690, "NODE-2":361, "NODE-3":355}
+Sending from NODE-2
+NODE-2 {"NODE-1":700, "NODE-2":362, "NODE-3":360}
+Received on NODE-2
+NODE-2 {"NODE-1":700, "NODE-2":363, "NODE-3":360}
+Sending from NODE-2
+NODE-2 {"NODE-1":700, "NODE-2":364, "NODE-3":360}
+Sending from NODE-2
+NODE-2 {"NODE-1":700, "NODE-2":365, "NODE-3":360}
+Sending from NODE-2
+NODE-2 {"NODE-1":710, "NODE-2":366, "NODE-3":365}
+Received on NODE-2
+NODE-2 {"NODE-1":710, "NODE-2":367, "NODE-3":365}
+Sending from NODE-2
+NODE-2 {"NODE-1":710, "NODE-2":368, "NODE-3":365}
+Sending from NODE-2
+NODE-2 {"NODE-1":710, "NODE-2":369, "NODE-3":365}
+Sending from NODE-2
+NODE-2 {"NODE-1":719, "NODE-2":370, "NODE-3":369}
+Received on NODE-2
+NODE-2 {"NODE-1":719, "NODE-2":371, "NODE-3":369}
+Sending from NODE-2
+NODE-2 {"NODE-1":719, "NODE-2":372, "NODE-3":369}
+Sending from NODE-2
+NODE-2 {"NODE-1":719, "NODE-2":373, "NODE-3":369}
+Sending from NODE-2
+NODE-2 {"NODE-1":719, "NODE-2":374, "NODE-3":369}
+Sending from NODE-2
+NODE-2 {"NODE-1":727, "NODE-2":375, "NODE-3":373}
+Received on NODE-2
+NODE-2 {"NODE-1":727, "NODE-2":376, "NODE-3":373}
+Sending from NODE-2
+NODE-2 {"NODE-1":727, "NODE-2":377, "NODE-3":373}
+Sending from NODE-2
+NODE-2 {"NODE-1":727, "NODE-2":378, "NODE-3":373}
+Sending from NODE-2
+NODE-2 {"NODE-1":727, "NODE-2":379, "NODE-3":373}
+Sending from NODE-2
+NODE-2 {"NODE-1":738, "NODE-2":380, "NODE-3":379}
+Received on NODE-2
+NODE-2 {"NODE-1":738, "NODE-2":381, "NODE-3":379}
+Sending from NODE-2
+NODE-2 {"NODE-1":738, "NODE-2":382, "NODE-3":379}
+Sending from NODE-2
+NODE-2 {"NODE-1":738, "NODE-2":383, "NODE-3":379}
+Sending from NODE-2
+NODE-2 {"NODE-1":738, "NODE-2":384, "NODE-3":379}
+Sending from NODE-2
+NODE-2 {"NODE-1":746, "NODE-2":385, "NODE-3":383}
+Received on NODE-2
+NODE-2 {"NODE-1":746, "NODE-2":386, "NODE-3":383}
+Sending from NODE-2
+NODE-2 {"NODE-1":746, "NODE-2":387, "NODE-3":383}
+Sending from NODE-2
+NODE-2 {"NODE-1":746, "NODE-2":388, "NODE-3":383}
+Sending from NODE-2
+NODE-2 {"NODE-1":746, "NODE-2":389, "NODE-3":383}
+Sending from NODE-2
+NODE-2 {"NODE-1":758, "NODE-2":390, "NODE-3":389}
+Received on NODE-2
+NODE-2 {"NODE-1":758, "NODE-2":391, "NODE-3":389}
+Sending from NODE-2
+NODE-2 {"NODE-1":758, "NODE-2":392, "NODE-3":389}
+Sending from NODE-2
+NODE-2 {"NODE-1":758, "NODE-2":393, "NODE-3":389}
+Sending from NODE-2
+NODE-2 {"NODE-1":758, "NODE-2":394, "NODE-3":389}
+Sending from NODE-2
+NODE-2 {"NODE-1":758, "NODE-2":395, "NODE-3":389}
+Sending from NODE-2
+NODE-2 {"NODE-1":771, "NODE-2":396, "NODE-3":395}
+Received on NODE-2
+NODE-2 {"NODE-1":771, "NODE-2":397, "NODE-3":395}
+Sending from NODE-2
+NODE-2 {"NODE-1":771, "NODE-2":398, "NODE-3":395}
+Sending from NODE-2
+NODE-2 {"NODE-1":771, "NODE-2":399, "NODE-3":395}
+Sending from NODE-2
+NODE-2 {"NODE-1":779, "NODE-2":400, "NODE-3":399}
+Received on NODE-2
+NODE-2 {"NODE-1":779, "NODE-2":401, "NODE-3":399}
+Sending from NODE-2
+NODE-2 {"NODE-1":779, "NODE-2":402, "NODE-3":399}
+Sending from NODE-2
+NODE-2 {"NODE-1":779, "NODE-2":403, "NODE-3":399}
+Sending from NODE-2
+NODE-2 {"NODE-1":779, "NODE-2":404, "NODE-3":399}
+Sending from NODE-2
+NODE-2 {"NODE-1":779, "NODE-2":405, "NODE-3":399}
+Sending from NODE-2
+NODE-2 {"NODE-1":779, "NODE-2":406, "NODE-3":399}
+Sending from NODE-2
+NODE-2 {"NODE-1":792, "NODE-2":407, "NODE-3":405}
+Received on NODE-2
+NODE-2 {"NODE-1":792, "NODE-2":408, "NODE-3":405}
+Sending from NODE-2
+NODE-2 {"NODE-1":792, "NODE-2":409, "NODE-3":405}
+Sending from NODE-2
+NODE-2 {"NODE-1":792, "NODE-2":410, "NODE-3":405}
+Sending from NODE-2
+NODE-2 {"NODE-1":792, "NODE-2":411, "NODE-3":405}
+Sending from NODE-2
+NODE-2 {"NODE-1":792, "NODE-2":412, "NODE-3":405}
+Sending from NODE-2
+NODE-2 {"NODE-1":801, "NODE-2":413, "NODE-3":411}
+Received on NODE-2
+NODE-2 {"NODE-1":801, "NODE-2":414, "NODE-3":411}
+Sending from NODE-2
+NODE-2 {"NODE-1":801, "NODE-2":415, "NODE-3":411}
+Sending from NODE-2
+NODE-2 {"NODE-1":801, "NODE-2":416, "NODE-3":411}
+Sending from NODE-2
+NODE-2 {"NODE-1":802, "NODE-2":417, "NODE-3":417}
+Received on NODE-2
+NODE-2 {"NODE-1":810, "NODE-2":418, "NODE-3":417}
+Received on NODE-2
+NODE-2 {"NODE-1":810, "NODE-2":419, "NODE-3":417}
+Sending from NODE-2
+NODE-2 {"NODE-1":810, "NODE-2":420, "NODE-3":417}
+Sending from NODE-2
+NODE-2 {"NODE-1":810, "NODE-2":421, "NODE-3":417}
+Sending from NODE-2
+NODE-2 {"NODE-1":816, "NODE-2":422, "NODE-3":419}
+Received on NODE-2
+NODE-2 {"NODE-1":816, "NODE-2":423, "NODE-3":419}
+Sending from NODE-2
+NODE-2 {"NODE-1":816, "NODE-2":424, "NODE-3":419}
+Sending from NODE-2
+NODE-2 {"NODE-1":816, "NODE-2":425, "NODE-3":419}
+Sending from NODE-2
+NODE-2 {"NODE-1":816, "NODE-2":426, "NODE-3":419}
+Sending from NODE-2
+NODE-2 {"NODE-1":825, "NODE-2":427, "NODE-3":423}
+Received on NODE-2
+NODE-2 {"NODE-1":825, "NODE-2":428, "NODE-3":423}
+Sending from NODE-2
+NODE-2 {"NODE-1":833, "NODE-2":429, "NODE-3":429}
+Received on NODE-2
+NODE-2 {"NODE-1":833, "NODE-2":430, "NODE-3":429}
+Sending from NODE-2
+NODE-2 {"NODE-1":833, "NODE-2":431, "NODE-3":429}
+Sending from NODE-2
+NODE-2 {"NODE-1":833, "NODE-2":432, "NODE-3":429}
+Sending from NODE-2
+NODE-2 {"NODE-1":833, "NODE-2":433, "NODE-3":429}
+Sending from NODE-2
+NODE-2 {"NODE-1":833, "NODE-2":434, "NODE-3":429}
+Sending from NODE-2
+NODE-2 {"NODE-1":833, "NODE-2":435, "NODE-3":429}
+Sending from NODE-2
+NODE-2 {"NODE-1":845, "NODE-2":436, "NODE-3":433}
+Received on NODE-2
+NODE-2 {"NODE-1":845, "NODE-2":437, "NODE-3":433}
+Sending from NODE-2
+NODE-2 {"NODE-1":845, "NODE-2":438, "NODE-3":433}
+Sending from NODE-2
+NODE-2 {"NODE-1":845, "NODE-2":439, "NODE-3":433}
+Sending from NODE-2
+NODE-2 {"NODE-1":845, "NODE-2":440, "NODE-3":433}
+Sending from NODE-2
+NODE-2 {"NODE-1":857, "NODE-2":441, "NODE-3":440}
+Received on NODE-2
+NODE-2 {"NODE-1":857, "NODE-2":442, "NODE-3":440}
+Sending from NODE-2
+NODE-2 {"NODE-1":857, "NODE-2":443, "NODE-3":440}
+Sending from NODE-2
+NODE-2 {"NODE-1":857, "NODE-2":444, "NODE-3":440}
+Sending from NODE-2
+NODE-2 {"NODE-1":857, "NODE-2":445, "NODE-3":440}
+Sending from NODE-2
+NODE-2 {"NODE-1":865, "NODE-2":446, "NODE-3":444}
+Received on NODE-2
+NODE-2 {"NODE-1":865, "NODE-2":447, "NODE-3":444}
+Sending from NODE-2
+NODE-2 {"NODE-1":865, "NODE-2":448, "NODE-3":444}
+Sending from NODE-2
+NODE-2 {"NODE-1":865, "NODE-2":449, "NODE-3":444}
+Sending from NODE-2
+NODE-2 {"NODE-1":865, "NODE-2":450, "NODE-3":444}
+Sending from NODE-2
+NODE-2 {"NODE-1":876, "NODE-2":451, "NODE-3":450}
+Received on NODE-2
+NODE-2 {"NODE-1":876, "NODE-2":452, "NODE-3":450}
+Sending from NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":453, "NODE-3":452}
+Received on NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":454, "NODE-3":452}
+Sending from NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":455, "NODE-3":452}
+Sending from NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":456, "NODE-3":452}
+Sending from NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":457, "NODE-3":452}
+Sending from NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":458, "NODE-3":452}
+Sending from NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":459, "NODE-3":452}
+Sending from NODE-2
+NODE-2 {"NODE-1":881, "NODE-2":460, "NODE-3":452}
+Sending from NODE-2
+NODE-2 {"NODE-1":897, "NODE-2":461, "NODE-3":460}
+Received on NODE-2
+NODE-2 {"NODE-1":897, "NODE-2":462, "NODE-3":460}
+Sending from NODE-2
+NODE-2 {"NODE-1":897, "NODE-2":463, "NODE-3":460}
+Sending from NODE-2
+NODE-2 {"NODE-1":897, "NODE-2":464, "NODE-3":460}
+Sending from NODE-2
+NODE-2 {"NODE-1":905, "NODE-2":465, "NODE-3":464}
+Received on NODE-2
+NODE-2 {"NODE-1":905, "NODE-2":466, "NODE-3":464}
+Sending from NODE-2
+NODE-2 {"NODE-1":905, "NODE-2":467, "NODE-3":464}
+Sending from NODE-2
+NODE-2 {"NODE-1":905, "NODE-2":468, "NODE-3":464}
+Sending from NODE-2
+NODE-2 {"NODE-1":905, "NODE-2":469, "NODE-3":464}
+Sending from NODE-2
+NODE-2 {"NODE-1":905, "NODE-2":470, "NODE-3":464}
+Sending from NODE-2
+NODE-2 {"NODE-1":905, "NODE-2":471, "NODE-3":464}
+Sending from NODE-2
+NODE-2 {"NODE-1":918, "NODE-2":472, "NODE-3":471}
+Received on NODE-2
+NODE-2 {"NODE-1":918, "NODE-2":473, "NODE-3":471}
+Sending from NODE-2
+NODE-2 {"NODE-1":918, "NODE-2":474, "NODE-3":471}
+Sending from NODE-2
+NODE-2 {"NODE-1":918, "NODE-2":475, "NODE-3":471}
+Sending from NODE-2
+NODE-2 {"NODE-1":918, "NODE-2":476, "NODE-3":471}
+Sending from NODE-2
+NODE-2 {"NODE-1":929, "NODE-2":477, "NODE-3":476}
+Received on NODE-2
+NODE-2 {"NODE-1":929, "NODE-2":478, "NODE-3":476}
+Sending from NODE-2
+NODE-2 {"NODE-1":929, "NODE-2":479, "NODE-3":476}
+Sending from NODE-2
+NODE-2 {"NODE-1":929, "NODE-2":480, "NODE-3":476}
+Sending from NODE-2
+NODE-2 {"NODE-1":929, "NODE-2":481, "NODE-3":476}
+Sending from NODE-2
+NODE-2 {"NODE-1":939, "NODE-2":482, "NODE-3":481}
+Received on NODE-2
+NODE-2 {"NODE-1":939, "NODE-2":483, "NODE-3":481}
+Sending from NODE-2
+NODE-2 {"NODE-1":939, "NODE-2":484, "NODE-3":481}
+Sending from NODE-2
+NODE-2 {"NODE-1":939, "NODE-2":485, "NODE-3":481}
+Sending from NODE-2
+NODE-2 {"NODE-1":939, "NODE-2":486, "NODE-3":481}
+Sending from NODE-2
+NODE-2 {"NODE-1":948, "NODE-2":487, "NODE-3":486}
+Received on NODE-2
+NODE-2 {"NODE-1":948, "NODE-2":488, "NODE-3":486}
+Sending from NODE-2
+NODE-2 {"NODE-1":953, "NODE-2":489, "NODE-3":488}
+Received on NODE-2
+NODE-2 {"NODE-1":953, "NODE-2":490, "NODE-3":488}
+Sending from NODE-2
+NODE-2 {"NODE-1":957, "NODE-2":491, "NODE-3":490}
+Received on NODE-2
+NODE-2 {"NODE-1":957, "NODE-2":492, "NODE-3":490}
+Sending from NODE-2
+NODE-2 {"NODE-1":957, "NODE-2":493, "NODE-3":490}
+Sending from NODE-2
+NODE-2 {"NODE-1":957, "NODE-2":494, "NODE-3":490}
+Sending from NODE-2
+NODE-2 {"NODE-1":960, "NODE-2":495, "NODE-3":496}
+Received on NODE-2
+NODE-2 {"NODE-1":963, "NODE-2":496, "NODE-3":496}
+Received on NODE-2
+NODE-2 {"NODE-1":965, "NODE-2":497, "NODE-3":496}
+Received on NODE-2
+NODE-2 {"NODE-1":965, "NODE-2":498, "NODE-3":496}
+Sending from NODE-2
+NODE-2 {"NODE-1":968, "NODE-2":499, "NODE-3":498}
+Received on NODE-2
+NODE-2 {"NODE-1":968, "NODE-2":500, "NODE-3":498}
+Sending from NODE-2
+NODE-2 {"NODE-1":968, "NODE-2":501, "NODE-3":498}
+Sending from NODE-2
+NODE-2 {"NODE-1":968, "NODE-2":502, "NODE-3":498}
+Sending from NODE-2
+NODE-2 {"NODE-1":968, "NODE-2":503, "NODE-3":498}
+Sending from NODE-2
+NODE-2 {"NODE-1":979, "NODE-2":504, "NODE-3":503}
+Received on NODE-2
+NODE-2 {"NODE-1":979, "NODE-2":505, "NODE-3":503}
+Sending from NODE-2
+NODE-2 {"NODE-1":983, "NODE-2":506, "NODE-3":505}
+Received on NODE-2
+NODE-2 {"NODE-1":983, "NODE-2":507, "NODE-3":505}
+Sending from NODE-2
+NODE-2 {"NODE-1":987, "NODE-2":508, "NODE-3":507}
+Received on NODE-2
+NODE-2 {"NODE-1":987, "NODE-2":509, "NODE-3":507}
+Sending from NODE-2
+NODE-2 {"NODE-1":990, "NODE-2":510, "NODE-3":509}
+Received on NODE-2
+NODE-2 {"NODE-1":990, "NODE-2":511, "NODE-3":509}
+Sending from NODE-2
+NODE-2 {"NODE-1":994, "NODE-2":512, "NODE-3":511}
+Received on NODE-2
+NODE-2 {"NODE-1":994, "NODE-2":513, "NODE-3":511}
+Sending from NODE-2
+NODE-2 {"NODE-1":994, "NODE-2":514, "NODE-3":511}
+Sending from NODE-2
+NODE-2 {"NODE-1":994, "NODE-2":515, "NODE-3":511}
+Sending from NODE-2
+NODE-2 {"NODE-1":994, "NODE-2":516, "NODE-3":511}
+Sending from NODE-2
+NODE-2 {"NODE-1":1005, "NODE-2":517, "NODE-3":516}
+Received on NODE-2
+NODE-2 {"NODE-1":1005, "NODE-2":518, "NODE-3":516}
+Sending from NODE-2
+NODE-2 {"NODE-1":1009, "NODE-2":519, "NODE-3":518}
+Received on NODE-2
+NODE-2 {"NODE-1":1009, "NODE-2":520, "NODE-3":518}
+Sending from NODE-2
+NODE-2 {"NODE-1":1013, "NODE-2":521, "NODE-3":520}
+Received on NODE-2
+NODE-2 {"NODE-1":1013, "NODE-2":522, "NODE-3":520}
+Sending from NODE-2
+NODE-2 {"NODE-1":1017, "NODE-2":523, "NODE-3":522}
+Received on NODE-2
+NODE-2 {"NODE-1":1017, "NODE-2":524, "NODE-3":522}
+Sending from NODE-2
+NODE-2 {"NODE-1":1021, "NODE-2":525, "NODE-3":524}
+Received on NODE-2
+NODE-2 {"NODE-1":1021, "NODE-2":526, "NODE-3":524}
+Sending from NODE-2
+NODE-2 {"NODE-1":1021, "NODE-2":527, "NODE-3":524}
+Sending from NODE-2
+NODE-2 {"NODE-1":1021, "NODE-2":528, "NODE-3":524}
+Sending from NODE-2
+NODE-2 {"NODE-1":1029, "NODE-2":529, "NODE-3":528}
+Received on NODE-2
+NODE-2 {"NODE-1":1029, "NODE-2":530, "NODE-3":528}
+Sending from NODE-2
+NODE-2 {"NODE-1":1032, "NODE-2":531, "NODE-3":530}
+Received on NODE-2
+NODE-2 {"NODE-1":1032, "NODE-2":532, "NODE-3":530}
+Sending from NODE-2
+NODE-2 {"NODE-1":1037, "NODE-2":533, "NODE-3":532}
+Received on NODE-2
+NODE-2 {"NODE-1":1037, "NODE-2":534, "NODE-3":532}
+Sending from NODE-2
+NODE-2 {"NODE-1":1040, "NODE-2":535, "NODE-3":534}
+Received on NODE-2
+NODE-2 {"NODE-1":1040, "NODE-2":536, "NODE-3":534}
+Sending from NODE-2
+NODE-2 {"NODE-1":1045, "NODE-2":537, "NODE-3":536}
+Received on NODE-2
+NODE-2 {"NODE-1":1045, "NODE-2":538, "NODE-3":536}
+Sending from NODE-2
+NODE-2 {"NODE-1":1045, "NODE-2":539, "NODE-3":536}
+Sending from NODE-2
+NODE-2 {"NODE-1":1045, "NODE-2":540, "NODE-3":536}
+Sending from NODE-2
+NODE-2 {"NODE-1":1045, "NODE-2":541, "NODE-3":536}
+Sending from NODE-2
+NODE-2 {"NODE-1":1045, "NODE-2":542, "NODE-3":536}
+Sending from NODE-2
+NODE-2 {"NODE-1":1052, "NODE-2":543, "NODE-3":544}
+Received on NODE-2
+NODE-2 {"NODE-1":1055, "NODE-2":544, "NODE-3":544}
+Received on NODE-2
+NODE-2 {"NODE-1":1057, "NODE-2":545, "NODE-3":544}
+Received on NODE-2
+NODE-2 {"NODE-1":1057, "NODE-2":546, "NODE-3":544}
+Sending from NODE-2
+NODE-2 {"NODE-1":1060, "NODE-2":547, "NODE-3":546}
+Received on NODE-2
+NODE-2 {"NODE-1":1060, "NODE-2":548, "NODE-3":546}
+Sending from NODE-2
+NODE-2 {"NODE-1":1065, "NODE-2":549, "NODE-3":548}
+Received on NODE-2
+NODE-2 {"NODE-1":1065, "NODE-2":550, "NODE-3":548}
+Sending from NODE-2
+NODE-2 {"NODE-1":1069, "NODE-2":551, "NODE-3":550}
+Received on NODE-2
+NODE-2 {"NODE-1":1069, "NODE-2":552, "NODE-3":550}
+Sending from NODE-2
+NODE-2 {"NODE-1":1073, "NODE-2":553, "NODE-3":552}
+Received on NODE-2
+NODE-2 {"NODE-1":1073, "NODE-2":554, "NODE-3":552}
+Sending from NODE-2
+NODE-2 {"NODE-1":1073, "NODE-2":555, "NODE-3":552}
+Sending from NODE-2
+NODE-2 {"NODE-1":1073, "NODE-2":556, "NODE-3":552}
+Sending from NODE-2
+NODE-2 {"NODE-1":1081, "NODE-2":557, "NODE-3":556}
+Received on NODE-2
+NODE-2 {"NODE-1":1081, "NODE-2":558, "NODE-3":556}
+Sending from NODE-2
+NODE-2 {"NODE-1":1084, "NODE-2":559, "NODE-3":558}
+Received on NODE-2
+NODE-2 {"NODE-1":1084, "NODE-2":560, "NODE-3":558}
+Sending from NODE-2
+NODE-2 {"NODE-1":1089, "NODE-2":561, "NODE-3":560}
+Received on NODE-2
+NODE-2 {"NODE-1":1089, "NODE-2":562, "NODE-3":560}
+Sending from NODE-2
+NODE-2 {"NODE-1":1093, "NODE-2":563, "NODE-3":562}
+Received on NODE-2
+NODE-2 {"NODE-1":1093, "NODE-2":564, "NODE-3":562}
+Sending from NODE-2
+NODE-2 {"NODE-1":1096, "NODE-2":565, "NODE-3":564}
+Received on NODE-2
+NODE-2 {"NODE-1":1096, "NODE-2":566, "NODE-3":564}
+Sending from NODE-2
+NODE-2 {"NODE-1":1096, "NODE-2":567, "NODE-3":564}
+Sending from NODE-2
+NODE-2 {"NODE-1":1096, "NODE-2":568, "NODE-3":564}
+Sending from NODE-2
+NODE-2 {"NODE-1":1105, "NODE-2":569, "NODE-3":568}
+Received on NODE-2
+NODE-2 {"NODE-1":1105, "NODE-2":570, "NODE-3":568}
+Sending from NODE-2
+NODE-2 {"NODE-1":1109, "NODE-2":571, "NODE-3":570}
+Received on NODE-2
+NODE-2 {"NODE-1":1109, "NODE-2":572, "NODE-3":570}
+Sending from NODE-2
+NODE-2 {"NODE-1":1112, "NODE-2":573, "NODE-3":572}
+Received on NODE-2
+NODE-2 {"NODE-1":1112, "NODE-2":574, "NODE-3":572}
+Sending from NODE-2
+NODE-2 {"NODE-1":1117, "NODE-2":575, "NODE-3":574}
+Received on NODE-2
+NODE-2 {"NODE-1":1117, "NODE-2":576, "NODE-3":574}
+Sending from NODE-2
+NODE-2 {"NODE-1":1120, "NODE-2":577, "NODE-3":576}
+Received on NODE-2
+NODE-2 {"NODE-1":1120, "NODE-2":578, "NODE-3":576}
+Sending from NODE-2
+NODE-2 {"NODE-1":1120, "NODE-2":579, "NODE-3":576}
+Sending from NODE-2
+NODE-2 {"NODE-1":1120, "NODE-2":580, "NODE-3":576}
+Sending from NODE-2
+NODE-2 {"NODE-1":1129, "NODE-2":581, "NODE-3":580}
+Received on NODE-2
+NODE-2 {"NODE-1":1129, "NODE-2":582, "NODE-3":580}
+Sending from NODE-2
+NODE-2 {"NODE-1":1129, "NODE-2":583, "NODE-3":580}
+Sending from NODE-2
+NODE-2 {"NODE-1":1132, "NODE-2":584, "NODE-3":582}
+Received on NODE-2
+NODE-2 {"NODE-1":1132, "NODE-2":585, "NODE-3":582}
+Sending from NODE-2
+NODE-2 {"NODE-1":1132, "NODE-2":586, "NODE-3":582}
+Sending from NODE-2
+NODE-2 {"NODE-1":1136, "NODE-2":587, "NODE-3":588}
+Received on NODE-2
+NODE-2 {"NODE-1":1139, "NODE-2":588, "NODE-3":588}
+Received on NODE-2
+NODE-2 {"NODE-1":1141, "NODE-2":589, "NODE-3":588}
+Received on NODE-2
+NODE-2 {"NODE-1":1141, "NODE-2":590, "NODE-3":588}
+Sending from NODE-2
+NODE-2 {"NODE-1":1145, "NODE-2":591, "NODE-3":590}
+Received on NODE-2
+NODE-2 {"NODE-1":1145, "NODE-2":592, "NODE-3":590}
+Sending from NODE-2
+NODE-2 {"NODE-1":1148, "NODE-2":593, "NODE-3":592}
+Received on NODE-2
+NODE-2 {"NODE-1":1148, "NODE-2":594, "NODE-3":592}
+Sending from NODE-2
+NODE-2 {"NODE-1":1148, "NODE-2":595, "NODE-3":592}
+Sending from NODE-2
+NODE-2 {"NODE-1":1148, "NODE-2":596, "NODE-3":592}
+Sending from NODE-2
+NODE-2 {"NODE-1":1157, "NODE-2":597, "NODE-3":596}
+Received on NODE-2
+NODE-2 {"NODE-1":1157, "NODE-2":598, "NODE-3":596}
+Sending from NODE-2
+NODE-2 {"NODE-1":1161, "NODE-2":599, "NODE-3":598}
+Received on NODE-2
+NODE-2 {"NODE-1":1161, "NODE-2":600, "NODE-3":598}
+Sending from NODE-2

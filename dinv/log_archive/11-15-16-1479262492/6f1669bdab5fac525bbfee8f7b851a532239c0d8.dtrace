@@ -1,0 +1,444 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+ppt-type point
+variable Banana-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable Apricot-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+0
+Banana-applied
+30
+1
+Banana-commited
+30
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apricot-applied
+30
+1
+Apricot-commited
+30
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+1
+Banana-applied
+134
+1
+Banana-commited
+135
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apricot-applied
+134
+1
+Apricot-commited
+135
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+2
+Apricot-applied
+139
+1
+Apricot-commited
+139
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Banana-applied
+139
+1
+Banana-commited
+139
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+3
+Banana-applied
+159
+1
+Banana-commited
+159
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apricot-applied
+159
+1
+Apricot-commited
+159
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+4
+Apricot-applied
+162
+1
+Apricot-commited
+162
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Banana-applied
+161
+1
+Banana-commited
+161
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+5
+Apricot-applied
+170
+1
+Apricot-commited
+170
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Banana-applied
+170
+1
+Banana-commited
+170
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+6
+Banana-applied
+175
+1
+Banana-commited
+175
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apricot-applied
+175
+1
+Apricot-commited
+175
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0__fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+7
+Apricot-applied
+178
+1
+Apricot-commited
+178
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Banana-applied
+178
+1
+Banana-commited
+178
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+

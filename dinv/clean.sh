@@ -1,8 +1,11 @@
 #!/bin/bash
 
 testDir=~/go/src/github.com/coreos/etcd/dinv
+dinvDir=~/go/src/bitbucket.org/bestchai/dinv
 
 
+
+$dinvDir/examples/lib.sh clean
 
 
 function movelogs {
@@ -16,7 +19,8 @@ function movelogs {
         mv *[gd].txt old/$name
         mv *.dtrace old/$name
         mv *.gz old/$name
+        mv *.json old/$name
     fi
 }
 
-movelogs
+#movelogs

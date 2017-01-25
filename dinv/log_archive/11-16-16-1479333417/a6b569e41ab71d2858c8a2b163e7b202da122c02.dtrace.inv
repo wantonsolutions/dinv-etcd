@@ -1,0 +1,4 @@
+Daikon version 5.2.4, released May 1, 2015; http://plse.cs.washington.edu/daikon.
+Reading declaration files [3:50:35 PM]:                                                                                                                                                                                                                                Processing trace data; reading 1 dtrace file:
+[3:50:35 PM]: Finished reading a6b569e41ab71d2858c8a2b163e7b202da122c02.dtrace 
+                                                                               Exiting Daikon.

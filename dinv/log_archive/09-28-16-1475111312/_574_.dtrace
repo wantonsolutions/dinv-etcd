@@ -1,0 +1,166 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_574_:::_574_
+ppt-type point
+variable 989940761-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 989940761-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 989940761-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 989940761-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 989940761-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 989940761-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 989940761-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+
+p-_574_:::_574_
+this_invocation_nonce
+0
+989940761-logterm-pureRaft
+1
+1
+989940761-lead
+0
+1
+989940761-state
+"StateFollower"
+1
+989940761-applied
+6
+1
+989940761-commited
+6
+1
+989940761-maxInflight
+512
+1
+989940761-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+1
+989940761-logterm-pureRaft
+1
+1
+989940761-lead
+0
+1
+989940761-state
+"StateFollower"
+1
+989940761-applied
+6
+1
+989940761-commited
+6
+1
+989940761-maxInflight
+512
+1
+989940761-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+2
+989940761-logterm-pureRaft
+2
+1
+989940761-lead
+-9223372036854775808
+1
+989940761-state
+"StateFollower"
+1
+989940761-applied
+118
+1
+989940761-commited
+118
+1
+989940761-maxInflight
+512
+1
+989940761-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+3
+989940761-logterm-pureRaft
+2
+1
+989940761-lead
+-9223372036854775808
+1
+989940761-state
+"StateFollower"
+1
+989940761-applied
+118
+1
+989940761-commited
+118
+1
+989940761-maxInflight
+512
+1
+989940761-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+4
+965145465-logterm-pureRaft
+2
+1
+965145465-lead
+-9223372036854775808
+1
+965145465-state
+"StateFollower"
+1
+965145465-applied
+198
+1
+965145465-commited
+198
+1
+965145465-maxInflight
+512
+1
+965145465-maxMsgSize
+1048576
+1
+

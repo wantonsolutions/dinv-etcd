@@ -1,0 +1,122 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_574__574:::_574__574
+ppt-type point
+variable 229315588-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 229315588-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 229315588-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 229315588-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 229315588-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 229315588-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 229315588-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 228789933-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 228789933-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 228789933-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 228789933-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 228789933-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 228789933-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 228789933-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+
+p-_574__574:::_574__574
+this_invocation_nonce
+0
+229315588-logterm-pureRaft
+2
+1
+229315588-lead
+-9223372036854775808
+1
+229315588-state
+"StateFollower"
+1
+229315588-applied
+102
+1
+229315588-commited
+102
+1
+229315588-maxInflight
+512
+1
+229315588-maxMsgSize
+1048576
+1
+228789933-logterm-pureRaft
+2
+1
+228789933-lead
+-9223372036854775808
+1
+228789933-state
+"StateFollower"
+1
+228789933-applied
+102
+1
+228789933-commited
+102
+1
+228789933-maxInflight
+512
+1
+228789933-maxMsgSize
+1048576
+1
+

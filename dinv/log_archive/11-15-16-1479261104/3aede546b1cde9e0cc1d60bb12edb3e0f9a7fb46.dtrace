@@ -1,0 +1,245 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+ppt-type point
+variable Apricot-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apricot-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable Apple-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Apple-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable Banana-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable Banana-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+0
+Apricot-applied
+29
+1
+Apricot-commited
+29
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+Apple-applied
+29
+1
+Apple-commited
+29
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+Banana-applied
+29
+1
+Banana-commited
+29
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_dd17e8cf187531d5fe4311a85124b92e15fe4b33_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+1
+Banana-applied
+147
+1
+Banana-commited
+147
+1
+Banana-lead
+-9223372036854775808
+1
+Banana-logterm-pureRaft
+2
+1
+Banana-maxInflight
+512
+1
+Banana-maxMsgSize
+1048576
+1
+Banana-state
+"StateFollower"
+1
+Apple-applied
+147
+1
+Apple-commited
+147
+1
+Apple-lead
+-9223372036854775808
+1
+Apple-logterm-pureRaft
+2
+1
+Apple-maxInflight
+512
+1
+Apple-maxMsgSize
+1048576
+1
+Apple-state
+"StateLeader"
+1
+Apricot-applied
+147
+1
+Apricot-commited
+147
+1
+Apricot-lead
+-9223372036854775808
+1
+Apricot-logterm-pureRaft
+2
+1
+Apricot-maxInflight
+512
+1
+Apricot-maxMsgSize
+1048576
+1
+Apricot-state
+"StateFollower"
+1
+

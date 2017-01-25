@@ -1,0 +1,277 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+ppt-type point
+variable 880787120-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 880787120-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 880787120-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 880787120-log
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 880787120-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 860494731-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 860494731-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 860494731-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 860494731-log
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 860494731-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 884899377-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 884899377-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 884899377-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 884899377-log
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 884899377-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+0
+880787120-applied
+27
+1
+880787120-commited
+27
+1
+880787120-lead
+-9223372036854775808
+1
+880787120-log
+"6126df1eb0678d3503b56cf6c98ad5a6"
+1
+880787120-state
+"StateLeader"
+1
+860494731-applied
+27
+1
+860494731-commited
+27
+1
+860494731-lead
+-9223372036854775808
+1
+860494731-log
+"1f13c147688504dd6f81113b09becd26"
+1
+860494731-state
+"StateFollower"
+1
+884899377-applied
+27
+1
+884899377-commited
+27
+1
+884899377-lead
+-9223372036854775808
+1
+884899377-log
+"1f13c147688504dd6f81113b09becd26"
+1
+884899377-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+1
+880787120-applied
+50
+1
+880787120-commited
+50
+1
+880787120-lead
+-9223372036854775808
+1
+880787120-log
+"ef5460e2014132b786e1d91dae572cad"
+1
+880787120-state
+"StateLeader"
+1
+860494731-applied
+50
+1
+860494731-commited
+50
+1
+860494731-lead
+-9223372036854775808
+1
+860494731-log
+"733acc22ee6d35dbc1adf9b8106f8647"
+1
+860494731-state
+"StateFollower"
+1
+884899377-applied
+50
+1
+884899377-commited
+50
+1
+884899377-lead
+-9223372036854775808
+1
+884899377-log
+"733acc22ee6d35dbc1adf9b8106f8647"
+1
+884899377-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+2
+884899377-applied
+95
+1
+884899377-commited
+95
+1
+884899377-lead
+-9223372036854775808
+1
+884899377-log
+"471485544838aff45c046825f7893c7e"
+1
+884899377-state
+"StateFollower"
+1
+880787120-applied
+95
+1
+880787120-commited
+95
+1
+880787120-lead
+-9223372036854775808
+1
+880787120-log
+"471485544838aff45c046825f7893c7e"
+1
+880787120-state
+"StateLeader"
+1
+860494731-applied
+95
+1
+860494731-commited
+95
+1
+860494731-lead
+-9223372036854775808
+1
+860494731-log
+"471485544838aff45c046825f7893c7e"
+1
+860494731-state
+"StateFollower"
+1
+
+p-_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0:::_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0_fddfb739b68ef9d1f465bac6e752276fdb1a72d0
+this_invocation_nonce
+3
+880787120-applied
+132
+1
+880787120-commited
+132
+1
+880787120-lead
+-9223372036854775808
+1
+880787120-log
+"d2c52e09931fc82ac272354240b44909"
+1
+880787120-state
+"StateLeader"
+1
+884899377-applied
+132
+1
+884899377-commited
+132
+1
+884899377-lead
+-9223372036854775808
+1
+884899377-log
+"d2c52e09931fc82ac272354240b44909"
+1
+884899377-state
+"StateFollower"
+1
+860494731-applied
+132
+1
+860494731-commited
+132
+1
+860494731-lead
+-9223372036854775808
+1
+860494731-log
+"d2c52e09931fc82ac272354240b44909"
+1
+860494731-state
+"StateFollower"
+1
+

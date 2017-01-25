@@ -1,0 +1,166 @@
+decl-version 2.0
+var-comparability none
+
+ppt p-_574_:::_574_
+ppt-type point
+variable 730880527-logterm-pureRaft
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 730880527-lead
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 730880527-state
+var-kind variable
+dec-type string
+rep-type string
+comparability -1
+variable 730880527-applied
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 730880527-commited
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 730880527-maxInflight
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+variable 730880527-maxMsgSize
+var-kind variable
+dec-type int
+rep-type int
+comparability -1
+
+p-_574_:::_574_
+this_invocation_nonce
+0
+730880527-logterm-pureRaft
+2
+1
+730880527-lead
+-9223372036854775808
+1
+730880527-state
+"StateFollower"
+1
+730880527-applied
+136
+1
+730880527-commited
+136
+1
+730880527-maxInflight
+512
+1
+730880527-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+1
+730880527-logterm-pureRaft
+2
+1
+730880527-lead
+-9223372036854775808
+1
+730880527-state
+"StateFollower"
+1
+730880527-applied
+142
+1
+730880527-commited
+142
+1
+730880527-maxInflight
+512
+1
+730880527-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+2
+730880527-logterm-pureRaft
+2
+1
+730880527-lead
+-9223372036854775808
+1
+730880527-state
+"StateFollower"
+1
+730880527-applied
+196
+1
+730880527-commited
+196
+1
+730880527-maxInflight
+512
+1
+730880527-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+3
+730085422-logterm-pureRaft
+2
+1
+730085422-lead
+-9223372036854775808
+1
+730085422-state
+"StateFollower"
+1
+730085422-applied
+273
+1
+730085422-commited
+273
+1
+730085422-maxInflight
+512
+1
+730085422-maxMsgSize
+1048576
+1
+
+p-_574_:::_574_
+this_invocation_nonce
+4
+730880527-logterm-pureRaft
+2
+1
+730880527-lead
+-9223372036854775808
+1
+730880527-state
+"StateFollower"
+1
+730880527-applied
+293
+1
+730880527-commited
+293
+1
+730880527-maxInflight
+512
+1
+730880527-maxMsgSize
+1048576
+1
+
