@@ -1,6 +1,11 @@
 #!/bin/bash
 ./clean.sh
 sudo -E go install ../
+
+if [ $1 == -b ]; then
+    exit
+fi
+
 rm *.time
 rm *.txt
 ./modcluster.sh 3 &

@@ -547,7 +547,8 @@ func (r *raft) becomeLeader() {
 	r.appendEntry(pb.Entry{Data: nil})
 	r.logger.Infof("%x became leader at term %d", r.id, r.Term)
 	//@Track
-	dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
+	//dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
+	//dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
 }
 
@@ -606,12 +607,14 @@ func (r *raft) Step(m pb.Message) error {
 	//INITALIZATION ASSERT////////////////////////////////////////
 	//dinvRT.Initalize(string((r.id%3)+65))
 	//Initialize assertable variables
-
 	//fmt.Println(r.lead)
 	dinvRT.AddAssertable("leader", &(r.lead), nil)
 	dinvRT.AddAssertable("commited", &(r.raftLog.committed), nil)
 	dinvRT.AddAssertable("applied", &(r.raftLog.applied), nil)
-	dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
+	dinvRT.AddAssertable("id", &(r.id), nil)
+	dinvRT.AddAssertable("log", &(r.raftLog.unstable), nil)
+	dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
+	//dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
 	///END DINV INIT
 	/////////////////////////////////////////////////////////////
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
@@ -1130,6 +1133,68 @@ func assertLeaderMatching(values map[string]map[string]interface{}) bool {
 		}
 	}
 	return true
+}
+
+func assertStrongLeadership(values map[string]map[string]interface{}) bool {
+	fmt.Println("Asserting Strong Leadership")
+	peers := dinvRT.GetPeers()
+	commited := make([]uint64, 0)
+	//this check ensures that only the leader is making the assert
+	//reguardless of who requested the assert.
+	var leaderCommited uint64
+	leader := false
+	for _, p := range peers {
+		//make sure the values exist
+		_, ok1 := values[p]["leader"]
+		_, ok2 := values[p]["id"]
+		if ok1 && ok2 {
+			//fmt.Println(values[p]["leader"])
+			//fmt.Println(values[p]["id"])
+			switch values[p]["leader"].(type) {
+			case int64:
+				//leader not yet know (bootstraping election)
+				return true
+			case uint64:
+				if values[p]["leader"].(uint64) == values[p]["id"].(uint64) {
+					switch values[p]["commited"].(type) {
+					case int64:
+						//again this is the base case, there is no
+						//need to handel this I think
+						return true
+					case uint64:
+						leaderCommited = values[p]["commited"].(uint64)
+						leader = true
+					}
+
+				}
+			}
+		}
+
+	}
+	if leader {
+		for _, p := range peers {
+			if _, ok := values[p]["commited"]; ok {
+				commited = append(commited, values[p]["commited"].(uint64))
+			}
+		}
+		for i := range commited {
+			if commited[i] > leaderCommited {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+func getAssertStrongLeaderhipValues() map[string][]string {
+	peers := dinvRT.GetPeers()
+	values := make(map[string][]string)
+	for _, p := range peers {
+		values[p] = append(values[p], "commited")
+		values[p] = append(values[p], "leader")
+		values[p] = append(values[p], "id")
+	}
+	return values
 }
 
 func getAssertLeaderMatchingValues() map[string][]string {

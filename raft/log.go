@@ -23,21 +23,22 @@ import (
 
 type raftLog struct {
 	// storage contains all stable entries since the last snapshot.
-	storage	Storage
+	storage Storage
 
 	// unstable contains all unstable entries and snapshot.
 	// they will be saved into storage.
-	unstable	unstable
+	unstable unstable
 
 	// committed is the highest log position that is known to be in
 	// stable storage on a quorum of nodes.
-	committed	uint64
+	committed uint64
 	// applied is the highest log position that the application has
 	// been instructed to apply to its state machine.
 	// Invariant: applied <= committed
-	applied	uint64
+	// DINV :) yum invariants
+	applied uint64
 
-	logger	Logger
+	logger Logger
 }
 
 // newLog returns log using the given storage. It recovers the log to the state
@@ -47,16 +48,16 @@ func newLog(storage Storage, logger Logger) *raftLog {
 		log.Panic("storage must not be nil")
 	}
 	log := &raftLog{
-		storage:	storage,
-		logger:		logger,
+		storage: storage,
+		logger:  logger,
 	}
 	firstIndex, err := storage.FirstIndex()
 	if err != nil {
-		panic(err)	// TODO(bdarnell)
+		panic(err) // TODO(bdarnell)
 	}
 	lastIndex, err := storage.LastIndex()
 	if err != nil {
-		panic(err)	// TODO(bdarnell)
+		panic(err) // TODO(bdarnell)
 	}
 	log.unstable.offset = lastIndex + 1
 	log.unstable.logger = logger
@@ -168,7 +169,7 @@ func (l *raftLog) firstIndex() uint64 {
 	}
 	index, err := l.storage.FirstIndex()
 	if err != nil {
-		panic(err)	// TODO(bdarnell)
+		panic(err) // TODO(bdarnell)
 	}
 	return index
 }
@@ -179,7 +180,7 @@ func (l *raftLog) lastIndex() uint64 {
 	}
 	i, err := l.storage.LastIndex()
 	if err != nil {
-		panic(err)	// TODO(bdarnell)
+		panic(err) // TODO(bdarnell)
 	}
 	return i
 }
@@ -204,9 +205,9 @@ func (l *raftLog) appliedTo(i uint64) {
 	l.applied = i
 }
 
-func (l *raftLog) stableTo(i, t uint64)	{ l.unstable.stableTo(i, t) }
+func (l *raftLog) stableTo(i, t uint64) { l.unstable.stableTo(i, t) }
 
-func (l *raftLog) stableSnapTo(i uint64)	{ l.unstable.stableSnapTo(i) }
+func (l *raftLog) stableSnapTo(i uint64) { l.unstable.stableSnapTo(i) }
 
 func (l *raftLog) lastTerm() uint64 {
 	t, err := l.term(l.lastIndex())
@@ -235,7 +236,7 @@ func (l *raftLog) term(i uint64) (uint64, error) {
 	if err == ErrCompacted {
 		return 0, err
 	}
-	panic(err)	// TODO(bdarnell)
+	panic(err) // TODO(bdarnell)
 }
 
 func (l *raftLog) entries(i, maxsize uint64) ([]pb.Entry, error) {
@@ -251,7 +252,7 @@ func (l *raftLog) allEntries() []pb.Entry {
 	if err == nil {
 		return ents
 	}
-	if err == ErrCompacted {	// try again if there was a racing compaction
+	if err == ErrCompacted { // try again if there was a racing compaction
 		return l.allEntries()
 	}
 	// TODO (xiangli): handle error?
@@ -307,7 +308,7 @@ func (l *raftLog) slice(lo, hi, maxSize uint64) ([]pb.Entry, error) {
 		} else if err == ErrUnavailable {
 			l.logger.Panicf("entries[%d:%d) is unavailable from storage", lo, min(hi, l.unstable.offset))
 		} else if err != nil {
-			panic(err)	// TODO(bdarnell)
+			panic(err) // TODO(bdarnell)
 		}
 
 		// check if ents has reached the size limitation
