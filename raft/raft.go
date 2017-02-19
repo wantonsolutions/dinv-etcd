@@ -607,10 +607,11 @@ func (r *raft) Step(m pb.Message) error {
 	//dinvRT.Initalize(string((r.id%3)+65))
 	//Initialize assertable variables
 
-	fmt.Println(r.lead)
-	dinvRT.AddAssertable("leader", r.lead, nil)
-	dinvRT.AddAssertable("commited", r.raftLog.committed, nil)
-	dinvRT.AddAssertable("applied", r.raftLog.applied, nil)
+	//fmt.Println(r.lead)
+	dinvRT.AddAssertable("leader", &(r.lead), nil)
+	dinvRT.AddAssertable("commited", &(r.raftLog.committed), nil)
+	dinvRT.AddAssertable("applied", &(r.raftLog.applied), nil)
+	dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
 	///END DINV INIT
 	/////////////////////////////////////////////////////////////
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
@@ -1080,19 +1081,51 @@ func (r *raft) abortLeaderTransfer() {
 
 ///////DINV dinv DINV ASSERT FUNCTIONS //////////////////////
 func assertLeaderMatching(values map[string]map[string]interface{}) bool {
+	//fmt.Println("Asserting Leaders Match")
 	peers := dinvRT.GetPeers()
-	leaders := make([]uint64, 0)
-	fmt.Println(values)
+
+	//true if the leaders are actually a uint
+	leadersUint := false
+	leaders64 := make([]int64, 0)
+	leadersu64 := make([]uint64, 0)
+	//fmt.Println(values)
+
 	for _, p := range peers {
 		if _, ok := values[p]["leader"]; ok {
-			leaders = append(leaders, values[p]["leader"].(uint64))
+			//The inital value of leader is 0. When marshalling this
+			//via the assert library the 0 comes through as an int64.
+			//When the first leader is chosen it is set to a large
+			//random uint64. If I cast the 0 to uint64 I get an
+			//typecast error. If I cast the 9292391232939239 to an
+			//int64 I get a typecast error. I (stew) made this
+			//switching function to dynamically handle this issue
+			switch values[p]["leader"].(type) {
+			case int64:
+				leadersUint = false
+				leaders64 = append(leaders64, values[p]["leader"].(int64))
+			case uint64:
+				leadersUint = true
+				leadersu64 = append(leadersu64, values[p]["leader"].(uint64))
+			}
 		}
 	}
-	for i := range leaders {
-		for j := i; j < len(leaders); j++ {
-			if leaders[i] != leaders[j] {
-				fmt.Println("ASSERTION FAILURE: LEADERS DONT MATCH")
-				return false
+
+	if leadersUint {
+		for i := range leadersu64 {
+			for j := i; j < len(leadersu64); j++ {
+				if leadersu64[i] != leadersu64[j] {
+					fmt.Println("ASSERTION FAILURE: LEADERS DONT MATCH")
+					return false
+				}
+			}
+		}
+	} else {
+		for i := range leaders64 {
+			for j := i; j < len(leaders64); j++ {
+				if leaders64[i] != leaders64[j] {
+					fmt.Println("ASSERTION FAILURE: LEADERS DONT MATCH")
+					return false
+				}
 			}
 		}
 	}

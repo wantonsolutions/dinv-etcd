@@ -1,8 +1,9 @@
 #!/bin/bash
+./clean.sh
 sudo -E go install ../
 rm *.time
 rm *.txt
-./modcluster.sh 5 &
+./modcluster.sh 3 &
 sleep 3
 ./clientblast.sh kahn.in &
 sleep 15
