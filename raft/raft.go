@@ -26,6 +26,9 @@ import (
 	pb "github.com/coreos/etcd/raft/raftpb"
 )
 
+//templeader is used for assert attempts
+var TEMPLEADER uint64 = 555
+
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0
 const noLimit = math.MaxUint64
@@ -230,7 +233,14 @@ func newRaft(c *Config) *raft {
 		logger:           c.Logger,
 		checkQuorum:      c.CheckQuorum,
 	}
+	/////////////////////////////////////////////////////////////////////
+	//DINV dinv
+	//INITALIZATION ASSERT////////////////////////////////////////
 	//dinvRT.Initalize(string((r.id%3)+65))
+	//Initialize assertable variables
+	dinvRT.InitDistributedAssert("", nil, "raft")
+	///END DINV INIT
+	/////////////////////////////////////////////////////////////
 	r.rand = rand.New(rand.NewSource(int64(c.ID)))
 	for _, p := range peers {
 		r.prs[p] = &Progress{Next: 1, ins: newInflights(r.maxInflight)}
@@ -537,6 +547,7 @@ func (r *raft) becomeLeader() {
 	r.appendEntry(pb.Entry{Data: nil})
 	r.logger.Infof("%x became leader at term %d", r.id, r.Term)
 	//@Track
+	dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
 }
 
@@ -590,6 +601,18 @@ func (r *raft) Step(m pb.Message) error {
 			r.logger.Debugf("%x [term %d state %v] ignoring MsgTransferLeader to %x", r.id, r.Term, r.state, m.From)
 		}
 	}
+	/////////////////////////////////////////////////////////////////////
+	//DINV dinv
+	//INITALIZATION ASSERT////////////////////////////////////////
+	//dinvRT.Initalize(string((r.id%3)+65))
+	//Initialize assertable variables
+
+	fmt.Println(r.lead)
+	dinvRT.AddAssertable("leader", r.lead, nil)
+	dinvRT.AddAssertable("commited", r.raftLog.committed, nil)
+	dinvRT.AddAssertable("applied", r.raftLog.applied, nil)
+	///END DINV INIT
+	/////////////////////////////////////////////////////////////
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
 	/*
 		lcommit, err := r.raftLog.slice(r.raftLog.committed,r.raftLog.committed,1)
@@ -1054,3 +1077,35 @@ func (r *raft) sendTimeoutNow(to uint64) {
 func (r *raft) abortLeaderTransfer() {
 	r.leadTransferee = None
 }
+
+///////DINV dinv DINV ASSERT FUNCTIONS //////////////////////
+func assertLeaderMatching(values map[string]map[string]interface{}) bool {
+	peers := dinvRT.GetPeers()
+	leaders := make([]uint64, 0)
+	fmt.Println(values)
+	for _, p := range peers {
+		if _, ok := values[p]["leader"]; ok {
+			leaders = append(leaders, values[p]["leader"].(uint64))
+		}
+	}
+	for i := range leaders {
+		for j := i; j < len(leaders); j++ {
+			if leaders[i] != leaders[j] {
+				fmt.Println("ASSERTION FAILURE: LEADERS DONT MATCH")
+				return false
+			}
+		}
+	}
+	return true
+}
+
+func getAssertLeaderMatchingValues() map[string][]string {
+	peers := dinvRT.GetPeers()
+	values := make(map[string][]string)
+	for _, p := range peers {
+		values[p] = append(values[p], "leader")
+	}
+	return values
+}
+
+/////END DINV ASSERTIONS //////////////////////
