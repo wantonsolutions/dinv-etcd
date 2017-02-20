@@ -26,8 +26,8 @@ import (
 	pb "github.com/coreos/etcd/raft/raftpb"
 )
 
-//templeader is used for assert attempts
-var TEMPLEADER uint64 = 555
+//dinv added global variable, bad form but I need it
+var CommitedEntries []pb.Entry
 
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0
@@ -612,9 +612,13 @@ func (r *raft) Step(m pb.Message) error {
 	dinvRT.AddAssertable("commited", &(r.raftLog.committed), nil)
 	dinvRT.AddAssertable("applied", &(r.raftLog.applied), nil)
 	dinvRT.AddAssertable("id", &(r.id), nil)
-	dinvRT.AddAssertable("log", &(r.raftLog.unstable), nil)
-	dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
+	dinvRT.AddAssertable("log", &(CommitedEntries), nil)
+	UpdateCommitedEntries(r)
 	//dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
+	//dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
+	if rand.Int()%10 == 1 {
+		dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
+	}
 	///END DINV INIT
 	/////////////////////////////////////////////////////////////
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
@@ -1083,6 +1087,16 @@ func (r *raft) abortLeaderTransfer() {
 }
 
 ///////DINV dinv DINV ASSERT FUNCTIONS //////////////////////
+
+func getAssertLeaderMatchingValues() map[string][]string {
+	peers := dinvRT.GetPeers()
+	values := make(map[string][]string)
+	for _, p := range peers {
+		values[p] = append(values[p], "leader")
+	}
+	return values
+}
+
 func assertLeaderMatching(values map[string]map[string]interface{}) bool {
 	//fmt.Println("Asserting Leaders Match")
 	peers := dinvRT.GetPeers()
@@ -1133,6 +1147,17 @@ func assertLeaderMatching(values map[string]map[string]interface{}) bool {
 		}
 	}
 	return true
+}
+
+func getAssertStrongLeaderhipValues() map[string][]string {
+	peers := dinvRT.GetPeers()
+	values := make(map[string][]string)
+	for _, p := range peers {
+		values[p] = append(values[p], "commited")
+		values[p] = append(values[p], "leader")
+		values[p] = append(values[p], "id")
+	}
+	return values
 }
 
 func assertStrongLeadership(values map[string]map[string]interface{}) bool {
@@ -1186,24 +1211,113 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 	return true
 }
 
-func getAssertStrongLeaderhipValues() map[string][]string {
+func getAssertLogMatchingValues() map[string][]string {
 	peers := dinvRT.GetPeers()
 	values := make(map[string][]string)
 	for _, p := range peers {
-		values[p] = append(values[p], "commited")
-		values[p] = append(values[p], "leader")
-		values[p] = append(values[p], "id")
+		values[p] = append(values[p], "log")
 	}
 	return values
 }
-
-func getAssertLeaderMatchingValues() map[string][]string {
+func assertLogMatching(values map[string]map[string]interface{}) bool {
+	fmt.Println("Asserting Log Matching")
 	peers := dinvRT.GetPeers()
-	values := make(map[string][]string)
-	for _, p := range peers {
-		values[p] = append(values[p], "leader")
+	logs := make([][]pb.Entry, len(peers))
+	for i, p := range peers {
+		if _, ok := values[p]["log"]; ok {
+			intarray := values[p]["log"].([]interface{})
+			//fmt.Println(len(intarray))
+			for j := range intarray {
+				var entry pb.Entry
+				mapper := intarray[j].(map[interface{}]interface{})
+				//fmt.Println(mapper)
+				//Term
+				if _, ok := mapper["Term"]; ok {
+					switch mapper["Term"].(type) {
+					case int64:
+						entry.Term = uint64(mapper["Term"].(int64))
+					case uint64:
+						entry.Term = mapper["Term"].(uint64)
+					default:
+						continue
+					}
+				}
+				//Index
+				if _, ok := mapper["Index"]; ok {
+					switch mapper["Index"].(type) {
+					case int64:
+						entry.Index = uint64(mapper["Index"].(int64))
+					case uint64:
+						entry.Index = mapper["Index"].(uint64)
+					default:
+						continue
+					}
+				}
+				//Data
+				//entry.Data = mapper["Data"].([]byte)
+				if _, ok := mapper["Data"]; ok {
+					switch mapper["Data"].(type) {
+					case []byte:
+						entry.Data = mapper["Data"].([]byte)
+					case nil:
+						fmt.Printf("Why is the data nil %s", mapper)
+						continue
+					default:
+						fmt.Printf("Datatype :%s", mapper["Data"])
+					}
+				}
+				logs[i] = append(logs[i], entry)
+				fmt.Printf("Parsed Entry %s\n", entry.String())
+				//fmt.Println(intarray[j])
+				//fmt.Println(i)
+			}
+		}
 	}
-	return values
+	//At this point the logs have been converted to entry arrays.
+	//Now for each find the higest matching
+	fmt.Printf("MATCHING LOGS of size%d\n", len(logs))
+	for i := range logs {
+		for j := i + 1; j < len(logs); j++ {
+			if len(logs[i]) == 0 || len(logs[j]) == 0 {
+				fmt.Printf("one log has size zero")
+				continue
+			}
+			//check log matching
+			//find the min log len
+			min := len(logs[i]) - 1
+			if len(logs[j])-1 < min {
+				min = len(logs[j]) - 1
+			}
+			fmt.Printf("min :%d\n logs_i %d logs_j", min, len(logs[i]), len(logs[j]))
+			matched := false
+			for k := min; k >= 0; k-- {
+				fmt.Println(k)
+				fmt.Printf("E_i, %s\nE_j%s\n", logs[i][k].String(), logs[j][k].String())
+				//find the first occurance of a matching index and
+				//term
+				if logs[i][k].Index == logs[j][k].Index && logs[i][k].Term == logs[j][k].Term {
+					matched = true
+				}
+				//After finding the match all prior entries must be
+				//correct
+				if matched {
+					if logs[i][k].Index != logs[j][k].Index || logs[i][k].Term != logs[j][k].Term {
+						return false
+					}
+				}
+			}
+			return true
+		}
+	}
+	fmt.Println(logs)
+	return true
+}
+
+//Dinv function for grabbing state, grab the first 100 entries and
+//save it to a variable.
+func UpdateCommitedEntries(r *raft) {
+	CommitedEntries = r.raftLog.allEntries()
+	//fmt.Println(CommitedEntries)
 }
 
 /////END DINV ASSERTIONS //////////////////////
