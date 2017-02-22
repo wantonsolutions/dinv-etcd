@@ -17,7 +17,7 @@ export DINV_HOSTNAME
 export DINV_ASSERT_PEERS
 export DINV_ASSERT_LISTEN
 
-echo "test" > t
+echo "cmd $ETCDCMD infra $INFRA public $PUBLIC private $PRIVATE cluster $CLUSTER assert $DINV_ASSERT_PEERS" > lastConfig
 
 $ETCDCMD --name infra$INFRA --initial-advertise-peer-urls http://$PRIVATE:2380 \
   --listen-peer-urls http://$PRIVATE:2380 \
@@ -25,4 +25,4 @@ $ETCDCMD --name infra$INFRA --initial-advertise-peer-urls http://$PRIVATE:2380 \
   --advertise-client-urls http://$PRIVATE:2379 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-cluster $CLUSTER \
-  --initial-cluster-state new  &
+  --initial-cluster-state new
