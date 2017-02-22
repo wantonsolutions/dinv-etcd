@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "starting azure client"
 i=0
 for word in $(<$1)
 do
