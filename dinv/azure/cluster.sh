@@ -14,6 +14,7 @@ HOME=/home/stewart
 DINV=$HOME/go/src/bitbucket.org/bestchai/dinv
 ETCD=$HOME/go/src/github.com/coreos/etcd
 ETCDCMD=$HOME/go/src/github.com/coreos/etcd/bin/etcd
+AZURENODE=/dinv/azure/node.sh
 
 TEXT=kahn.in
 
@@ -24,38 +25,13 @@ TEXT=kahn.in
 #scp stewart@13.64.239.61:/home/stewart/azureinstall.sh astest
 
 
-CLUSTER="--initial-cluster infra0=http://$GLOBALS1:2380,infra1=http://$GLOBALS2:2380,infra2=http://$GLOBALS3:2380"
+CLUSTER="--initial-cluster infra0=http://$LOCALS1:2380,infra1=http://$LOCALS2:2380,infra2=http://$LOCALS3:2380"
 ASSERT="$LOCALS1:12000,$LOCALS2:12000,$LOCALS3:12000"
 
-ssh stewart@$GLOBALS1 -x "$ETCD/dinv/node.sh 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT" &
-ssh stewart@$GLOBALS2 -x "$ETCD/dinv/node.sh 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT" &
-ssh stewart@$GLOBALS3 -x "$ETCD/dinv/node.sh 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT" &
 
-:'
-ssh stewart@$LOCALS1 -x "$ETCDCMD --name infra0 --initial-advertise-peer-urls http://$GLOBALS1:2380 \
-  --listen-peer-urls http://$GLOBALS1:2380 \
-  --listen-client-urls http://$GLOBALS1:2379,http://$LOCAL:2379 \
-  --advertise-client-urls http://$GLOBALS1:2379 \
-  --initial-cluster-token etcd-cluster-1 \
-  --initial-cluster infra0=http://$GLOBALS1:2380,infra1=http://$GLOBALS2:2380,infra2=http://$GLOBALS3:2380 \
-  --initial-cluster-state new " &
 
-ssh stewart@$LOCALS2 -x "$ETCDCMD --name infra1 --initial-advertise-peer-urls http://$GLOBALS2:2380 \
-  --listen-peer-urls http://$GLOBALS2:2380 \
-  --listen-client-urls http://$GLOBALS2:2379,http://$LOCAL:2379 \
-  --advertise-client-urls http://$GLOBALS2:2379 \
-  --initial-cluster-token etcd-cluster-1 \
-  --initial-cluster infra0=http://$GLOBALS1:2380,infra1=http://$GLOBALS2:2380,infra2=http://$GLOBALS3:2380 \
-  --initial-cluster-state new " &
-
-ssh stewart@$LOCALS3 -x "$ETCDCMD --name infra2 --initial-advertise-peer-urls http://$GLOBALS3:2380 \
-  --listen-peer-urls http://$GLOBALS3:2380 \
-  --listen-client-urls http://$GLOBALS3:2379,http://$LOCAL:2379 \
-  --advertise-client-urls http://$GLOBALS3:2379 \
-  --initial-cluster-token etcd-cluster-1 \
-  --initial-cluster infra0=http://$GLOBALS1:2380,infra1=http://$GLOBALS2:2380,infra2=http://$GLOBALS3:2380 \
-  --initial-cluster-state new" &
-
-ssh stewart@$LOCALS3 -x "$ETCD/dinv/azureBlast.sh $TEXT $GLOBALS1"
-'
-sleep 5
+ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE"
+#ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT" 
+echo "ssh stewart@$GLOBALS1 -x $ETCD/$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT"
+#ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT" &
+#ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT" &

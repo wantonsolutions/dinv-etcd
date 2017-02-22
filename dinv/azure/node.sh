@@ -17,6 +17,8 @@ export DINV_HOSTNAME
 export DINV_ASSERT_PEERS
 export DINV_ASSERT_LISTEN
 
+echo "test" > t
+
 $ETCDCMD --name infra$INFRA --initial-advertise-peer-urls http://$PRIVATE:2380 \
   --listen-peer-urls http://$PRIVATE:2380 \
   --listen-client-urls http://$PRIVATE:2379,http://127.0.0.1:2379 \
