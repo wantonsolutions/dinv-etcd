@@ -1,53 +1,147 @@
 #!/bin/bash
 
+#Author Stewart Grant
+#Feb 2016
+#FSE deadline push
+
+#This script mannages running etcd clusters on azure. The clusters are
+#run in vm's which are ssh'd into. The names of all of the VMs are
+#abbrivated below #Etcd is launched along with a client that makes puts
+#and gets. After a predetermined ammount of time the cluster is killed
+#and the logs are retrieved via scp.
 
 
-
+#VM's their public and private IP's
 #stewart-test-1
-LOCALS1=10.0.1.4
-GLOBALS1=52.228.27.112
+ST1G=52.228.27.112
+ST1P=10.0.1.4
 #stewart-test-2
-GLOBALS2=52.228.32.101
-LOCALS2=10.0.1.5
+ST2G=52.228.32.101
+ST2P=10.0.1.5
 #stewart
-GLOBALS3=13.64.239.61
-LOCALS3=10.0.0.4
+S1G=13.64.239.61
+S1P=10.0.0.4
+#stewart2
+S2G=13.64.247.122
+S2P=10.0.0.5
+#stewart3
+S3G=13.64.242.139
+S3P=10.0.0.6
 
-HOME=/home/stewart
-DINV=$HOME/go/src/bitbucket.org/bestchai/dinv
-ETCD=$HOME/go/src/github.com/coreos/etcd
-ETCDCMD=$HOME/go/src/github.com/coreos/etcd/bin/etcd
+
+#map a subset of the VM's to the current cluster
+GLOBALS1=$S1G
+LOCALS1=$S1P
+GLOBALS2=$S2G
+LOCALS2=$S2P
+GLOBALS3=$S3G
+LOCALS3=$S3P
+
+#GLOBAL information true of all VMs
+HOMEA=/home/stewart
+DINV=$HOMEA/go/src/bitbucket.org/bestchai/dinv
+ETCD=$HOMEA/go/src/github.com/coreos/etcd
+ETCDCMD=$HOMEA/go/src/github.com/coreos/etcd/bin/etcd
 AZURENODE=/dinv/azure/node.sh
+CLIENT=/dinv/azure/blast.sh
+
+#LOCAL
+DINVDIR=/home/stewartgrant/go/src/bitbucket.org/bestchai/dinv
+
 
 TEXT=kahn.in
+
+USAGE="USAGE\n-k kill all nodes in the cluster\n-p pull from etcd-dinv repo\n-l logmerger\n-d Daikon\n-c clean"
 
 function onall {
     ssh stewart@$GLOBALS1 -x $1
     ssh stewart@$GLOBALS2 -x $1
     ssh stewart@$GLOBALS3 -x $1
+    ssh stewart@$ST1G -x $1
+    ssh stewart@$ST2G -x $1
+    ssh stewart@$SG -x $1
+    ssh stewart@$S2G -x $1
+    ssh stewart@$S3G -x $1
 }
 
+#kill all the nodes
 if [ "$1" == "-k" ];then
     echo kill
     onall "killall etcd"
     exit
 fi
 
-#Example execute ssh 
-#ssh stewart@13.64.239.61 -x "mkdir test"
+#have all the nodes pull new code
+if [ "$1" == "-p" ];then
+    echo pull
+    onall "cd $ETCD && git pull"
+    exit
+fi
 
-#Example execute scp
-#scp stewart@13.64.239.61:/home/stewart/azureinstall.sh astest
+#run logmerger
+if [ "$1" == "-l" ];then
+    $DINVDIR/examples/lib.sh runLogMerger
+    exit
+fi
+
+#run daikon
+if [ "$1" == "-d" ];then
+    $DINVDIR/examples/lib.sh runDaikon
+    exit
+fi
+
+#clean
+if [ "$1" == "-c" ];then
+    echo clean
+    $DINVDIR/examples/lib.sh clean
+    exit
+fi
 
 
-CLUSTER="infra0=http://$LOCALS1:2380,infra1=http://$LOCALS2:2380,infra2=http://$LOCALS3:2380"
-ASSERT="$LOCALS1:12000,$LOCALS2:12000,$LOCALS3:12000"
+if [ "$1" == "-r" ];then
+    echo run
+
+    #Example execute ssh 
+    #ssh stewart@13.64.239.61 -x "mkdir test"
+
+    #Example execute scp
+    #scp stewart@13.64.239.61:/home/stewart/azureinstall.sh astest
+
+    #LOCAL CLUSTER
+    CLUSTER="infra0=http://$LOCALS1:2380,infra1=http://$LOCALS2:2380,infra2=http://$LOCALS3:2380"
+    ASSERT="$LOCALS1:12000,$LOCALS2:12000,$LOCALS3:12000"
+    ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT" &
+    ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT" &
+    ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT" &
+
+    #GLOBAL CLUSTER
+    #CLUSTER="infra0=http://$GLOBALS1:2380,infra1=http://$GLOBALS2:2380,infra2=http://$GLOBALS3:2380"
+    #ASSERT="$GLOBALS1:12000,$GLOBALS2:12000,$GLOBALS3:12000"
+    #ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $GLOBALS1 $CLUSTER $ASSERT" &
+    #ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $GLOBALS2 $CLUSTER $ASSERT" &
+    #ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $GLOBALS3 $CLUSTER $ASSERT" &
+
+    #run the client on on the same node it's sending to
+    ssh stewart@$GLOBALS1 -x "$ETCD$CLIENT $TEXT $GLOBALS1" &
+
+    #run the client on a node seperate from the one receving
+    #ssh stewart@$GLOBALS1 -x "$ETCD$CLIENT $TEXT $GLOBALS2" &
+
+    #wait for the test to run
 
 
+    sleep 30
 
-ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT" &
-ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT" &
-ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT" &
+    #kill allthe hosts
+    echo kill
+    onall "killall etcd"
+    onall "killall blast"
 
+    scp stewart@$GLOBALS1:/home/stewart/*.txt ./
+    scp stewart@$GLOBALS2:/home/stewart/*.txt ./
+    scp stewart@$GLOBALS3:/home/stewart/*.txt ./
+    echo DONE!
+    exit
+fi
 
-
+echo -e $USAGE

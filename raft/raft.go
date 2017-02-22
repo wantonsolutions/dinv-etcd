@@ -416,6 +416,7 @@ func (r *raft) maybeCommit() bool {
 	}
 	sort.Sort(sort.Reverse(mis))
 	mci := mis[r.quorum()-1]
+	//DB1 potential injection site (return true)
 	return r.raftLog.maybeCommit(mci, r.Term)
 }
 
@@ -617,7 +618,7 @@ func (r *raft) Step(m pb.Message) error {
 	//dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
 	//dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
 	if rand.Int()%10 == 1 {
-		dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
+		//dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
 	}
 	///END DINV INIT
 	/////////////////////////////////////////////////////////////
