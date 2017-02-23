@@ -82,7 +82,7 @@ fi
 #run logmerger
 if [ "$1" == "-l" ];then
     sudo -E go install ../../../../../bitbucket.org/bestchai/dinv
-    $DINVDIR/examples/lib.sh runLogMerger -shiviz
+    $DINVDIR/examples/lib.sh runLogMerger -plan=SCM -shiviz
     exit
 fi
 
@@ -132,7 +132,7 @@ if [ "$1" == "-r" ];then
     #wait for the test to run
 
 
-    sleep 30
+    sleep 15
 
     #kill allthe hosts
     echo kill
