@@ -74,6 +74,8 @@ fi
 
 #have all the nodes pull new code
 if [ "$1" == "-p" ];then
+    echo clean
+    $DINVDIR/examples/lib.sh clean
     echo push
     cd ../../
     git add --all
