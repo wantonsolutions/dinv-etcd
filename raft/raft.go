@@ -32,7 +32,7 @@ var CommitedEntries []pb.Entry
 //dinv assert stuff
 //dinv asserts and bugs
 var (
-	DOASSERT = false
+	DOASSERT = true
 	//asserts
 	StrongLeaderAssert    = false
 	LogMatchingAssert     = false
@@ -444,6 +444,7 @@ func (r *raft) maybeCommit() bool {
 	//DB1 First Attempt Bug Injection site
 	if DB1 == true {
 		if r.id == F2 {
+			r.logger.Info("Trying to break the logs")
 			return r.raftLog.maybeCommit(r.raftLog.applied, r.Term)
 		}
 	}
@@ -908,7 +909,6 @@ func stepCandidate(r *raft, m pb.Message) {
 }
 
 func stepFollower(r *raft, m pb.Message) {
-	r.logger.Info("my id %d\n", r.id)
 	switch m.Type {
 	case pb.MsgProp:
 		if r.lead == None {
