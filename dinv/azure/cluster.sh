@@ -54,14 +54,14 @@ TEXT=kahn.in
 USAGE="USAGE\n-k kill all nodes in the cluster\n-p pull from etcd-dinv repo\n-l logmerger\n-d Daikon\n-c clean"
 
 function onall {
-    ssh stewart@$GLOBALS1 -x $1
-    ssh stewart@$GLOBALS2 -x $1
-    ssh stewart@$GLOBALS3 -x $1
-    ssh stewart@$ST1G -x $1
-    ssh stewart@$ST2G -x $1
-    ssh stewart@$SG -x $1
-    ssh stewart@$S2G -x $1
-    ssh stewart@$S3G -x $1
+    ssh stewart@$GLOBALS1 -x $1 &
+    ssh stewart@$GLOBALS2 -x $1 &
+    ssh stewart@$GLOBALS3 -x $1 &
+    ssh stewart@$ST1G -x $1 &
+    ssh stewart@$ST2G -x $1 &
+    ssh stewart@$SG -x $1 &
+    ssh stewart@$S2G -x $1 &
+    ssh stewart@$S3G -x $1 &
 }
 
 #kill all the nodes
@@ -74,12 +74,13 @@ fi
 #have all the nodes pull new code
 if [ "$1" == "-p" ];then
     echo pull
-    onall "cd $ETCD && git pull"
+    onall "cd $ETCD && git pull && ./build ; cd $DINV && hg pull"
     exit
 fi
 
 #run logmerger
 if [ "$1" == "-l" ];then
+    sudo -E go install ../../../../../bitbucket.org/bestchai/dinv
     $DINVDIR/examples/lib.sh runLogMerger
     exit
 fi
