@@ -446,9 +446,8 @@ func (r *raft) maybeCommit() bool {
 		if r.id == F2 {
 			return r.raftLog.maybeCommit(r.raftLog.applied, r.Term)
 		}
-	} else {
-		return r.raftLog.maybeCommit(mci, r.Term)
 	}
+	return r.raftLog.maybeCommit(mci, r.Term)
 }
 
 func (r *raft) reset(term uint64) {
