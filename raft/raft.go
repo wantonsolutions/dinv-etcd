@@ -49,10 +49,10 @@ var (
 	DB3 = false
 
 	//NODE IDS
-	F1 =7362438363220176534
+	F1 = 7362438363220176534
 	F2 = 15174457587357059016
-	L = 7362438363220176896
-}
+	L  = 7362438363220176896
+)
 
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0
@@ -443,7 +443,7 @@ func (r *raft) maybeCommit() bool {
 	mci := mis[r.quorum()-1]
 	//DB1 First Attempt Bug Injection site
 	if DB1 == true {
-		if r.id = F2 {
+		if r.id == F2 {
 			return r.raftLog.maybeCommit(r.raftLog.applied, r.Term)
 		}
 	} else {
