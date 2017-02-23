@@ -49,9 +49,9 @@ var (
 	DB3 = false
 
 	//NODE IDS
-	F1 = 7362438363220176534
-	F2 = 15174457587357059016
-	L  = 7362438363220176896
+	F1 = int64(7362438363220176534)
+	F2 = int64(15174457587357059016)
+	L  = int64(7362438363220176896)
 )
 
 // None is a placeholder node ID used when there is no leader.
