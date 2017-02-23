@@ -40,7 +40,7 @@ var (
 	///bugs
 	//strong leadership bug, one of the hosts will commit without
 	//waiting for the leader to tell them to commit
-	DB1 = false
+	DB1 = true
 	//Log matching bug, a node will inject a false entry past the wall
 	//of committed bugs
 	DB2 = false
@@ -49,9 +49,9 @@ var (
 	DB3 = false
 
 	//NODE IDS
-	F1 = int64(7362438363220176534)
-	F2 = int64(15174457587357059016)
-	L  = int64(7362438363220176896)
+	F1 = uint64(7362438363220176534)
+	F2 = uint64(15174457587357059016)
+	L  = uint64(7362438363220176896)
 )
 
 // None is a placeholder node ID used when there is no leader.
