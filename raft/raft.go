@@ -52,6 +52,7 @@ var (
 	F1 =7362438363220176534
 	F2 = 15174457587357059016
 	L = 7362438363220176896
+}
 
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0
