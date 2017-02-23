@@ -47,7 +47,11 @@ var (
 	//Leadership agreement failure, a node will randomly elect itelf a
 	//leader upon becomming a follower.
 	DB3 = false
-)
+
+	//NODE IDS
+	F1 =7362438363220176534
+	F2 = 15174457587357059016
+	L = 7362438363220176896
 
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0
@@ -436,8 +440,14 @@ func (r *raft) maybeCommit() bool {
 	}
 	sort.Sort(sort.Reverse(mis))
 	mci := mis[r.quorum()-1]
-	//DB1 potential injection site (return true)
-	return r.raftLog.maybeCommit(mci, r.Term)
+	//DB1 First Attempt Bug Injection site
+	if DB1 == true {
+		if r.id = F2 {
+			return r.raftLog.maybeCommit(r.raftLog.applied, r.Term)
+		}
+	} else {
+		return r.raftLog.maybeCommit(mci, r.Term)
+	}
 }
 
 func (r *raft) reset(term uint64) {
