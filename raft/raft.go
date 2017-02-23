@@ -443,8 +443,8 @@ func (r *raft) maybeCommit() bool {
 	mci := mis[r.quorum()-1]
 	//DB1 First Attempt Bug Injection site
 	if DB1 == true {
-		if r.id == F2 {
-			r.logger.Info("Trying to break the logs")
+		if r.id != r.lead {
+			fmt.Println("Trying to break the logs")
 			return r.raftLog.maybeCommit(r.raftLog.applied, r.Term)
 		}
 	}

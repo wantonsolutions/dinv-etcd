@@ -68,7 +68,7 @@ function onall {
 #kill all the nodes
 if [ "$1" == "-k" ];then
     echo kill
-    onall "killall etcd"
+    onall "killall etcd; killall blast.sh"
     exit
 fi
 
