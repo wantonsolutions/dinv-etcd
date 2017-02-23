@@ -42,6 +42,7 @@ HOMEA=/home/stewart
 DINV=$HOMEA/go/src/bitbucket.org/bestchai/dinv
 ETCD=$HOMEA/go/src/github.com/coreos/etcd
 ETCDCMD=$HOMEA/go/src/github.com/coreos/etcd/bin/etcd
+ETCDCTL=$HOMEA/go/src/github.com/coreos/etcd/bin/etcdctl
 AZURENODE=/dinv/azure/node.sh
 CLIENT=/dinv/azure/blast.sh
 
@@ -49,7 +50,7 @@ CLIENT=/dinv/azure/blast.sh
 DINVDIR=/home/stewartgrant/go/src/bitbucket.org/bestchai/dinv
 
 
-TEXT=kahn.in
+TEXT=$ETCD/dinv/kahn.in
 
 USAGE="USAGE\n-k kill all nodes in the cluster\n-p pull from etcd-dinv repo\n-l logmerger\n-d Daikon\n-c clean"
 
@@ -81,7 +82,7 @@ fi
 #run logmerger
 if [ "$1" == "-l" ];then
     sudo -E go install ../../../../../bitbucket.org/bestchai/dinv
-    $DINVDIR/examples/lib.sh runLogMerger
+    $DINVDIR/examples/lib.sh runLogMerger -shiviz
     exit
 fi
 
@@ -121,12 +122,12 @@ if [ "$1" == "-r" ];then
     #ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $GLOBALS1 $CLUSTER $ASSERT" &
     #ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $GLOBALS2 $CLUSTER $ASSERT" &
     #ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $GLOBALS3 $CLUSTER $ASSERT" &
-
+    sleep 5
     #run the client on on the same node it's sending to
-    ssh stewart@$GLOBALS1 -x "$ETCD$CLIENT $TEXT $GLOBALS1" &
+    ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
 
     #run the client on a node seperate from the one receving
-    #ssh stewart@$GLOBALS1 -x "$ETCD$CLIENT $TEXT $GLOBALS2" &
+    #ssh stewart@$GLOBALS1 -x "$ETCD$CLIENT $TEXT $LOCALSS2" &
 
     #wait for the test to run
 
