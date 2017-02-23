@@ -29,6 +29,26 @@ import (
 //dinv added global variable, bad form but I need it
 var CommitedEntries []pb.Entry
 
+//dinv assert stuff
+//dinv asserts and bugs
+var (
+	DOASSERT = false
+	//asserts
+	StrongLeaderAssert    = false
+	LogMatchingAssert     = false
+	LeaderAgreementAssert = false
+	///bugs
+	//strong leadership bug, one of the hosts will commit without
+	//waiting for the leader to tell them to commit
+	DB1 = false
+	//Log matching bug, a node will inject a false entry past the wall
+	//of committed bugs
+	DB2 = false
+	//Leadership agreement failure, a node will randomly elect itelf a
+	//leader upon becomming a follower.
+	DB3 = false
+)
+
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0
 const noLimit = math.MaxUint64
@@ -236,9 +256,9 @@ func newRaft(c *Config) *raft {
 	/////////////////////////////////////////////////////////////////////
 	//DINV dinv
 	//INITALIZATION ASSERT////////////////////////////////////////
-	//dinvRT.Initalize(string((r.id%3)+65))
-	//Initialize assertable variables
-	dinvRT.InitDistributedAssert("", nil, "raft")
+	if DOASSERT {
+		dinvRT.InitDistributedAssert("", nil, "raft")
+	}
 	///END DINV INIT
 	/////////////////////////////////////////////////////////////
 	r.rand = rand.New(rand.NewSource(int64(c.ID)))
@@ -609,17 +629,23 @@ func (r *raft) Step(m pb.Message) error {
 	//dinvRT.Initalize(string((r.id%3)+65))
 	//Initialize assertable variables
 	//fmt.Println(r.lead)
-	dinvRT.AddAssertable("leader", &(r.lead), nil)
-	dinvRT.AddAssertable("commited", &(r.raftLog.committed), nil)
-	dinvRT.AddAssertable("applied", &(r.raftLog.applied), nil)
-	dinvRT.AddAssertable("id", &(r.id), nil)
-	dinvRT.AddAssertable("log", &(CommitedEntries), nil)
-	UpdateCommitedEntries(r)
-	//dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
-	//dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
-	if rand.Int()%10 == 1 {
-		//dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
+	if DOASSERT {
+		dinvRT.AddAssertable("leader", &(r.lead), nil)
+		dinvRT.AddAssertable("commited", &(r.raftLog.committed), nil)
+		dinvRT.AddAssertable("applied", &(r.raftLog.applied), nil)
+		dinvRT.AddAssertable("id", &(r.id), nil)
+		dinvRT.AddAssertable("log", &(CommitedEntries), nil)
+		if LeaderAgreementAssert {
+			dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
+		}
+		if StrongLeaderAssert {
+			dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
+		}
+		if LogMatchingAssert && rand.Int()%10 == 1 {
+			dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
+		}
 	}
+	UpdateCommitedEntries(r)
 	///END DINV INIT
 	/////////////////////////////////////////////////////////////
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
