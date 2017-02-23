@@ -646,7 +646,7 @@ func (r *raft) Step(m pb.Message) error {
 		dinvRT.AddAssertable("applied", &(r.raftLog.applied), nil)
 		dinvRT.AddAssertable("id", &(r.id), nil)
 		dinvRT.AddAssertable("log", &(CommitedEntries), nil)
-		if LeaderAgreementAssert {
+		if LeaderAgreementAssert rant.Int()%100 == 1{
 			r.logger.Info("Asserting Leader Matching")
 			dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
 		}
