@@ -34,7 +34,7 @@ var CommitedEntries []pb.Entry
 var (
 	DOASSERT = true
 	//asserts
-	StrongLeaderAssert    = false
+	StrongLeaderAssert    = true
 	LogMatchingAssert     = false
 	LeaderAgreementAssert = false
 	///bugs
@@ -647,6 +647,7 @@ func (r *raft) Step(m pb.Message) error {
 		dinvRT.AddAssertable("id", &(r.id), nil)
 		dinvRT.AddAssertable("log", &(CommitedEntries), nil)
 		if LeaderAgreementAssert {
+			r.logger.Info("Asserting Leader Matching")
 			dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
 		}
 		if StrongLeaderAssert {

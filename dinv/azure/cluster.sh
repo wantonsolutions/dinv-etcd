@@ -88,7 +88,7 @@ fi
 #run logmerger
 if [ "$1" == "-l" ];then
     sudo -E go install ../../../../../bitbucket.org/bestchai/dinv
-    $DINVDIR/examples/lib.sh runLogMerger -plan=SCM -shiviz
+    $DINVDIR/examples/lib.sh runLogMerger "-plan=SCM -shiviz"
     exit
 fi
 
