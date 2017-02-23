@@ -16,6 +16,7 @@ package raft
 
 import (
 	"errors"
+	"math/rand"
 	"sync"
 
 	pb "github.com/coreos/etcd/raft/raftpb"
@@ -77,10 +78,10 @@ type MemoryStorage struct {
 	// goroutine.
 	sync.Mutex
 
-	hardState	pb.HardState
-	snapshot	pb.Snapshot
+	hardState pb.HardState
+	snapshot  pb.Snapshot
 	// ents[i] has raft log position i+snapshot.Metadata.Index
-	ents	[]pb.Entry
+	ents []pb.Entry
 }
 
 // NewMemoryStorage creates an empty MemoryStorage.
@@ -255,6 +256,17 @@ func (ms *MemoryStorage) Append(entries []pb.Entry) error {
 	default:
 		raftLogger.Panicf("missing log entry [last: %d, append at: %d]",
 			ms.lastIndex(), entries[0].Index)
+	}
+	//DB2 Log matching bug
+	if DB2 {
+		//fmt.Println("ENTERING THE BUG")
+		var bug byte
+		if len(ms.ents) > 20 {
+			bugInt := rand.Int() % 1000
+			bug = byte(uint8(bugInt & 0xff))
+			ms.ents[15].Data[0] = bug
+			//fmt.Printf("Injecting Bug! %d\n", bug)
+		}
 	}
 	return nil
 }

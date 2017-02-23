@@ -24,22 +24,22 @@ import (
 type SnapshotStatus int
 
 const (
-	SnapshotFinish	SnapshotStatus	= 1
-	SnapshotFailure	SnapshotStatus	= 2
+	SnapshotFinish  SnapshotStatus = 1
+	SnapshotFailure SnapshotStatus = 2
 )
 
 var (
-	emptyState	= pb.HardState{}
+	emptyState = pb.HardState{}
 
 	// ErrStopped is returned by methods on Nodes that have been stopped.
-	ErrStopped	= errors.New("raft: stopped")
+	ErrStopped = errors.New("raft: stopped")
 )
 
 // SoftState provides state that is useful for logging and debugging.
 // The state is volatile and does not need to be persisted to the WAL.
 type SoftState struct {
-	Lead		uint64
-	RaftState	StateType
+	Lead      uint64
+	RaftState StateType
 }
 
 func (a *SoftState) equal(b *SoftState) bool {
@@ -68,21 +68,21 @@ type Ready struct {
 
 	// Entries specifies entries to be saved to stable storage BEFORE
 	// Messages are sent.
-	Entries	[]pb.Entry
+	Entries []pb.Entry
 
 	// Snapshot specifies the snapshot to be saved to stable storage.
-	Snapshot	pb.Snapshot
+	Snapshot pb.Snapshot
 
 	// CommittedEntries specifies entries to be committed to a
 	// store/state-machine. These have previously been committed to stable
 	// store.
-	CommittedEntries	[]pb.Entry
+	CommittedEntries []pb.Entry
 
 	// Messages specifies outbound messages to be sent AFTER Entries are
 	// committed to stable storage.
 	// If it contains a MsgSnap message, the application MUST report back to raft
 	// when the snapshot has been received or has failed by calling ReportSnapshot.
-	Messages	[]pb.Message
+	Messages []pb.Message
 }
 
 func isHardStateEqual(a, b pb.HardState) bool {
@@ -168,8 +168,8 @@ type Node interface {
 }
 
 type Peer struct {
-	ID	uint64
-	Context	[]byte
+	ID      uint64
+	Context []byte
 }
 
 // StartNode returns a new Node given configuration and a list of raft peers.
@@ -226,35 +226,35 @@ func RestartNode(c *Config) Node {
 
 // node is the canonical implementation of the Node interface
 type node struct {
-	propc		chan pb.Message
-	recvc		chan pb.Message
-	confc		chan pb.ConfChange
-	confstatec	chan pb.ConfState
-	readyc		chan Ready
-	advancec	chan struct{}
-	tickc		chan struct{}
-	done		chan struct{}
-	stop		chan struct{}
-	status		chan chan Status
+	propc      chan pb.Message
+	recvc      chan pb.Message
+	confc      chan pb.ConfChange
+	confstatec chan pb.ConfState
+	readyc     chan Ready
+	advancec   chan struct{}
+	tickc      chan struct{}
+	done       chan struct{}
+	stop       chan struct{}
+	status     chan chan Status
 
-	logger	Logger
+	logger Logger
 }
 
 func newNode() node {
 	return node{
-		propc:		make(chan pb.Message),
-		recvc:		make(chan pb.Message),
-		confc:		make(chan pb.ConfChange),
-		confstatec:	make(chan pb.ConfState),
-		readyc:		make(chan Ready),
-		advancec:	make(chan struct{}),
+		propc:      make(chan pb.Message),
+		recvc:      make(chan pb.Message),
+		confc:      make(chan pb.ConfChange),
+		confstatec: make(chan pb.ConfState),
+		readyc:     make(chan Ready),
+		advancec:   make(chan struct{}),
 		// make tickc a buffered chan, so raft node can buffer some ticks when the node
 		// is busy processing raft messages. Raft node will resume process buffered
 		// ticks when it becomes idle.
-		tickc:	make(chan struct{}, 128),
-		done:	make(chan struct{}),
-		stop:	make(chan struct{}),
-		status:	make(chan chan Status),
+		tickc:  make(chan struct{}, 128),
+		done:   make(chan struct{}),
+		stop:   make(chan struct{}),
+		status: make(chan chan Status),
 	}
 }
 
@@ -320,7 +320,7 @@ func (n *node) run(r *raft) {
 		case m := <-n.recvc:
 			// filter out response message from unknown From.
 			if _, ok := r.prs[m.From]; ok || !IsResponseMsg(m.Type) {
-				r.Step(m)	// raft never returns an error
+				r.Step(m) // raft never returns an error
 			}
 		case cc := <-n.confc:
 			if cc.NodeID == None {
@@ -375,6 +375,8 @@ func (n *node) run(r *raft) {
 		case <-advancec:
 			if prevHardSt.Commit != 0 {
 				r.raftLog.appliedTo(prevHardSt.Commit)
+				//fmt.Println("Appling at node level")
+				//r.raftLog.appliedTo(r.raftLog.applied + 1)
 			}
 			if havePrevLastUnstablei {
 				r.raftLog.stableTo(prevLastUnstablei, prevLastUnstablet)
@@ -402,7 +404,7 @@ func (n *node) Tick() {
 	}
 }
 
-func (n *node) Campaign(ctx context.Context) error	{ return n.step(ctx, pb.Message{Type: pb.MsgHup}) }
+func (n *node) Campaign(ctx context.Context) error { return n.step(ctx, pb.Message{Type: pb.MsgHup}) }
 
 func (n *node) Propose(ctx context.Context, data []byte) error {
 	return n.step(ctx, pb.Message{Type: pb.MsgProp, Entries: []pb.Entry{{Data: data}}})
@@ -443,7 +445,7 @@ func (n *node) step(ctx context.Context, m pb.Message) error {
 	}
 }
 
-func (n *node) Ready() <-chan Ready	{ return n.readyc }
+func (n *node) Ready() <-chan Ready { return n.readyc }
 
 func (n *node) Advance() {
 	select {
@@ -493,9 +495,9 @@ func (n *node) ReadIndex(ctx context.Context, id uint64, rctx []byte) error {
 
 func newReady(r *raft, prevSoftSt *SoftState, prevHardSt pb.HardState) Ready {
 	rd := Ready{
-		Entries:		r.raftLog.unstableEntries(),
-		CommittedEntries:	r.raftLog.nextEnts(),
-		Messages:		r.msgs,
+		Entries:          r.raftLog.unstableEntries(),
+		CommittedEntries: r.raftLog.nextEnts(),
+		Messages:         r.msgs,
 	}
 	if softSt := r.softState(); !softSt.equal(prevSoftSt) {
 		rd.SoftState = softSt

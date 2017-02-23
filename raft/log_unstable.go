@@ -22,12 +22,12 @@ import pb "github.com/coreos/etcd/raft/raftpb"
 // might need to truncate the log before persisting unstable.entries.
 type unstable struct {
 	// the incoming unstable snapshot, if any.
-	snapshot	*pb.Snapshot
+	snapshot *pb.Snapshot
 	// all entries that have not yet been written to storage.
-	entries	[]pb.Entry
-	offset	uint64
+	entries []pb.Entry
+	offset  uint64
 
-	logger	Logger
+	logger Logger
 }
 
 // maybeFirstIndex returns the index of the first possible entry in entries
@@ -106,9 +106,11 @@ func (u *unstable) truncateAndAppend(ents []pb.Entry) {
 	case after == u.offset+uint64(len(u.entries)):
 		// after is the next index in the u.entries
 		// directly append
+		//fmt.Printf("directly appending %s in LOG_UNSTABLE", string(ents[0].Data))
 		u.entries = append(u.entries, ents...)
 	case after <= u.offset:
 		u.logger.Infof("replace the unstable entries from index %d", after)
+		//fmt.Printf("replace appending %s in LOG_UNSTABLE", string(ents[0].Data))
 		// The log is being truncated to before our current offset
 		// portion, so set the offset and replace the entries
 		u.offset = after
@@ -117,6 +119,7 @@ func (u *unstable) truncateAndAppend(ents []pb.Entry) {
 		// truncate to after and copy to u.entries
 		// then append
 		u.logger.Infof("truncate the unstable entries before index %d", after)
+		//fmt.Printf("trucate %s in LOG_UNSTABLE", string(ents[0].Data))
 		u.entries = append([]pb.Entry{}, u.slice(u.offset, after)...)
 		u.entries = append(u.entries, ents...)
 	}

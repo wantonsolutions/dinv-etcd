@@ -34,16 +34,21 @@ var CommitedEntries []pb.Entry
 var (
 	DOASSERT = true
 	//asserts
-	StrongLeaderAssert    = true
-	LogMatchingAssert     = false
+	StrongLeaderAssert = false
+	leaderCommited     uint64
+	leaderApplied      uint64
+	rid                uint64
+	lid                uint64
+
+	LogMatchingAssert     = true
 	LeaderAgreementAssert = false
 	///bugs
 	//strong leadership bug, one of the hosts will commit without
 	//waiting for the leader to tell them to commit
-	DB1 = true
+	DB1 = false
 	//Log matching bug, a node will inject a false entry past the wall
 	//of committed bugs
-	DB2 = false
+	DB2 = true
 	//Leadership agreement failure, a node will randomly elect itelf a
 	//leader upon becomming a follower.
 	DB3 = false
@@ -441,12 +446,13 @@ func (r *raft) maybeCommit() bool {
 	}
 	sort.Sort(sort.Reverse(mis))
 	mci := mis[r.quorum()-1]
-	//DB1 First Attempt Bug Injection site
-	if DB1 == true {
-		if r.id != r.lead {
-			fmt.Println("Trying to break the logs")
-			return r.raftLog.maybeCommit(r.raftLog.applied, r.Term)
-		}
+	//Changed for dinv DB1 debugging
+
+	commited := r.raftLog.maybeCommit(mci, r.Term)
+	if commited {
+		//fmt.Println("commited")
+	} else {
+		//fmt.Println("!commited")
 	}
 	return r.raftLog.maybeCommit(mci, r.Term)
 }
@@ -579,8 +585,6 @@ func (r *raft) becomeLeader() {
 	r.appendEntry(pb.Entry{Data: nil})
 	r.logger.Infof("%x became leader at term %d", r.id, r.Term)
 	//@Track
-	//dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
-	//dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
 	dinvRT.Track("", "r.id,r.Term,r.Vote,r.readState,r.state,r.lead,r.leadTransferee,r.pendingConf,r.electionElapsed,r.heartbeatElapsed,r.checkQuorum,r.heartbeatTimeout,r.electionTimeout,r.randomizedElectionTimeout,r.raftLog.committed,r.raftLog.applied,r.raftLog.lastIndex,r.raftLog.lastTerm", r.id, r.Term, r.Vote, r.readState, string(r.state), r.lead, r.leadTransferee, r.pendingConf, r.electionElapsed, r.heartbeatElapsed, r.checkQuorum, r.heartbeatTimeout, r.electionTimeout, r.randomizedElectionTimeout, r.raftLog.committed, r.raftLog.applied, r.raftLog.lastIndex(), r.raftLog.lastTerm())
 }
 
@@ -651,9 +655,29 @@ func (r *raft) Step(m pb.Message) error {
 			dinvRT.Assert(assertLeaderMatching, getAssertLeaderMatchingValues())
 		}
 		if StrongLeaderAssert {
-			dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
+			//DB1
+			if r.id != r.lead && r.raftLog.applied > 5 && rand.Int()%20 == 10 {
+				//Bugs caused by higher level functions not wanting
+				//new elements in the log
+				/*
+					r.logger.Info("Appling bad data")
+					//Inject bad entries
+					r.appendEntry(DinvEntry(r))
+					fmt.Printf("follower with applied %d\n", r.raftLog.applied)
+					r.raftLog.appliedTo(r.raftLog.lastIndex())
+				*/
+			} else if r.id == r.lead && rand.Int()%20 == 10 {
+				r.logger.Info("Asserting Stong Leadership")
+				leaderApplied = r.raftLog.applied
+				leaderCommited = r.raftLog.committed
+				rid = r.id
+				lid = r.lead
+				dinvRT.Assert(assertStrongLeadership, getAssertStrongLeaderhipValues())
+			}
 		}
-		if LogMatchingAssert && rand.Int()%10 == 1 {
+
+		if LogMatchingAssert && rand.Int()%20 == 1 {
+			r.logger.Info("Asserting Log Matching")
 			dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
 		}
 	}
@@ -1193,56 +1217,103 @@ func getAssertStrongLeaderhipValues() map[string][]string {
 	values := make(map[string][]string)
 	for _, p := range peers {
 		values[p] = append(values[p], "commited")
+		values[p] = append(values[p], "applied")
 		values[p] = append(values[p], "leader")
 		values[p] = append(values[p], "id")
 	}
 	return values
 }
 
+//DINV FAKE ENTRY
+func DinvEntry(r *raft) pb.Entry {
+	var e pb.Entry
+	e.Data = []byte(fmt.Sprintf("DINV%d", r.raftLog.lastIndex()))
+	e.Data = nil
+	return e
+}
+
 func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 	fmt.Println("Asserting Strong Leadership")
+	fmt.Println(values)
 	peers := dinvRT.GetPeers()
 	commited := make([]uint64, 0)
+	applied := make([]uint64, 0)
+	leader := false
 	//this check ensures that only the leader is making the assert
 	//reguardless of who requested the assert.
-	var leaderCommited uint64
-	leader := false
 	for _, p := range peers {
 		//make sure the values exist
 		_, ok1 := values[p]["leader"]
 		_, ok2 := values[p]["id"]
 		if ok1 && ok2 {
-			//fmt.Println(values[p]["leader"])
-			//fmt.Println(values[p]["id"])
+			fmt.Println(values[p]["leader"])
+			fmt.Println(values[p]["id"])
 			switch values[p]["leader"].(type) {
 			case int64:
-				//leader not yet know (bootstraping election)
+				//leader not yet known (bootstraping election)
 				return true
 			case uint64:
+				//get the leaders commit value
 				if values[p]["leader"].(uint64) == values[p]["id"].(uint64) {
+					leader = true
 					switch values[p]["commited"].(type) {
 					case int64:
 						//again this is the base case, there is no
 						//need to handel this I think
 						return true
 					case uint64:
-						leaderCommited = values[p]["commited"].(uint64)
-						leader = true
+						switch values[p]["applied"].(type) {
+						case int64:
+							//again this is the base case, there is no
+							//need to handel this I think
+							return true
+						case uint64:
+							leaderCommited = values[p]["commited"].(uint64)
+							leaderApplied = values[p]["applied"].(uint64)
+							fmt.Printf("leaderApplied %d, leaderCommitted %d\n", leaderApplied, leaderCommited)
+						}
 					}
 
 				}
 			}
 		}
-
 	}
+	if rid == lid {
+		leader = true
+	}
+	fmt.Println("IN SL ASSERT")
 	if leader {
+		fmt.Println("LEADER")
 		for _, p := range peers {
 			if _, ok := values[p]["commited"]; ok {
-				commited = append(commited, values[p]["commited"].(uint64))
+				fmt.Println(values[p]["commited"])
+				switch values[p]["commited"].(type) {
+				case int64:
+					return true
+				case uint64:
+					commited = append(commited, values[p]["commited"].(uint64))
+				}
+			}
+			if _, ok := values[p]["applied"]; ok {
+				fmt.Println(values[p]["applied"])
+				switch values[p]["applied"].(type) {
+				case int64:
+					return true
+				case uint64:
+					applied = append(applied, values[p]["applied"].(uint64))
+				}
 			}
 		}
+		fmt.Printf("#commited %d, #applied %d\n", len(commited), len(applied))
 		for i := range commited {
+			fmt.Printf("committed %d , leader committed %d", commited[i], leaderCommited)
 			if commited[i] > leaderCommited {
+				return false
+			}
+		}
+		for i := range applied {
+			fmt.Printf("applied %d , leader applied %d", commited[i], leaderCommited)
+			if applied[i] > leaderApplied {
 				return false
 			}
 		}
@@ -1306,7 +1377,7 @@ func assertLogMatching(values map[string]map[string]interface{}) bool {
 					}
 				}
 				logs[i] = append(logs[i], entry)
-				fmt.Printf("Parsed Entry %s\n", entry.String())
+				//fmt.Printf("Parsed Entry %s\n", entry.String())
 				//fmt.Println(intarray[j])
 				//fmt.Println(i)
 			}
@@ -1327,21 +1398,29 @@ func assertLogMatching(values map[string]map[string]interface{}) bool {
 			if len(logs[j])-1 < min {
 				min = len(logs[j]) - 1
 			}
-			fmt.Printf("min :%d\n logs_i %d logs_j", min, len(logs[i]), len(logs[j]))
+			//fmt.Printf("min :%d\n logs_i %d logs_j", min, len(logs[i]), len(logs[j]))
 			matched := false
 			for k := min; k >= 0; k-- {
-				fmt.Println(k)
-				fmt.Printf("E_i, %s\nE_j%s\n", logs[i][k].String(), logs[j][k].String())
+				//fmt.Println(k)
+				//fmt.Printf("E_i, %s\nE_j%s\n", logs[i][k].String(), logs[j][k].String())
 				//find the first occurance of a matching index and
 				//term
 				if logs[i][k].Index == logs[j][k].Index && logs[i][k].Term == logs[j][k].Term {
+					for d := range logs[i][k].Data {
+						if logs[i][k].Data[d] != logs[j][k].Data[d] {
+							continue
+						}
+					}
 					matched = true
 				}
 				//After finding the match all prior entries must be
 				//correct
 				if matched {
-					if logs[i][k].Index != logs[j][k].Index || logs[i][k].Term != logs[j][k].Term {
-						return false
+					for d := range logs[i][k].Data {
+						if logs[i][k].Data[d] != logs[j][k].Data[d] {
+							fmt.Println("LOG MATCHING FAILED")
+							return false
+						}
 					}
 				}
 			}
