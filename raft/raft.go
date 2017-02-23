@@ -898,6 +898,7 @@ func stepCandidate(r *raft, m pb.Message) {
 }
 
 func stepFollower(r *raft, m pb.Message) {
+	r.logger.Info("my id %d\n", r.id)
 	switch m.Type {
 	case pb.MsgProp:
 		if r.lead == None {
