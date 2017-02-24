@@ -3,7 +3,9 @@
 #client.sh intput.txt [server ip:port]
 for word in $(<$1)
 do
-    latency=`time ETCDCTL_API=3 ../bin/etcdctl --endpoints=$2 put $i "$word"`
-    echo "$latency," >> latency.csv
+    #latency=` ETCDCTL_API=3 /usr/bin/time -f "%E"  ../bin/etcdctl --endpoints=$2 put $i "$word"`
+    #echo "$latency," >> latency.csv
+    echo "making request"
+    ETCDCTL_API=3 $3 --endpoints=$2 put $i "$word"
 
 done

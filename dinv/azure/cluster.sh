@@ -137,8 +137,9 @@ if [ "$1" == "-r" ];then
 
     if [ "$MEASURE" = false ] ; then
         #run the client on on the same node it's sending to
-        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
+        ssh stewart@$GLOBALS1 -x "echo $ETCD/dinv/azure/client.sh $TEXT $LOCALS1 && $ETCD/dinv/azure/client.sh $TEXT $LOCALS1 $ETCDCTL" &
         #kill allthe hosts
+        sleep 10
         echo kill
         onall "killall etcd"
         onall "killall blast"
@@ -153,7 +154,10 @@ if [ "$1" == "-r" ];then
         RUNTIME=10
         CLIENTS=1
         #run the client locally
-        ./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
+        #./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
+        echo "STARTING CLIENT"
+        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
+        ./client.sh /usr/share/dict/words $GLOBALS1:2379
         TP=`grep -E '[0-9]' count.txt | wc -l | cut -f1`
         echo "$EXP,$RATE,$LENGTH,$TP" >> measurements.txt
         #kill allthe hosts
