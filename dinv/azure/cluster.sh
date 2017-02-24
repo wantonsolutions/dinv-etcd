@@ -132,10 +132,13 @@ if [ "$1" == "-r" ];then
     #ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $GLOBALS3 $CLUSTER $ASSERT" &
     sleep 5
     #run the client on on the same node it's sending to
-    ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
+    #ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
 
     #run the client on a node seperate from the one receving
     #ssh stewart@$GLOBALS1 -x "$ETCD$CLIENT $TEXT $LOCALSS2" &
+
+    #run the client locally
+    ./measure.sh /usr/share/dict/words $GLOBALS1:2379
 
     #wait for the test to run
 

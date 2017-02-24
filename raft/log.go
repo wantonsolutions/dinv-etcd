@@ -76,6 +76,7 @@ func (l *raftLog) String() string {
 // it returns (last index of new entries, true).
 func (l *raftLog) maybeAppend(index, logTerm, committed uint64, ents ...pb.Entry) (lastnewi uint64, ok bool) {
 	if l.matchTerm(index, logTerm) {
+		//l.logger.Info("maybe append terms matched")
 		lastnewi = index + uint64(len(ents))
 		ci := l.findConflict(ents)
 		switch {
@@ -176,12 +177,14 @@ func (l *raftLog) firstIndex() uint64 {
 
 func (l *raftLog) lastIndex() uint64 {
 	if i, ok := l.unstable.maybeLastIndex(); ok {
+		//fmt.Printf("Maybe last index %d\n", i)
 		return i
 	}
 	i, err := l.storage.LastIndex()
 	if err != nil {
 		panic(err) // TODO(bdarnell)
 	}
+	//fmt.Printf("Storage last index %d\n", i)
 	return i
 }
 

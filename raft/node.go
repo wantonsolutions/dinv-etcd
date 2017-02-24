@@ -374,9 +374,19 @@ func (n *node) run(r *raft) {
 			advancec = n.advancec
 		case <-advancec:
 			if prevHardSt.Commit != 0 {
+				//DB1 take max of commit and applied
+				/*
+					if DB1 {
+						max := prevHardSt.Commit
+						if max < r.raftLog.applied {
+							max = r.raftLog.applied
+						}
+						r.raftLog.appliedTo(max)
+					} else {
+						r.raftLog.appliedTo(prevHardSt.Commit)
+					}
+				*/
 				r.raftLog.appliedTo(prevHardSt.Commit)
-				//fmt.Println("Appling at node level")
-				//r.raftLog.appliedTo(r.raftLog.applied + 1)
 			}
 			if havePrevLastUnstablei {
 				r.raftLog.stableTo(prevLastUnstablei, prevLastUnstablet)

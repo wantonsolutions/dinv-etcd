@@ -32,7 +32,7 @@ var CommitedEntries []pb.Entry
 //dinv assert stuff
 //dinv asserts and bugs
 var (
-	DOASSERT = true
+	DOASSERT = false
 	//asserts
 	StrongLeaderAssert = false
 	leaderCommited     uint64
@@ -40,7 +40,7 @@ var (
 	rid                uint64
 	lid                uint64
 
-	LogMatchingAssert     = true
+	LogMatchingAssert     = false
 	LeaderAgreementAssert = false
 	///bugs
 	//strong leadership bug, one of the hosts will commit without
@@ -48,7 +48,7 @@ var (
 	DB1 = false
 	//Log matching bug, a node will inject a false entry past the wall
 	//of committed bugs
-	DB2 = true
+	DB2 = false
 	//Leadership agreement failure, a node will randomly elect itelf a
 	//leader upon becomming a follower.
 	DB3 = false
@@ -446,8 +446,8 @@ func (r *raft) maybeCommit() bool {
 	}
 	sort.Sort(sort.Reverse(mis))
 	mci := mis[r.quorum()-1]
-	//Changed for dinv DB1 debugging
 
+	//Changed for dinv DB1 debugging
 	commited := r.raftLog.maybeCommit(mci, r.Term)
 	if commited {
 		//fmt.Println("commited")
@@ -541,6 +541,16 @@ func (r *raft) becomeFollower(term uint64, lead uint64) {
 	r.lead = lead
 	r.state = StateFollower
 	r.logger.Infof("%x became follower at term %d", r.id, r.Term)
+	//DB3 Leadership agreement
+	if DB3 {
+		for id := range r.prs {
+			if id == lead {
+				continue
+			}
+			r.lead = id
+		}
+	}
+	//End DB3
 }
 
 func (r *raft) becomeCandidate() {
@@ -656,18 +666,9 @@ func (r *raft) Step(m pb.Message) error {
 		}
 		if StrongLeaderAssert {
 			//DB1
-			if r.id != r.lead && r.raftLog.applied > 5 && rand.Int()%20 == 10 {
-				//Bugs caused by higher level functions not wanting
-				//new elements in the log
-				/*
-					r.logger.Info("Appling bad data")
-					//Inject bad entries
-					r.appendEntry(DinvEntry(r))
-					fmt.Printf("follower with applied %d\n", r.raftLog.applied)
-					r.raftLog.appliedTo(r.raftLog.lastIndex())
-				*/
-			} else if r.id == r.lead && rand.Int()%20 == 10 {
+			if r.id == r.lead && rand.Int()%20 == 10 {
 				r.logger.Info("Asserting Stong Leadership")
+				//set up globals
 				leaderApplied = r.raftLog.applied
 				leaderCommited = r.raftLog.committed
 				rid = r.id
@@ -681,6 +682,33 @@ func (r *raft) Step(m pb.Message) error {
 			dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
 		}
 	}
+
+	if DB1 {
+		if r.id != r.lead && r.raftLog.applied > 5 && rand.Int()%20 == 10 {
+			//Bugs caused by higher level functions not wanting
+			//new elements in the log
+			r.logger.Info("Appling bad data")
+			//Inject bad entries
+			for i := 0; i < 20; i++ {
+				e := DinvEntry(r)
+				fmt.Printf("LastIndex %d, lastTerm %d, committed %d\n", r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed)
+				lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.lastTerm(), e)
+				//r.raftLog.commitTo(r.raftLog.lastIndex())
+				//r.raftLog.unstable.trucateAndAppend(e)
+				fmt.Printf("Injected Entry %d, ok %s\n", lw, ok)
+				//lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
+				//r.raftLog.commitTo(r.raftLog.committed + 1)
+			}
+			/*
+				r.appendEntry(DinvEntry(r))
+				//if mlastIndex, ok := r.raftLog.maybeAppend(m.Index, m.LogTerm, m.Commit, m.Entries...); ok {
+
+				fmt.Printf("follower with applied %d\n", r.raftLog.applied)
+				r.raftLog.appliedTo(r.raftLog.applied + 1)
+			*/
+		}
+	}
+
 	UpdateCommitedEntries(r)
 	///END DINV INIT
 	/////////////////////////////////////////////////////////////
@@ -944,11 +972,15 @@ func stepFollower(r *raft, m pb.Message) {
 		r.send(m)
 	case pb.MsgApp:
 		r.electionElapsed = 0
-		r.lead = m.From
+		if !DB3 {
+			r.lead = m.From
+		}
 		r.handleAppendEntries(m)
 	case pb.MsgHeartbeat:
 		r.electionElapsed = 0
-		r.lead = m.From
+		if !DB3 {
+			r.lead = m.From
+		}
 		r.handleHeartbeat(m)
 	case pb.MsgSnap:
 		r.electionElapsed = 0
@@ -991,7 +1023,7 @@ func (r *raft) handleAppendEntries(m pb.Message) {
 		r.send(pb.Message{To: m.From, Type: pb.MsgAppResp, Index: r.raftLog.committed})
 		return
 	}
-
+	//fmt.Printf("lastIndex %d, lastTerm %d, committed %d m.Index %d, m.LogTerm %d, m.Commit %d\n", r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed, m.Index, m.LogTerm, m.Commit)
 	if mlastIndex, ok := r.raftLog.maybeAppend(m.Index, m.LogTerm, m.Commit, m.Entries...); ok {
 		r.send(pb.Message{To: m.From, Type: pb.MsgAppResp, Index: mlastIndex})
 	} else {
