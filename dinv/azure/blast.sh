@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "starting azure client"
+echo "" > latency.txt
 i=0
 for word in $(<$1)
 do
@@ -10,7 +11,8 @@ do
     b=$(($(date +%s%N)/1000000))
     lat=0
     let lat=b-a
-    echo $lat
+    echo $lat >> latency.txt
+
 #    ETCDCTL_API=3 ../bin/etcdctl --endpoints=localhost:2379 get $i
     i=$((i+1))
 done
