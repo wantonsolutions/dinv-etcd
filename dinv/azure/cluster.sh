@@ -156,8 +156,8 @@ if [ "$1" == "-r" ];then
         #run the client locally
         #./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
         echo "STARTING CLIENT"
-        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
-        ./client.sh /usr/share/dict/words $GLOBALS1:2379
+        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL"
+        #./client.sh /usr/share/dict/words $GLOBALS1:2379
         TP=`grep -E '[0-9]' count.txt | wc -l | cut -f1`
         echo "$EXP,$RATE,$LENGTH,$TP" >> measurements.txt
         #kill allthe hosts
