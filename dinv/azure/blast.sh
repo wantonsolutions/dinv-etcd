@@ -1,7 +1,8 @@
 #!/bin/bash
-
+#./blast.sh words.txt serverIpPort command id
 echo "starting azure client"
-echo "" > latency.txt
+output=latenct$4.txt
+echo "" > $output
 i=0
 for word in $(<$1)
 do
@@ -11,13 +12,10 @@ do
     b=$(($(date +%s%N)/1000000))
     lat=0
     let lat=b-a
-    echo $lat >> latency.txt
+    echo $lat >> $output
 
 #    ETCDCTL_API=3 ../bin/etcdctl --endpoints=localhost:2379 get $i
     i=$((i+1))
-    if [ "$i" -eq "100" ];then
-        exit
-    fi
 done
 
 

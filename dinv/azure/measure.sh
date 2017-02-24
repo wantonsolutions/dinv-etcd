@@ -17,6 +17,6 @@ self=$$
 
 for (( i=0; i<CLIENTS; i++ ))
 do
-    ./client.sh $1 $2 $OUTPUT $5 &
+    ./blast.sh $1 $2 $5 $i &
 done
 

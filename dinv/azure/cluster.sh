@@ -47,6 +47,7 @@ AZURENODE=/dinv/azure/node.sh
 #different clients
 CLIENT=/dinv/azure/blast.sh
 #CLIENT=/dinv/azure/client.sh
+CLIENTMGR=/dinv/azure/measure.sh
 
 #LOCAL
 DINVDIR=/home/stewartgrant/go/src/bitbucket.org/bestchai/dinv
@@ -56,7 +57,9 @@ MEASURE=true
 
 
 #TEXT=$ETCD/dinv/kahn.in
-TEXT=/usr/share/dict/words
+#TEXT=/usr/share/dict/words
+TEXT=$ETCD/dinv/in.in
+
 
 USAGE="USAGE\n-k kill all nodes in the cluster\n-p pull from etcd-dinv repo\n-l logmerger\n-d Daikon\n-c clean"
 
@@ -159,7 +162,9 @@ if [ "$1" == "-r" ];then
         #run the client locally
         #./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
         echo "STARTING CLIENT"
-        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL"
+        
+        #ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL"
+        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$MGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL"
         #./client.sh /usr/share/dict/words $GLOBALS1:2379
         TP=`grep -E '[0-9]' count.txt | wc -l | cut -f1`
         echo "$EXP,$RATE,$LENGTH,$TP" >> measurements.txt
