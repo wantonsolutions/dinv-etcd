@@ -55,8 +55,8 @@ DINVDIR=/home/stewartgrant/go/src/bitbucket.org/bestchai/dinv
 MEASURE=true
 
 
-TEXT=$ETCD/dinv/kahn.in
-#TEXT=/usr/share/dict/words
+#TEXT=$ETCD/dinv/kahn.in
+TEXT=/usr/share/dict/words
 
 USAGE="USAGE\n-k kill all nodes in the cluster\n-p pull from etcd-dinv repo\n-l logmerger\n-d Daikon\n-c clean"
 

@@ -15,6 +15,9 @@ do
 
 #    ETCDCTL_API=3 ../bin/etcdctl --endpoints=localhost:2379 get $i
     i=$((i+1))
+    if [ "$i" -eq "100" ];then
+        exit
+    fi
 done
 
 
