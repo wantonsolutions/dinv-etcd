@@ -1,6 +1,7 @@
 #!/bin/bash
 # measure sets up a bunch of measuring clients
 # measure.sh words.txt [server ip:port] runtime clients etcdcdlLoc
+# (newline) client
 #ex ./measure.sh /
 RATE=1000
 OUTPUT=latency.txt
@@ -18,7 +19,7 @@ self=$$
 
 for (( i=0; i<CLIENTS; i++ ))
 do
-    ./blast.sh $1 $2 $5 $i &
+    $6 $1 $2 $5 $i &
 done
 
 sleep $3
