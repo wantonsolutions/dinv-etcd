@@ -54,6 +54,7 @@ MEASURE=true
 
 
 TEXT=$ETCD/dinv/kahn.in
+#TEXT=/usr/share/dict/words
 
 USAGE="USAGE\n-k kill all nodes in the cluster\n-p pull from etcd-dinv repo\n-l logmerger\n-d Daikon\n-c clean"
 
@@ -167,9 +168,6 @@ if [ "$1" == "-r" ];then
     fi
 
     #wait for the test to run
-
-
-
 
     scp stewart@$GLOBALS1:/home/stewart/*.txt ./
     scp stewart@$GLOBALS2:/home/stewart/*.txt ./
