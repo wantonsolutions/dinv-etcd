@@ -22,7 +22,7 @@ sleep 3
 ./clientMeasure.sh /usr/share/dict/words &
 sleep 20
 killall etcd
-killall clientblast.sh
+killall clientMeasure.sh
 
 cat *.time | grep time:
 ls -lrt *.txt | nawk '{print $5}' | awk '{total = total + $1}END{print total}'

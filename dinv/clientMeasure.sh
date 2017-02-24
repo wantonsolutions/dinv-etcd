@@ -15,10 +15,14 @@ self=$$
 
 for word in $(<$1)
 do
-    ETCDCTL_API=3 ../bin/etcdctl --endpoints=localhost:2379 put $i "$word" &
-    echo $i
-    sleep $t
-    i=$((i+1))
+    a=$(($(date +%s%N)/1000000))
+    ETCDCTL_API=3  ../bin/etcdctl --endpoints=localhost:2379 put $i "$word"
+    b=$(($(date +%s%N)/1000000))
+    lat=0
+    let lat=b-a
+    echo $lat
+
+    echo "done"
 done >> $OUTPUT
 
 
