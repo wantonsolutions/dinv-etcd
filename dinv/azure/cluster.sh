@@ -44,7 +44,9 @@ ETCD=$HOMEA/go/src/github.com/coreos/etcd
 ETCDCMD=$HOMEA/go/src/github.com/coreos/etcd/bin/etcd
 ETCDCTL=$HOMEA/go/src/github.com/coreos/etcd/bin/etcdctl
 AZURENODE=/dinv/azure/node.sh
-CLIENT=/dinv/azure/blast.sh
+#different clients
+#CLIENT=/dinv/azure/blast.sh
+CLIENT=/dinv/azure/client.sh
 
 #LOCAL
 DINVDIR=/home/stewartgrant/go/src/bitbucket.org/bestchai/dinv
