@@ -45,7 +45,7 @@ var (
 	///bugs
 	//strong leadership bug, one of the hosts will commit without
 	//waiting for the leader to tell them to commit
-	DB1 = true
+	DB1 = false
 	//Log matching bug, a node will inject a false entry past the wall
 	//of committed bugs
 	DB2 = false
@@ -691,14 +691,14 @@ func (r *raft) Step(m pb.Message) error {
 			//Inject bad entries
 			for i := 0; i < 20; i++ {
 				e := DinvEntry(r)
-				fmt.Println("Calling append Entry")
-				fmt.Printf("LastIndex %d, lastTerm %d, committed %d\n", r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed)
+				//fmt.Println("Calling append Entry")
+				//fmt.Printf("LastIndex %d, lastTerm %d, committed %d\n", r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed)
 				r.appendEntry(e)
 				lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
 				//lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.lastTerm(), e)
 				//r.raftLog.commitTo(r.raftLog.lastIndex())
 				//r.raftLog.unstable.trucateAndAppend(e)
-				fmt.Printf("Injected Entry %d, ok %s\n", lw, ok)
+				//fmt.Printf("Injected Entry %d, ok %s\n", lw, ok)
 				//lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
 				//r.raftLog.commitTo(r.raftLog.committed + 1)
 			}
@@ -1283,8 +1283,8 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 		_, ok1 := values[p]["leader"]
 		_, ok2 := values[p]["id"]
 		if ok1 && ok2 {
-			fmt.Println(values[p]["leader"])
-			fmt.Println(values[p]["id"])
+			//fmt.Println(values[p]["leader"])
+			//fmt.Println(values[p]["id"])
 			switch values[p]["leader"].(type) {
 			case int64:
 				//leader not yet known (bootstraping election)
@@ -1307,7 +1307,7 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 						case uint64:
 							leaderCommited = values[p]["commited"].(uint64)
 							leaderApplied = values[p]["applied"].(uint64)
-							fmt.Printf("leaderApplied %d, leaderCommitted %d\n", leaderApplied, leaderCommited)
+							//fmt.Printf("leaderApplied %d, leaderCommitted %d\n", leaderApplied, leaderCommited)
 						}
 					}
 
@@ -1318,12 +1318,10 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 	if rid == lid {
 		leader = true
 	}
-	fmt.Println("IN SL ASSERT")
 	if leader {
-		fmt.Println("LEADER")
 		for _, p := range peers {
 			if _, ok := values[p]["commited"]; ok {
-				fmt.Println(values[p]["commited"])
+				//fmt.Println(values[p]["commited"])
 				switch values[p]["commited"].(type) {
 				case int64:
 					return true
@@ -1332,7 +1330,7 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 				}
 			}
 			if _, ok := values[p]["applied"]; ok {
-				fmt.Println(values[p]["applied"])
+				//fmt.Println(values[p]["applied"])
 				switch values[p]["applied"].(type) {
 				case int64:
 					return true
@@ -1341,16 +1339,16 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 				}
 			}
 		}
-		fmt.Printf("#commited %d, #applied %d\n", len(commited), len(applied))
+		//fmt.Printf("#commited %d, #applied %d\n", len(commited), len(applied))
 		for i := range commited {
-			fmt.Printf("committed %d , leader committed %d", commited[i], leaderCommited)
+			//fmt.Printf("committed %d , leader committed %d", commited[i], leaderCommited)
 			if commited[i] > leaderCommited {
 				fmt.Println("STRONG LEADERSHIP FAILED")
 				return false
 			}
 		}
 		for i := range applied {
-			fmt.Printf("applied %d , leader applied %d", commited[i], leaderCommited)
+			//fmt.Printf("applied %d , leader applied %d", commited[i], leaderCommited)
 			if applied[i] > leaderApplied {
 				fmt.Println("STRONG LEADERSHIP FAILED")
 				return false
@@ -1409,10 +1407,10 @@ func assertLogMatching(values map[string]map[string]interface{}) bool {
 					case []byte:
 						entry.Data = mapper["Data"].([]byte)
 					case nil:
-						fmt.Printf("Why is the data nil %s", mapper)
+						//fmt.Printf("Why is the data nil %s", mapper)
 						continue
 					default:
-						fmt.Printf("Datatype :%s", mapper["Data"])
+						//fmt.Printf("Datatype :%s", mapper["Data"])
 					}
 				}
 				logs[i] = append(logs[i], entry)
@@ -1424,7 +1422,7 @@ func assertLogMatching(values map[string]map[string]interface{}) bool {
 	}
 	//At this point the logs have been converted to entry arrays.
 	//Now for each find the higest matching
-	fmt.Printf("MATCHING LOGS of size%d\n", len(logs))
+	//fmt.Printf("MATCHING LOGS of size%d\n", len(logs))
 	for i := range logs {
 		for j := i + 1; j < len(logs); j++ {
 			if len(logs[i]) == 0 || len(logs[j]) == 0 {

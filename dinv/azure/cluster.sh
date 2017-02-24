@@ -150,10 +150,10 @@ if [ "$1" == "-r" ];then
     if [ "$MEASURE" = true ] ; then
 
         EXP="control"
-        RATE=0.005
-        LENGTH=10
+        RUNTIME=10
+        CLIENTS=1
         #run the client locally
-        ./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RATE $LENGTH
+        ./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
         TP=`grep -E '[0-9]' count.txt | wc -l | cut -f1`
         echo "$EXP,$RATE,$LENGTH,$TP" >> measurements.txt
         #kill allthe hosts

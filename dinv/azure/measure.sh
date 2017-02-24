@@ -1,31 +1,22 @@
 #!/bin/bash
-
+# measure sets up a bunch of measuring clients
+# measure.sh words.txt [server ip:port] runtime client
+#ex ./measure.sh /
 RATE=1000
-OUTPUT=count.txt
+OUTPUT=latency.txt
 i=0
-t=$3
+CLIENTS=$4
 echo "" > $OUTPUT
 
 
 self=$$
 (
-    sleep $4;
+    sleep $3;
     kill -9 $self;
 ) &
 
-for word in $(<$1)
+for (( i=0; i<CLIENTS; i++ ))
 do
-    ETCDCTL_API=3 ../bin/etcdctl --endpoints=$2 put $i "$word" &
-    echo $i
-    sleep $t
-    i=$((i+1))
-done >> $OUTPUT
-
-
-#i=0
-#for word in $(<$1)
-#do
-#    ETCDCTL_API=3 ../bin/etcdctl --endpoints=localhost:2379 get $i
-#    i=$((i+1))
-#done
+    ./client.sh $1 $2 $OUTPUT &
+done
 
