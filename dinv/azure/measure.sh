@@ -11,6 +11,7 @@ echo "" > $OUTPUT
 
 self=$$
 (
+    echo "RUNTIME $3"
     sleep $3;
     kill -9 $self;
 ) &
@@ -19,4 +20,6 @@ for (( i=0; i<CLIENTS; i++ ))
 do
     ./blast.sh $1 $2 $5 $i &
 done
+
+sleep $3
 
