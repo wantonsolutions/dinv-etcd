@@ -21,6 +21,11 @@ do
     lat=0
     let lat=b-a
     echo $lat
+    i=$((i+1))
+    echo $i
+    if [ "$i" -eq "100" ];then
+        exit
+    fi
 
     echo "done"
 done >> $OUTPUT
