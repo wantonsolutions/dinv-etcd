@@ -9,7 +9,7 @@ i=0
 CLIENTS=$4
 echo "" > $OUTPUT
 
-
+echo $1 $2 $3 $4 $5 $6
 self=$$
 (
     echo "RUNTIME $3"
