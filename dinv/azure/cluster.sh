@@ -164,7 +164,7 @@ if [ "$1" == "-r" ];then
         echo "STARTING CLIENT"
         
         #ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL"
-        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$MGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL $ETCD$ETCDCLIENT"
+        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$MGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL $ETCD$CLIENT"
         #./client.sh /usr/share/dict/words $GLOBALS1:2379
         TP=`grep -E '[0-9]' count.txt | wc -l | cut -f1`
         echo "$EXP,$RATE,$LENGTH,$TP" >> measurements.txt
