@@ -5,8 +5,14 @@ LatOut=latency.txt
 echo "" > $LatOut
 for word in $(<$1)
 do
+
+    a=$(($(date +%s%N)/1000000))
     ETCDCTL_API=3 /usr/bin/time -f "%E" $3 --endpoints=$2 put $i "$word"
-    echo "$latency" >> $LatOut
+    b=$(($(date +%s%N)/1000000))
+    latency=0
+    let latatency=b-a
+    echo $latency
+    #echo "$latency" >> $LatOut
     #echo "making request"
     #ETCDCTL_API=3 $3 --endpoints=$2 put $i "$word"
 
