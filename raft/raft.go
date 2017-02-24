@@ -694,7 +694,7 @@ func (r *raft) Step(m pb.Message) error {
 				//fmt.Println("Calling append Entry")
 				//fmt.Printf("LastIndex %d, lastTerm %d, committed %d\n", r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed)
 				r.appendEntry(e)
-				lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
+				_, _ = r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
 				//lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.lastTerm(), e)
 				//r.raftLog.commitTo(r.raftLog.lastIndex())
 				//r.raftLog.unstable.trucateAndAppend(e)
