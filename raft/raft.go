@@ -45,7 +45,7 @@ var (
 	///bugs
 	//strong leadership bug, one of the hosts will commit without
 	//waiting for the leader to tell them to commit
-	DB1 = false
+	DB1 = true
 	//Log matching bug, a node will inject a false entry past the wall
 	//of committed bugs
 	DB2 = false
@@ -691,8 +691,11 @@ func (r *raft) Step(m pb.Message) error {
 			//Inject bad entries
 			for i := 0; i < 20; i++ {
 				e := DinvEntry(r)
+				fmt.Println("Calling append Entry")
 				fmt.Printf("LastIndex %d, lastTerm %d, committed %d\n", r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed)
-				lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.lastTerm(), e)
+				r.appendEntry(e)
+				lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
+				//lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.lastTerm(), e)
 				//r.raftLog.commitTo(r.raftLog.lastIndex())
 				//r.raftLog.unstable.trucateAndAppend(e)
 				fmt.Printf("Injected Entry %d, ok %s\n", lw, ok)
@@ -1259,6 +1262,8 @@ func getAssertStrongLeaderhipValues() map[string][]string {
 //DINV FAKE ENTRY
 func DinvEntry(r *raft) pb.Entry {
 	var e pb.Entry
+	e.Term = r.raftLog.lastTerm()
+	e.Index = r.raftLog.lastIndex()
 	e.Data = []byte(fmt.Sprintf("DINV%d", r.raftLog.lastIndex()))
 	e.Data = nil
 	return e
@@ -1340,12 +1345,14 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 		for i := range commited {
 			fmt.Printf("committed %d , leader committed %d", commited[i], leaderCommited)
 			if commited[i] > leaderCommited {
+				fmt.Println("STRONG LEADERSHIP FAILED")
 				return false
 			}
 		}
 		for i := range applied {
 			fmt.Printf("applied %d , leader applied %d", commited[i], leaderCommited)
 			if applied[i] > leaderApplied {
+				fmt.Println("STRONG LEADERSHIP FAILED")
 				return false
 			}
 		}

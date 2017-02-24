@@ -1,0 +1,838 @@
+(?<host>\S*) (?<clock>{.*})\n(?<event>.*)
+
+Apple {"Apple":1}
+Initialization Complete
+Apple {"Apple":2}
+Sending from Apple
+Apple {"Apple":3}
+Sending from Apple
+Apple {"Apple":4, "Banana":3}
+Received on Apple
+Apple {"Apple":5, "Apricot":3, "Banana":3}
+Received on Apple
+Apple {"Apple":6, "Apricot":3, "Banana":3}
+RTT: 50ms
+Apple {"Apple":7, "Apricot":3, "Banana":3}
+Requesting Assertion
+Apple {"Apple":8, "Apricot":3, "Banana":3}
+Requesting Assertion
+Apple {"Apple":9, "Apricot":3, "Banana":3}
+Requesting Assertion
+Apple {"Apple":10, "Apricot":6, "Banana":3}
+Received Message From Node
+Apple {"Apple":11, "Apricot":6, "Banana":3}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+Apple {"Apple":12, "Apricot":6, "Banana":6}
+Received Message From Node
+Apple {"Apple":13, "Apricot":6, "Banana":6}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+Apple {"Apple":14, "Apricot":6, "Banana":6}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"commited":3, "applied":3, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea}, "127.0.0.2:12000":map[string]interface {}{"applied":3, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":3}}
+Apple {"Apple":15, "Apricot":7, "Banana":6}
+Received on Apple
+Apple {"Apple":16, "Apricot":8, "Banana":6}
+Received on Apple
+Apple {"Apple":17, "Apricot":8, "Banana":7}
+Received on Apple
+Apple {"Apple":18, "Apricot":8, "Banana":8}
+Received on Apple
+Apple {"Apple":19, "Apricot":9, "Banana":8}
+Received on Apple
+Apple {"Apple":20, "Apricot":10, "Banana":8}
+Received on Apple
+Apple {"Apple":21, "Apricot":10, "Banana":9}
+Received on Apple
+Apple {"Apple":22, "Apricot":11, "Banana":9}
+Received on Apple
+Apple {"Apple":23, "Apricot":11, "Banana":9}
+Sending from Apple
+Apple {"Apple":24, "Apricot":11, "Banana":9}
+Sending from Apple
+Apple {"Apple":25, "Apricot":11, "Banana":10}
+Received on Apple
+Apple {"Apple":26, "Apricot":13, "Banana":10}
+Received on Apple
+Apple {"Apple":27, "Apricot":13, "Banana":12}
+Received on Apple
+Apple {"Apple":28, "Apricot":13, "Banana":13}
+Received on Apple
+Apple {"Apple":29, "Apricot":14, "Banana":13}
+Received on Apple
+Apple {"Apple":30, "Apricot":14, "Banana":13}
+Sending from Apple
+Apple {"Apple":31, "Apricot":14, "Banana":13}
+Sending from Apple
+Apple {"Apple":32, "Apricot":14, "Banana":14}
+Received on Apple
+Apple {"Apple":33, "Apricot":15, "Banana":14}
+Received on Apple
+Apple {"Apple":34, "Apricot":15, "Banana":14}
+RTT: 50ms
+Apple {"Apple":35, "Apricot":15, "Banana":14}
+Requesting Assertion
+Apple {"Apple":36, "Apricot":15, "Banana":14}
+Requesting Assertion
+Apple {"Apple":37, "Apricot":15, "Banana":14}
+Requesting Assertion
+Apple {"Apple":38, "Apricot":15, "Banana":18}
+Received Message From Node
+Apple {"Apple":39, "Apricot":15, "Banana":18}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+Apple {"Apple":40, "Apricot":19, "Banana":18}
+Received Message From Node
+Apple {"Apple":41, "Apricot":19, "Banana":18}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+Apple {"Apple":42, "Apricot":19, "Banana":18}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":10, "applied":9}, "127.0.0.3:12000":map[string]interface {}{"id":0x8f397cfd2b4f09ea, "commited":10, "applied":9, "leader":0xbf9071f4639c75cc}}
+Apple {"Apple":43, "Apricot":19, "Banana":19}
+Received on Apple
+Apple {"Apple":44, "Apricot":20, "Banana":19}
+Received on Apple
+Apple {"Apple":45, "Apricot":20, "Banana":20}
+Received on Apple
+Apple {"Apple":46, "Apricot":20, "Banana":21}
+Received on Apple
+Apple {"Apple":47, "Apricot":21, "Banana":21}
+Received on Apple
+Apple {"Apple":48, "Apricot":22, "Banana":21}
+Received on Apple
+Apple {"Apple":49, "Apricot":22, "Banana":21}
+Sending from Apple
+Apple {"Apple":50, "Apricot":22, "Banana":21}
+Sending from Apple
+Apple {"Apple":51, "Apricot":22, "Banana":22}
+Received on Apple
+Apple {"Apple":52, "Apricot":23, "Banana":22}
+Received on Apple
+Apple {"Apple":53, "Apricot":23, "Banana":24}
+Received on Apple
+Apple {"Apple":54, "Apricot":25, "Banana":24}
+Received on Apple
+Apple {"Apple":55, "Apricot":25, "Banana":25}
+Received on Apple
+Apple {"Apple":56, "Apricot":25, "Banana":26}
+Received on Apple
+Apple {"Apple":57, "Apricot":26, "Banana":26}
+Received on Apple
+Apple {"Apple":58, "Apricot":27, "Banana":26}
+Received on Apple
+Apple {"Apple":59, "Apricot":27, "Banana":26}
+RTT: 50ms
+Apple {"Apple":60, "Apricot":27, "Banana":26}
+Requesting Assertion
+Apple {"Apple":61, "Apricot":27, "Banana":27}
+Received on Apple
+Apple {"Apple":62, "Apricot":27, "Banana":27}
+Requesting Assertion
+Apple {"Apple":63, "Apricot":27, "Banana":27}
+Requesting Assertion
+Apple {"Apple":64, "Apricot":27, "Banana":30}
+Received Message From Node
+Apple {"Apple":65, "Apricot":27, "Banana":30}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+Apple {"Apple":66, "Apricot":30, "Banana":30}
+Received Message From Node
+Apple {"Apple":67, "Apricot":30, "Banana":30}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+Apple {"Apple":68, "Apricot":30, "Banana":30}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":30, "applied":26}, "127.0.0.3:12000":map[string]interface {}{"commited":66, "applied":22, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea}}
+Apple {"Apple":69, "Apricot":30, "Banana":31}
+Received on Apple
+Apple {"Apple":70, "Apricot":31, "Banana":31}
+Received on Apple
+Apple {"Apple":71, "Apricot":31, "Banana":31}
+Sending from Apple
+Apple {"Apple":72, "Apricot":31, "Banana":32}
+Received on Apple
+Apple {"Apple":73, "Apricot":31, "Banana":33}
+Received on Apple
+Apple {"Apple":74, "Apricot":31, "Banana":34}
+Received on Apple
+Apple {"Apple":75, "Apricot":31, "Banana":35}
+Received on Apple
+Apple {"Apple":76, "Apricot":31, "Banana":35}
+Sending from Apple
+Apple {"Apple":77, "Apricot":32, "Banana":35}
+Received on Apple
+Apple {"Apple":78, "Apricot":34, "Banana":35}
+Received on Apple
+Apple {"Apple":79, "Apricot":35, "Banana":35}
+Received on Apple
+Apple {"Apple":80, "Apricot":36, "Banana":35}
+Received on Apple
+Apple {"Apple":81, "Apricot":37, "Banana":35}
+Received on Apple
+Apple {"Apple":82, "Apricot":38, "Banana":35}
+Received on Apple
+Apple {"Apple":83, "Apricot":38, "Banana":35}
+RTT: 50ms
+Apple {"Apple":84, "Apricot":38, "Banana":35}
+Requesting Assertion
+Apple {"Apple":85, "Apricot":38, "Banana":35}
+Requesting Assertion
+Apple {"Apple":86, "Apricot":38, "Banana":35}
+Requesting Assertion
+Apple {"Apple":87, "Apricot":39, "Banana":35}
+Received on Apple
+Apple {"Apple":88, "Apricot":40, "Banana":35}
+Received on Apple
+Apple {"Apple":89, "Apricot":40, "Banana":39}
+Received Message From Node
+Apple {"Apple":90, "Apricot":40, "Banana":39}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+Apple {"Apple":91, "Apricot":43, "Banana":39}
+Received Message From Node
+Apple {"Apple":92, "Apricot":43, "Banana":39}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+Apple {"Apple":93, "Apricot":43, "Banana":39}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":95, "applied":75}, "127.0.0.3:12000":map[string]interface {}{"applied":86, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":86}}
+Apple {"Apple":94, "Apricot":44, "Banana":39}
+Received on Apple
+Apple {"Apple":95, "Apricot":45, "Banana":39}
+Received on Apple
+Apple {"Apple":96, "Apricot":46, "Banana":39}
+Received on Apple
+Apple {"Apple":97, "Apricot":47, "Banana":39}
+Received on Apple
+Apple {"Apple":98, "Apricot":47, "Banana":40}
+Received on Apple
+Apple {"Apple":99, "Apricot":47, "Banana":41}
+Received on Apple
+Apple {"Apple":100, "Apricot":47, "Banana":42}
+Received on Apple
+Apple {"Apple":101, "Apricot":47, "Banana":43}
+Received on Apple
+Apple {"Apple":102, "Apricot":48, "Banana":43}
+Received on Apple
+Apple {"Apple":103, "Apricot":49, "Banana":43}
+Received on Apple
+Apple {"Apple":104, "Apricot":49, "Banana":44}
+Received on Apple
+Apple {"Apple":105, "Apricot":50, "Banana":44}
+Received on Apple
+Apple {"Apple":106, "Apricot":50, "Banana":45}
+Received on Apple
+Apple {"Apple":107, "Apricot":50, "Banana":46}
+Received on Apple
+Apple {"Apple":108, "Apricot":50, "Banana":46}
+RTT: 50ms
+Apple {"Apple":109, "Apricot":50, "Banana":46}
+Requesting Assertion
+Apple {"Apple":110, "Apricot":50, "Banana":46}
+Requesting Assertion
+Apple {"Apple":111, "Apricot":50, "Banana":46}
+Requesting Assertion
+Apple {"Apple":112, "Apricot":50, "Banana":49}
+Received Message From Node
+Apple {"Apple":113, "Apricot":50, "Banana":49}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 229
+Apple {"Apple":114, "Apricot":53, "Banana":49}
+Received Message From Node
+Apple {"Apple":115, "Apricot":53, "Banana":49}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+Apple {"Apple":116, "Apricot":53, "Banana":49}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":0x87, "applied":0x87}, "127.0.0.3:12000":map[string]interface {}{"id":0x8f397cfd2b4f09ea, "commited":86, "applied":86, "leader":0xbf9071f4639c75cc}}
+Apple {"Apple":117, "Apricot":54, "Banana":49}
+Received on Apple
+Apple {"Apple":118, "Apricot":55, "Banana":49}
+Received on Apple
+Apple {"Apple":119, "Apricot":56, "Banana":49}
+Received on Apple
+Apple {"Apple":120, "Apricot":56, "Banana":50}
+Received on Apple
+Apple {"Apple":121, "Apricot":56, "Banana":51}
+Received on Apple
+Apple {"Apple":122, "Apricot":56, "Banana":51}
+Sending from Apple
+Apple {"Apple":123, "Apricot":56, "Banana":51}
+Sending from Apple
+Apple {"Apple":124, "Apricot":56, "Banana":53}
+Received on Apple
+Apple {"Apple":125, "Apricot":56, "Banana":54}
+Received on Apple
+Apple {"Apple":126, "Apricot":57, "Banana":54}
+Received on Apple
+Apple {"Apple":127, "Apricot":59, "Banana":54}
+Received on Apple
+Apple {"Apple":128, "Apricot":59, "Banana":54}
+RTT: 50ms
+Apple {"Apple":129, "Apricot":59, "Banana":54}
+Requesting Assertion
+Apple {"Apple":130, "Apricot":59, "Banana":54}
+Requesting Assertion
+Apple {"Apple":131, "Apricot":59, "Banana":54}
+Requesting Assertion
+Apple {"Apple":132, "Apricot":59, "Banana":57}
+Received Message From Node
+Apple {"Apple":133, "Apricot":59, "Banana":57}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+Apple {"Apple":134, "Apricot":62, "Banana":57}
+Received Message From Node
+Apple {"Apple":135, "Apricot":62, "Banana":57}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+Apple {"Apple":136, "Apricot":62, "Banana":57}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"commited":0x87, "applied":0x87, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4}, "127.0.0.3:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":86, "applied":86}}
+Apple {"Apple":137, "Apricot":62, "Banana":57}
+RTT: 50ms
+Apple {"Apple":138, "Apricot":62, "Banana":57}
+Requesting Assertion
+Apple {"Apple":139, "Apricot":62, "Banana":57}
+Requesting Assertion
+Apple {"Apple":140, "Apricot":62, "Banana":57}
+Requesting Assertion
+Apple {"Apple":141, "Apricot":65, "Banana":57}
+Received Message From Node
+Apple {"Apple":142, "Apricot":65, "Banana":57}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+Apple {"Apple":143, "Apricot":65, "Banana":60}
+Received Message From Node
+Apple {"Apple":144, "Apricot":65, "Banana":60}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+Apple {"Apple":145, "Apricot":65, "Banana":60}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"commited":86, "applied":86, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea}, "127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":0x87, "applied":0x87}}
+Apple {"Apple":146, "Apricot":66, "Banana":60}
+Received on Apple
+Apple {"Apple":147, "Apricot":67, "Banana":60}
+Received on Apple
+Apple {"Apple":148, "Apricot":67, "Banana":61}
+Received on Apple
+Apple {"Apple":149, "Apricot":67, "Banana":62}
+Received on Apple
+Apple {"Apple":150, "Apricot":68, "Banana":62}
+Received on Apple
+Apple {"Apple":151, "Apricot":69, "Banana":62}
+Received on Apple
+Apple {"Apple":152, "Apricot":70, "Banana":62}
+Received on Apple
+Apple {"Apple":153, "Apricot":71, "Banana":62}
+Received on Apple
+Apple {"Apple":154, "Apricot":72, "Banana":62}
+Received on Apple
+Apple {"Apple":155, "Apricot":72, "Banana":63}
+Received on Apple
+Apple {"Apple":156, "Apricot":73, "Banana":63}
+Received on Apple
+Apple {"Apple":157, "Apricot":73, "Banana":63}
+Sending from Apple
+Apple {"Apple":158, "Apricot":73, "Banana":63}
+Sending from Apple
+Apple {"Apple":159, "Apricot":73, "Banana":65}
+Received on Apple
+Apple {"Apple":160, "Apricot":73, "Banana":66}
+Received on Apple
+Apple {"Apple":161, "Apricot":73, "Banana":67}
+Received on Apple
+Apple {"Apple":162, "Apricot":75, "Banana":67}
+Received on Apple
+Apple {"Apple":163, "Apricot":76, "Banana":67}
+Received on Apple
+Apple {"Apple":164, "Apricot":77, "Banana":67}
+Received on Apple
+Apple {"Apple":165, "Apricot":78, "Banana":67}
+Received on Apple
+Apple {"Apple":166, "Apricot":78, "Banana":68}
+Received on Apple
+Apple {"Apple":167, "Apricot":79, "Banana":68}
+Received on Apple
+Apple {"Apple":168, "Apricot":80, "Banana":68}
+Received on Apple
+Apple {"Apple":169, "Apricot":80, "Banana":69}
+Received on Apple
+Apple {"Apple":170, "Apricot":80, "Banana":70}
+Received on Apple
+Apple {"Apple":171, "Apricot":81, "Banana":70}
+Received on Apple
+Apple {"Apple":172, "Apricot":81, "Banana":71}
+Received on Apple
+Apple {"Apple":173, "Apricot":82, "Banana":71}
+Received on Apple
+Apple {"Apple":174, "Apricot":82, "Banana":71}
+RTT: 50ms
+Apple {"Apple":175, "Apricot":82, "Banana":71}
+Requesting Assertion
+Apple {"Apple":176, "Apricot":82, "Banana":71}
+Requesting Assertion
+Apple {"Apple":177, "Apricot":82, "Banana":71}
+Requesting Assertion
+Apple {"Apple":178, "Apricot":85, "Banana":71}
+Received Message From Node
+Apple {"Apple":179, "Apricot":85, "Banana":71}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+Apple {"Apple":180, "Apricot":85, "Banana":74}
+Received Message From Node
+Apple {"Apple":181, "Apricot":85, "Banana":74}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+Apple {"Apple":182, "Apricot":85, "Banana":74}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":116, "applied":116}, "127.0.0.2:12000":map[string]interface {}{"commited":0x9b, "applied":0x9b, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4}}
+Apple {"Apple":183, "Apricot":85, "Banana":74}
+RTT: 50ms
+Apple {"Apple":184, "Apricot":85, "Banana":74}
+Requesting Assertion
+Apple {"Apple":185, "Apricot":85, "Banana":74}
+Requesting Assertion
+Apple {"Apple":186, "Apricot":85, "Banana":74}
+Requesting Assertion
+Apple {"Apple":187, "Apricot":86, "Banana":74}
+Received on Apple
+Apple {"Apple":188, "Apricot":86, "Banana":75}
+Received on Apple
+Apple {"Apple":189, "Apricot":86, "Banana":78}
+Received Message From Node
+Apple {"Apple":190, "Apricot":86, "Banana":78}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+Apple {"Apple":191, "Apricot":89, "Banana":78}
+Received Message From Node
+Apple {"Apple":192, "Apricot":89, "Banana":78}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+Apple {"Apple":193, "Apricot":89, "Banana":78}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"id":0x8f397cfd2b4f09ea, "commited":116, "applied":116, "leader":0xbf9071f4639c75cc}, "127.0.0.2:12000":map[string]interface {}{"commited":0x9b, "applied":0x9b, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4}}
+Apple {"Apple":194, "Apricot":89, "Banana":78}
+Sending from Apple
+Apple {"Apple":195, "Apricot":89, "Banana":78}
+Sending from Apple
+Apple {"Apple":196, "Apricot":89, "Banana":80}
+Received on Apple
+Apple {"Apple":197, "Apricot":91, "Banana":80}
+Received on Apple
+Apple {"Apple":198, "Apricot":92, "Banana":80}
+Received on Apple
+Apple {"Apple":199, "Apricot":92, "Banana":81}
+Received on Apple
+Apple {"Apple":200, "Apricot":92, "Banana":82}
+Received on Apple
+Apple {"Apple":201, "Apricot":92, "Banana":83}
+Received on Apple
+Apple {"Apple":202, "Apricot":93, "Banana":83}
+Received on Apple
+Apple {"Apple":203, "Apricot":94, "Banana":83}
+Received on Apple
+Apple {"Apple":204, "Apricot":95, "Banana":83}
+Received on Apple
+Apple {"Apple":205, "Apricot":96, "Banana":83}
+Received on Apple
+Apple {"Apple":206, "Apricot":97, "Banana":83}
+Received on Apple
+Apple {"Apple":207, "Apricot":98, "Banana":83}
+Received on Apple
+Apple {"Apple":208, "Apricot":98, "Banana":84}
+Received on Apple
+Apple {"Apple":209, "Apricot":98, "Banana":84}
+RTT: 50ms
+Apple {"Apple":210, "Apricot":98, "Banana":85}
+Received on Apple
+Apple {"Apple":211, "Apricot":98, "Banana":86}
+Received on Apple
+Apple {"Apple":212, "Apricot":98, "Banana":86}
+Requesting Assertion
+Apple {"Apple":213, "Apricot":98, "Banana":86}
+Requesting Assertion
+Apple {"Apple":214, "Apricot":98, "Banana":86}
+Requesting Assertion
+Apple {"Apple":215, "Apricot":98, "Banana":89}
+Received Message From Node
+Apple {"Apple":216, "Apricot":98, "Banana":89}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+Apple {"Apple":217, "Apricot":101, "Banana":89}
+Received Message From Node
+Apple {"Apple":218, "Apricot":101, "Banana":89}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 230
+Apple {"Apple":219, "Apricot":101, "Banana":89}
+ASSERTION FAILED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"applied":0x88, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":0x88}, "127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":0xaf, "applied":0xaf}}
+Apple {"Apple":220, "Apricot":101, "Banana":89}
+Assertion Failed
+Apple {"Apple":221, "Apricot":101, "Banana":89}
+Assertion Failed
+Apple {"Apple":222, "Apricot":101, "Banana":89}
+Assertion Failed
+Banana {"Banana":1}
+Initialization Complete
+Banana {"Apple":2, "Banana":2}
+Received on Banana
+Banana {"Apple":2, "Banana":3}
+Sending from Banana
+Banana {"Apple":8, "Apricot":3, "Banana":4}
+Received Message From Node
+Banana {"Apple":8, "Apricot":3, "Banana":5}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Banana {"Apple":8, "Apricot":3, "Banana":6}
+Assert Response
+Banana {"Apple":8, "Apricot":3, "Banana":7}
+Sending from Banana
+Banana {"Apple":8, "Apricot":3, "Banana":8}
+Sending from Banana
+Banana {"Apple":8, "Apricot":3, "Banana":9}
+Sending from Banana
+Banana {"Apple":8, "Apricot":3, "Banana":10}
+Sending from Banana
+Banana {"Apple":24, "Apricot":11, "Banana":11}
+Received on Banana
+Banana {"Apple":24, "Apricot":11, "Banana":12}
+Sending from Banana
+Banana {"Apple":24, "Apricot":11, "Banana":13}
+Sending from Banana
+Banana {"Apple":24, "Apricot":11, "Banana":14}
+Sending from Banana
+Banana {"Apple":31, "Apricot":14, "Banana":15}
+Received on Banana
+Banana {"Apple":36, "Apricot":15, "Banana":16}
+Received Message From Node
+Banana {"Apple":36, "Apricot":15, "Banana":17}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Banana {"Apple":36, "Apricot":15, "Banana":18}
+Assert Response
+Banana {"Apple":36, "Apricot":15, "Banana":19}
+Sending from Banana
+Banana {"Apple":36, "Apricot":15, "Banana":20}
+Sending from Banana
+Banana {"Apple":36, "Apricot":15, "Banana":21}
+Sending from Banana
+Banana {"Apple":36, "Apricot":15, "Banana":22}
+Sending from Banana
+Banana {"Apple":49, "Apricot":22, "Banana":23}
+Received on Banana
+Banana {"Apple":49, "Apricot":22, "Banana":24}
+Sending from Banana
+Banana {"Apple":49, "Apricot":22, "Banana":25}
+Sending from Banana
+Banana {"Apple":49, "Apricot":22, "Banana":26}
+Sending from Banana
+Banana {"Apple":49, "Apricot":22, "Banana":27}
+Sending from Banana
+Banana {"Apple":62, "Apricot":27, "Banana":28}
+Received Message From Node
+Banana {"Apple":62, "Apricot":27, "Banana":29}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Banana {"Apple":62, "Apricot":27, "Banana":30}
+Assert Response
+Banana {"Apple":62, "Apricot":27, "Banana":31}
+Sending from Banana
+Banana {"Apple":62, "Apricot":27, "Banana":32}
+Sending from Banana
+Banana {"Apple":62, "Apricot":27, "Banana":33}
+Sending from Banana
+Banana {"Apple":62, "Apricot":27, "Banana":34}
+Sending from Banana
+Banana {"Apple":62, "Apricot":27, "Banana":35}
+Sending from Banana
+Banana {"Apple":76, "Apricot":31, "Banana":36}
+Received on Banana
+Banana {"Apple":86, "Apricot":38, "Banana":37}
+Received Message From Node
+Banana {"Apple":86, "Apricot":38, "Banana":38}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Banana {"Apple":86, "Apricot":38, "Banana":39}
+Assert Response
+Banana {"Apple":86, "Apricot":38, "Banana":40}
+Sending from Banana
+Banana {"Apple":86, "Apricot":38, "Banana":41}
+Sending from Banana
+Banana {"Apple":86, "Apricot":38, "Banana":42}
+Sending from Banana
+Banana {"Apple":86, "Apricot":38, "Banana":43}
+Sending from Banana
+Banana {"Apple":86, "Apricot":38, "Banana":44}
+Sending from Banana
+Banana {"Apple":86, "Apricot":38, "Banana":45}
+Sending from Banana
+Banana {"Apple":86, "Apricot":38, "Banana":46}
+Sending from Banana
+Banana {"Apple":110, "Apricot":50, "Banana":47}
+Received Message From Node
+Banana {"Apple":110, "Apricot":50, "Banana":48}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Banana {"Apple":110, "Apricot":50, "Banana":49}
+Assert Response
+Banana {"Apple":110, "Apricot":50, "Banana":50}
+Sending from Banana
+Banana {"Apple":110, "Apricot":50, "Banana":51}
+Sending from Banana
+Banana {"Apple":123, "Apricot":56, "Banana":52}
+Received on Banana
+Banana {"Apple":123, "Apricot":56, "Banana":53}
+Sending from Banana
+Banana {"Apple":123, "Apricot":56, "Banana":54}
+Sending from Banana
+Banana {"Apple":130, "Apricot":59, "Banana":55}
+Received Message From Node
+Banana {"Apple":130, "Apricot":59, "Banana":56}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Banana {"Apple":130, "Apricot":59, "Banana":57}
+Assert Response
+Banana {"Apple":139, "Apricot":62, "Banana":58}
+Received Message From Node
+Banana {"Apple":139, "Apricot":62, "Banana":59}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Banana {"Apple":139, "Apricot":62, "Banana":60}
+Assert Response
+Banana {"Apple":139, "Apricot":62, "Banana":61}
+Sending from Banana
+Banana {"Apple":139, "Apricot":62, "Banana":62}
+Sending from Banana
+Banana {"Apple":139, "Apricot":62, "Banana":63}
+Sending from Banana
+Banana {"Apple":158, "Apricot":73, "Banana":64}
+Received on Banana
+Banana {"Apple":158, "Apricot":73, "Banana":65}
+Sending from Banana
+Banana {"Apple":158, "Apricot":73, "Banana":66}
+Sending from Banana
+Banana {"Apple":158, "Apricot":73, "Banana":67}
+Sending from Banana
+Banana {"Apple":158, "Apricot":73, "Banana":68}
+Sending from Banana
+Banana {"Apple":158, "Apricot":73, "Banana":69}
+Sending from Banana
+Banana {"Apple":158, "Apricot":73, "Banana":70}
+Sending from Banana
+Banana {"Apple":158, "Apricot":73, "Banana":71}
+Sending from Banana
+Banana {"Apple":176, "Apricot":82, "Banana":72}
+Received Message From Node
+Banana {"Apple":176, "Apricot":82, "Banana":73}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Banana {"Apple":176, "Apricot":82, "Banana":74}
+Assert Response
+Banana {"Apple":176, "Apricot":82, "Banana":75}
+Sending from Banana
+Banana {"Apple":185, "Apricot":85, "Banana":76}
+Received Message From Node
+Banana {"Apple":185, "Apricot":85, "Banana":77}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Banana {"Apple":185, "Apricot":85, "Banana":78}
+Assert Response
+Banana {"Apple":195, "Apricot":89, "Banana":79}
+Received on Banana
+Banana {"Apple":195, "Apricot":89, "Banana":80}
+Sending from Banana
+Banana {"Apple":195, "Apricot":89, "Banana":81}
+Sending from Banana
+Banana {"Apple":195, "Apricot":89, "Banana":82}
+Sending from Banana
+Banana {"Apple":195, "Apricot":89, "Banana":83}
+Sending from Banana
+Banana {"Apple":195, "Apricot":89, "Banana":84}
+Sending from Banana
+Banana {"Apple":195, "Apricot":89, "Banana":85}
+Sending from Banana
+Banana {"Apple":195, "Apricot":89, "Banana":86}
+Sending from Banana
+Banana {"Apple":212, "Apricot":98, "Banana":87}
+Received Message From Node
+Banana {"Apple":212, "Apricot":98, "Banana":88}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Banana {"Apple":212, "Apricot":98, "Banana":89}
+Assert Response
+Banana {"Apple":220, "Apricot":101, "Banana":90}
+Received Message From Node
+Banana {"Apple":220, "Apricot":101, "Banana":91}
+Received message [MessageType: %!d(string=ASSERT_FAILED)] from [127.0.0.1:12000] of size 179
+Banana {"Apple":220, "Apricot":101, "Banana":92}
+Received ASSERTION FAILED
+Apricot {"Apricot":1}
+Initialization Complete
+Apricot {"Apple":3, "Apricot":2}
+Received on Apricot
+Apricot {"Apple":3, "Apricot":3}
+Sending from Apricot
+Apricot {"Apple":9, "Apricot":4, "Banana":3}
+Received Message From Node
+Apricot {"Apple":9, "Apricot":5, "Banana":3}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Apricot {"Apple":9, "Apricot":6, "Banana":3}
+Assert Response
+Apricot {"Apple":9, "Apricot":7, "Banana":3}
+Sending from Apricot
+Apricot {"Apple":9, "Apricot":8, "Banana":3}
+Sending from Apricot
+Apricot {"Apple":9, "Apricot":9, "Banana":3}
+Sending from Apricot
+Apricot {"Apple":9, "Apricot":10, "Banana":3}
+Sending from Apricot
+Apricot {"Apple":9, "Apricot":11, "Banana":3}
+Sending from Apricot
+Apricot {"Apple":23, "Apricot":12, "Banana":9}
+Received on Apricot
+Apricot {"Apple":23, "Apricot":13, "Banana":9}
+Sending from Apricot
+Apricot {"Apple":23, "Apricot":14, "Banana":9}
+Sending from Apricot
+Apricot {"Apple":23, "Apricot":15, "Banana":9}
+Sending from Apricot
+Apricot {"Apple":30, "Apricot":16, "Banana":13}
+Received on Apricot
+Apricot {"Apple":37, "Apricot":17, "Banana":14}
+Received Message From Node
+Apricot {"Apple":37, "Apricot":18, "Banana":14}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Apricot {"Apple":37, "Apricot":19, "Banana":14}
+Assert Response
+Apricot {"Apple":37, "Apricot":20, "Banana":14}
+Sending from Apricot
+Apricot {"Apple":37, "Apricot":21, "Banana":14}
+Sending from Apricot
+Apricot {"Apple":37, "Apricot":22, "Banana":14}
+Sending from Apricot
+Apricot {"Apple":37, "Apricot":23, "Banana":14}
+Sending from Apricot
+Apricot {"Apple":50, "Apricot":24, "Banana":21}
+Received on Apricot
+Apricot {"Apple":50, "Apricot":25, "Banana":21}
+Sending from Apricot
+Apricot {"Apple":50, "Apricot":26, "Banana":21}
+Sending from Apricot
+Apricot {"Apple":50, "Apricot":27, "Banana":21}
+Sending from Apricot
+Apricot {"Apple":63, "Apricot":28, "Banana":27}
+Received Message From Node
+Apricot {"Apple":63, "Apricot":29, "Banana":27}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Apricot {"Apple":63, "Apricot":30, "Banana":27}
+Assert Response
+Apricot {"Apple":63, "Apricot":31, "Banana":27}
+Sending from Apricot
+Apricot {"Apple":63, "Apricot":32, "Banana":27}
+Sending from Apricot
+Apricot {"Apple":71, "Apricot":33, "Banana":31}
+Received on Apricot
+Apricot {"Apple":71, "Apricot":34, "Banana":31}
+Sending from Apricot
+Apricot {"Apple":71, "Apricot":35, "Banana":31}
+Sending from Apricot
+Apricot {"Apple":71, "Apricot":36, "Banana":31}
+Sending from Apricot
+Apricot {"Apple":71, "Apricot":37, "Banana":31}
+Sending from Apricot
+Apricot {"Apple":71, "Apricot":38, "Banana":31}
+Sending from Apricot
+Apricot {"Apple":71, "Apricot":39, "Banana":31}
+Sending from Apricot
+Apricot {"Apple":71, "Apricot":40, "Banana":31}
+Sending from Apricot
+Apricot {"Apple":84, "Apricot":41, "Banana":35}
+Received Message From Node
+Apricot {"Apple":84, "Apricot":42, "Banana":35}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Apricot {"Apple":84, "Apricot":43, "Banana":35}
+Assert Response
+Apricot {"Apple":84, "Apricot":44, "Banana":35}
+Sending from Apricot
+Apricot {"Apple":84, "Apricot":45, "Banana":35}
+Sending from Apricot
+Apricot {"Apple":84, "Apricot":46, "Banana":35}
+Sending from Apricot
+Apricot {"Apple":84, "Apricot":47, "Banana":35}
+Sending from Apricot
+Apricot {"Apple":84, "Apricot":48, "Banana":35}
+Sending from Apricot
+Apricot {"Apple":84, "Apricot":49, "Banana":35}
+Sending from Apricot
+Apricot {"Apple":84, "Apricot":50, "Banana":35}
+Sending from Apricot
+Apricot {"Apple":111, "Apricot":51, "Banana":46}
+Received Message From Node
+Apricot {"Apple":111, "Apricot":52, "Banana":46}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+Apricot {"Apple":111, "Apricot":53, "Banana":46}
+Assert Response
+Apricot {"Apple":111, "Apricot":54, "Banana":46}
+Sending from Apricot
+Apricot {"Apple":111, "Apricot":55, "Banana":46}
+Sending from Apricot
+Apricot {"Apple":111, "Apricot":56, "Banana":46}
+Sending from Apricot
+Apricot {"Apple":111, "Apricot":57, "Banana":46}
+Sending from Apricot
+Apricot {"Apple":122, "Apricot":58, "Banana":51}
+Received on Apricot
+Apricot {"Apple":122, "Apricot":59, "Banana":51}
+Sending from Apricot
+Apricot {"Apple":131, "Apricot":60, "Banana":54}
+Received Message From Node
+Apricot {"Apple":131, "Apricot":61, "Banana":54}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Apricot {"Apple":131, "Apricot":62, "Banana":54}
+Assert Response
+Apricot {"Apple":140, "Apricot":63, "Banana":57}
+Received Message From Node
+Apricot {"Apple":140, "Apricot":64, "Banana":57}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Apricot {"Apple":140, "Apricot":65, "Banana":57}
+Assert Response
+Apricot {"Apple":140, "Apricot":66, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":140, "Apricot":67, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":140, "Apricot":68, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":140, "Apricot":69, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":140, "Apricot":70, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":140, "Apricot":71, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":140, "Apricot":72, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":140, "Apricot":73, "Banana":57}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":74, "Banana":63}
+Received on Apricot
+Apricot {"Apple":157, "Apricot":75, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":76, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":77, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":78, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":79, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":80, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":81, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":157, "Apricot":82, "Banana":63}
+Sending from Apricot
+Apricot {"Apple":177, "Apricot":83, "Banana":71}
+Received Message From Node
+Apricot {"Apple":177, "Apricot":84, "Banana":71}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Apricot {"Apple":177, "Apricot":85, "Banana":71}
+Assert Response
+Apricot {"Apple":177, "Apricot":86, "Banana":71}
+Sending from Apricot
+Apricot {"Apple":186, "Apricot":87, "Banana":74}
+Received Message From Node
+Apricot {"Apple":186, "Apricot":88, "Banana":74}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Apricot {"Apple":186, "Apricot":89, "Banana":74}
+Assert Response
+Apricot {"Apple":194, "Apricot":90, "Banana":78}
+Received on Apricot
+Apricot {"Apple":194, "Apricot":91, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":194, "Apricot":92, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":194, "Apricot":93, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":194, "Apricot":94, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":194, "Apricot":95, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":194, "Apricot":96, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":194, "Apricot":97, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":194, "Apricot":98, "Banana":78}
+Sending from Apricot
+Apricot {"Apple":213, "Apricot":99, "Banana":86}
+Received Message From Node
+Apricot {"Apple":213, "Apricot":100, "Banana":86}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+Apricot {"Apple":213, "Apricot":101, "Banana":86}
+Assert Response
+Apricot {"Apple":221, "Apricot":102, "Banana":89}
+Received Message From Node
+Apricot {"Apple":221, "Apricot":103, "Banana":89}
+Received message [MessageType: %!d(string=ASSERT_FAILED)] from [127.0.0.1:12000] of size 179
+Apricot {"Apple":221, "Apricot":104, "Banana":89}
+Received ASSERTION FAILED

@@ -1,0 +1,444 @@
+NODE1 {"NODE1":1}
+Initialization Complete
+NODE1 {"NODE1":2}
+Sending from NODE1
+NODE1 {"NODE1":3}
+Sending from NODE1
+NODE1 {"NODE1":4, "NODE2":3}
+Received on NODE1
+NODE1 {"NODE1":5, "NODE2":3, "NODE3":3}
+Received on NODE1
+NODE1 {"NODE1":6, "NODE2":3, "NODE3":3}
+RTT: 50ms
+NODE1 {"NODE1":7, "NODE2":3, "NODE3":3}
+Requesting Assertion
+NODE1 {"NODE1":8, "NODE2":3, "NODE3":3}
+Requesting Assertion
+NODE1 {"NODE1":9, "NODE2":3, "NODE3":3}
+Requesting Assertion
+NODE1 {"NODE1":10, "NODE2":3, "NODE3":6}
+Received Message From Node
+NODE1 {"NODE1":11, "NODE2":3, "NODE3":6}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+NODE1 {"NODE1":12, "NODE2":6, "NODE3":6}
+Received Message From Node
+NODE1 {"NODE1":13, "NODE2":6, "NODE3":6}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+NODE1 {"NODE1":14, "NODE2":6, "NODE3":6}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"commited":3, "applied":3, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea}, "127.0.0.2:12000":map[string]interface {}{"applied":3, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":3}}
+NODE1 {"NODE1":15, "NODE2":6, "NODE3":7}
+Received on NODE1
+NODE1 {"NODE1":16, "NODE2":6, "NODE3":8}
+Received on NODE1
+NODE1 {"NODE1":17, "NODE2":7, "NODE3":8}
+Received on NODE1
+NODE1 {"NODE1":18, "NODE2":8, "NODE3":8}
+Received on NODE1
+NODE1 {"NODE1":19, "NODE2":8, "NODE3":9}
+Received on NODE1
+NODE1 {"NODE1":20, "NODE2":8, "NODE3":10}
+Received on NODE1
+NODE1 {"NODE1":21, "NODE2":9, "NODE3":10}
+Received on NODE1
+NODE1 {"NODE1":22, "NODE2":9, "NODE3":11}
+Received on NODE1
+NODE1 {"NODE1":23, "NODE2":9, "NODE3":11}
+Sending from NODE1
+NODE1 {"NODE1":24, "NODE2":9, "NODE3":11}
+Sending from NODE1
+NODE1 {"NODE1":25, "NODE2":10, "NODE3":11}
+Received on NODE1
+NODE1 {"NODE1":26, "NODE2":10, "NODE3":13}
+Received on NODE1
+NODE1 {"NODE1":27, "NODE2":12, "NODE3":13}
+Received on NODE1
+NODE1 {"NODE1":28, "NODE2":13, "NODE3":13}
+Received on NODE1
+NODE1 {"NODE1":29, "NODE2":13, "NODE3":14}
+Received on NODE1
+NODE1 {"NODE1":30, "NODE2":13, "NODE3":14}
+Sending from NODE1
+NODE1 {"NODE1":31, "NODE2":13, "NODE3":14}
+Sending from NODE1
+NODE1 {"NODE1":32, "NODE2":14, "NODE3":14}
+Received on NODE1
+NODE1 {"NODE1":33, "NODE2":14, "NODE3":15}
+Received on NODE1
+NODE1 {"NODE1":34, "NODE2":14, "NODE3":15}
+RTT: 50ms
+NODE1 {"NODE1":35, "NODE2":14, "NODE3":15}
+Requesting Assertion
+NODE1 {"NODE1":36, "NODE2":14, "NODE3":15}
+Requesting Assertion
+NODE1 {"NODE1":37, "NODE2":14, "NODE3":15}
+Requesting Assertion
+NODE1 {"NODE1":38, "NODE2":18, "NODE3":15}
+Received Message From Node
+NODE1 {"NODE1":39, "NODE2":18, "NODE3":15}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+NODE1 {"NODE1":40, "NODE2":18, "NODE3":19}
+Received Message From Node
+NODE1 {"NODE1":41, "NODE2":18, "NODE3":19}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+NODE1 {"NODE1":42, "NODE2":18, "NODE3":19}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":10, "applied":9}, "127.0.0.3:12000":map[string]interface {}{"id":0x8f397cfd2b4f09ea, "commited":10, "applied":9, "leader":0xbf9071f4639c75cc}}
+NODE1 {"NODE1":43, "NODE2":19, "NODE3":19}
+Received on NODE1
+NODE1 {"NODE1":44, "NODE2":19, "NODE3":20}
+Received on NODE1
+NODE1 {"NODE1":45, "NODE2":20, "NODE3":20}
+Received on NODE1
+NODE1 {"NODE1":46, "NODE2":21, "NODE3":20}
+Received on NODE1
+NODE1 {"NODE1":47, "NODE2":21, "NODE3":21}
+Received on NODE1
+NODE1 {"NODE1":48, "NODE2":21, "NODE3":22}
+Received on NODE1
+NODE1 {"NODE1":49, "NODE2":21, "NODE3":22}
+Sending from NODE1
+NODE1 {"NODE1":50, "NODE2":21, "NODE3":22}
+Sending from NODE1
+NODE1 {"NODE1":51, "NODE2":22, "NODE3":22}
+Received on NODE1
+NODE1 {"NODE1":52, "NODE2":22, "NODE3":23}
+Received on NODE1
+NODE1 {"NODE1":53, "NODE2":24, "NODE3":23}
+Received on NODE1
+NODE1 {"NODE1":54, "NODE2":24, "NODE3":25}
+Received on NODE1
+NODE1 {"NODE1":55, "NODE2":25, "NODE3":25}
+Received on NODE1
+NODE1 {"NODE1":56, "NODE2":26, "NODE3":25}
+Received on NODE1
+NODE1 {"NODE1":57, "NODE2":26, "NODE3":26}
+Received on NODE1
+NODE1 {"NODE1":58, "NODE2":26, "NODE3":27}
+Received on NODE1
+NODE1 {"NODE1":59, "NODE2":26, "NODE3":27}
+RTT: 50ms
+NODE1 {"NODE1":60, "NODE2":26, "NODE3":27}
+Requesting Assertion
+NODE1 {"NODE1":61, "NODE2":27, "NODE3":27}
+Received on NODE1
+NODE1 {"NODE1":62, "NODE2":27, "NODE3":27}
+Requesting Assertion
+NODE1 {"NODE1":63, "NODE2":27, "NODE3":27}
+Requesting Assertion
+NODE1 {"NODE1":64, "NODE2":30, "NODE3":27}
+Received Message From Node
+NODE1 {"NODE1":65, "NODE2":30, "NODE3":27}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+NODE1 {"NODE1":66, "NODE2":30, "NODE3":30}
+Received Message From Node
+NODE1 {"NODE1":67, "NODE2":30, "NODE3":30}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+NODE1 {"NODE1":68, "NODE2":30, "NODE3":30}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":30, "applied":26}, "127.0.0.3:12000":map[string]interface {}{"commited":66, "applied":22, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea}}
+NODE1 {"NODE1":69, "NODE2":31, "NODE3":30}
+Received on NODE1
+NODE1 {"NODE1":70, "NODE2":31, "NODE3":31}
+Received on NODE1
+NODE1 {"NODE1":71, "NODE2":31, "NODE3":31}
+Sending from NODE1
+NODE1 {"NODE1":72, "NODE2":32, "NODE3":31}
+Received on NODE1
+NODE1 {"NODE1":73, "NODE2":33, "NODE3":31}
+Received on NODE1
+NODE1 {"NODE1":74, "NODE2":34, "NODE3":31}
+Received on NODE1
+NODE1 {"NODE1":75, "NODE2":35, "NODE3":31}
+Received on NODE1
+NODE1 {"NODE1":76, "NODE2":35, "NODE3":31}
+Sending from NODE1
+NODE1 {"NODE1":77, "NODE2":35, "NODE3":32}
+Received on NODE1
+NODE1 {"NODE1":78, "NODE2":35, "NODE3":34}
+Received on NODE1
+NODE1 {"NODE1":79, "NODE2":35, "NODE3":35}
+Received on NODE1
+NODE1 {"NODE1":80, "NODE2":35, "NODE3":36}
+Received on NODE1
+NODE1 {"NODE1":81, "NODE2":35, "NODE3":37}
+Received on NODE1
+NODE1 {"NODE1":82, "NODE2":35, "NODE3":38}
+Received on NODE1
+NODE1 {"NODE1":83, "NODE2":35, "NODE3":38}
+RTT: 50ms
+NODE1 {"NODE1":84, "NODE2":35, "NODE3":38}
+Requesting Assertion
+NODE1 {"NODE1":85, "NODE2":35, "NODE3":38}
+Requesting Assertion
+NODE1 {"NODE1":86, "NODE2":35, "NODE3":38}
+Requesting Assertion
+NODE1 {"NODE1":87, "NODE2":35, "NODE3":39}
+Received on NODE1
+NODE1 {"NODE1":88, "NODE2":35, "NODE3":40}
+Received on NODE1
+NODE1 {"NODE1":89, "NODE2":39, "NODE3":40}
+Received Message From Node
+NODE1 {"NODE1":90, "NODE2":39, "NODE3":40}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 227
+NODE1 {"NODE1":91, "NODE2":39, "NODE3":43}
+Received Message From Node
+NODE1 {"NODE1":92, "NODE2":39, "NODE3":43}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+NODE1 {"NODE1":93, "NODE2":39, "NODE3":43}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":95, "applied":75}, "127.0.0.3:12000":map[string]interface {}{"applied":86, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":86}}
+NODE1 {"NODE1":94, "NODE2":39, "NODE3":44}
+Received on NODE1
+NODE1 {"NODE1":95, "NODE2":39, "NODE3":45}
+Received on NODE1
+NODE1 {"NODE1":96, "NODE2":39, "NODE3":46}
+Received on NODE1
+NODE1 {"NODE1":97, "NODE2":39, "NODE3":47}
+Received on NODE1
+NODE1 {"NODE1":98, "NODE2":40, "NODE3":47}
+Received on NODE1
+NODE1 {"NODE1":99, "NODE2":41, "NODE3":47}
+Received on NODE1
+NODE1 {"NODE1":100, "NODE2":42, "NODE3":47}
+Received on NODE1
+NODE1 {"NODE1":101, "NODE2":43, "NODE3":47}
+Received on NODE1
+NODE1 {"NODE1":102, "NODE2":43, "NODE3":48}
+Received on NODE1
+NODE1 {"NODE1":103, "NODE2":43, "NODE3":49}
+Received on NODE1
+NODE1 {"NODE1":104, "NODE2":44, "NODE3":49}
+Received on NODE1
+NODE1 {"NODE1":105, "NODE2":44, "NODE3":50}
+Received on NODE1
+NODE1 {"NODE1":106, "NODE2":45, "NODE3":50}
+Received on NODE1
+NODE1 {"NODE1":107, "NODE2":46, "NODE3":50}
+Received on NODE1
+NODE1 {"NODE1":108, "NODE2":46, "NODE3":50}
+RTT: 50ms
+NODE1 {"NODE1":109, "NODE2":46, "NODE3":50}
+Requesting Assertion
+NODE1 {"NODE1":110, "NODE2":46, "NODE3":50}
+Requesting Assertion
+NODE1 {"NODE1":111, "NODE2":46, "NODE3":50}
+Requesting Assertion
+NODE1 {"NODE1":112, "NODE2":49, "NODE3":50}
+Received Message From Node
+NODE1 {"NODE1":113, "NODE2":49, "NODE3":50}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 229
+NODE1 {"NODE1":114, "NODE2":49, "NODE3":53}
+Received Message From Node
+NODE1 {"NODE1":115, "NODE2":49, "NODE3":53}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 227
+NODE1 {"NODE1":116, "NODE2":49, "NODE3":53}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":0x87, "applied":0x87}, "127.0.0.3:12000":map[string]interface {}{"id":0x8f397cfd2b4f09ea, "commited":86, "applied":86, "leader":0xbf9071f4639c75cc}}
+NODE1 {"NODE1":117, "NODE2":49, "NODE3":54}
+Received on NODE1
+NODE1 {"NODE1":118, "NODE2":49, "NODE3":55}
+Received on NODE1
+NODE1 {"NODE1":119, "NODE2":49, "NODE3":56}
+Received on NODE1
+NODE1 {"NODE1":120, "NODE2":50, "NODE3":56}
+Received on NODE1
+NODE1 {"NODE1":121, "NODE2":51, "NODE3":56}
+Received on NODE1
+NODE1 {"NODE1":122, "NODE2":51, "NODE3":56}
+Sending from NODE1
+NODE1 {"NODE1":123, "NODE2":51, "NODE3":56}
+Sending from NODE1
+NODE1 {"NODE1":124, "NODE2":53, "NODE3":56}
+Received on NODE1
+NODE1 {"NODE1":125, "NODE2":54, "NODE3":56}
+Received on NODE1
+NODE1 {"NODE1":126, "NODE2":54, "NODE3":57}
+Received on NODE1
+NODE1 {"NODE1":127, "NODE2":54, "NODE3":59}
+Received on NODE1
+NODE1 {"NODE1":128, "NODE2":54, "NODE3":59}
+RTT: 50ms
+NODE1 {"NODE1":129, "NODE2":54, "NODE3":59}
+Requesting Assertion
+NODE1 {"NODE1":130, "NODE2":54, "NODE3":59}
+Requesting Assertion
+NODE1 {"NODE1":131, "NODE2":54, "NODE3":59}
+Requesting Assertion
+NODE1 {"NODE1":132, "NODE2":57, "NODE3":59}
+Received Message From Node
+NODE1 {"NODE1":133, "NODE2":57, "NODE3":59}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+NODE1 {"NODE1":134, "NODE2":57, "NODE3":62}
+Received Message From Node
+NODE1 {"NODE1":135, "NODE2":57, "NODE3":62}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+NODE1 {"NODE1":136, "NODE2":57, "NODE3":62}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.2:12000":map[string]interface {}{"commited":0x87, "applied":0x87, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4}, "127.0.0.3:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":86, "applied":86}}
+NODE1 {"NODE1":137, "NODE2":57, "NODE3":62}
+RTT: 50ms
+NODE1 {"NODE1":138, "NODE2":57, "NODE3":62}
+Requesting Assertion
+NODE1 {"NODE1":139, "NODE2":57, "NODE3":62}
+Requesting Assertion
+NODE1 {"NODE1":140, "NODE2":57, "NODE3":62}
+Requesting Assertion
+NODE1 {"NODE1":141, "NODE2":57, "NODE3":65}
+Received Message From Node
+NODE1 {"NODE1":142, "NODE2":57, "NODE3":65}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+NODE1 {"NODE1":143, "NODE2":60, "NODE3":65}
+Received Message From Node
+NODE1 {"NODE1":144, "NODE2":60, "NODE3":65}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+NODE1 {"NODE1":145, "NODE2":60, "NODE3":65}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"commited":86, "applied":86, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea}, "127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":0x87, "applied":0x87}}
+NODE1 {"NODE1":146, "NODE2":60, "NODE3":66}
+Received on NODE1
+NODE1 {"NODE1":147, "NODE2":60, "NODE3":67}
+Received on NODE1
+NODE1 {"NODE1":148, "NODE2":61, "NODE3":67}
+Received on NODE1
+NODE1 {"NODE1":149, "NODE2":62, "NODE3":67}
+Received on NODE1
+NODE1 {"NODE1":150, "NODE2":62, "NODE3":68}
+Received on NODE1
+NODE1 {"NODE1":151, "NODE2":62, "NODE3":69}
+Received on NODE1
+NODE1 {"NODE1":152, "NODE2":62, "NODE3":70}
+Received on NODE1
+NODE1 {"NODE1":153, "NODE2":62, "NODE3":71}
+Received on NODE1
+NODE1 {"NODE1":154, "NODE2":62, "NODE3":72}
+Received on NODE1
+NODE1 {"NODE1":155, "NODE2":63, "NODE3":72}
+Received on NODE1
+NODE1 {"NODE1":156, "NODE2":63, "NODE3":73}
+Received on NODE1
+NODE1 {"NODE1":157, "NODE2":63, "NODE3":73}
+Sending from NODE1
+NODE1 {"NODE1":158, "NODE2":63, "NODE3":73}
+Sending from NODE1
+NODE1 {"NODE1":159, "NODE2":65, "NODE3":73}
+Received on NODE1
+NODE1 {"NODE1":160, "NODE2":66, "NODE3":73}
+Received on NODE1
+NODE1 {"NODE1":161, "NODE2":67, "NODE3":73}
+Received on NODE1
+NODE1 {"NODE1":162, "NODE2":67, "NODE3":75}
+Received on NODE1
+NODE1 {"NODE1":163, "NODE2":67, "NODE3":76}
+Received on NODE1
+NODE1 {"NODE1":164, "NODE2":67, "NODE3":77}
+Received on NODE1
+NODE1 {"NODE1":165, "NODE2":67, "NODE3":78}
+Received on NODE1
+NODE1 {"NODE1":166, "NODE2":68, "NODE3":78}
+Received on NODE1
+NODE1 {"NODE1":167, "NODE2":68, "NODE3":79}
+Received on NODE1
+NODE1 {"NODE1":168, "NODE2":68, "NODE3":80}
+Received on NODE1
+NODE1 {"NODE1":169, "NODE2":69, "NODE3":80}
+Received on NODE1
+NODE1 {"NODE1":170, "NODE2":70, "NODE3":80}
+Received on NODE1
+NODE1 {"NODE1":171, "NODE2":70, "NODE3":81}
+Received on NODE1
+NODE1 {"NODE1":172, "NODE2":71, "NODE3":81}
+Received on NODE1
+NODE1 {"NODE1":173, "NODE2":71, "NODE3":82}
+Received on NODE1
+NODE1 {"NODE1":174, "NODE2":71, "NODE3":82}
+RTT: 50ms
+NODE1 {"NODE1":175, "NODE2":71, "NODE3":82}
+Requesting Assertion
+NODE1 {"NODE1":176, "NODE2":71, "NODE3":82}
+Requesting Assertion
+NODE1 {"NODE1":177, "NODE2":71, "NODE3":82}
+Requesting Assertion
+NODE1 {"NODE1":178, "NODE2":71, "NODE3":85}
+Received Message From Node
+NODE1 {"NODE1":179, "NODE2":71, "NODE3":85}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+NODE1 {"NODE1":180, "NODE2":74, "NODE3":85}
+Received Message From Node
+NODE1 {"NODE1":181, "NODE2":74, "NODE3":85}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+NODE1 {"NODE1":182, "NODE2":74, "NODE3":85}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":116, "applied":116}, "127.0.0.2:12000":map[string]interface {}{"commited":0x9b, "applied":0x9b, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4}}
+NODE1 {"NODE1":183, "NODE2":74, "NODE3":85}
+RTT: 50ms
+NODE1 {"NODE1":184, "NODE2":74, "NODE3":85}
+Requesting Assertion
+NODE1 {"NODE1":185, "NODE2":74, "NODE3":85}
+Requesting Assertion
+NODE1 {"NODE1":186, "NODE2":74, "NODE3":85}
+Requesting Assertion
+NODE1 {"NODE1":187, "NODE2":74, "NODE3":86}
+Received on NODE1
+NODE1 {"NODE1":188, "NODE2":75, "NODE3":86}
+Received on NODE1
+NODE1 {"NODE1":189, "NODE2":78, "NODE3":86}
+Received Message From Node
+NODE1 {"NODE1":190, "NODE2":78, "NODE3":86}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+NODE1 {"NODE1":191, "NODE2":78, "NODE3":89}
+Received Message From Node
+NODE1 {"NODE1":192, "NODE2":78, "NODE3":89}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 228
+NODE1 {"NODE1":193, "NODE2":78, "NODE3":89}
+ASSERTION PASSED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"id":0x8f397cfd2b4f09ea, "commited":116, "applied":116, "leader":0xbf9071f4639c75cc}, "127.0.0.2:12000":map[string]interface {}{"commited":0x9b, "applied":0x9b, "leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4}}
+NODE1 {"NODE1":194, "NODE2":78, "NODE3":89}
+Sending from NODE1
+NODE1 {"NODE1":195, "NODE2":78, "NODE3":89}
+Sending from NODE1
+NODE1 {"NODE1":196, "NODE2":80, "NODE3":89}
+Received on NODE1
+NODE1 {"NODE1":197, "NODE2":80, "NODE3":91}
+Received on NODE1
+NODE1 {"NODE1":198, "NODE2":80, "NODE3":92}
+Received on NODE1
+NODE1 {"NODE1":199, "NODE2":81, "NODE3":92}
+Received on NODE1
+NODE1 {"NODE1":200, "NODE2":82, "NODE3":92}
+Received on NODE1
+NODE1 {"NODE1":201, "NODE2":83, "NODE3":92}
+Received on NODE1
+NODE1 {"NODE1":202, "NODE2":83, "NODE3":93}
+Received on NODE1
+NODE1 {"NODE1":203, "NODE2":83, "NODE3":94}
+Received on NODE1
+NODE1 {"NODE1":204, "NODE2":83, "NODE3":95}
+Received on NODE1
+NODE1 {"NODE1":205, "NODE2":83, "NODE3":96}
+Received on NODE1
+NODE1 {"NODE1":206, "NODE2":83, "NODE3":97}
+Received on NODE1
+NODE1 {"NODE1":207, "NODE2":83, "NODE3":98}
+Received on NODE1
+NODE1 {"NODE1":208, "NODE2":84, "NODE3":98}
+Received on NODE1
+NODE1 {"NODE1":209, "NODE2":84, "NODE3":98}
+RTT: 50ms
+NODE1 {"NODE1":210, "NODE2":85, "NODE3":98}
+Received on NODE1
+NODE1 {"NODE1":211, "NODE2":86, "NODE3":98}
+Received on NODE1
+NODE1 {"NODE1":212, "NODE2":86, "NODE3":98}
+Requesting Assertion
+NODE1 {"NODE1":213, "NODE2":86, "NODE3":98}
+Requesting Assertion
+NODE1 {"NODE1":214, "NODE2":86, "NODE3":98}
+Requesting Assertion
+NODE1 {"NODE1":215, "NODE2":89, "NODE3":98}
+Received Message From Node
+NODE1 {"NODE1":216, "NODE2":89, "NODE3":98}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.2:12000] of size 230
+NODE1 {"NODE1":217, "NODE2":89, "NODE3":101}
+Received Message From Node
+NODE1 {"NODE1":218, "NODE2":89, "NODE3":101}
+Received message [MessageType: %!d(string=ASSERT_RETURN)] from [127.0.0.3:12000] of size 230
+NODE1 {"NODE1":219, "NODE2":89, "NODE3":101}
+ASSERTION FAILED: map[string]map[string]interface {}{"127.0.0.3:12000":map[string]interface {}{"applied":0x88, "leader":0xbf9071f4639c75cc, "id":0x8f397cfd2b4f09ea, "commited":0x88}, "127.0.0.2:12000":map[string]interface {}{"leader":0xbf9071f4639c75cc, "id":0xe0fdb2cbc9b34ef4, "commited":0xaf, "applied":0xaf}}
+NODE1 {"NODE1":220, "NODE2":89, "NODE3":101}
+Assertion Failed
+NODE1 {"NODE1":221, "NODE2":89, "NODE3":101}
+Assertion Failed
+NODE1 {"NODE1":222, "NODE2":89, "NODE3":101}
+Assertion Failed

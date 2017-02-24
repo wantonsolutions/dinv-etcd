@@ -20,7 +20,7 @@ rm *.txt
 sleep 3
 #./clientblast.sh /usr/share/dict/words &
 ./clientMeasure.sh /usr/share/dict/words &
-sleep 15
+sleep 20
 killall etcd
 killall clientblast.sh
 

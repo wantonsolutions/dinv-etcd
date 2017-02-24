@@ -1,0 +1,208 @@
+NODE3 {"NODE3":1}
+Initialization Complete
+NODE3 {"NODE1":3, "NODE3":2}
+Received on NODE3
+NODE3 {"NODE1":3, "NODE3":3}
+Sending from NODE3
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":4}
+Received Message From Node
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":5}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":6}
+Assert Response
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":7}
+Sending from NODE3
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":8}
+Sending from NODE3
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":9}
+Sending from NODE3
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":10}
+Sending from NODE3
+NODE3 {"NODE1":9, "NODE2":3, "NODE3":11}
+Sending from NODE3
+NODE3 {"NODE1":23, "NODE2":9, "NODE3":12}
+Received on NODE3
+NODE3 {"NODE1":23, "NODE2":9, "NODE3":13}
+Sending from NODE3
+NODE3 {"NODE1":23, "NODE2":9, "NODE3":14}
+Sending from NODE3
+NODE3 {"NODE1":23, "NODE2":9, "NODE3":15}
+Sending from NODE3
+NODE3 {"NODE1":30, "NODE2":13, "NODE3":16}
+Received on NODE3
+NODE3 {"NODE1":37, "NODE2":14, "NODE3":17}
+Received Message From Node
+NODE3 {"NODE1":37, "NODE2":14, "NODE3":18}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+NODE3 {"NODE1":37, "NODE2":14, "NODE3":19}
+Assert Response
+NODE3 {"NODE1":37, "NODE2":14, "NODE3":20}
+Sending from NODE3
+NODE3 {"NODE1":37, "NODE2":14, "NODE3":21}
+Sending from NODE3
+NODE3 {"NODE1":37, "NODE2":14, "NODE3":22}
+Sending from NODE3
+NODE3 {"NODE1":37, "NODE2":14, "NODE3":23}
+Sending from NODE3
+NODE3 {"NODE1":50, "NODE2":21, "NODE3":24}
+Received on NODE3
+NODE3 {"NODE1":50, "NODE2":21, "NODE3":25}
+Sending from NODE3
+NODE3 {"NODE1":50, "NODE2":21, "NODE3":26}
+Sending from NODE3
+NODE3 {"NODE1":50, "NODE2":21, "NODE3":27}
+Sending from NODE3
+NODE3 {"NODE1":63, "NODE2":27, "NODE3":28}
+Received Message From Node
+NODE3 {"NODE1":63, "NODE2":27, "NODE3":29}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+NODE3 {"NODE1":63, "NODE2":27, "NODE3":30}
+Assert Response
+NODE3 {"NODE1":63, "NODE2":27, "NODE3":31}
+Sending from NODE3
+NODE3 {"NODE1":63, "NODE2":27, "NODE3":32}
+Sending from NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":33}
+Received on NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":34}
+Sending from NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":35}
+Sending from NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":36}
+Sending from NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":37}
+Sending from NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":38}
+Sending from NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":39}
+Sending from NODE3
+NODE3 {"NODE1":71, "NODE2":31, "NODE3":40}
+Sending from NODE3
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":41}
+Received Message From Node
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":42}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":43}
+Assert Response
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":44}
+Sending from NODE3
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":45}
+Sending from NODE3
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":46}
+Sending from NODE3
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":47}
+Sending from NODE3
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":48}
+Sending from NODE3
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":49}
+Sending from NODE3
+NODE3 {"NODE1":84, "NODE2":35, "NODE3":50}
+Sending from NODE3
+NODE3 {"NODE1":111, "NODE2":46, "NODE3":51}
+Received Message From Node
+NODE3 {"NODE1":111, "NODE2":46, "NODE3":52}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 205
+NODE3 {"NODE1":111, "NODE2":46, "NODE3":53}
+Assert Response
+NODE3 {"NODE1":111, "NODE2":46, "NODE3":54}
+Sending from NODE3
+NODE3 {"NODE1":111, "NODE2":46, "NODE3":55}
+Sending from NODE3
+NODE3 {"NODE1":111, "NODE2":46, "NODE3":56}
+Sending from NODE3
+NODE3 {"NODE1":111, "NODE2":46, "NODE3":57}
+Sending from NODE3
+NODE3 {"NODE1":122, "NODE2":51, "NODE3":58}
+Received on NODE3
+NODE3 {"NODE1":122, "NODE2":51, "NODE3":59}
+Sending from NODE3
+NODE3 {"NODE1":131, "NODE2":54, "NODE3":60}
+Received Message From Node
+NODE3 {"NODE1":131, "NODE2":54, "NODE3":61}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+NODE3 {"NODE1":131, "NODE2":54, "NODE3":62}
+Assert Response
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":63}
+Received Message From Node
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":64}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":65}
+Assert Response
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":66}
+Sending from NODE3
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":67}
+Sending from NODE3
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":68}
+Sending from NODE3
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":69}
+Sending from NODE3
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":70}
+Sending from NODE3
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":71}
+Sending from NODE3
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":72}
+Sending from NODE3
+NODE3 {"NODE1":140, "NODE2":57, "NODE3":73}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":74}
+Received on NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":75}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":76}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":77}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":78}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":79}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":80}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":81}
+Sending from NODE3
+NODE3 {"NODE1":157, "NODE2":63, "NODE3":82}
+Sending from NODE3
+NODE3 {"NODE1":177, "NODE2":71, "NODE3":83}
+Received Message From Node
+NODE3 {"NODE1":177, "NODE2":71, "NODE3":84}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+NODE3 {"NODE1":177, "NODE2":71, "NODE3":85}
+Assert Response
+NODE3 {"NODE1":177, "NODE2":71, "NODE3":86}
+Sending from NODE3
+NODE3 {"NODE1":186, "NODE2":74, "NODE3":87}
+Received Message From Node
+NODE3 {"NODE1":186, "NODE2":74, "NODE3":88}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+NODE3 {"NODE1":186, "NODE2":74, "NODE3":89}
+Assert Response
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":90}
+Received on NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":91}
+Sending from NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":92}
+Sending from NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":93}
+Sending from NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":94}
+Sending from NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":95}
+Sending from NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":96}
+Sending from NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":97}
+Sending from NODE3
+NODE3 {"NODE1":194, "NODE2":78, "NODE3":98}
+Sending from NODE3
+NODE3 {"NODE1":213, "NODE2":86, "NODE3":99}
+Received Message From Node
+NODE3 {"NODE1":213, "NODE2":86, "NODE3":100}
+Received message [MessageType: %!d(string=ASSERT_REQUEST)] from [127.0.0.1:12000] of size 206
+NODE3 {"NODE1":213, "NODE2":86, "NODE3":101}
+Assert Response
+NODE3 {"NODE1":221, "NODE2":89, "NODE3":102}
+Received Message From Node
+NODE3 {"NODE1":221, "NODE2":89, "NODE3":103}
+Received message [MessageType: %!d(string=ASSERT_FAILED)] from [127.0.0.1:12000] of size 179
+NODE3 {"NODE1":221, "NODE2":89, "NODE3":104}
+Received ASSERTION FAILED

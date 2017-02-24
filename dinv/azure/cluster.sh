@@ -49,6 +49,9 @@ CLIENT=/dinv/azure/blast.sh
 #LOCAL
 DINVDIR=/home/stewartgrant/go/src/bitbucket.org/bestchai/dinv
 
+#MEASUREMENT INFO
+MEASURE=true
+
 
 TEXT=$ETCD/dinv/kahn.in
 
@@ -131,24 +134,38 @@ if [ "$1" == "-r" ];then
     #ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $GLOBALS2 $CLUSTER $ASSERT" &
     #ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $GLOBALS3 $CLUSTER $ASSERT" &
     sleep 5
-    #run the client on on the same node it's sending to
-    #ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
+
+    if [ "$MEASURE" = false ] ; then
+        #run the client on on the same node it's sending to
+        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL" &
+        #kill allthe hosts
+        echo kill
+        onall "killall etcd"
+        onall "killall blast"
+    fi
 
     #run the client on a node seperate from the one receving
     #ssh stewart@$GLOBALS1 -x "$ETCD$CLIENT $TEXT $LOCALSS2" &
 
-    #run the client locally
-    ./measure.sh /usr/share/dict/words $GLOBALS1:2379
+    if [ "$MEASURE" = true ] ; then
+
+        EXP="control"
+        RATE=0.005
+        LENGTH=10
+        #run the client locally
+        ./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RATE $LENGTH
+        TP=`grep -E '[0-9]' count.txt | wc -l | cut -f1`
+        echo "$EXP,$RATE,$LENGTH,$TP" >> measurements.txt
+        #kill allthe hosts
+        echo kill
+        onall "killall etcd"
+        onall "killall blast"
+    fi
 
     #wait for the test to run
 
 
-    sleep 10
 
-    #kill allthe hosts
-    echo kill
-    onall "killall etcd"
-    onall "killall blast"
 
     scp stewart@$GLOBALS1:/home/stewart/*.txt ./
     scp stewart@$GLOBALS2:/home/stewart/*.txt ./

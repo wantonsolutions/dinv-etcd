@@ -1,15 +1,15 @@
 #!/bin/bash
 
-RATE=10000
+RATE=1000
 OUTPUT=count.txt
 i=0
-t=0.001
+t=$3
 echo "" > $OUTPUT
 
 
 self=$$
 (
-    sleep 5;
+    sleep $4;
     kill -9 $self;
 ) &
 

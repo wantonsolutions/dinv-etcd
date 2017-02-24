@@ -22,7 +22,7 @@ echo "cmd $ETCDCMD infra $INFRA public $PUBLIC private $PRIVATE cluster $CLUSTER
 $ETCDCMD --name infra$INFRA --initial-advertise-peer-urls http://$PRIVATE:2380 \
   --listen-peer-urls http://$PRIVATE:2380 \
   --listen-client-urls http://$PRIVATE:2379,http://127.0.0.1:2379 \
-  --advertise-client-urls http://$PRIVATE:2379 \
+  --advertise-client-urls http://$GLOBAL:2379 \
   --initial-cluster-token etcd-cluster-1 \
   --initial-cluster $CLUSTER \
   --initial-cluster-state new
