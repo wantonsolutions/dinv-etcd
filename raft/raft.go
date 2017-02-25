@@ -34,11 +34,11 @@ var CommitedEntries []pb.Entry
 //dinv assert stuff
 //dinv asserts and bugs
 var (
-	DOASSERT = true
+	DOASSERT = false
 	LEADER   = true
 	SAMPLE   = 100
 	//asserts
-	StrongLeaderAssert = true
+	StrongLeaderAssert = false
 	leaderCommited     uint64
 	leaderApplied      uint64
 	rid                uint64
@@ -305,8 +305,8 @@ func newRaft(c *Config) *raft {
 	/////////////////////////////////////////////////////////////////////
 	//DINV dinv
 	//INITALIZATION ASSERT////////////////////////////////////////
+	getAssertEnv()
 	if DOASSERT {
-		getAssertEnv()
 		dinvRT.InitDistributedAssert("", nil, "raft")
 	}
 	///END DINV INIT
