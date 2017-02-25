@@ -1,11 +1,11 @@
 > x <- read.csv('agg.txt', header = F); summary(x); sd(x[ , 1])
        V1      
- Min.   :1913  
- 1st Qu.:2003  
- Median :2036  
- Mean   :2010  
- 3rd Qu.:2045  
- Max.   :2052  
-[1] 55.58083
+ Min.   :1907  
+ 1st Qu.:1916  
+ Median :1972  
+ Mean   :1974  
+ 3rd Qu.:2034  
+ Max.   :2043  
+[1] 59.95439
 > 
 > 

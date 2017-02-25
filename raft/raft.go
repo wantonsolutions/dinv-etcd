@@ -70,6 +70,7 @@ func getAssertEnv() {
 	} else if tmpLeader == "false" {
 		LEADER = false
 	} else {
+		fmt.Printf("EXITING BAD LEADER %s\n", tmpLeader)
 		os.Exit(1)
 	}
 	tmpASSERTTYPE := os.Getenv("ASSERTTYPE")
@@ -85,11 +86,13 @@ func getAssertEnv() {
 	} else if tmpASSERTTYPE == "NONE" {
 		DOASSERT = false
 	} else {
+		fmt.Printf("EXITING BAD ASSERT %s\n", tmpASSERTTYPE)
 		os.Exit(1)
 	}
 	tmpSAMPLE := os.Getenv("SAMPLE")
 	s, err := strconv.Atoi(tmpSAMPLE)
 	if err != nil {
+		fmt.Printf("EXITING BAD SAMPLE %s\n", tmpSAMPLE)
 		os.Exit(1)
 	} else {
 		SAMPLE = s
