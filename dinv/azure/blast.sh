@@ -1,7 +1,7 @@
 #!/bin/bash
 #./blast.sh words.txt serverIpPort command id
 echo "starting azure client"
-output=latenct$4.txt
+output=latency$4.txt
 echo "" > $output
 i=0
 for word in $(<$1)
