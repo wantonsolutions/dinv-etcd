@@ -158,7 +158,7 @@ if [ "$1" == "-r" ];then
 
         EXP="control"
         RUNTIME=10
-        CLIENTS=1
+        CLIENTS=6
         #run the client locally
         #./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
         echo "STARTING CLIENT"
@@ -180,6 +180,8 @@ if [ "$1" == "-r" ];then
     scp stewart@$GLOBALS2:/home/stewart/*.txt ./
     scp stewart@$GLOBALS3:/home/stewart/*.txt ./
     echo DONE!
+
+    cat latency* > aggregate.txt
     exit
 fi
 
