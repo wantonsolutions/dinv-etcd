@@ -160,7 +160,7 @@ if [ "$1" == "-r" ];then
 
     if [ "$MEASURE" = true ] ; then
 
-        EXP="control-low"
+        EXP="SL-SampleNone-low"
         RUNTIME=10
         CLIENTS=4
         #run the client locally
@@ -181,6 +181,7 @@ if [ "$1" == "-r" ];then
     scp stewart@$GLOBALS2:/home/stewart/*.txt ./
     scp stewart@$GLOBALS3:/home/stewart/*.txt ./
     scp stewart@$SBG:/home/stewart/*.txt ./
+    ssh stewart@$SBG -x "rm lat*"
     echo DONE!
 
     if [ "$MEASURE" = true ] ; then
