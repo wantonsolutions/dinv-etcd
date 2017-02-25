@@ -17,5 +17,6 @@ NAME="SL-Sample-100"
 for (( i=0; i <TESTS; i ++))
 do
     ./cluster.sh -r 4 "$NAME-low" "STRONGLEADER" "FALSE" "1"
+    #./cluster.sh -r $client $assert-leader-$leader-sample-$sample-client-$client "$NAME-low" "STRONGLEADER" "FALSE" "1"
 done
 
