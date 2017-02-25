@@ -1,7 +1,8 @@
 #!/bin/bash
-assertOP[0]="STRONGLEADER"
-assertOP[1]="LOGMATCHING"
-assertOP[2]="LEADERAGREEMENT"
+assertOP[0]="NONE"
+assertOP[1]="STRONGLEADER"
+assertOP[2]="LOGMATCHING"
+assertOP[3]="LEADERAGREEMENT"
 
 leaderOP[0]="true"
 leaderOP[1]="false"

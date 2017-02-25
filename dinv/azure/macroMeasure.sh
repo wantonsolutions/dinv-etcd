@@ -13,10 +13,34 @@ TESTS=1
 NAME="SL-Sample-100"
 #PULL
 #./cluster.sh -p
+assertOP[0]="STRONGLEADER"
+assertOP[1]="LOGMATCHING"
+assertOP[2]="LEADERAGREEMENT"
 
-for (( i=0; i <TESTS; i ++))
+leaderOP[0]="true"
+leaderOP[1]="false"
+
+sampleOP[0]="1"
+sampleOP[1]="10"
+sampleOP[2]="100"
+
+clientOP[0]="4"
+clientOP[1]="40"
+clientOP[2]="400"
+
+for assert in ${assertOP[@]}
 do
-    ./cluster.sh -r 4 "$NAME-low" "STRONGLEADER" "FALSE" "1"
-    #./cluster.sh -r $client $assert-leader-$leader-sample-$sample-client-$client "$NAME-low" "STRONGLEADER" "FALSE" "1"
+    for leader in ${leaderOP[@]}
+    do
+        for sample in ${sampleOP[@]}
+        do
+            for client in ${clientOP[@]}
+            do
+                ./cluster.sh -r $client $assert-leader-$leader-sample-$sample-client-$client $assert $leader $sample
+                
+            done
+        done
+    done
 done
+
 
