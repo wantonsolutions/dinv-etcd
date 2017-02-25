@@ -34,7 +34,7 @@ var CommitedEntries []pb.Entry
 var (
 	DOASSERT = true
 	LEADER   = true
-	SAMPLE   = 1
+	SAMPLE   = 10
 	//asserts
 	StrongLeaderAssert = true
 	leaderCommited     uint64
