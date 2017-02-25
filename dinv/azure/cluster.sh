@@ -14,6 +14,9 @@
 #1 function
 #2 clients
 #3 name
+#4 assertType
+#5 leader
+#6 sample
 
 
 #VM's their public and private IP's
@@ -138,9 +141,9 @@ if [ "$1" == "-r" ];then
     #LOCAL CLUSTER
     CLUSTER="infra0=http://$LOCALS1:2380,infra1=http://$LOCALS2:2380,infra2=http://$LOCALS3:2380"
     ASSERT="$LOCALS1:12000,$LOCALS2:12000,$LOCALS3:12000"
-    ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT" &
-    ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT" &
-    ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT" &
+    ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT $4 $5 $6" &
+    ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT $4 $5 $6" &
+    ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT $4 $5 $6" &
 
     #GLOBAL CLUSTER
     #CLUSTER="infra0=http://$GLOBALS1:2380,infra1=http://$GLOBALS2:2380,infra2=http://$GLOBALS3:2380"

@@ -21,6 +21,7 @@ import (
 	"math/rand"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
 
 	"bitbucket.org/bestchai/dinv/dinvRT"
@@ -73,10 +74,27 @@ func getAssertEnv() {
 	}
 	tmpASSERTTYPE := os.Getenv("ASSERTTYPE")
 	if tmpASSERTTYPE == "STRONGLEADER" {
+		DOASSERT = true
 		StrongLeaderAssert = true
 	} else if tmpASSERTTYPE == "LOGMATCHING" {
+		DOASSERT = true
 		LogMatchingAssert = true
+	} else if tmpASSERTTYPE == "LEADERAGREEMENT" {
+		DOASSERT = true
+		LeaderAgreementAssert = true
+	} else if tmpASSERTTYPE == "NONE" {
+		DOASSERT = false
+	} else {
+		os.Exit(1)
 	}
+	tmpSAMPLE := os.Getenv("SAMPLE")
+	s, err := strconv.Atoi(tmpSAMPLE)
+	if err != nil {
+		os.Exit(1)
+	} else {
+		SAMPLE = s
+	}
+	fmt.Printf("config ASSERT%s LEADER:%s  SAMPLE%s\n", tmpASSERTTYPE, tmpASSERTTYPE, tmpSAMPLE)
 
 }
 
@@ -288,6 +306,7 @@ func newRaft(c *Config) *raft {
 	//DINV dinv
 	//INITALIZATION ASSERT////////////////////////////////////////
 	if DOASSERT {
+		getAssertEnv()
 		dinvRT.InitDistributedAssert("", nil, "raft")
 	}
 	///END DINV INIT

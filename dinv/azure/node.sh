@@ -5,8 +5,8 @@ PRIVATE=$3
 CLUSTER=$4
 DINV_ASSERT_PEERS=$5
 
-LEADER=$6
-ASSERTTYPE=$7
+ASSERTTYPE=$6
+LEADER=$7
 SAMPLE=$8
 
 HOME=/home/stewart
@@ -20,6 +20,12 @@ DINV_ASSERT_LISTEN=$PRIVATE:12000
 export DINV_HOSTNAME
 export DINV_ASSERT_PEERS
 export DINV_ASSERT_LISTEN
+
+#export assert macros
+export LEADER
+export ASSERTTYPE
+export SAMPLE
+
 
 echo "cmd $ETCDCMD infra $INFRA public $PUBLIC private $PRIVATE cluster $CLUSTER assert $DINV_ASSERT_PEERS" > lastConfig
 
