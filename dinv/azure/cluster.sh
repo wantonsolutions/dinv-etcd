@@ -70,7 +70,7 @@ function onall {
     ssh stewart@$GLOBALS1  -x $1  &
     ssh stewart@$GLOBALS2  -x $1  &
     ssh stewart@$GLOBALS3  -x $1  &
-    ssh stewart@$SBP  -x $1  &
+    ssh stewart@$SBP -x $1  &
     #ssh stewart@$ST1G -x $1 &
     #ssh stewart@$ST2G -x $1 &
     #ssh stewart@$SG -x $1 &
