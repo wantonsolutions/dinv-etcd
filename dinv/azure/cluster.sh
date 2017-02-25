@@ -10,6 +10,11 @@
 #and gets. After a predetermined ammount of time the cluster is killed
 #and the logs are retrieved via scp.
 
+#arguments
+#1 function
+#2 clients
+#3 name
+
 
 #VM's their public and private IP's
 #stewart-test-1
@@ -160,9 +165,9 @@ if [ "$1" == "-r" ];then
 
     if [ "$MEASURE" = true ] ; then
 
-        EXP="SL-SampleNone-low"
+        EXP=$3
         RUNTIME=10
-        CLIENTS=4
+        CLIENTS=$2
         #run the client locally
         #./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
         echo "STARTING CLIENT"
