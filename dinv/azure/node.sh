@@ -5,6 +5,10 @@ PRIVATE=$3
 CLUSTER=$4
 DINV_ASSERT_PEERS=$5
 
+LEADER=$6
+ASSERTTYPE=$7
+SAMPLE=$8
+
 HOME=/home/stewart
 DINV=$HOME/go/src/bitbucket.org/bestchai/dinv
 ETCD=$HOME/go/src/github.com/coreos/etcd

@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"os"
 	"sort"
 	"strings"
 
@@ -34,7 +35,7 @@ var CommitedEntries []pb.Entry
 var (
 	DOASSERT = true
 	LEADER   = true
-	SAMPLE   = 10
+	SAMPLE   = 100
 	//asserts
 	StrongLeaderAssert = true
 	leaderCommited     uint64
@@ -60,6 +61,24 @@ var (
 	F2 = uint64(15174457587357059016)
 	L  = uint64(7362438363220176896)
 )
+
+func getAssertEnv() {
+	tmpLeader := os.Getenv("LEADER")
+	if tmpLeader == "true" {
+		LEADER = true
+	} else if tmpLeader == "false" {
+		LEADER = false
+	} else {
+		os.Exit(1)
+	}
+	tmpASSERTTYPE := os.Getenv("ASSERTTYPE")
+	if tmpASSERTTYPE == "STRONGLEADER" {
+		StrongLeaderAssert = true
+	} else if tmpASSERTTYPE == "LOGMATCHING" {
+		LogMatchingAssert = true
+	}
+
+}
 
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0
