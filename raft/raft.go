@@ -32,11 +32,11 @@ var CommitedEntries []pb.Entry
 //dinv assert stuff
 //dinv asserts and bugs
 var (
-	DOASSERT = true
+	DOASSERT = false
 	LEADER   = true
 	SAMPLE   = 1
 	//asserts
-	StrongLeaderAssert = true
+	StrongLeaderAssert = false
 	leaderCommited     uint64
 	leaderApplied      uint64
 	rid                uint64
