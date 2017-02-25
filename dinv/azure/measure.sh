@@ -13,6 +13,7 @@ done
 
 echo "RUNTIME $3"
 sleep $3;
+killall blast.sh
 kill -9 $self;
 
 
