@@ -1,1 +1,3 @@
-control,,,0
+experiment,clients,runtime,requests,median,mean,sd
+control,6,10,701, 76.00  , 79.02  ,17.0959
+control,6,10,758, 71.00  , 74.41  ,19.13883

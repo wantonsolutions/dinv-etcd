@@ -27,6 +27,9 @@ S2P=10.0.0.5
 #stewart3
 S3G=13.64.242.139
 S3P=10.0.0.6
+#stewartbig
+SBG=13.64.149.118
+SBP=10.0.0.7
 
 
 #map a subset of the VM's to the current cluster
@@ -67,6 +70,7 @@ function onall {
     ssh stewart@$GLOBALS1  -x $1  &
     ssh stewart@$GLOBALS2  -x $1  &
     ssh stewart@$GLOBALS3  -x $1  &
+    ssh stewart@$SBP  -x $1  &
     #ssh stewart@$ST1G -x $1 &
     #ssh stewart@$ST2G -x $1 &
     #ssh stewart@$SG -x $1 &
@@ -164,10 +168,7 @@ if [ "$1" == "-r" ];then
         echo "STARTING CLIENT"
         
         #ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL"
-        ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$CLIENTMGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL $ETCD$CLIENT"
-        #./client.sh /usr/share/dict/words $GLOBALS1:2379
-        TP=`grep -E '[0-9]' count.txt | wc -l | cut -f1`
-        echo "$EXP,$RATE,$LENGTH,$TP" >> measurements.txt
+        ssh stewart@$SGP -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$CLIENTMGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL $ETCD$CLIENT"
         #kill allthe hosts
         echo kill
         onall "killall etcd"
@@ -179,9 +180,20 @@ if [ "$1" == "-r" ];then
     scp stewart@$GLOBALS1:/home/stewart/*.txt ./
     scp stewart@$GLOBALS2:/home/stewart/*.txt ./
     scp stewart@$GLOBALS3:/home/stewart/*.txt ./
+    scp stewart@$SBP:/home/stewart/*.txt ./
     echo DONE!
 
-    cat latency* > aggregate.txt
+    if [ "$MEASURE" = true ] ; then
+        cat latency* > agg.txt
+        rm latency*
+        R -q -e "x <- read.csv('agg.txt', header = F); summary(x); sd(x[ , 1])" > stats.txt
+        MEDIAN=`grep Median stats.txt |cut -d: -f2`
+        MEAN=`grep Mean stats.txt |cut -d: -f2`
+        SD=`grep "\[1\]" stats.txt |cut -d' ' -f2`
+        #./client.sh /usr/share/dict/words $GLOBALS1:2379
+        TP=`grep -E '[0-9]' agg.txt | wc -l | cut -f1`
+        echo "$EXP,$CLIENTS,$RUNTIME,$TP,$MEDIAN,$MEAN,$SD" >> measurements.txt
+    fi
     exit
 fi
 
