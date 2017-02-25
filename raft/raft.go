@@ -32,9 +32,11 @@ var CommitedEntries []pb.Entry
 //dinv assert stuff
 //dinv asserts and bugs
 var (
-	DOASSERT = false
+	DOASSERT = true
+	LEADER   = true
+	SAMPLE   = 1
 	//asserts
-	StrongLeaderAssert = false
+	StrongLeaderAssert = true
 	leaderCommited     uint64
 	leaderApplied      uint64
 	rid                uint64
@@ -666,7 +668,8 @@ func (r *raft) Step(m pb.Message) error {
 		}
 		if StrongLeaderAssert {
 			//DB1
-			if r.id == r.lead && rand.Int()%20 == 10 {
+			if LEADER && r.id == r.lead && rand.Int()%SAMPLE == 0 ||
+				(!LEADER && r.id == F1 && rand.Int()%SAMPLE == 0) {
 				r.logger.Info("Asserting Stong Leadership")
 				//set up globals
 				leaderApplied = r.raftLog.applied
@@ -677,9 +680,12 @@ func (r *raft) Step(m pb.Message) error {
 			}
 		}
 
-		if LogMatchingAssert && rand.Int()%20 == 1 {
-			r.logger.Info("Asserting Log Matching")
-			dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
+		if LogMatchingAssert {
+			if LEADER && r.id == r.lead && rand.Int()%SAMPLE == 0 ||
+				(!LEADER && r.id == F1 && rand.Int()%SAMPLE == 0) {
+				r.logger.Info("Asserting Log Matching")
+				dinvRT.Assert(assertLogMatching, getAssertLogMatchingValues())
+			}
 		}
 	}
 

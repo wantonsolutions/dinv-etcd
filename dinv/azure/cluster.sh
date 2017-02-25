@@ -70,7 +70,7 @@ function onall {
     ssh stewart@$GLOBALS1  -x $1  &
     ssh stewart@$GLOBALS2  -x $1  &
     ssh stewart@$GLOBALS3  -x $1  &
-    ssh stewart@$SBP -x $1  &
+    ssh stewart@$SBG -x $1  &
     #ssh stewart@$ST1G -x $1 &
     #ssh stewart@$ST2G -x $1 &
     #ssh stewart@$SG -x $1 &
@@ -160,15 +160,15 @@ if [ "$1" == "-r" ];then
 
     if [ "$MEASURE" = true ] ; then
 
-        EXP="control"
+        EXP="control-low"
         RUNTIME=10
-        CLIENTS=6
+        CLIENTS=4
         #run the client locally
         #./measure.sh /usr/share/dict/words $GLOBALS1:2379 $RUNTIME
         echo "STARTING CLIENT"
         
         #ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL"
-        ssh stewart@$SGP -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$CLIENTMGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL $ETCD$CLIENT"
+        ssh stewart@$SBG -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$CLIENTMGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL $ETCD$CLIENT"
         #kill allthe hosts
         echo kill
         onall "killall etcd"
@@ -180,7 +180,7 @@ if [ "$1" == "-r" ];then
     scp stewart@$GLOBALS1:/home/stewart/*.txt ./
     scp stewart@$GLOBALS2:/home/stewart/*.txt ./
     scp stewart@$GLOBALS3:/home/stewart/*.txt ./
-    scp stewart@$SBP:/home/stewart/*.txt ./
+    scp stewart@$SBG:/home/stewart/*.txt ./
     echo DONE!
 
     if [ "$MEASURE" = true ] ; then
