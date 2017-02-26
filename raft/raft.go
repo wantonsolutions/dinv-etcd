@@ -1432,8 +1432,8 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 		for i := range applied {
 			//fmt.Printf("applied %d , leader applied %d", commited[i], leaderCommited)
 			if applied[i] > leaderApplied {
-				fmt.Println("STRONG LEADERSHIP FAILED")
 				catchbug()
+				fmt.Println("STRONG LEADERSHIP FAILED")
 				return false
 			}
 		}

@@ -207,20 +207,20 @@ if [ "$1" == "-r" ];then
         echo "" > $output
         for file in bugstart*; do
            cat $file >>$output
-           #rm $file
+           rm $file
            echo "" >> $output
         done
-        #rm $output
+        rm $output
         START=`sort $output | head -2`
         #get the earliest bug catching time
         output=bc.txt
         echo "" > $output
         for file in bugcatch*; do
            cat $file >>$output
-           #rm $file
+           rm $file
            echo "" >> $output
         done
-        #rm $output
+        rm $output
         CATCH=`sort $output | head -2`
         BUGTIME=`echo $CATCH - $START | bc`
 

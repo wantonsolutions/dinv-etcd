@@ -9,7 +9,7 @@
 #5 leader
 #6 sample
 
-TESTS=1
+TESTS=3
 NAME="SL-Sample-100"
 #PULL
 #./cluster.sh -p
@@ -42,7 +42,10 @@ do
             do
                 for client in ${clientOP[@]}
                 do
-                    ./cluster.sh -r $client $assert-leader-$leader-sample-$sample-client-$client-bug-$bug $assert $leader $sample $bug
+                    for ((i=0; i < TESTS;i++))
+                    do
+                        ./cluster.sh -r $client $assert-leader-$leader-sample-$sample-client-$client-bug-$bug $assert $leader $sample $bug
+                    done
                     #example
                     #./cluster.sh -r 4 STRONGLEADER-leader-true-sample-10-client-4-bug-true STRONGLEADER true 10 true
 
