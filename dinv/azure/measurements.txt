@@ -70,3 +70,4 @@ LEADERAGREEMENT-leader-false-sample-10-client-400,400,10,4755, 820.0  , 798.7  ,
 LEADERAGREEMENT-leader-false-sample-100-client-4,4,10,1009, 36.00  , 39.28  ,11.56859
 LEADERAGREEMENT-leader-false-sample-100-client-40,40,10,3686,105.0  ,105.1  ,31.45592
 LEADERAGREEMENT-leader-false-sample-100-client-400,400,10,4696, 759.5  , 756.6  ,310.5878
+STRONGLEADER-leader-true-sample-10-client-4-bug-true,4,0,,,,

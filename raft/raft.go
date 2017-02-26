@@ -60,8 +60,8 @@ var (
 	//leader upon becomming a follower.
 	DB3 = false
 
-	BUGSTART = "bugstart.txt"
-	BUGCATCH = "bugcatch.txt"
+	BUGSTART = "bugstart"
+	BUGCATCH = "bugcatch"
 	//NODE IDS
 	F1 = uint64(7362438363220176534)
 	F2 = uint64(15174457587357059016)
@@ -69,7 +69,7 @@ var (
 )
 
 func startbug() {
-	bs, err := os.Create(fmt.Sprintf("%s-%d", BUGSTART, rand.Int()))
+	bs, err := os.Create(fmt.Sprintf("%s-%d.txt", BUGSTART, rand.Int()))
 	if err != nil {
 		os.Exit(1)
 	}
@@ -78,7 +78,7 @@ func startbug() {
 }
 
 func catchbug() {
-	bc, err := os.Create(fmt.Sprintf("%s-%d", BUGCATCH, rand.Int()))
+	bc, err := os.Create(fmt.Sprintf("%s-%d.txt", BUGCATCH, rand.Int()))
 	if err != nil {
 		os.Exit(1)
 	}

@@ -19,14 +19,6 @@
 #6 sample
 #7 bug
 
-   output=$1
-   echo "" > $output
-   for file in bugstart*; do
-       cat $file >>$output
-       echo "" >> $output
-   done
-   START=`sort $output | head -2`
-
 
 #VM's their public and private IP's
 #stewart-test-1
