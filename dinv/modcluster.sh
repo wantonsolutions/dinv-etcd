@@ -23,6 +23,16 @@ fuser -k 2380/tcp
 rm -r *[0-9].etcd
 sudo -E go install ../
 
+ASSERTTYPE="STRONGLEADER"
+LEADER="true"
+SAMPLE="10"
+DINVBUG="true"
+#export assert macros
+export LEADER
+export ASSERTTYPE
+export SAMPLE
+export DINVBUG
+
 for i in $(seq 1 $PEERS)
 do
     infra="infra"`expr $i - 1`

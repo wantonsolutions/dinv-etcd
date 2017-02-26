@@ -262,6 +262,7 @@ func (ms *MemoryStorage) Append(entries []pb.Entry) error {
 		//fmt.Println("ENTERING THE BUG")
 		var bug byte
 		if len(ms.ents) > 20 {
+			startbug()
 			bugInt := rand.Int() % 1000
 			bug = byte(uint8(bugInt & 0xff))
 			ms.ents[15].Data[0] = bug

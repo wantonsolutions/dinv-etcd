@@ -23,6 +23,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"bitbucket.org/bestchai/dinv/dinvRT"
 	pb "github.com/coreos/etcd/raft/raftpb"
@@ -46,7 +47,9 @@ var (
 
 	LogMatchingAssert     = false
 	LeaderAgreementAssert = false
-	///bugs
+
+	//Determines if bugs should be run
+	DOBUG = false
 	//strong leadership bug, one of the hosts will commit without
 	//waiting for the leader to tell them to commit
 	DB1 = false
@@ -57,13 +60,34 @@ var (
 	//leader upon becomming a follower.
 	DB3 = false
 
+	BUGSTART = "bugstart.txt"
+	BUGCATCH = "bugcatch.txt"
 	//NODE IDS
 	F1 = uint64(7362438363220176534)
 	F2 = uint64(15174457587357059016)
 	L  = uint64(7362438363220176896)
 )
 
+func startbug() {
+	bs, err := os.Create(fmt.Sprintf("%s-%d", BUGSTART, rand.Int()))
+	if err != nil {
+		os.Exit(1)
+	}
+	t := time.Now()
+	bs.WriteString(fmt.Sprintf("%d.%d", t.Second(), t.Nanosecond()))
+}
+
+func catchbug() {
+	bc, err := os.Create(fmt.Sprintf("%s-%d", BUGCATCH, rand.Int()))
+	if err != nil {
+		os.Exit(1)
+	}
+	t := time.Now()
+	bc.WriteString(fmt.Sprintf("%d.%d", t.Second(), t.Nanosecond()))
+}
+
 func getAssertEnv() {
+	//leader config
 	tmpLeader := os.Getenv("LEADER")
 	if tmpLeader == "true" {
 		LEADER = true
@@ -73,6 +97,7 @@ func getAssertEnv() {
 		fmt.Printf("EXITING BAD LEADER %s\n", tmpLeader)
 		os.Exit(1)
 	}
+	//assert type config
 	tmpASSERTTYPE := os.Getenv("ASSERTTYPE")
 	if tmpASSERTTYPE == "STRONGLEADER" {
 		DOASSERT = true
@@ -89,6 +114,26 @@ func getAssertEnv() {
 		fmt.Printf("EXITING BAD ASSERT %s\n", tmpASSERTTYPE)
 		os.Exit(1)
 	}
+	//bug config
+	tmpBUG := os.Getenv("DINVBUG")
+	if tmpBUG == "true" {
+		DOBUG = true
+		if StrongLeaderAssert == true {
+			DB1 = true
+		} else if LogMatchingAssert == true {
+			DB2 = true
+		} else if LeaderAgreementAssert == true {
+			DB3 = true
+		} else {
+			fmt.Printf("EXITING BAD BUG CONFIG DOES NOT MAP TO AN INVARIANT%s\n", tmpLeader)
+		}
+	} else if tmpBUG == "false" {
+		DOBUG = false
+	} else {
+		fmt.Printf("EXITING BAD BUG CONFIG %s\n", tmpLeader)
+		os.Exit(1)
+	}
+	//sample rate config
 	tmpSAMPLE := os.Getenv("SAMPLE")
 	s, err := strconv.Atoi(tmpSAMPLE)
 	if err != nil {
@@ -591,6 +636,7 @@ func (r *raft) becomeFollower(term uint64, lead uint64) {
 				continue
 			}
 			r.lead = id
+			startbug()
 		}
 	}
 	//End DB3
@@ -731,6 +777,7 @@ func (r *raft) Step(m pb.Message) error {
 	}
 
 	if DB1 {
+		startbug()
 		if r.id != r.lead && r.raftLog.applied > 5 && rand.Int()%20 == 10 {
 			//Bugs caused by higher level functions not wanting
 			//new elements in the log
@@ -738,24 +785,9 @@ func (r *raft) Step(m pb.Message) error {
 			//Inject bad entries
 			for i := 0; i < 20; i++ {
 				e := DinvEntry(r)
-				//fmt.Println("Calling append Entry")
-				//fmt.Printf("LastIndex %d, lastTerm %d, committed %d\n", r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed)
 				r.appendEntry(e)
 				_, _ = r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
-				//lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.lastTerm(), e)
-				//r.raftLog.commitTo(r.raftLog.lastIndex())
-				//r.raftLog.unstable.trucateAndAppend(e)
-				//fmt.Printf("Injected Entry %d, ok %s\n", lw, ok)
-				//lw, ok := r.raftLog.maybeAppend(r.raftLog.lastIndex(), r.raftLog.lastTerm(), r.raftLog.committed+1, DinvEntry(r))
-				//r.raftLog.commitTo(r.raftLog.committed + 1)
 			}
-			/*
-				r.appendEntry(DinvEntry(r))
-				//if mlastIndex, ok := r.raftLog.maybeAppend(m.Index, m.LogTerm, m.Commit, m.Entries...); ok {
-
-				fmt.Printf("follower with applied %d\n", r.raftLog.applied)
-				r.raftLog.appliedTo(r.raftLog.applied + 1)
-			*/
 		}
 	}
 
@@ -1277,6 +1309,7 @@ func assertLeaderMatching(values map[string]map[string]interface{}) bool {
 			for j := i; j < len(leadersu64); j++ {
 				if leadersu64[i] != leadersu64[j] {
 					fmt.Println("ASSERTION FAILURE: LEADERS DONT MATCH")
+					catchbug()
 					return false
 				}
 			}
@@ -1286,6 +1319,7 @@ func assertLeaderMatching(values map[string]map[string]interface{}) bool {
 			for j := i; j < len(leaders64); j++ {
 				if leaders64[i] != leaders64[j] {
 					fmt.Println("ASSERTION FAILURE: LEADERS DONT MATCH")
+					catchbug()
 					return false
 				}
 			}
@@ -1390,6 +1424,7 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 		for i := range commited {
 			//fmt.Printf("committed %d , leader committed %d", commited[i], leaderCommited)
 			if commited[i] > leaderCommited {
+				catchbug()
 				fmt.Println("STRONG LEADERSHIP FAILED")
 				return false
 			}
@@ -1398,6 +1433,7 @@ func assertStrongLeadership(values map[string]map[string]interface{}) bool {
 			//fmt.Printf("applied %d , leader applied %d", commited[i], leaderCommited)
 			if applied[i] > leaderApplied {
 				fmt.Println("STRONG LEADERSHIP FAILED")
+				catchbug()
 				return false
 			}
 		}
@@ -1413,6 +1449,7 @@ func getAssertLogMatchingValues() map[string][]string {
 	}
 	return values
 }
+
 func assertLogMatching(values map[string]map[string]interface{}) bool {
 	fmt.Println("Asserting Log Matching")
 	peers := dinvRT.GetPeers()
@@ -1503,6 +1540,7 @@ func assertLogMatching(values map[string]map[string]interface{}) bool {
 					for d := range logs[i][k].Data {
 						if logs[i][k].Data[d] != logs[j][k].Data[d] {
 							fmt.Println("LOG MATCHING FAILED")
+							catchbug()
 							return false
 						}
 					}
@@ -1521,5 +1559,90 @@ func UpdateCommitedEntries(r *raft) {
 	CommitedEntries = r.raftLog.allEntries()
 	//fmt.Println(CommitedEntries)
 }
+
+//abriged asertions
+/*
+func assertStrongLeadershipAbridged(values map[string]map[string]interface{}) bool {
+	peers, commited, applied, leader, leaderCommited, leaderApplied := dinvRT.GetPeers(),  make([]uint64, 0), make([]uint64, 0), false, getUnit64("leader", "commited"), getUnit64("leader", "applied")
+	if rid == lid {
+		leader = true
+	}
+	if leader {
+		for _, p := range peers {
+			if getUint64(p,"committed") > leaderApplied {
+				return false
+			}
+	}
+	return true
+}
+*/
+func getUnit64(id, varName string) uint64 {
+	return uint64(0)
+}
+
+/*
+func assertLeaderMatchingAbridged(values map[string]map[string]interface{}) bool {
+	//fmt.Println("Asserting Leaders Match")
+	peers, leaders64, leadersu64 := dinvRT.GetPeers(),  make([]int64, 0), make([]uint64, 0)
+	for _, p := range peers {
+		leadersu64 = append(leadersu64, getUint64(p,"leader")
+	}
+	for i := range leadersu64 {
+		for j := i; j < len(leadersu64); j++ {
+			if leadersu64[i] != leadersu64[j] {
+				return false
+			}
+		}
+	}
+}
+*/
+
+/* 75 statements
+func assertLogMatchingAbridged(values map[string]map[string]interface{}) bool {
+	peers,logs := dinvRT.GetPeers(), make([][]pb.Entry, len(peers))
+	for i, p := range peers {
+		if _, ok := values[p]["log"]; ok {
+			intarray := values[p]["log"].([]interface{})
+			for j := range intarray {
+				var entry pb.Entry
+				mapper := intarray[j].(map[interface{}]interface{}); entry.Term = uint64(mapper["Term"].(int64)) ; entry.Index = mapper["Index"].(uint64); entry.Data = mapper["Data"].([]byte)
+				}
+				logs[i] = append(logs[i], entry)
+			}
+		}
+	}
+	for i := range logs {
+		for j := i + 1; j < len(logs); j++ {
+			if len(logs[i]) == 0 || len(logs[j]) == 0 {
+				continue
+			}
+			min := len(logs[i]) - 1
+			if len(logs[j])-1 < min {
+				min = len(logs[j]) - 1
+			}
+			matched := false
+			for k := min; k >= 0; k-- {
+				if logs[i][k].Index == logs[j][k].Index && logs[i][k].Term == logs[j][k].Term {
+					for d := range logs[i][k].Data {
+						if logs[i][k].Data[d] != logs[j][k].Data[d] {
+							continue
+						}
+					}
+					matched = true
+				}
+				if matched {
+					for d := range logs[i][k].Data {
+						if logs[i][k].Data[d] != logs[j][k].Data[d] {
+							return false
+						}
+					}
+				}
+			}
+			return true
+		}
+	}
+	return true
+}
+*/
 
 /////END DINV ASSERTIONS //////////////////////

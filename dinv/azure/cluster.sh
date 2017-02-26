@@ -17,6 +17,15 @@
 #4 assertType
 #5 leader
 #6 sample
+#7 bug
+
+   output=$1
+   echo "" > $output
+   for file in bugstart*; do
+       cat $file >>$output
+       echo "" >> $output
+   done
+   START=`sort $output | head -2`
 
 
 #VM's their public and private IP's
@@ -125,6 +134,7 @@ fi
 if [ "$1" == "-c" ];then
     echo clean
     $DINVDIR/examples/lib.sh clean
+    onall "rm *.txt"
     exit
 fi
 
@@ -141,10 +151,10 @@ if [ "$1" == "-r" ];then
     #LOCAL CLUSTER
     CLUSTER="infra0=http://$LOCALS1:2380,infra1=http://$LOCALS2:2380,infra2=http://$LOCALS3:2380"
     ASSERT="$LOCALS1:12000,$LOCALS2:12000,$LOCALS3:12000"
-    echo "ssh stewart@$GLOBALS1 -x $ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT $4 $5 $6"
-    ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT $4 $5 $6" &
-    ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT $4 $5 $6" &
-    ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT $4 $5 $6" &
+    echo "ssh stewart@$GLOBALS1 -x $ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT $4 $5 $6 $7"
+    ssh stewart@$GLOBALS1 -x "$ETCD$AZURENODE 0 $GLOBALS1 $LOCALS1 $CLUSTER $ASSERT $4 $5 $6 $7" &
+    ssh stewart@$GLOBALS2 -x "$ETCD$AZURENODE 1 $GLOBALS2 $LOCALS2 $CLUSTER $ASSERT $4 $5 $6 $7" &
+    ssh stewart@$GLOBALS3 -x "$ETCD$AZURENODE 2 $GLOBALS3 $LOCALS3 $CLUSTER $ASSERT $4 $5 $6 $7" &
 
     #GLOBAL CLUSTER
     #CLUSTER="infra0=http://$GLOBALS1:2380,infra1=http://$GLOBALS2:2380,infra2=http://$GLOBALS3:2380"
@@ -194,15 +204,41 @@ if [ "$1" == "-r" ];then
     echo DONE!
 
     if [ "$MEASURE" = true ] ; then
+        #get the latency from the requests
         cat latency* > agg.txt
         rm latency*
         R -q -e "x <- read.csv('agg.txt', header = F); summary(x); sd(x[ , 1])" > stats.txt
+
+        #get the bug catching times
+        #get the earliest bug starting time
+        output=bs.txt
+        echo "" > $output
+        for file in bugstart*; do
+           cat $file >>$output
+           #rm $file
+           echo "" >> $output
+        done
+        #rm $output
+        START=`sort $output | head -2`
+        #get the earliest bug catching time
+        output=bc.txt
+        echo "" > $output
+        for file in bugcatch*; do
+           cat $file >>$output
+           #rm $file
+           echo "" >> $output
+        done
+        #rm $output
+        CATCH=`sort $output | head -2`
+        BUGTIME=`echo $CATCH - $START | bc`
+
         MEDIAN=`grep Median stats.txt |cut -d: -f2`
         MEAN=`grep Mean stats.txt |cut -d: -f2`
         SD=`grep "\[1\]" stats.txt |cut -d' ' -f2`
         #./client.sh /usr/share/dict/words $GLOBALS1:2379
         TP=`grep -E '[0-9]' agg.txt | wc -l | cut -f1`
-        echo "$EXP,$CLIENTS,$RUNTIME,$TP,$MEDIAN,$MEAN,$SD" >> measurements.txt
+        let "RPS=$TP/$RUNTIME"
+        echo "$EXP,$CLIENTS,$RPS,$MEDIAN,$MEAN,$SD,$BUGTIME" >> measurements.txt
     fi
     exit
 fi

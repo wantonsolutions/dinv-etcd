@@ -8,6 +8,7 @@ DINV_ASSERT_PEERS=$5
 ASSERTTYPE=$6
 LEADER=$7
 SAMPLE=$8
+DINVBUG=$9
 
 HOME=/home/stewart
 DINV=$HOME/go/src/bitbucket.org/bestchai/dinv
@@ -25,9 +26,10 @@ export DINV_ASSERT_LISTEN
 export LEADER
 export ASSERTTYPE
 export SAMPLE
+export DINVBUG
 
 
-echo "cmd $ETCDCMD infra $INFRA public $PUBLIC private $PRIVATE cluster $CLUSTER assert $DINV_ASSERT_PEERS" > lastConfig
+echo "cmd $ETCDCMD infra $INFRA public $PUBLIC private $PRIVATE cluster $CLUSTER assert $DINV_ASSERT_PEERS bug $" > lastConfig
 
 $ETCDCMD --name infra$INFRA --initial-advertise-peer-urls http://$PRIVATE:2380 \
   --listen-peer-urls http://$PRIVATE:2380 \
