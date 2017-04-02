@@ -1,11 +1,17 @@
 #!/bin/bash
 
+#Master is a control script for running an etcd cluster, and client locally.
+#Master launches a client using the "clientMeasure.sh" or "clientblast.sh" scripts.
+#The cluster is launched via modcluster which takes in "clustersize" as a parameter.
+
 #input files
 #dog.in the quick
 #kahn.in kublakahn
 #dec.in declaration
 #in.in test*30000
 #/usr/share/dict/words words
+
+clustersize=3
 
 ./clean.sh
 sudo -E go install ../
@@ -16,7 +22,7 @@ fi
 
 rm *.time
 rm *.txt
-./modcluster.sh 3 &
+./modcluster.sh $clusterize &
 sleep 3
 #./clientblast.sh /usr/share/dict/words &
 ./clientMeasure.sh /usr/share/dict/words &

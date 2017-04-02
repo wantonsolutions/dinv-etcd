@@ -35,15 +35,17 @@ var CommitedEntries []pb.Entry
 //dinv assert stuff
 //dinv asserts and bugs
 var (
-	DOASSERT = false
-	LEADER   = true
-	SAMPLE   = 100
+	DOANYTHING = false //false to avoid asserts and bugs
+	DOASSERT   = false //perform asserts at all
+	LEADER     = false //Set to true if only the leader should be asserting
+	SAMPLE     = 100   //how frequently should asserts be performed
 	//asserts
 	StrongLeaderAssert = false
-	leaderCommited     uint64
-	leaderApplied      uint64
-	rid                uint64
-	lid                uint64
+	//
+	leaderCommited uint64
+	leaderApplied  uint64
+	rid            uint64
+	lid            uint64
 
 	LogMatchingAssert     = false
 	LeaderAgreementAssert = false
@@ -87,6 +89,10 @@ func catchbug() {
 }
 
 func getAssertEnv() {
+	//check if anything should be done
+	if !DOANYTHING {
+		return
+	}
 	//leader config
 	tmpLeader := os.Getenv("LEADER")
 	if tmpLeader == "true" {
@@ -145,6 +151,8 @@ func getAssertEnv() {
 	fmt.Printf("config ASSERT%s LEADER:%s  SAMPLE%s\n", tmpASSERTTYPE, tmpASSERTTYPE, tmpSAMPLE)
 
 }
+
+//END DINV BOOTSTRAPPING
 
 // None is a placeholder node ID used when there is no leader.
 const None uint64 = 0

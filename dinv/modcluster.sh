@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Launching Script for Etcd cluster
+#Mod cluster takes in as an argument the number of nodes a cluster should run
 
 PEERS=$1
 
@@ -10,29 +11,42 @@ DINV_ASSERT_PEERS=""
 #TERMINAL=gnome-terminal -x
 TERMINAL=""
 
+#Bulild port and ip number for etcd and dinv assertions
 for i in $(seq 1 $PEERS)
 do
+    #port and ip for etcd
     CLUSTERSTRING=$CLUSTERSTRING"infra"`expr $i - 1`"=http://127.0.0."$i":2380,"
+    #port ip for dinv assert default 12000
     DINV_ASSERT_PEERS=$DINV_ASSERT_PEERS"127.0.0."$i":12000,"
 
 done
 
 echo $CLUSTERSTRING
 
+#kill any old clusters
 fuser -k 2380/tcp
+#remove old databases
 rm -r *[0-9].etcd
+#install etcd
 sudo -E go install ../
 
+#hard coded enviornment variables for testing dinv assertions
+#they type of assert to be made
 ASSERTTYPE="STRONGLEADER"
-LEADER="true"
-SAMPLE="10"
-DINVBUG="true"
+#if true only leader asserts
+LEADER="false"
+#assert with probability 1/SAMPLE
+SAMPLE="0"
+#true if bugs should be run
+DINVBUG="false"
 #export assert macros
 export LEADER
 export ASSERTTYPE
 export SAMPLE
 export DINVBUG
 
+
+#itterativly launch the cluster
 for i in $(seq 1 $PEERS)
 do
     infra="infra"`expr $i - 1`

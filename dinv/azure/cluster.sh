@@ -20,6 +20,8 @@
 #7 bug
 
 
+
+
 #VM's their public and private IP's
 #stewart-test-1
 ST1G=52.228.27.112
@@ -87,6 +89,7 @@ function onall {
     #ssh stewart@$S3G -x $1 &
 }
 
+
 #kill all the nodes
 if [ "$1" == "-k" ];then
     echo kill
@@ -125,14 +128,16 @@ fi
 #clean
 if [ "$1" == "-c" ];then
     echo clean
+    onall "cd; rm *.txt"
     $DINVDIR/examples/lib.sh clean
-    onall "rm *.txt"
     exit
 fi
 
 
 if [ "$1" == "-r" ];then
     echo run
+
+    onall "cd; pwd; rm bug*"
 
     #Example execute ssh 
     #ssh stewart@13.64.239.61 -x "mkdir test"
@@ -179,6 +184,7 @@ if [ "$1" == "-r" ];then
         echo "STARTING CLIENT"
         
         #ssh stewart@$GLOBALS1 -x "echo $ETCD$CLIENT $TEXT $LOCALS1 && $ETCD$CLIENT $TEXT $LOCALS1 $ETCDCTL"
+        ##BLOCK HERE
         ssh stewart@$SBG -x "echo $ETCD$CLIENTMGR $TEXT $LOCALS1 && $ETCD$CLIENTMGR $TEXT $LOCALS1 $RUNTIME $CLIENTS $ETCDCTL $ETCD$CLIENT"
         #kill allthe hosts
         echo kill
@@ -210,18 +216,19 @@ if [ "$1" == "-r" ];then
            rm $file
            echo "" >> $output
         done
-        rm $output
         START=`sort $output | head -2`
+        rm $output
         #get the earliest bug catching time
         output=bc.txt
         echo "" > $output
         for file in bugcatch*; do
-           cat $file >>$output
+           cat $file >> $output
            rm $file
            echo "" >> $output
         done
-        rm $output
         CATCH=`sort $output | head -2`
+        rm $output
+        echo $CATCH - $START
         BUGTIME=`echo $CATCH - $START | bc`
 
         MEDIAN=`grep Median stats.txt |cut -d: -f2`
