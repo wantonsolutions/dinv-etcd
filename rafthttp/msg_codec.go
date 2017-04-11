@@ -29,7 +29,7 @@ type messageEncoder struct {
 	w io.Writer
 }
 
-var dinv = false
+var dinv = true
 
 func (enc *messageEncoder) encode(m *raftpb.Message) error {
 	if dinv {
