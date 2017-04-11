@@ -17,6 +17,7 @@ package rafthttp
 import (
 	"encoding/binary"
 	"io"
+
 	"bitbucket.org/bestchai/dinv/dinvRT"
 	"github.com/coreos/etcd/pkg/pbutil"
 	"github.com/coreos/etcd/raft/raftpb"
@@ -28,7 +29,7 @@ type messageEncoder struct {
 	w io.Writer
 }
 
-var dinv = true
+var dinv = false
 
 func (enc *messageEncoder) encode(m *raftpb.Message) error {
 	if dinv {
@@ -67,7 +68,7 @@ func (dec *messageDecoder) decode() (raftpb.Message, error) {
 	}
 	if dinv {
 		var ibuf []byte
-		dinvRT.Unpack(buf,&ibuf)
+		dinvRT.Unpack(buf, &ibuf)
 		return m, m.Unmarshal(ibuf)
 	} else {
 		return m, m.Unmarshal(buf)
